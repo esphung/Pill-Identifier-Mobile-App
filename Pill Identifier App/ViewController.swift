@@ -12,6 +12,9 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    var currentImage: UIImage!
+    
+    
     
     @IBOutlet weak var inputPillImageView: UIImageView!
     @IBOutlet weak var inputPillNameText: UITextField!
@@ -19,8 +22,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var inputPillColorText: UITextField!
     @IBOutlet weak var inputPillShapeText: UITextField!
     
-    var currentImage: UIImage!
-
+    @IBOutlet weak var submitBtn: UIButton!
+    @IBOutlet weak var uploadBtn: UIButton!
 
 
     override func viewDidLoad() {
@@ -35,10 +38,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         
         // VIEW SETUP
-        
         // pill name text view
         inputPillNameText.delegate = self as? UITextFieldDelegate
         inputPillNameText.placeholder = "pill name"
+        
         inputPillNameText.adjustsFontForContentSizeCategory = true
         inputPillNameText.adjustsFontSizeToFitWidth = true
         inputPillNameText.allowsEditingTextAttributes = true
@@ -47,14 +50,53 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         inputPillNameText.backgroundColor = UIColor.clear
         inputPillNameText.textAlignment = .center
         
+
+        // pill inscription
+        inputPillInscriptionText.delegate = self as? UITextFieldDelegate
+        inputPillInscriptionText.placeholder = "pill inscription"
+        
+        inputPillInscriptionText.adjustsFontForContentSizeCategory = true
+        inputPillInscriptionText.adjustsFontSizeToFitWidth = true
+        inputPillInscriptionText.allowsEditingTextAttributes = true
+        inputPillInscriptionText.autocorrectionType = .no
+        inputPillInscriptionText.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30)
+        inputPillInscriptionText.backgroundColor = UIColor.clear
+        inputPillInscriptionText.textAlignment = .center
+        
+
+        // pill color
+        inputPillColorText.delegate = self as? UITextFieldDelegate
+        inputPillColorText.placeholder = "pill shape"
+        
+        inputPillColorText.adjustsFontForContentSizeCategory = true
+        inputPillColorText.adjustsFontSizeToFitWidth = true
+        inputPillColorText.allowsEditingTextAttributes = true
+        inputPillColorText.autocorrectionType = .no
+        inputPillColorText.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30)
+        inputPillColorText.backgroundColor = UIColor.clear
+        inputPillColorText.textAlignment = .center
+
+
+
+
+        // pill shape
+        inputPillShapeText.delegate = self as? UITextFieldDelegate
+        inputPillShapeText.placeholder = "pill shape"
+        
+        inputPillShapeText.adjustsFontForContentSizeCategory = true
+        inputPillShapeText.adjustsFontSizeToFitWidth = true
+        inputPillShapeText.allowsEditingTextAttributes = true
+        inputPillShapeText.autocorrectionType = .no
+        inputPillShapeText.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30)
+        inputPillShapeText.backgroundColor = UIColor.clear
+        inputPillShapeText.textAlignment = .center
+
         
         
         
-        title = "YACIFP"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(importPicture))
         
         
-        
+
         
         
         
@@ -102,6 +144,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         task.resume()
     }
 
+    @IBAction func uploadBtnTapped(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+        
+        /*
+         The sourceType property wants a value of the enum named        UIImagePickerControllerSourceType, which gives 3 options:
+         
+         UIImagePickerControllerSourceType.PhotoLibrary
+         UIImagePickerControllerSourceType.Camera
+         UIImagePickerControllerSourceType.SavedPhotosAlbum
+         
+         */
+        present(imagePicker, animated: true, completion: nil)
+    }// end upload btn func
+
     func importPicture() {
         let picker = UIImagePickerController()
         picker.allowsEditing = true
@@ -110,14 +170,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else { return }
-        
-        dismiss(animated: true)
-        
-        currentImage = image
-    }
-    
+
     
     @IBAction func signUpButtonTapped(_ sender: Any) {
         let pillNameInputStr = inputPillNameText.text
@@ -138,34 +191,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }// end if validation
         
         
+
+        //let pillInputImageData = UIImageJPEGRepresentation(inputPillImageView.image!, 1)
         
 
-
-        
-        let pillInputImageData = UIImageJPEGRepresentation(currentImage, 1)
-        
-        if (pillInputImageData != nil) {
-            // what to do if picture is submitted
-            // create (PFFFile?) object to be sent to cloud service
-            print("PICTURE SUCCESSFULLY FOUND!")
-        }// end def for if picture is submitted by users
-        
         
     }// end submit btn func def
 
-    
-    
-    
-    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
-        return CGRect(x: x, y: y, width: width, height: height)
-    }
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 
     
@@ -175,19 +207,51 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         view.endEditing(true)
     }
     
-    func setUpTextFieldInput(sender: UITextField) {
-        inputPillNameText.delegate = self as? UITextFieldDelegate
-        inputPillNameText.placeholder = "pill name"
-        inputPillNameText.adjustsFontForContentSizeCategory = true
-        inputPillNameText.adjustsFontSizeToFitWidth = true
-        inputPillNameText.allowsEditingTextAttributes = true
-        inputPillNameText.autocorrectionType = .no
-        inputPillNameText.font = UIFont(name: "HelveticaNeue-UltraLight", size: 30)
-        inputPillNameText.backgroundColor = UIColor.clear
+    // MARK: - ImagePicker Delegate
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-    }// end btn set up
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            //myImageView.contentMode = .scaleAspectFit
+            inputPillImageView.image = pickedImage
+        }
+        
+        
+        
+        /*
+         
+         Swift Dictionary named “info”.
+         We have to unpack it from there with a key asking for what media information we want.
+         We just want the image, so that is what we ask for.  For reference, the available options are:
+         
+         UIImagePickerControllerMediaType
+         UIImagePickerControllerOriginalImage
+         UIImagePickerControllerEditedImage
+         UIImagePickerControllerCropRect
+         UIImagePickerControllerMediaURL
+         UIImagePickerControllerReferenceURL
+         UIImagePickerControllerMediaMetadata
+         
+         */
+        
+        
+        // ============== PICTRUE TO BE UPLOADED AS DATA TO CLOUD!!!
+        //let currentImageData = UIImageJPEGRepresentation(inputPillImageView.image!, 1)
+        
+        dismiss(animated: true, completion: nil)
+    }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion:nil)
+    }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = ""
+    }
+    
+    @IBAction func submitBtnTapped(_ sender: Any) {
+        print("submitBtn tapped!")
+    }
 
 }// end class def
 
