@@ -27,8 +27,8 @@
                                     <constraint firstAttribute="height" constant="230" id="rOB-xr-e1v"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaS-E8-LZh">
-                                <rect key="frame" x="16" y="266" width="343" height="381"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaS-E8-LZh">
+                                <rect key="frame" x="16" y="337" width="343" height="310"/>
                                 <state key="normal" title="UPLOAD"/>
                                 <connections>
                                     <action selector="submitBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1ya-UB-e5T"/>
@@ -67,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="154"/>
+            <point key="canvasLocation" x="80.799999999999997" y="153.37331334332833"/>
         </scene>
     </scenes>
 </document>

@@ -15,6 +15,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var submitBtn: UIButton!
     @IBOutlet weak var uploadBtn: UIButton!
 
+	var sampleTextLabel = UILabel()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
 
         //tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)    
+        view.addGestureRecognizer(tap)
+
+        //  set information label
+        self.sampleTextLabel =  UILabel(
+            frame: CGRect(x: 20, y: 100, width: 300, height: 40))
+        self.sampleTextLabel.text = "Enter text here"
+        self.sampleTextLabel.font = UIFont.systemFont(ofSize: 15)
+
+        self.view.addSubview(sampleTextLabel)
+
+		
 		
 /*
         // VIEW SETUP
