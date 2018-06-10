@@ -1,6 +1,8 @@
 
 import UIKit
 
+let sampleLabelMessage = "Sample Label"
+
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -17,7 +19,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
 	var sampleTextLabel = UILabel()
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -27,15 +28,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
 
-        //  set information label
-        self.sampleTextLabel =  UILabel(
-            frame: CGRect(x: 20, y: 100, width: 300, height: 40))
-        self.sampleTextLabel.text = "Enter text here"
+        //  set name label
+        self.sampleTextLabel =  UILabel(frame: CGRect(x: 20, y: 300, width: 300, height: 40))
+        self.sampleTextLabel.text = sampleLabelMessage
         self.sampleTextLabel.font = UIFont.systemFont(ofSize: 15)
 
-        self.view.addSubview(sampleTextLabel)
+        //self.view.addSubview(sampleTextLabel)
 
-		
+
 		
 /*
         // VIEW SETUP
@@ -101,25 +101,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let task = session.dataTask(with: url, completionHandler: {
             (data, response, error) in
-            
+
             if error != nil {
                 print(error!.localizedDescription);   
             } else {
-                
                 do {
                     
                     if let json = try JSONSerialization.jsonObject(
                         with: data!, options: .allowFragments) as? [String: Any]
                     {
-                        // ================= DO STUFF LIKE MAKE A PILL
+                        // ================= DO STUFF
+
+                        print(json["idGroup"]!)
                         print(json);
 
 						print("// ================= JSON  RECIEVED!")
 						// create pills
                         let pill = Pill()
-						pill.setName(name: json["name"] as? String)
-						print(pill)
 						
+                        pill.setName(name: json["idGroup"] as? String)
+						print(pill)
+
                     }// end
                 } catch {
                     print("error in JSONSerialization")
@@ -134,24 +136,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         // ================= METHODS OF VIEW AND CTRL CARD
 
-
-
-
     @IBAction func uploadBtnTapped(_ sender: Any) {
+
+        self.view.addSubview(sampleTextLabel)
+
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
-            
+
         /*
-         The sourceType property wants a value of the enum named        UIImagePickerControllerSourceType, which gives 3 options:
+         The sourceType property wants a value of the enum named UIImagePickerControllerSourceType, which gives 3 options:
          
          UIImagePickerControllerSourceType.PhotoLibrary
          UIImagePickerControllerSourceType.Camera
          UIImagePickerControllerSourceType.SavedPhotosAlbum
          
          */
+
         present(imagePicker, animated: true, completion: nil)
+
     }// end upload btn func
 
     func importPicture() {
@@ -165,7 +169,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }// end submit btn func def
 
-    
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
@@ -173,7 +176,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     // MARK: - ImagePicker Delegate
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -186,9 +188,5 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismiss(animated: true, completion:nil)
     }
     
-    @IBAction func submitBtnTapped(_ sender: Any) {
-        print("Upload Button tapped!")
-    }
-
 }// end class def
 

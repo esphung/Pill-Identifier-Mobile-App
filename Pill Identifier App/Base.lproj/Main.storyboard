@@ -22,22 +22,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ahr-Cj-OyG">
-                                <rect key="frame" x="19" y="28" width="192" height="230"/>
+                                <rect key="frame" x="16" y="28" width="195" height="230"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="230" id="rOB-xr-e1v"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaS-E8-LZh">
-                                <rect key="frame" x="16" y="337" width="343" height="310"/>
-                                <state key="normal" title="UPLOAD"/>
-                                <connections>
-                                    <action selector="submitBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1ya-UB-e5T"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kL5-8g-4aI">
-                                <rect key="frame" x="219" y="28" width="137" height="230"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kL5-8g-4aI">
+                                <rect key="frame" x="219" y="28" width="140" height="58"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="137" id="UOW-qu-yLE"/>
+                                    <constraint firstAttribute="width" constant="140" id="UOW-qu-yLE"/>
                                 </constraints>
                                 <state key="normal" title="LIBRARY PHOTO"/>
                                 <connections>
@@ -47,27 +40,21 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="JaS-E8-LZh" firstAttribute="top" secondItem="ahr-Cj-OyG" secondAttribute="bottom" constant="8" symbolic="YES" id="3Lm-XV-9oD"/>
-                            <constraint firstItem="ahr-Cj-OyG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="3" id="5jX-a2-qC3"/>
-                            <constraint firstItem="JaS-E8-LZh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="KS6-2Y-v99"/>
-                            <constraint firstItem="JaS-E8-LZh" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="P9P-av-YBM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kL5-8g-4aI" secondAttribute="trailing" constant="3" id="Vud-yd-X4d"/>
+                            <constraint firstItem="ahr-Cj-OyG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5jX-a2-qC3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kL5-8g-4aI" secondAttribute="trailing" id="Vud-yd-X4d"/>
                             <constraint firstItem="ahr-Cj-OyG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="YaK-cZ-o0j"/>
                             <constraint firstItem="kL5-8g-4aI" firstAttribute="leading" secondItem="ahr-Cj-OyG" secondAttribute="trailing" constant="8" symbolic="YES" id="c7C-f0-YAU"/>
                             <constraint firstItem="ahr-Cj-OyG" firstAttribute="top" secondItem="kL5-8g-4aI" secondAttribute="top" id="eoL-0a-0Bj"/>
-                            <constraint firstAttribute="bottom" secondItem="JaS-E8-LZh" secondAttribute="bottom" constant="20" symbolic="YES" id="iQZ-fG-zcz"/>
-                            <constraint firstItem="JaS-E8-LZh" firstAttribute="top" secondItem="kL5-8g-4aI" secondAttribute="bottom" constant="8" symbolic="YES" id="jZp-H5-fIe"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="inputPillImageView" destination="ahr-Cj-OyG" id="GkN-pM-WnV"/>
-                        <outlet property="submitBtn" destination="JaS-E8-LZh" id="mNT-Bk-seb"/>
                         <outlet property="uploadBtn" destination="kL5-8g-4aI" id="9dp-EM-XaD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="80.799999999999997" y="153.37331334332833"/>
+            <point key="canvasLocation" x="78.5" y="151.5"/>
         </scene>
     </scenes>
 </document>
