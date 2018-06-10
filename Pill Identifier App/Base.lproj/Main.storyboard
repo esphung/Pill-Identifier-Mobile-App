@@ -21,70 +21,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bwu-sP-5yN">
-                                <rect key="frame" x="19" y="304" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6GM-ic-2BS">
-                                <rect key="frame" x="19" y="342" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahr-Cj-OyG">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ahr-Cj-OyG">
                                 <rect key="frame" x="19" y="28" width="192" height="230"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="230" id="rOB-xr-e1v"/>
+                                </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w80-he-6ie">
-                                <rect key="frame" x="19" y="380" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaS-E8-LZh">
-                                <rect key="frame" x="16" y="418" width="195" height="229"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaS-E8-LZh">
+                                <rect key="frame" x="16" y="266" width="343" height="381"/>
                                 <state key="normal" title="UPLOAD"/>
                                 <connections>
                                     <action selector="submitBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1ya-UB-e5T"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kL5-8g-4aI">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kL5-8g-4aI">
                                 <rect key="frame" x="219" y="28" width="137" height="230"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="137" id="UOW-qu-yLE"/>
+                                </constraints>
                                 <state key="normal" title="LIBRARY PHOTO"/>
                                 <connections>
                                     <action selector="uploadBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Rr-vm-0NP"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wiv-iu-j9o">
-                                <rect key="frame" x="19" y="266" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="JaS-E8-LZh" firstAttribute="top" secondItem="ahr-Cj-OyG" secondAttribute="bottom" constant="8" symbolic="YES" id="3Lm-XV-9oD"/>
+                            <constraint firstItem="ahr-Cj-OyG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="3" id="5jX-a2-qC3"/>
+                            <constraint firstItem="JaS-E8-LZh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="KS6-2Y-v99"/>
+                            <constraint firstItem="JaS-E8-LZh" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="P9P-av-YBM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kL5-8g-4aI" secondAttribute="trailing" constant="3" id="Vud-yd-X4d"/>
+                            <constraint firstItem="ahr-Cj-OyG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="YaK-cZ-o0j"/>
+                            <constraint firstItem="kL5-8g-4aI" firstAttribute="leading" secondItem="ahr-Cj-OyG" secondAttribute="trailing" constant="8" symbolic="YES" id="c7C-f0-YAU"/>
+                            <constraint firstItem="ahr-Cj-OyG" firstAttribute="top" secondItem="kL5-8g-4aI" secondAttribute="top" id="eoL-0a-0Bj"/>
+                            <constraint firstAttribute="bottom" secondItem="JaS-E8-LZh" secondAttribute="bottom" constant="20" symbolic="YES" id="iQZ-fG-zcz"/>
+                            <constraint firstItem="JaS-E8-LZh" firstAttribute="top" secondItem="kL5-8g-4aI" secondAttribute="bottom" constant="8" symbolic="YES" id="jZp-H5-fIe"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="inputPillColorText" destination="6GM-ic-2BS" id="JGT-oN-XIG"/>
                         <outlet property="inputPillImageView" destination="ahr-Cj-OyG" id="GkN-pM-WnV"/>
-                        <outlet property="inputPillInscriptionText" destination="bwu-sP-5yN" id="oQb-9R-wDz"/>
-                        <outlet property="inputPillNameText" destination="Wiv-iu-j9o" id="dug-l3-0rI"/>
-                        <outlet property="inputPillShapeText" destination="w80-he-6ie" id="1Rh-S0-rMY"/>
                         <outlet property="submitBtn" destination="JaS-E8-LZh" id="mNT-Bk-seb"/>
                         <outlet property="uploadBtn" destination="kL5-8g-4aI" id="9dp-EM-XaD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+            <point key="canvasLocation" x="81" y="154"/>
         </scene>
     </scenes>
 </document>

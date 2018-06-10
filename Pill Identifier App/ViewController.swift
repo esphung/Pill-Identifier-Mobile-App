@@ -1,12 +1,6 @@
-//
-//  ViewController.swift
-//  Pill Identifier App
-//
-//  Created by John Doe on 4/8/17.
-//  Copyright © 2017 Phung Technology. All rights reserved.
-//
 
 import UIKit
+
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -30,7 +24,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         //tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)    
-        
+		
 /*
         // VIEW SETUP
         // pill name text view
@@ -97,35 +91,39 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             (data, response, error) in
             
             if error != nil {
-                
-                print(error!.localizedDescription)
-                
+                print(error!.localizedDescription);   
             } else {
                 
                 do {
                     
-                    if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
+                    if let json = try JSONSerialization.jsonObject(
+                        with: data!, options: .allowFragments) as? [String: Any]
                     {
-                        
-                        //Implement your logic
-                        print(json)
-                        
-                        
-                        
-                    }
-                    
+                        // ================= DO STUFF LIKE MAKE A PILL
+                        print(json);
+
+						print("// ================= JSON  RECIEVED!")
+						// create pills
+                        let pill = Pill()
+						pill.setName(name: json["name"] as? String)
+						print(pill)
+						
+                    }// end
                 } catch {
-                    
                     print("error in JSONSerialization")
-                    
                 }
                 
                 
             }
             
         })
-        task.resume()
-    }
+            task.resume()
+        }
+
+        // ================= METHODS OF VIEW AND CTRL CARD
+
+
+
 
     @IBAction func uploadBtnTapped(_ sender: Any) {
         let imagePicker = UIImagePickerController()
@@ -152,32 +150,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @IBAction func signUpButtonTapped(_ sender: Any) {
-        let pillNameInputStr = inputPillNameText.text
-        let pillInscriptionInputStr = inputPillInscriptionText.text
-        let pillColorInputStr = inputPillColorText.text
-        let pillShapeInputStr = inputPillShapeText.text
-        
-        
-        if (pillNameInputStr!.isEmpty || (pillInscriptionInputStr?.isEmpty)! || (pillColorInputStr?.isEmpty)! || (pillShapeInputStr?.isEmpty)!) {
-            let myAlert = UIAlertController(title:"Alert",
-                                            message:"All Fields Required!",
-                                            preferredStyle:UIAlertControllerStyle.alert
-            )
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            myAlert.addAction(okAction)
-            
-            self.present(myAlert, animated: true, completion: nil)
-        }// end if validation
-        
-        
-
-        //let pillInputImageData = UIImageJPEGRepresentation(inputPillImageView.image!, 1)
-        
-
         
     }// end submit btn func def
-
-    
 
     
     //Calls this function when the tap is recognized.
@@ -191,32 +165,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            //myImageView.contentMode = .scaleAspectFit
             inputPillImageView.image = pickedImage
         }
-        
-        
-        
-        /*
-         
-         Swift Dictionary named “info”.
-         We have to unpack it from there with a key asking for what media information we want.
-         We just want the image, so that is what we ask for.  For reference, the available options are:
-         
-         UIImagePickerControllerMediaType
-         UIImagePickerControllerOriginalImage
-         UIImagePickerControllerEditedImage
-         UIImagePickerControllerCropRect
-         UIImagePickerControllerMediaURL
-         UIImagePickerControllerReferenceURL
-         UIImagePickerControllerMediaMetadata
-         
-         */
-        
-        
-        // ============== PICTRUE TO BE UPLOADED AS DATA TO CLOUD!!!
-        //let currentImageData = UIImageJPEGRepresentation(inputPillImageView.image!, 1)
-        
         dismiss(animated: true, completion: nil)
     }
     
@@ -224,12 +174,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismiss(animated: true, completion:nil)
     }
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
-    }
-    
     @IBAction func submitBtnTapped(_ sender: Any) {
-        print("submitBtn tapped!")
+        print("Upload Button tapped!")
     }
 
 }// end class def

@@ -14,6 +14,7 @@
 		18F57B901E992E0A0013221F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F57B8E1E992E0A0013221F /* LaunchScreen.storyboard */; };
 		18F57B9B1E992E0A0013221F /* Pill_Identifier_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F57B9A1E992E0A0013221F /* Pill_Identifier_AppTests.swift */; };
 		18F57BA61E992E0A0013221F /* Pill_Identifier_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F57BA51E992E0A0013221F /* Pill_Identifier_AppUITests.swift */; };
+		5E32CF7320CCE400006D1FAA /* Pill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E32CF7220CCE400006D1FAA /* Pill.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		18F57BA11E992E0A0013221F /* Pill Identifier AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pill Identifier AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F57BA51E992E0A0013221F /* Pill_Identifier_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill_Identifier_AppUITests.swift; sourceTree = "<group>"; };
 		18F57BA71E992E0A0013221F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E32CF7220CCE400006D1FAA /* Pill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pill.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		18F57B841E992E0A0013221F /* Pill Identifier App */ = {
 			isa = PBXGroup;
 			children = (
+				5E32CF7220CCE400006D1FAA /* Pill.swift */,
 				18F57B851E992E0A0013221F /* AppDelegate.swift */,
 				18F57B871E992E0A0013221F /* ViewController.swift */,
 				18F57B891E992E0A0013221F /* Main.storyboard */,
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E32CF7320CCE400006D1FAA /* Pill.swift in Sources */,
 				18F57B881E992E0A0013221F /* ViewController.swift in Sources */,
 				18F57B861E992E0A0013221F /* AppDelegate.swift in Sources */,
 			);
