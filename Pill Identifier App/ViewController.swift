@@ -13,8 +13,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var inputPillInscriptionText: UITextField!
     @IBOutlet weak var inputPillColorText: UITextField!
     @IBOutlet weak var inputPillShapeText: UITextField!
-    
-    @IBOutlet weak var submitBtn: UIButton!
+	
     @IBOutlet weak var uploadBtn: UIButton!
 
 	var sampleTextLabel = UILabel()
@@ -25,7 +24,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
 
-        //tap.cancelsTouchesInView = false
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
 
         //  set name label

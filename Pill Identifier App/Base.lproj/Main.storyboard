@@ -28,11 +28,12 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kL5-8g-4aI">
-                                <rect key="frame" x="219" y="28" width="140" height="58"/>
+                                <rect key="frame" x="219" y="28" width="140" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="UOW-qu-yLE"/>
                                 </constraints>
-                                <state key="normal" title="LIBRARY PHOTO"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Upload Image"/>
                                 <connections>
                                     <action selector="uploadBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Rr-vm-0NP"/>
                                 </connections>
@@ -54,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="78.5" y="151.5"/>
+            <point key="canvasLocation" x="77.599999999999994" y="150.67466266866569"/>
         </scene>
     </scenes>
 </document>
