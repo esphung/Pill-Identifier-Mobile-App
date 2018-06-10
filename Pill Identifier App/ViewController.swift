@@ -8,13 +8,9 @@
 
 import UIKit
 
-
-
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var currentImage: UIImage!
-    
-    
     
     @IBOutlet weak var inputPillImageView: UIImageView!
     @IBOutlet weak var inputPillNameText: UITextField!
@@ -31,12 +27,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Do any additional setup after loading the view, typically from a nib.
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
-        
-        
+
         //tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
+        view.addGestureRecognizer(tap)    
         
-        
+/*
         // VIEW SETUP
         // pill name text view
         inputPillNameText.delegate = self as? UITextFieldDelegate
@@ -77,8 +72,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         inputPillColorText.textAlignment = .center
 
 
-
-
         // pill shape
         inputPillShapeText.delegate = self as? UITextFieldDelegate
         inputPillShapeText.placeholder = "pill shape"
@@ -91,17 +84,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         inputPillShapeText.backgroundColor = UIColor.clear
         inputPillShapeText.textAlignment = .center
 
-        
-        
-        
-        
-        
-
-        
-        
-        
-        
-        
+         */
         
         
         // ================= API CALLS AND SERVER STUFF
@@ -149,8 +132,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
-        
-        
+            
         /*
          The sourceType property wants a value of the enum named        UIImagePickerControllerSourceType, which gives 3 options:
          
@@ -169,9 +151,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(picker, animated: true)
     }
 
-    
-
-    
     @IBAction func signUpButtonTapped(_ sender: Any) {
         let pillNameInputStr = inputPillNameText.text
         let pillInscriptionInputStr = inputPillInscriptionText.text
