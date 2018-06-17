@@ -60,26 +60,21 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 	var imageBtn:			UIButton!
 	var pillImageView:		UIImageView!
 
-	//var colorLabelText: UILabel!
 	var colorTextField:	UITextField!
 	var pickerView : UIPickerView!
 	var pickerData = ["", "Orange" , "Purple" , "Green", "White", "Pink"]
 
-	//var shapeLabelText: UILabel!
 	var shapeTextField:	UITextField!
-
+	var imprintTextField:	UITextField!
 	var submitButton: UIButton!
-	
 	let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-
-
 	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
 		// Do any additional setup after loading the view
-		//self.south.backgroundColor = .yellow
-		//self.north.backgroundColor = .green
+		self.south.backgroundColor = .yellow
+		self.north.backgroundColor = .green
 		
 	}// end view did load
 	
@@ -188,7 +183,7 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 
 		// ====================  set up IMAGE BUTTON (NORTH VIEW)
 		imageBtn =  UIButton(frame: CGRect(x: 0, y: 0,width: self.north.frame.width, height: self.north.frame.height))
-		//imageBtn.layer.borderWidth = 1.0
+		imageBtn.layer.borderWidth = 1.0
 		imageBtn.setTitleColor(UIColor.black, for: .normal)
 		imageBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 		imageBtn.setTitleColor(UIColor.white, for: .highlighted)
@@ -198,59 +193,51 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		self.north.addSubview(imageBtn)
 		
 		// ========================================  set up PILLImageVIEW (NORTH VIEW)
-		//pillImageView.image = UIImage(named: "test.png")
 		pillImageView = UIImageView(frame: CGRect(x: 0, y: 0,width: self.north.frame.width, height: self.north.frame.height))
+
 		self.north.addSubview(pillImageView)
 
 
-		// ========================================  set up COLORTEXTFIELD AND COLOR PICKER
-/* 		colorLabelText = UILabel(frame: CGRect(x: myListIndent,y: (south.frame.height/2) * 0.0, width: (self.south.frame.width * 0.90), height: myDefaultTextFieldHeight))
-		colorLabelText.text = "Pill Color:"
-		colorLabelText.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
-		//colorLabelText.layer.borderWidth = 1.0
-		//colorLabelText.textAlignment = .center
-		//self.south.addSubview(colorLabelText) */
 
-		colorTextField = UITextField(frame: CGRect(x: myListIndent,y: (south.frame.height/2) * 0.3, width: (self.south.frame.width * 0.90), height: myDefaultTextFieldHeight))
+		colorTextField = UITextField(frame: CGRect(x: myListIndent,y: (south.frame.height/2) * 0.1, width: (self.south.frame.width * 0.90), height: myDefaultTextFieldHeight))
 		colorTextField.placeholder = "Pick a Color"
 		colorTextField.font = UIFont.systemFont(ofSize: CGFloat(myDefaultTextFontSize))
-		//colorTextField.layer.borderWidth = 1.0
+		colorTextField.layer.borderWidth = 1.0
 		colorTextField.borderStyle = UITextField.BorderStyle.roundedRect
-		//colorTextField.autocorrectionType = UITextAutocorrectionType.no
-		//colorTextField.keyboardType = UIKeyboardType.default
-		//colorTextField.returnKeyType = UIReturnKeyType.done
-		//colorTextField.clearButtonMode = UITextField.ViewMode.whileEditing;
 		colorTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
 		colorTextField.delegate = self
+
 		self.south.addSubview(colorTextField)
-		
-		pickerView = UIPickerView(frame: CGRect(x: myListIndent, y: (south.frame.height/2) * 0.0, width: (self.south.frame.width * 0.90), height: myDefaultTextFieldHeight))
-		//pickerView.backgroundColor = .white
-		//pickerView.layer.borderWidth = 1.0
-		pickerView.showsSelectionIndicator = true
-		pickerView.delegate = self
-		pickerView.dataSource = self
-		
-		//self.south.addSubview(pickerView)
 
 		// ========================================  set up SHAPE AND SHAPE PICKER
 
-		shapeTextField = UITextField(frame: CGRect(x: myListIndent,y: (south.frame.height/2) * 0.9, width: (self.south.frame.width * 0.90), height: myDefaultTextFieldHeight))
-		shapeTextField.placeholder = "Enter a Shape"
+		shapeTextField = UITextField(frame: CGRect(x: myListIndent,y: (south.frame.height/2) * 0.6, width: (self.south.frame.width * 0.90), height: myDefaultTextFieldHeight))
+		shapeTextField.placeholder = "Choose a Shape"
 		shapeTextField.font = UIFont.systemFont(ofSize: CGFloat(myDefaultTextFontSize))
-		//shapeTextField.layer.borderWidth = 1.0
+		shapeTextField.layer.borderWidth = 1.0
 		shapeTextField.borderStyle = UITextField.BorderStyle.roundedRect
 		shapeTextField.autocorrectionType = UITextAutocorrectionType.yes
-		//shapeTextField.keyboardType = UIKeyboardType.default
-		//shapeTextField.returnKeyType = UIReturnKeyType.done
-		//shapeTextField.clearButtonMode = UITextField.ViewMode.whileEditing;
 		shapeTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
 		shapeTextField.delegate = self
+
 		self.south.addSubview(shapeTextField)
 
-		//self.south.addSubview(shapePickerView)
 
-		submitButton = UIButton(frame: CGRect(x: myListIndent,y: (south.frame.height/2) * 1.5, width: (self.south.frame.width * 0.9), height: myDefaultTextFieldHeight))
+		// ========================================  set up SHAPE AND SHAPE PICKER
+
+		imprintTextField = UITextField(frame: CGRect(x: myListIndent,y: (south.frame.height/2) * 1.1, width: (self.south.frame.width * 0.90), height: myDefaultTextFieldHeight))
+		imprintTextField.placeholder = "Enter Pill Imprint"
+		imprintTextField.font = UIFont.systemFont(ofSize: CGFloat(myDefaultTextFontSize))
+		imprintTextField.layer.borderWidth = 1.0
+		imprintTextField.borderStyle = UITextField.BorderStyle.roundedRect
+		imprintTextField.autocorrectionType = UITextAutocorrectionType.yes
+		imprintTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+		imprintTextField.delegate = self
+
+		self.south.addSubview(imprintTextField)
+
+
+		submitButton = UIButton(frame: CGRect(x: myListIndent,y: (south.frame.height/2) * 1.6, width: (self.south.frame.width * 0.9), height: myDefaultTextFieldHeight))
 		submitButton.layer.borderWidth = 2.0
 		submitButton.setTitleColor(UIColor.black, for: .normal)
 		submitButton.setTitleColor(UIColor.lightGray, for: .disabled)
@@ -258,6 +245,7 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		submitButton.setTitle("Submit", for: .normal)
 		submitButton.titleLabel?.font =  UIFont.systemFont(ofSize: myDefaultTextFontSize, weight: .light)
 		submitButton.addTarget(self, action: #selector(submitButtonTapped), for: .touchUpInside)
+
 		self.south.addSubview(submitButton)
 		
 	}
