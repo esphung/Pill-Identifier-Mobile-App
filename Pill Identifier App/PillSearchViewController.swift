@@ -141,7 +141,9 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 	}
 	
 	@objc func submitButtonTapped() {
-		print("Submit Button Tapped!")
+		print(self.colorLabel.text!)
+		print(self.shapeLabel.text!)
+		print(self.imprintLabel.text!)
 
 		exit(0)
 	}// end upload button action
@@ -301,7 +303,6 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		self.south.addSubview(shapeLabel)
 		self.south.addSubview(imprintLabel)
 
-		print("FINISHED VIEW SET UP!")
 		
 	}
 	
