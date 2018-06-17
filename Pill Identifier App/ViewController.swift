@@ -1,99 +1,125 @@
 
 import UIKit
 
+// Screen width.
+public var screenWidth: CGFloat {
+    return UIScreen.main.bounds.width
+}
+
+// Screen height.
+public var screenHeight: CGFloat {
+    return UIScreen.main.bounds.height
+}
+
+public let midX = UIScreen.main.bounds.midX
+public let midY = UIScreen.main.bounds.midY
+
+public let defaultBtnColor = UIColor(displayP3Red: 0.0, green: 122.0/255.0, blue: 122.0/255.0, alpha: 122.0/255.0)
+
+// test vars
+public let url = URL(string: "https://rxnav.nlm.nih.gov/REST/rxcui.json?idtype=NDC&id=11523-7020-1")!
+
+// ================= API CALLS AND REQUESTS
+func getHttpUrlRequest(url: URL) {
+
+	let config = URLSessionConfiguration.default // Session Configuration
+	let session = URLSession(configuration: config) // Load configuration into Session
+	//let url = URL(string: "https://rxnav.nlm.nih.gov/REST/rxcui.json?idtype=NDC&id=11523-7020-1")!
+
+	let task = session.dataTask(with: url, completionHandler: {
+	    (data, response, error) in
+
+	    if error != nil {
+	        print(error!.localizedDescription);   
+	    } else {
+	        do {
+				if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
+	            {
+					
+					for (key, item) in json {
+						print("Value: \(item) Key: \(key)")
+					}
+	            }// end
+	        } catch {
+	            print("ERROR: error in JSONSerialization")
+	        }
+	    }
+		
+	})// end task definition
+	task.resume()
+}// end getHttpUrlRequest(url: url) definition
 
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    var currentImage: UIImage!
-    
-    @IBOutlet weak var inputPillImageView: UIImageView!
-    @IBOutlet weak var uploadBtn: UIButton!
 
-	//var photoLibBtn = UIButton()
-	var sampleTextLabel = UILabel()
+	// set up layout
+	var square: UIView!
+	var north:  UIView!
+
+  var squareFrame: CGRect {
+  	return CGRect(x: 20.0, y: 20.0, width: (screenWidth * 0.90), height: (screenHeight * 0.95))
+  }
+  var northFrame: CGRect {
+  	//let midX = self.view.bounds.midX
+	let midY = self.view.bounds.midY
+	return CGRect(x: (20.0), y: (20.0),width: (screenWidth * 0.90), height: ((midY))) }
+	
+	override func loadView() {
+		super.loadView()
+		
+		let square = UIView()
+		self.view.addSubview(square)
+		self.square = square
+
+		let north = UIView()
+		self.view.addSubview(north)
+		self.north = north
+
+	}
+	
+    var currentImage: 	UIImage!
+    var imageBtn:		UIButton!
+    var pillImageView: UIImageView!
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
 		
-        //Looks for single or multiple taps.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
-
-        //tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-
-        //  set up view
-		self.sampleTextLabel =  UILabel(frame: CGRect(x: 20, y: 300, width: 300, height: 40))
-        self.sampleTextLabel.text = "Sample Label"
-        self.sampleTextLabel.font = UIFont.systemFont(ofSize: 15)
+		super.viewDidLoad()
+		// Do any additional setup after loading the view
+		self.square.backgroundColor = .yellow
+		self.north.backgroundColor = .green
 		
-		/*
-		self.photoLibBtn = UIButton(frame: CGRect(x: 20, y: 300, width: 300, height: 40))
-		self.photoLibBtn.setTitle ("Button", for:.normal)
-		self.view.addSubview(photoLibBtn)
-		*/
-
-        // ================= API CALLS AND SERVER REQUEST
-        
-        let config = URLSessionConfiguration.default // Session Configuration
-        let session = URLSession(configuration: config) // Load configuration into Session
-        let url = URL(string: "https://rxnav.nlm.nih.gov/REST/rxcui.json?idtype=NDC&id=11523-7020-1")!
 		
-        let task = session.dataTask(with: url, completionHandler: {
-            (data, response, error) in
+		
+		
+		
+		
+		// debug print stuff
+		printScreenDimensions()
 
-            if error != nil {
-                print(error!.localizedDescription);   
-            } else {
-                do {
-					if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any]
-                    {
-						
-//
-						for (key, item) in json {
-							print("Value: \(item) Key: \(key)")
-						}
-                    }// end
-                } catch {
-                    print("error in JSONSerialization")
-                }
-                
-                
-            }
-            
-        })
-            task.resume()
-        }
+    }// end view did load
+	
+	@objc func imageBtnTapped(_ sender: Any) {
 
-        // ================= METHODS OF VIEW AND CTRL CARD
+		//getHttpUrlRequest(url: url)
+		print("Action:\tSend Button Tapped")
+	}
 
-    @IBAction func uploadBtnTapped(_ sender: Any) {
 
+    @objc func uploadBtnTapped(_ sender: Any) {
+		// import form photo library
+		importImage()
+    	print("Action:\tUpload Button Tapped")
+
+    }// end upload button action
+
+    func importImage() {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
 
-        /*
-         The sourceType property wants a value of the enum named UIImagePickerControllerSourceType, which gives 3 options:
-         
-         UIImagePickerControllerSourceType.PhotoLibrary
-         UIImagePickerControllerSourceType.Camera
-         UIImagePickerControllerSourceType.SavedPhotosAlbum
-         
-         */
-        present(imagePicker, animated: true, completion: nil)
-
-    }// end upload
-
-    func importPicture() {
-        let picker = UIImagePickerController()
-        picker.allowsEditing = true
-        picker.delegate = self
-        present(picker, animated: true)
+		present(imagePicker, animated: false, completion: {})
     }
-
 
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
@@ -102,17 +128,68 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     // MARK: - ImagePicker Delegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            inputPillImageView.image = pickedImage
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+		
+		if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            //inputPillImageView.image = pickedImage
+            pillImageView.image = pickedImage
         }
-        dismiss(animated: true, completion: nil)
+        
+		dismiss(animated: false, completion: {
+			//self.imageBtn.isEnabled = true
+		})
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion:nil)
+    @objc func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion:{});
     }
-    
-}// end class def
+	
 
+	func printScreenDimensions() {
+		// debug screen size
+		print("\n")
+		print("WIDTH: \t",screenWidth)
+    	print("HEIGHT: \t",screenHeight)
+		print("MID-X:\t",self.view.bounds.midX)
+		print("MID-Y:\t",self.view.bounds.midY)
+		print("Width(Max X):\t",self.view.bounds.maxX)
+		print("Height(Max Y):\t",self.view.bounds.maxY)
+		print(self.square.frame)
+		print(self.north.frame)
+
+	}
+
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+
+		self.square.frame = self.squareFrame
+        self.north.frame = self.northFrame
+
+        // ====================  set up SEND BUTTON
+		//imageBtn =  UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+		imageBtn =  UIButton(frame: CGRect(x: (screenWidth * 0.05), y: (screenHeight * 0.025), width: self.north.frame.width, height: self.north.frame.height))
+		imageBtn.layer.borderWidth = 1.0
+		imageBtn.setTitleColor(defaultBtnColor, for: .normal)
+		imageBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+		imageBtn.setTitleColor(UIColor.white, for: .highlighted)
+		imageBtn.setTitle("Upload Image", for: .normal)
+		imageBtn.titleLabel?.font =  UIFont.systemFont(ofSize: 32, weight: .light)
+		imageBtn.addTarget(self, action: #selector(uploadBtnTapped), for: .touchUpInside)
+		self.view.addSubview(imageBtn)
+		//self.imageBtn.isEnabled = false
+
+		// ====================  set up PILLImageVIEW
+		//pillImageView.image = UIImage(named: "test.png")
+		pillImageView = UIImageView(frame: CGRect(x: (20.0), y: (20.0),width: (screenWidth * 0.90), height: ((midY))))
+		self.view.addSubview(pillImageView)
+		
+		
+    }
+	
+}// end view controller class definition
+
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
+}
