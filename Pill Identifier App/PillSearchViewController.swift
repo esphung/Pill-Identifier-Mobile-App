@@ -346,6 +346,7 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 
 			if let jsonObject = response.result.value {
 				let json = JSON(jsonObject)
+				
 				// look up by key
 				//print(json["nlmRxImages"])
 				//print(json["replyStatus"])
@@ -374,7 +375,6 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		// self.view.addSubview(shapeLabel)
 		// self.view.addSubview(imprintLabel)
 		// self.view.addSubview(searchLabel)
-
 
 		self.north.removeFromSuperview()
 		self.south.removeFromSuperview()
