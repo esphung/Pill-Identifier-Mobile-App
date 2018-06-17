@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 public let myDefaultTextFontSize = CGFloat(24.0)
 public let myDefaultTextFieldHeight = CGFloat(myDefaultTextFontSize + (myDefaultTextFontSize * 0.66))
 public let myListIndent = CGFloat(20.0)
@@ -24,9 +26,10 @@ public var screenHeight: CGFloat {
 class PillSearchViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 	
 
-	// set up layout
-	var south: UIView!
+	// set up view layout
 	var north:  UIView!
+	var south: UIView!
+	
 	
 	var northFrame: CGRect {
 		//let midX = self.view.bounds.midX
@@ -60,12 +63,14 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 	//var colorLabelText: UILabel!
 	var colorTextField:	UITextField!
 	var pickerView : UIPickerView!
-	var pickerData = ["None", "Orange" , "Purple" , "Green", "White", "Pink"]
+	var pickerData = ["", "Orange" , "Purple" , "Green", "White", "Pink"]
 
 	//var shapeLabelText: UILabel!
 	var shapeTextField:	UITextField!
 
 	var submitButton: UIButton!
+	
+	let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
 
 
 	
@@ -165,11 +170,21 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		dismiss(animated: true, completion: {})
 	}
 	
+	func setMyBackgroundImage() {
+		backgroundImage.image = UIImage(named: "background.png")
+		backgroundImage.contentMode = UIView.ContentMode.scaleToFill
+		self.view.insertSubview(backgroundImage, at: 0)
+	}
+	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		
 		self.south.frame = self.southFrame
 		self.north.frame = self.northFrame
+		
+		//setMyBackgroundImage()
+		
+		
 
 		// ====================  set up IMAGE BUTTON (NORTH VIEW)
 		imageBtn =  UIButton(frame: CGRect(x: 0, y: 0,width: self.north.frame.width, height: self.north.frame.height))
