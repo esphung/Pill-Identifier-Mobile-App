@@ -1,6 +1,8 @@
 
 import UIKit
 
+
+
 // Screen width.
 public var screenWidth: CGFloat {
     return UIScreen.main.bounds.width
@@ -57,12 +59,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	var north:  UIView!
 
   var squareFrame: CGRect {
-  	return CGRect(x: 20.0, y: 20.0, width: (screenWidth * 0.90), height: (screenHeight * 0.95))
+  	return CGRect(x: (screenWidth * 0.05), y: (screenHeight * 0.115), width: (screenWidth * 0.90), height: (screenHeight * 0.8))
   }
   var northFrame: CGRect {
   	//let midX = self.view.bounds.midX
 	let midY = self.view.bounds.midY
-	return CGRect(x: (20.0), y: (20.0),width: (screenWidth * 0.90), height: ((midY))) }
+	return CGRect(x: (screenWidth * 0.05), y: (screenHeight * 0.115),width: (screenWidth * 0.90), height: (screenHeight * 0.8)/2) }
 	
 	override func loadView() {
 		super.loadView()
@@ -82,16 +84,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var pillImageView: UIImageView!
 
     override func viewDidLoad() {
+
+
 		
 		super.viewDidLoad()
 		// Do any additional setup after loading the view
 		self.square.backgroundColor = .yellow
 		self.north.backgroundColor = .green
-		
-		
-		
-		
-		
 		
 		// debug print stuff
 		printScreenDimensions()
@@ -161,13 +160,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
-
+		
 		self.square.frame = self.squareFrame
         self.north.frame = self.northFrame
 
         // ====================  set up SEND BUTTON
 		//imageBtn =  UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
-		imageBtn =  UIButton(frame: CGRect(x: (screenWidth * 0.05), y: (screenHeight * 0.025), width: self.north.frame.width, height: self.north.frame.height))
+		imageBtn =  UIButton(frame: CGRect(x: north.frame.minX, y: north.frame.minY,width: self.north.frame.width, height: self.north.frame.height))
 		imageBtn.layer.borderWidth = 1.0
 		imageBtn.setTitleColor(defaultBtnColor, for: .normal)
 		imageBtn.setTitleColor(UIColor.lightGray, for: .disabled)
@@ -176,16 +175,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		imageBtn.titleLabel?.font =  UIFont.systemFont(ofSize: 32, weight: .light)
 		imageBtn.addTarget(self, action: #selector(uploadBtnTapped), for: .touchUpInside)
 		self.view.addSubview(imageBtn)
-		//self.imageBtn.isEnabled = false
 
 		// ====================  set up PILLImageVIEW
 		//pillImageView.image = UIImage(named: "test.png")
-		pillImageView = UIImageView(frame: CGRect(x: (20.0), y: (20.0),width: (screenWidth * 0.90), height: ((midY))))
+		pillImageView = UIImageView(frame: CGRect(x: north.frame.minX, y: north.frame.minY,width: self.north.frame.width, height: self.north.frame.height))
 		self.view.addSubview(pillImageView)
 		
 		
     }
-	
+
+/*     override func viewWillAppear(_ animated: Bool) {
+	    super.viewWillAppear(animated)
+
+	    // Hide the navigation bar on the this view controller
+	    self.navigationController?.setNavigationBarHidden(true, animated: animated)
+	}
+
+	override func viewWillDisappear(_ animated: Bool) {
+	    super.viewWillDisappear(animated)
+
+	    // Show the navigation bar on other view controllers
+	    self.navigationController?.setNavigationBarHidden(false, animated: animated)
+	}
+	 */
+
+
 }// end view controller class definition
 
 
