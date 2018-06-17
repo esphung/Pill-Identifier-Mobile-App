@@ -61,7 +61,9 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 	// input variables
 	var imageBtn:			UIButton!
 	var pickerTextField:	UITextField!
-	var pickerView: 		UIPickerView! 
+	var pickerView: 		UIPickerView!
+	let colorComponent = 0
+	let shapeComponent = 1
 	var imprintTextField:	UITextField!
 	var submitButton: 		UIButton!
 	
@@ -86,7 +88,6 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 	    view.addGestureRecognizer(tap)
 		
 		//showFrames()
-
 		
 	}// end view did load
 	
@@ -101,21 +102,21 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 	func pickUp(_ textField : UITextField){
 
 		// UIPickerView
-		self.pickerView = UIPickerView(frame:CGRect(x: 0.0, y: 0.0, width: self.north.frame.size.width, height: 216))
+		self.pickerView = UIPickerView(frame:CGRect(x: 0.0, y: 0.0, width: self.south.frame.size.width * 0.20, height: 216))
 		self.pickerView.delegate = self
 		self.pickerView.dataSource = self
-		self.pickerView.backgroundColor = UIColor.white
+		self.pickerView.backgroundColor = UIColor.clear
 		self.pickerTextField.inputView = self.pickerView
 		
 		// ToolBar
 		let toolBar = UIToolbar()
 		toolBar.barStyle = .default
 		toolBar.isTranslucent = true
-		//toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
+		toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
 		toolBar.sizeToFit()
 		
 		// Adding Button ToolBar
-		let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneClick))
+		let doneButton = UIBarButtonItem(title: "Done", style: .plain , target: self, action: #selector(doneClick))
 		let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 		let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelClick))
 		toolBar.setItems([cancelButton, spaceButton, doneButton], animated: true)
@@ -163,7 +164,6 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 	
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		self.pickerTextField.text = pickerData[component][row]
-		//self.pickerTextField.text = userColor
 	}
 
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -202,8 +202,8 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 	//MARK - Color and Shape Picker Instance Methods
 	func updateLabels(){
 
-		let color = pickerData[0][pickerView.selectedRow(inComponent: 0)]
-		let shape = pickerData[1][pickerView.selectedRow(inComponent: 1)]
+		//let color = pickerData[0][pickerView.selectedRow(inComponent: 0)]
+		//let shape = pickerData[1][pickerView.selectedRow(inComponent: 1)]
 		
 		self.userColor = pickerData[0][pickerView.selectedRow(inComponent: 0)]
 		self.userShape = pickerData[1][pickerView.selectedRow(inComponent: 1)]
@@ -243,6 +243,7 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		//pickerTextField.layer.borderWidth = 2.0
 		self.pickerTextField.borderStyle = UITextField.BorderStyle.roundedRect
 		self.pickerTextField.delegate = self
+		
 
 		self.south.addSubview(self.pickerTextField)
 		
@@ -331,8 +332,8 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		// }
 
 		// Array & Dictionary
-		let json: JSON =  ["color": color, "shape": shape]
-		print(json)
+		//let json: JSON =  ["color": color, "shape": shape]
+		//print(json)
 		
 		sendToServer(color: color, shape: shape)
 	}
@@ -349,10 +350,12 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 				//print(json["replyStatus"])
 
 				if (json["replyStatus"]["success"] == true)  {
-					print(json["replyStatus"])
+					//print(json["replyStatus"])
 
 					if (json["replyStatus"]["totalImageCount"] >= 1) {
 						// if items are more than one segue to swipeable list  (tinder UI sort of)
+						print(json)
+
 					}// end if more than one item
 
 				}
@@ -373,20 +376,20 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		
 		submit()
 
-		self.view.addSubview(colorLabel)
-		self.view.addSubview(shapeLabel)
+		// self.view.addSubview(colorLabel)
+		// self.view.addSubview(shapeLabel)
 		// self.view.addSubview(imprintLabel)
 		// self.view.addSubview(searchLabel)
 
 		self.north.removeFromSuperview()
 		self.south.removeFromSuperview()
+
 	}// end upload button action
 
 	func showFrames() {
 		// Do any additional setup after loading the view
 		self.south.backgroundColor = .yellow
 		self.north.backgroundColor = .green
-		self.south.backgroundColor = .orange
 	}
 	
 }// end view controller class definition

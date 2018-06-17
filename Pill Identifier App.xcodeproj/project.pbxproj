@@ -8,14 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		18F57B861E992E0A0013221F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F57B851E992E0A0013221F /* AppDelegate.swift */; };
-		18F57B881E992E0A0013221F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F57B871E992E0A0013221F /* ViewController.swift */; };
 		18F57B8B1E992E0A0013221F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F57B891E992E0A0013221F /* Main.storyboard */; };
 		18F57B8D1E992E0A0013221F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F57B8C1E992E0A0013221F /* Assets.xcassets */; };
 		18F57B901E992E0A0013221F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F57B8E1E992E0A0013221F /* LaunchScreen.storyboard */; };
 		18F57B9B1E992E0A0013221F /* Pill_Identifier_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F57B9A1E992E0A0013221F /* Pill_Identifier_AppTests.swift */; };
 		18F57BA61E992E0A0013221F /* Pill_Identifier_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F57BA51E992E0A0013221F /* Pill_Identifier_AppUITests.swift */; };
+		5E29DF0220D720B4009694B6 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29DF0120D720B4009694B6 /* MyTableViewController.swift */; };
+		5E29DF0420D72171009694B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29DF0320D72171009694B6 /* ViewController.swift */; };
 		5E575F1620D6378300B94C16 /* PillSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E575F1520D6378300B94C16 /* PillSearchViewController.swift */; };
 		5E575F6B20D647CE00B94C16 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E575F5D20D647B500B94C16 /* SwiftyJSON.framework */; };
+		5E575F6D20D70F3A00B94C16 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E575F6C20D70F3A00B94C16 /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,7 +102,6 @@
 /* Begin PBXFileReference section */
 		18F57B821E992E0A0013221F /* Pill Identifier App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pill Identifier App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F57B851E992E0A0013221F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		18F57B871E992E0A0013221F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		18F57B8A1E992E0A0013221F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18F57B8C1E992E0A0013221F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18F57B8F1E992E0A0013221F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -111,9 +112,12 @@
 		18F57BA11E992E0A0013221F /* Pill Identifier AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pill Identifier AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F57BA51E992E0A0013221F /* Pill_Identifier_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill_Identifier_AppUITests.swift; sourceTree = "<group>"; };
 		18F57BA71E992E0A0013221F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E29DF0120D720B4009694B6 /* MyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewController.swift; sourceTree = "<group>"; };
+		5E29DF0320D72171009694B6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5E575F1520D6378300B94C16 /* PillSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillSearchViewController.swift; sourceTree = "<group>"; };
 		5E575F3720D640D300B94C16 /* Requests.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Requests.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5E575F5120D647B500B94C16 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
+		5E575F6C20D70F3A00B94C16 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,9 +172,11 @@
 		18F57B841E992E0A0013221F /* Pill Identifier App */ = {
 			isa = PBXGroup;
 			children = (
+				5E29DF0320D72171009694B6 /* ViewController.swift */,
+				5E29DF0120D720B4009694B6 /* MyTableViewController.swift */,
 				5E575F1520D6378300B94C16 /* PillSearchViewController.swift */,
+				5E575F6C20D70F3A00B94C16 /* CustomTableViewCell.swift */,
 				18F57B851E992E0A0013221F /* AppDelegate.swift */,
-				18F57B871E992E0A0013221F /* ViewController.swift */,
 				18F57B891E992E0A0013221F /* Main.storyboard */,
 				18F57B8C1E992E0A0013221F /* Assets.xcassets */,
 				18F57B8E1E992E0A0013221F /* LaunchScreen.storyboard */,
@@ -417,8 +423,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18F57B881E992E0A0013221F /* ViewController.swift in Sources */,
+				5E29DF0420D72171009694B6 /* ViewController.swift in Sources */,
 				18F57B861E992E0A0013221F /* AppDelegate.swift in Sources */,
+				5E575F6D20D70F3A00B94C16 /* CustomTableViewCell.swift in Sources */,
+				5E29DF0220D720B4009694B6 /* MyTableViewController.swift in Sources */,
 				5E575F1620D6378300B94C16 /* PillSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
