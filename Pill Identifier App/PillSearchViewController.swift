@@ -55,9 +55,6 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		self.view.addSubview(south)
 		self.south = south
 
-
-		
-
 		
 	}// end loadview
 	
@@ -88,7 +85,7 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 
 	    view.addGestureRecognizer(tap)
 		
-		showFrames()
+		//showFrames()
 
 		
 	}// end view did load
@@ -102,6 +99,7 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 	}
 
 	func pickUp(_ textField : UITextField){
+
 		// UIPickerView
 		self.pickerView = UIPickerView(frame:CGRect(x: 0.0, y: 0.0, width: self.north.frame.size.width, height: 216))
 		self.pickerView.delegate = self
@@ -203,6 +201,7 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 
 	//MARK - Color and Shape Picker Instance Methods
 	func updateLabels(){
+
 		let color = pickerData[0][pickerView.selectedRow(inComponent: 0)]
 		let shape = pickerData[1][pickerView.selectedRow(inComponent: 1)]
 		
@@ -326,33 +325,36 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 			return
 		}
 
-		guard let imprint = userImprint else {
-			print("No imprint to submit")
-			return
-		}
+		// guard let imprint = userImprint else {
+		// 	print("No imprint to submit")
+		// 	return
+		// }
 
 		// Array & Dictionary
-		let json: JSON =  ["color": color, "shape": shape, "imprint": imprint]
+		let json: JSON =  ["color": color, "shape": shape]
 		print(json)
-
-		//self.searchLabel.text = json.description
 		
-		sendToServer(imprint: imprint, color: color, shape: shape)
+		sendToServer(color: color, shape: shape)
 	}
 	
-	func sendToServer(imprint: String, color: String, shape: String) {
+	func sendToServer(color: String, shape: String) {
 		
 		Alamofire.request(baseUrl+"api/rximage/1/rxnav?color="+color+"&shape="+shape+"").responseJSON { response in
 
 			if let jsonObject = response.result.value {
 				let json = JSON(jsonObject)
-				
+
 				// look up by key
 				//print(json["nlmRxImages"])
 				//print(json["replyStatus"])
 
-				if json["replyStatus"]["success"] == true {
+				if (json["replyStatus"]["success"] == true)  {
 					print(json["replyStatus"])
+
+					if (json["replyStatus"]["totalImageCount"] >= 1) {
+						// if items are more than one segue to swipeable list  (tinder UI sort of)
+					}// end if more than one item
+
 				}
 
 				// If json is .Dictionary
@@ -371,8 +373,8 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		
 		submit()
 
-		// self.view.addSubview(colorLabel)
-		// self.view.addSubview(shapeLabel)
+		self.view.addSubview(colorLabel)
+		self.view.addSubview(shapeLabel)
 		// self.view.addSubview(imprintLabel)
 		// self.view.addSubview(searchLabel)
 
