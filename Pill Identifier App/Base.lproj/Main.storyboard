@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Pill Search View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Pill_Identifier_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PillSearchViewController" customModule="Pill_Identifier_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -25,12 +25,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2900" y="-682"/>
+            <point key="canvasLocation" x="2770" y="-432"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="66T-mf-nhQ">
             <objects>
-                <viewController id="9Xn-16-cyr" sceneMemberID="viewController">
+                <viewController id="9Xn-16-cyr" customClass="ViewController" customModule="Pill_Identifier_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2ei-mF-Mya"/>
                         <viewControllerLayoutGuide type="bottom" id="q7G-hL-hW5"/>
@@ -39,29 +39,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5V-A6-IUE">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5V-A6-IUE">
                                 <rect key="frame" x="16" y="72" width="343" height="189"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="189" id="PqF-6c-X6u"/>
+                                </constraints>
                                 <state key="normal" title="UPLOAD IMAGE"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="rpL-zc-6eT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LZ-W9-jXQ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LZ-W9-jXQ">
                                 <rect key="frame" x="16" y="256" width="343" height="194"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="194" id="GVW-ET-jvT"/>
+                                </constraints>
                                 <state key="normal" title="SEARCH PILL"/>
                                 <connections>
                                     <segue destination="fp5-JE-Kvn" kind="show" id="Vn2-hz-Nyj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om4-lA-1mX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om4-lA-1mX">
                                 <rect key="frame" x="16" y="458" width="343" height="189"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="DEVELOPER"/>
+                                <state key="normal" title="TEST BUTTON"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="g5V-A6-IUE" firstAttribute="top" secondItem="2ei-mF-Mya" secondAttribute="bottom" constant="8" symbolic="YES" id="0ow-aQ-tQ8"/>
+                            <constraint firstAttribute="bottom" secondItem="om4-lA-1mX" secondAttribute="bottom" constant="20" symbolic="YES" id="WgB-mR-PSE"/>
+                            <constraint firstItem="7LZ-W9-jXQ" firstAttribute="top" secondItem="2ei-mF-Mya" secondAttribute="bottom" constant="192" id="bJ3-ea-ATu"/>
+                            <constraint firstItem="g5V-A6-IUE" firstAttribute="trailing" secondItem="7LZ-W9-jXQ" secondAttribute="trailing" id="dLR-Sm-34D"/>
+                            <constraint firstItem="om4-lA-1mX" firstAttribute="top" secondItem="7LZ-W9-jXQ" secondAttribute="bottom" constant="8" symbolic="YES" id="fOb-hU-NmD"/>
+                            <constraint firstItem="g5V-A6-IUE" firstAttribute="leading" secondItem="A5P-4A-cU2" secondAttribute="leadingMargin" id="gGv-Xs-oDR"/>
+                            <constraint firstItem="om4-lA-1mX" firstAttribute="trailing" secondItem="7LZ-W9-jXQ" secondAttribute="trailing" id="nOk-mh-wUF"/>
+                            <constraint firstItem="g5V-A6-IUE" firstAttribute="trailing" secondItem="A5P-4A-cU2" secondAttribute="trailingMargin" id="qlC-O7-4pl"/>
+                            <constraint firstItem="om4-lA-1mX" firstAttribute="leading" secondItem="7LZ-W9-jXQ" secondAttribute="leading" id="uJs-hz-YNQ"/>
+                            <constraint firstItem="g5V-A6-IUE" firstAttribute="leading" secondItem="7LZ-W9-jXQ" secondAttribute="leading" id="xX1-if-lMy"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LpK-Q8-4QW"/>
                 </viewController>
@@ -85,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Y1-6G-4Y4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2900" y="-3"/>
+            <point key="canvasLocation" x="2769" y="243"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yS2-Mm-dpE">
@@ -103,7 +118,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jy5-Db-KZ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1044" y="-129.08545727136433"/>
+            <point key="canvasLocation" x="1182" y="-129"/>
         </scene>
     </scenes>
 </document>
