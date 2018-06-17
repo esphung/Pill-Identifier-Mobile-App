@@ -63,7 +63,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
   }
   var northFrame: CGRect {
   	//let midX = self.view.bounds.midX
-	let midY = self.view.bounds.midY
+	//let midY = self.view.bounds.midY
 	return CGRect(x: (screenWidth * 0.05), y: (screenHeight * 0.115),width: (screenWidth * 0.90), height: (screenHeight * 0.8)/2) }
 	
 	override func loadView() {
@@ -184,7 +184,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 		
     }
 
-/*     override func viewWillAppear(_ animated: Bool) {
+    /*
+    override func viewWillAppear(_ animated: Bool) {
 	    super.viewWillAppear(animated)
 
 	    // Hide the navigation bar on the this view controller
@@ -197,7 +198,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 	    // Show the navigation bar on other view controllers
 	    self.navigationController?.setNavigationBarHidden(false, animated: animated)
 	}
-	 */
+	*/
 
 
 }// end view controller class definition
