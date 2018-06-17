@@ -59,7 +59,7 @@
                                     <segue destination="fp5-JE-Kvn" kind="show" id="Vn2-hz-Nyj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om4-lA-1mX">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om4-lA-1mX">
                                 <rect key="frame" x="16" y="458" width="343" height="189"/>
                                 <state key="normal" title="DEVELOPER"/>
                             </button>

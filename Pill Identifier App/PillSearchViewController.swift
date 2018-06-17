@@ -9,6 +9,8 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+let baseUrl =  "https://rximage.nlm.nih.gov/"
+
 public let myDefaultTextFontSize = CGFloat(24.0)
 public let myDefaultTextFieldHeight = CGFloat(myDefaultTextFontSize + (myDefaultTextFontSize * 0.66))
 public let myListIndent = CGFloat(20.0)
@@ -24,9 +26,7 @@ public let myDefaultImage = UIImage(named: "250x250placeholder.png")!
 
 
 
-
 class PillSearchViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
-
 
 	var userColor: String!
 	var userShape: String!
@@ -54,6 +54,8 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		let south = UIView()
 		self.view.addSubview(south)
 		self.south = south
+
+
 		
 
 		
@@ -71,7 +73,8 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 	var colorLabel: 		UILabel!
 	var shapeLabel: 		UILabel!
 	var imprintLabel:		UILabel!
-
+	var searchLabel:		UILabel!
+	
 	
 	
 	override func viewDidLoad() {
@@ -84,12 +87,8 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 	    //tap.cancelsTouchesInView = false 
 
 	    view.addGestureRecognizer(tap)
-
-/* 		// Do any additional setup after loading the view
-		self.south.backgroundColor = .yellow
-		self.north.backgroundColor = .green
-		self.south.backgroundColor = .orange */
-		//showFrames()
+		
+		showFrames()
 
 		
 	}// end view did load
@@ -212,7 +211,6 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 
 		self.colorLabel.text = ("Color:\t\t" + userColor)
 		self.shapeLabel.text = ("Shape:\t\t" + userShape)
-		//self.imprintLabel.text =  ("Imprint:\t" + userImprint)
 
 	}
 	
@@ -221,9 +219,8 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		
 		self.south.frame = self.southFrame
 		self.north.frame = self.northFrame
-		self.south.frame = self.southFrame
 
-		setMyBackgroundImage(img:"background.png")
+		//setMyBackgroundImage(img:"background.png")
 
 		// ====================  set up IMAGE BUTTON (NORTH VIEW)
 		self.imageBtn =  UIButton(frame: CGRect(x: 0, y: 0,width: self.north.frame.width, height: self.north.frame.height))
@@ -238,7 +235,6 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		
 		// ========================================  set up PILLImageVIEW (NORTH VIEW)
 		self.pillImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0,width: self.north.frame.width, height: self.north.frame.height))
-		//self.pillImageView.image = UIImage(imprintd: "250x250placeholder.png")!
 		self.north.addSubview(self.pillImageView)
 
 		// ========================================  Set Up Picker Text Field
@@ -276,15 +272,18 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		self.south.addSubview(submitButton)
 		
 		// ========================================  PILL PARAMETERS SEARCH DISPLAY
-		colorLabel = UILabel(frame: CGRect(x: myListIndent,y: (self.south.frame.height/2) * 1.2, width: (self.south.frame.width * 0.90), height: myDefaultTextFieldHeight))
-		colorLabel.text = "Color:"
+		self.colorLabel = UILabel(frame: CGRect(x: myListIndent,y: (self.south.frame.height/2) * 1.2, width: (self.south.frame.width * 0.90), height: myDefaultTextFieldHeight))
+		self.colorLabel.text = "Color:"
 		
 
 		self.shapeLabel = UILabel(frame: CGRect(x: myListIndent,y: (self.south.frame.height/2) * 1.4, width: (self.south.frame.width * 0.90), height: myDefaultTextFieldHeight))
 		self.shapeLabel.text = "Shape:"
 
-		imprintLabel = UILabel(frame: CGRect(x: myListIndent,y: (self.south.frame.height/2) * 1.6, width: (self.south.frame.width * 0.90), height: myDefaultTextFieldHeight))
-		imprintLabel.text = "Imprint:"
+		self.imprintLabel = UILabel(frame: CGRect(x: myListIndent,y: (self.south.frame.height/2) * 1.6, width: (self.south.frame.width * 0.90), height: myDefaultTextFieldHeight))
+		self.imprintLabel.text = "Imprint:"
+
+		self.searchLabel = UILabel(frame: CGRect(x: myListIndent,y: (self.south.frame.height/2) * 1.8, width: (self.south.frame.width * 0.90), height: myDefaultTextFieldHeight))
+		self.searchLabel.text = "Search Request:"
 
 		// self.south.addSubview(colorLabel)
 		// self.south.addSubview(shapeLabel)
@@ -317,11 +316,6 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 	
 	func submit() {
 
-		guard let imprint = userImprint else {
-			print("No imprint to submit")
-			return
-		}
-		
 		guard let color = userColor else {
 			print("No color to submit")
 			return
@@ -331,32 +325,40 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 			print("No shape to submit")
 			return
 		}
+
+		guard let imprint = userImprint else {
+			print("No imprint to submit")
+			return
+		}
+
+		// Array & Dictionary
+		let json: JSON =  ["color": color, "shape": shape, "imprint": imprint]
+		print(json)
+
+		//self.searchLabel.text = json.description
 		
-		// make url request here
-		let myURLRequest = "https://rximage.nlm.nih.gov/api/rximage/1/rxnav?color="+color+"&shape="+shape+"&imprint="+imprint+""
-		print(myURLRequest)
-		
-		//sendToServer(imprint: imprint, color: color, shape: shape)
+		sendToServer(imprint: imprint, color: color, shape: shape)
 	}
 	
 	func sendToServer(imprint: String, color: String, shape: String) {
-		Alamofire.request("https://rximage.nlm.nih.gov/api/rximage/1/rxnav?color="+color+"&size=17&sizeT=0").responseJSON { response in
-	
+		
+		Alamofire.request(baseUrl+"api/rximage/1/rxnav?color="+color+"&shape="+shape+"").responseJSON { response in
+
 			if let jsonObject = response.result.value {
-				//print("JSON: \(json)")
 				let json = JSON(jsonObject)
-				
 				// look up by key
 				//print(json["nlmRxImages"])
 				//print(json["replyStatus"])
-				
-				// If json is .Dictionary
-				for (key,subJson):(String, JSON) in json["nlmRxImages"][0] {
-					// Do something you want
-					print(key,":\t","\tValue:",  subJson)
+
+				if json["replyStatus"]["success"] == true {
+					print(json["replyStatus"])
 				}
 
-				
+				// If json is .Dictionary
+				// for (key,subJson):(String, JSON) in json["nlmRxImages"][0] {
+				// 	// Do something you want
+				// 	print(key,":\t","\tValue:",  subJson)
+				// }
 				
 			}
 		}
@@ -368,9 +370,11 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		
 		submit()
 
-		self.view.addSubview(colorLabel)
-		self.view.addSubview(shapeLabel)
-		self.view.addSubview(imprintLabel)
+		// self.view.addSubview(colorLabel)
+		// self.view.addSubview(shapeLabel)
+		// self.view.addSubview(imprintLabel)
+		// self.view.addSubview(searchLabel)
+
 
 		self.north.removeFromSuperview()
 		self.south.removeFromSuperview()
