@@ -15,8 +15,12 @@
 		18F57BA61E992E0A0013221F /* Pill_Identifier_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F57BA51E992E0A0013221F /* Pill_Identifier_AppUITests.swift */; };
 		5E27597220D77533004AF240 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E27596520D7750E004AF240 /* Alamofire.framework */; };
 		5E27599020D775DA004AF240 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E27598320D775BC004AF240 /* SwiftyJSON.framework */; };
-		5E29DF0420D72171009694B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29DF0320D72171009694B6 /* ViewController.swift */; };
-		5E575F1620D6378300B94C16 /* PillSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E575F1520D6378300B94C16 /* PillSearchViewController.swift */; };
+		5E49D4E920D836DB002C8469 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4E820D836DB002C8469 /* Utility.swift */; };
+		5E49D4EB20D837E0002C8469 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4EA20D837E0002C8469 /* Globals.swift */; };
+		5E49D4EF20D83E70002C8469 /* MyBasicViewController copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4EE20D83E70002C8469 /* MyBasicViewController copy.swift */; };
+		5E49D4F120D851EA002C8469 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4F020D851EA002C8469 /* ViewController.swift */; };
+		5E49D4F720D87713002C8469 /* NorthSouthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */; };
+		5E575F1620D6378300B94C16 /* UploadFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E575F1520D6378300B94C16 /* UploadFormViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,9 +166,13 @@
 		18F57BA71E992E0A0013221F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E27595920D7750E004AF240 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../../Versions/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		5E27597720D775BC004AF240 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = ../../Versions/SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
-		5E29DF0320D72171009694B6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5E575F1520D6378300B94C16 /* PillSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillSearchViewController.swift; sourceTree = "<group>"; };
-		5E575F3720D640D300B94C16 /* Requests.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Requests.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		5E49D4E820D836DB002C8469 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		5E49D4EA20D837E0002C8469 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		5E49D4EE20D83E70002C8469 /* MyBasicViewController copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MyBasicViewController copy.swift"; sourceTree = "<group>"; };
+		5E49D4F020D851EA002C8469 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorthSouthViewController.swift; sourceTree = "<group>"; };
+		5E575F1520D6378300B94C16 /* UploadFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFormViewController.swift; sourceTree = "<group>"; };
+		5E575F3720D640D300B94C16 /* parse-request.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "parse-request.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,9 +205,6 @@
 		18F57B791E992E0A0013221F = {
 			isa = PBXGroup;
 			children = (
-				5E27597720D775BC004AF240 /* SwiftyJSON.xcodeproj */,
-				5E27595920D7750E004AF240 /* Alamofire.xcodeproj */,
-				5E575F3720D640D300B94C16 /* Requests.playground */,
 				18F57B841E992E0A0013221F /* Pill Identifier App */,
 				18F57B991E992E0A0013221F /* Pill Identifier AppTests */,
 				18F57BA41E992E0A0013221F /* Pill Identifier AppUITests */,
@@ -221,13 +226,18 @@
 		18F57B841E992E0A0013221F /* Pill Identifier App */ = {
 			isa = PBXGroup;
 			children = (
-				5E29DF0320D72171009694B6 /* ViewController.swift */,
-				5E575F1520D6378300B94C16 /* PillSearchViewController.swift */,
+				5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */,
+				5E49D4F020D851EA002C8469 /* ViewController.swift */,
+				5E575F1520D6378300B94C16 /* UploadFormViewController.swift */,
+				5E49D4EE20D83E70002C8469 /* MyBasicViewController copy.swift */,
 				18F57B851E992E0A0013221F /* AppDelegate.swift */,
 				18F57B891E992E0A0013221F /* Main.storyboard */,
 				18F57B8C1E992E0A0013221F /* Assets.xcassets */,
 				18F57B8E1E992E0A0013221F /* LaunchScreen.storyboard */,
+				5E49D4E820D836DB002C8469 /* Utility.swift */,
+				5E49D4EA20D837E0002C8469 /* Globals.swift */,
 				18F57B911E992E0A0013221F /* Info.plist */,
+				5E575F3720D640D300B94C16 /* parse-request.playground */,
 			);
 			path = "Pill Identifier App";
 			sourceTree = "<group>";
@@ -281,6 +291,8 @@
 		5E575F6A20D647CE00B94C16 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E27597720D775BC004AF240 /* SwiftyJSON.xcodeproj */,
+				5E27595920D7750E004AF240 /* Alamofire.xcodeproj */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -537,9 +549,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E29DF0420D72171009694B6 /* ViewController.swift in Sources */,
+				5E49D4F120D851EA002C8469 /* ViewController.swift in Sources */,
+				5E49D4EF20D83E70002C8469 /* MyBasicViewController copy.swift in Sources */,
+				5E49D4E920D836DB002C8469 /* Utility.swift in Sources */,
 				18F57B861E992E0A0013221F /* AppDelegate.swift in Sources */,
-				5E575F1620D6378300B94C16 /* PillSearchViewController.swift in Sources */,
+				5E49D4EB20D837E0002C8469 /* Globals.swift in Sources */,
+				5E49D4F720D87713002C8469 /* NorthSouthViewController.swift in Sources */,
+				5E575F1620D6378300B94C16 /* UploadFormViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,7 +734,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.phungtech.Pill-Identifier-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -733,7 +749,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.phungtech.Pill-Identifier-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;

@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  AppDelegate.swift>
 //  Pill Identifier App
 //
 //  Created by John Doe on 4/8/17.

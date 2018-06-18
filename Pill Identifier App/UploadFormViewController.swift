@@ -13,16 +13,14 @@ import SwiftyJSON
 
 let baseUrl =  "https://rximage.nlm.nih.gov/"
 
-public let myDefaultTextFontSize = CGFloat(24.0)
-public let myDefaultTextFieldHeight = CGFloat(myDefaultTextFontSize + (myDefaultTextFontSize * 0.66))
-public let myListIndent = CGFloat(20.0)
+
 
 let pickerData = [
 		["Orange" , "Purple" , "Green", "White", "Pink"],
 		["Diamond","Circle","Square","Triangle","Rectangle"]
 ]
 
-class PillSearchViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class UploadFormViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
 	var color: String!
 	var shape: String!
@@ -82,10 +80,7 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		super.viewDidLoad()
 
         //Looks for single or multiple taps. 
-		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PillSearchViewController.dismissKeyboard))
-
-	    //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-	    //tap.cancelsTouchesInView = false 
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UploadFormViewController.dismissKeyboard))
 
 	    view.addGestureRecognizer(tap)
 		
