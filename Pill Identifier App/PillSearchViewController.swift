@@ -5,7 +5,7 @@
 //  Created by Eric Phung on 6/17/18.
 //  Copyright © 2018 Phung Technology. All rights reserved.
 
-// BULLET, CAPSULE, CLOVER, DIAMOND, DOUBLE CIRCLE, FREEFORM, GEAR, HEPTAGON, HEXAGON, OCTAGON, OVAL, PENTAGON, RECTANGLE, ROUND, SEMI-CIRCLE, SQUARE, TEAR, TRAPEZOID, TRIANGLE
+public let colorKeys = ["BULLET", "CAPSULE", "CLOVER", "DIAMOND", "DOUBLE CIRCLE", "FREEFORM", "GEAR", "HEPTAGON"," HEXAGON", "OCTAGON"," OVAL", "PENTAGON", "RECTANGLE", "ROUND", "SEMI-CIRCLE", "SQUARE", "TEAR", "TRAPEZOID", "TRIANGLE" ]
 
 import UIKit
 import Alamofire
@@ -37,7 +37,7 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 	}
 	
 	var southFrame: CGRect {
-		return CGRect(x: (screenWidth * 0.05), y: (screenHeight/1.9), width: (screenWidth * 0.90), height: (screenHeight * 0.8)/2)
+		return CGRect(x: (screenWidth * 0.05), y: (screenHeight/1.8), width: (screenWidth * 0.90), height: (screenHeight * 0.8)/2)
 	}
 
 	override func loadView() {
@@ -71,9 +71,13 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 	var shapeLabel: 		UILabel!
 	var imprintLabel:		UILabel!
 	var searchLabel:		UILabel!
-
-
 	
+	// pick buttons
+	var pickColorBtn:	UIButton!
+	var pickShapeBtn:  	UIButton!
+	var pickImprintBtn:	UIButton!
+	var takePictureBtn:	UIButton!
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -85,7 +89,7 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 
 	    view.addGestureRecognizer(tap)
 		
-		showFrames()
+		//showFrames()
 		
 	}// end view did load
 	
@@ -105,7 +109,6 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		self.pickerView.dataSource = self
 		self.pickerView.backgroundColor = UIColor.clear
 		self.pickerTextField.inputView = self.pickerView
-
 
 		// ToolBar
 		let toolBar = UIToolbar()
@@ -203,34 +206,94 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		south.frame = self.southFrame
 		north.frame = self.northFrame
 
+		// ========================================  Take Picture Button
+		takePictureBtn = UIButton(frame: CGRect(x: myListIndent,
+											  y: ((south.frame.height)  * 0.0),
+											  width: (south.frame.width * 0.90), height: myDefaultTextFieldHeight))
+		takePictureBtn.layer.borderWidth = 2.0
+		takePictureBtn.setTitleColor(UIColor.black, for: .normal)
+		takePictureBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+		takePictureBtn.setTitleColor(UIColor.white, for: .highlighted)
+		takePictureBtn.setTitle("Take a Picture", for: .normal)
+		takePictureBtn.titleLabel?.font =  UIFont.systemFont(ofSize: myDefaultTextFontSize, weight: .light)
+		takePictureBtn.addTarget(self, action: #selector(takePictureBtnTapped), for: .touchUpInside)
+		
+		south.addSubview(takePictureBtn)
+
 		// ====================  set up IMAGE BUTTON (NORTH VIEW)
-		imageBtn =  UIButton(frame: CGRect(x: 0, y: 0,width: self.north.frame.width, height: self.north.frame.height))
+		imageBtn =  UIButton(frame: CGRect(x: myListIndent, y: 0,width: north.frame.width * 0.90, height: self.north.frame.height))
 		imageBtn.layer.borderWidth = 2.0
 		imageBtn.setTitleColor(UIColor.black, for: .normal)
 		imageBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 		imageBtn.setTitleColor(UIColor.white, for: .highlighted)
-		imageBtn.setTitle("Pick an Image", for: .normal)
+		imageBtn.setTitle("Pick Image", for: .normal)
 		imageBtn.titleLabel?.font =  UIFont.systemFont(ofSize: myDefaultTextFontSize, weight: .light)
 		imageBtn.addTarget(self, action: #selector(self.imageButtonTapped), for: .touchUpInside)
 		north.addSubview(imageBtn)
 	
 		// ========================================  set up PILLImageVIEW (NORTH VIEW)
-		pillImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0,width: north.frame.width, height: north.frame.height))
+		pillImageView = UIImageView(frame: CGRect(x: myListIndent, y: 0,width: north.frame.width * 0.90, height: self.north.frame.height))
 		north.addSubview(pillImageView)
 
 		// ========================================  Set Up Picker Text Field
-		pickerTextField = UITextField(frame: CGRect(x: myListIndent,y: ((self.south.frame.height) * 0.1), width: (self.south.frame.width * 0.90), height: myDefaultTextFieldHeight))
+		pickerTextField = UITextField(frame: CGRect(x: myListIndent,y: ((self.south.frame.height) * 0.4), width: (self.south.frame.width * 0.90), height: myDefaultTextFieldHeight))
 		pickerTextField.placeholder = "Color and Shape"
 		pickerTextField.font = UIFont.systemFont(ofSize: CGFloat(myDefaultTextFontSize))
 		pickerTextField.layer.borderWidth = 2.0
 		pickerTextField.borderStyle = UITextField.BorderStyle.roundedRect
 		pickerTextField.delegate = self
 		
-
-		south.addSubview(pickerTextField)
+		//south.addSubview(pickerTextField)
+		
+		// ========================================  Set Up PICK SHAPE Button
+		pickShapeBtn = UIButton(frame: CGRect(x: myListIndent,
+											  y: ((south.frame.height)  * 0.2),
+											  width: (south.frame.width * 0.90), height: myDefaultTextFieldHeight))
+		pickShapeBtn.layer.borderWidth = 2.0
+		pickShapeBtn.setTitleColor(UIColor.black, for: .normal)
+		pickShapeBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+		pickShapeBtn.setTitleColor(UIColor.white, for: .highlighted)
+		pickShapeBtn.setTitle("Pick Shape", for: .normal)
+		pickShapeBtn.titleLabel?.font =  UIFont.systemFont(ofSize: myDefaultTextFontSize, weight: .light)
+		pickShapeBtn.addTarget(self, action: #selector(pickShapeBtnTapped), for: .touchUpInside)
+		
+		south.addSubview(pickShapeBtn)
+		
+		// ========================================  Set Up PICK COLOR Button
+		pickColorBtn = UIButton(frame: CGRect(x: myListIndent,
+											  y: ((south.frame.height)  * 0.4),
+											  width: (south.frame.width * 0.90),
+											  height: myDefaultTextFieldHeight))
+		pickColorBtn.layer.borderWidth = 2.0
+		pickColorBtn.setTitleColor(UIColor.black, for: .normal)
+		pickColorBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+		pickColorBtn.setTitleColor(UIColor.white, for: .highlighted)
+		pickColorBtn.setTitle("Pick Color", for: .normal)
+		pickColorBtn.titleLabel?.font =  UIFont.systemFont(ofSize: myDefaultTextFontSize, weight: .light)
+		pickColorBtn.addTarget(self, action: #selector(pickColorBtnTapped), for: .touchUpInside)
+		
+		south.addSubview(pickColorBtn)
+		
+		// ========================================  Set Up PICK IMPRINT Button
+		pickImprintBtn = UIButton(frame: CGRect(x: myListIndent,
+											  y: ((south.frame.height)  * 0.6),
+											  width: (south.frame.width * 0.90),
+											  height: myDefaultTextFieldHeight))
+		pickImprintBtn.layer.borderWidth = 2.0
+		pickImprintBtn.setTitleColor(UIColor.black, for: .normal)
+		pickImprintBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+		pickImprintBtn.setTitleColor(UIColor.white, for: .highlighted)
+		pickImprintBtn.setTitle("Pill Imprint", for: .normal)
+		pickImprintBtn.titleLabel?.font =  UIFont.systemFont(ofSize: myDefaultTextFontSize, weight: .light)
+		pickImprintBtn.addTarget(self, action: #selector(pickColorBtnTapped), for: .touchUpInside)
+		
+		south.addSubview(pickImprintBtn)
 		
 		// ========================================  PILL IMPRINT TEXT FIELD
-		imprintTextField = UITextField(frame: CGRect(x: myListIndent,y: ((south.frame.height)  * 0.3), width: (south.frame.width * 0.90), height: myDefaultTextFieldHeight))
+		imprintTextField = UITextField(frame: CGRect(x: myListIndent,
+													 y: ((south.frame.height)  * 0.6),
+													 width: (south.frame.width * 0.90),
+													 height: myDefaultTextFieldHeight))
 		imprintTextField.placeholder = "Pill Imprint"
 		imprintTextField.font = UIFont.systemFont(ofSize: CGFloat(myDefaultTextFontSize))
 		imprintTextField.layer.borderWidth = 2.0
@@ -238,10 +301,11 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		imprintTextField.autocorrectionType = UITextAutocorrectionType.no
 		imprintTextField.delegate = self
 
-		south.addSubview(imprintTextField)
+		//south.addSubview(imprintTextField)
 
 		// ========================================  Set Up Submit Button
-		submitButton = UIButton(frame: CGRect(x: myListIndent,y: ((south.frame.height/2)), width: (south.frame.width * 0.90), height: myDefaultTextFieldHeight))
+		submitButton = UIButton(frame: CGRect(x: myListIndent,
+											  y: ((south.frame.height)  * 0.8), width: (south.frame.width * 0.90), height: myDefaultTextFieldHeight))
 		submitButton.layer.borderWidth = 2.0
 		submitButton.setTitleColor(UIColor.black, for: .normal)
 		submitButton.setTitleColor(UIColor.lightGray, for: .disabled)
@@ -252,11 +316,17 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		//submitButton.isEnabled = false
 
 		south.addSubview(submitButton)
-		
 
-		
+	}
+
+	@objc func takePictureBtnTapped(){
 	}
 	
+	@objc func pickColorBtnTapped(){
+	}
+
+	@objc func pickShapeBtnTapped(){
+	}
 
 	//Calls this function when the tap is recognized.
 	@objc func dismissKeyboard() {
@@ -296,7 +366,7 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 	func sendToServer(color: String, shape: String, imprint: String) {
 		
 		Alamofire.request(baseUrl+"api/rximage/1/rxnav?color="+color+"&shape="+shape+"").responseJSON { response in
-
+/*
 			if let jsonObject = response.result.value {
 				let json = JSON(jsonObject)
 
@@ -320,7 +390,7 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 					print(json["replyStatus"])
 				}
 				
-			}
+			}*/
 		}
 
 		
@@ -330,13 +400,8 @@ class PillSearchViewController: UIViewController, UIImagePickerControllerDelegat
 		
 		submit()
 
-		//self.north.addSubview(colorLabel)
-		//self.north.addSubview(shapeLabel)
-
 		//self.north.removeFromSuperview()
 		//self.south.removeFromSuperview()
-		
-		
 
 	}// end upload button action
 
