@@ -15,8 +15,6 @@ struct TestData {
 let test = TestData()
 
 class CardDisplayViewController: NorthSouthViewController {
-
-	var padding  = CGFloat(0.025)
 	
 	// information label
 	var nameLabel:	UILabel!
@@ -82,7 +80,7 @@ class CardDisplayViewController: NorthSouthViewController {
 	func makeNameLabel(message: String) -> UILabel {
 		let label = UILabel(
 			frame: CGRect(
-				x: 0,
+				x: myListIndent,
 				y: 0,
 				width: south.frame.width * 0.9,
 				height: myDefaultTextFieldHeight))
@@ -101,7 +99,7 @@ class CardDisplayViewController: NorthSouthViewController {
 	func makeNdcLabel(message: String) -> UILabel {
 		let label = UILabel(
 			frame: CGRect(
-				x: 0,
+				x: myListIndent,
 				y: 0,
 				width: south.frame.width * 0.9,
 				height: myDefaultTextFieldHeight))
@@ -120,7 +118,7 @@ class CardDisplayViewController: NorthSouthViewController {
 	func makeRxcuiLabel(message: String) -> UILabel {
 		let label = UILabel(
 			frame: CGRect(
-				x: 0,
+				x: myListIndent,
 				y: 0,
 				width: south.frame.width * 0.9,
 				height: myDefaultTextFieldHeight))
@@ -141,7 +139,7 @@ class CardDisplayViewController: NorthSouthViewController {
 	func makeLabelerLabel(message: String) -> UILabel {
 		let label = UILabel(
 			frame: CGRect(
-				x: 0,
+				x: myListIndent,
 				y: 0,
 				width: south.frame.width * 0.9,
 				height: myDefaultTextFieldHeight))
@@ -158,10 +156,10 @@ class CardDisplayViewController: NorthSouthViewController {
 	// image view photo display
 	func makeDisplayImage(image:  UIImage) -> UIImageView {
 		imageView = UIImageView(frame: CGRect(
-			x: north.frame.width * padding,
-			y: north.frame.height * padding,
-			width: north.frame.width * 0.95,
-			height: north.frame.height * 0.95))
+			x: myListIndent,
+			y: 0,
+			width: north.frame.width * 0.9,
+			height: north.frame.height))
 		imageView.image = image
 		imageView.layer.borderWidth = myBorders
 		

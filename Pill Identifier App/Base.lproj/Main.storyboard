@@ -75,35 +75,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0y-pJ-uAU">
-                                <rect key="frame" x="32" y="527" width="327" height="120"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Result Display View"/>
-                                <connections>
-                                    <segue destination="hck-sp-31U" kind="show" id="Iom-gd-F2N"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8GN-cQ-oEu">
-                                <rect key="frame" x="32" y="399" width="327" height="120"/>
+                                <rect key="frame" x="32" y="72" width="327" height="159"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="ARa-5S-XbF"/>
+                                    <constraint firstAttribute="height" constant="159" id="rbL-cu-eLu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Upload Search Form"/>
+                                <state key="normal" title="Upload Page"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="UgG-uj-EvZ"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="O1F-Jo-era"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZY-IO-7UD">
+                                <rect key="frame" x="32" y="239" width="327" height="159"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="159" id="UU6-TP-45D"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Display Page"/>
+                                <connections>
+                                    <segue destination="hck-sp-31U" kind="show" id="f1r-SZ-GTA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJo-uX-pFZ">
+                                <rect key="frame" x="32" y="406" width="327" height="159"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Basic Page"/>
+                                <connections>
+                                    <segue destination="cVH-XU-fnu" kind="show" id="kkB-cW-gh5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="A0y-pJ-uAU" secondAttribute="bottom" constant="20" symbolic="YES" id="5e8-A9-Ti9"/>
-                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="trailing" secondItem="A5P-4A-cU2" secondAttribute="trailingMargin" id="MGV-Lm-Ojn"/>
-                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="top" secondItem="2ei-mF-Mya" secondAttribute="bottom" constant="335" id="Nl3-0M-ehF"/>
-                            <constraint firstItem="A0y-pJ-uAU" firstAttribute="top" secondItem="8GN-cQ-oEu" secondAttribute="bottom" constant="8" symbolic="YES" id="PcW-OJ-vT6"/>
-                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="leading" secondItem="A5P-4A-cU2" secondAttribute="leadingMargin" constant="16" id="Y9P-Rc-M6O"/>
-                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="trailing" secondItem="A0y-pJ-uAU" secondAttribute="trailing" id="bj4-bh-oO6"/>
-                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="leading" secondItem="A0y-pJ-uAU" secondAttribute="leading" id="i4n-Ik-QPB"/>
+                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="trailing" secondItem="YZY-IO-7UD" secondAttribute="trailing" id="1w1-kR-f66"/>
+                            <constraint firstItem="YZY-IO-7UD" firstAttribute="top" secondItem="8GN-cQ-oEu" secondAttribute="bottom" constant="8" symbolic="YES" id="3FM-0g-Zfe"/>
+                            <constraint firstItem="q7G-hL-hW5" firstAttribute="top" secondItem="GJo-uX-pFZ" secondAttribute="bottom" constant="102" id="Gqv-gA-Eg0"/>
+                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="top" secondItem="2ei-mF-Mya" secondAttribute="bottom" constant="8" symbolic="YES" id="Rr1-OC-l8j"/>
+                            <constraint firstItem="YZY-IO-7UD" firstAttribute="trailing" secondItem="GJo-uX-pFZ" secondAttribute="trailing" id="SCl-n9-m6G"/>
+                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="trailing" secondItem="A5P-4A-cU2" secondAttribute="trailingMargin" id="Sr8-oE-2GP"/>
+                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="leading" secondItem="YZY-IO-7UD" secondAttribute="leading" id="gmb-Dp-2ku"/>
+                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="leading" secondItem="A5P-4A-cU2" secondAttribute="leadingMargin" constant="16" id="jLW-jH-YIk"/>
+                            <constraint firstItem="GJo-uX-pFZ" firstAttribute="top" secondItem="YZY-IO-7UD" secondAttribute="bottom" constant="8" symbolic="YES" id="qkx-9b-7VN"/>
+                            <constraint firstItem="YZY-IO-7UD" firstAttribute="leading" secondItem="GJo-uX-pFZ" secondAttribute="leading" id="toh-N5-Cdl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LpK-Q8-4QW"/>
