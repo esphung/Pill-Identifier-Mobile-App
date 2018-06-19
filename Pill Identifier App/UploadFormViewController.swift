@@ -132,9 +132,9 @@ UINavigationControllerDelegate {
 	
 		// ====================  set up PILLImageVIEW (NORTH VIEW)
 		pillImageView = UIImageView(frame: CGRect(
-			x: myListIndent,
+			x: 0,
 			y: 0,
-			width: north.frame.width * 0.90,
+			width: north.frame.width,
 			height: north.frame.height))
 		north.addSubview(pillImageView)
 

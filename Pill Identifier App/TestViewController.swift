@@ -33,10 +33,12 @@ class TestViewController: UIViewController {
 	
 	@objc func debugBtnTapped(sender: UIButton){
 		if isDebugOn() {
-			sender.setTitle("Debug On", for: .normal)
+			debug =  false
+			sender.setTitle("Debug Off", for: .normal)
 		}
 		else {
-			sender.setTitle("Debug Off", for: .normal)
+			debug = true
+			sender.setTitle("Debug On", for: .normal)
 		}
 	}
 

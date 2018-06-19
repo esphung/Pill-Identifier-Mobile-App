@@ -130,9 +130,9 @@ class CardDisplayViewController: NorthSouthViewController {
 	// image view photo display
 	func makeDisplayImage(image:  UIImage) -> UIImageView {
 		imageView = UIImageView(frame: CGRect(
-			x: myListIndent,
+			x: 0,
 			y: 0,
-			width: north.frame.width * 0.9,
+			width: north.frame.width,
 			height: north.frame.height))
 		imageView.image = image
 		imageView.layer.borderWidth = myBorders

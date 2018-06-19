@@ -30,11 +30,9 @@ public func transition(sender: UIViewController, title: String) {
 
 func isDebugOn() -> Bool {
 	if debug  == true {
-		debug = false
-		return false
+		return true
 	}
 	else {
-		debug = true
-		return true
+		return false
 	}
 }
