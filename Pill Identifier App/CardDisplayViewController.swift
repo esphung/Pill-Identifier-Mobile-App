@@ -1,15 +1,20 @@
 
-import UIKit
+import UIKit.UIViewController
 
 
 
 // test harness
 struct TestData {
-	var name = "Tenofovir disoproxil fumarate 300 MG Oral Tablet [Viread]"
+	var name = """
+	Tenofovir disoproxil fumarate 300 MG Oral Tablet [Viread]
+	"""
 	var ndc11 =	"59762-6733-01"
 	var rxcuii =	404013
 	var labeler = 	"Greenstone LLC"
-	var imageUrl =	"https://rximage.nlm.nih.gov/image/images/gallery/original/61958-0401-01_RXNAVIMAGE10_B81DDC0E.jpg"
+	var imageUrl =	"""
+	https://rximage.nlm.nih.gov/image/images/gallery/
+	original/61958-0401-01_RXNAVIMAGE10_B81DDC0E.jpg
+	"""
 }
 
 let test = TestData()
@@ -67,8 +72,6 @@ class CardDisplayViewController: NorthSouthViewController {
 		image = UIImage(named: imageName)
 		self.imageView = makeDisplayImage(image: image)
 		self.north.addSubview(imageView)
-		
-		
 		
     }// end layouts did load
 	
