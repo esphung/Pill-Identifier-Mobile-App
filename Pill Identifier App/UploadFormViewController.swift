@@ -1,9 +1,7 @@
-//
-//  PillSearchViewController.swift
-//  Pill Identifier App
-//
-//  Created by Eric Phung on 6/17/18.
-//  Copyright © 2018 Phung Technology. All rights reserved.
+// 88   88 88""Yb 88      dP"Yb     db    8888b.
+// 88   88 88__dP 88     dP   Yb   dPYb    8I  Yb
+// Y8   8P 88"""  88  .o Yb   dP  dP__Yb   8I  dY
+// `YbodP' 88     88ood8  YbodP  dP""""Yb 8888Y"
 
 import UIKit.UIViewController
 
@@ -19,14 +17,12 @@ UINavigationControllerDelegate {
 	override func loadView() {
 		super.loadView()
 		
-
 	}// end loadview
 	
 	// input variables
 	var imageBtn:			UIButton!
 	var submitButton: 		UIButton!
 
-	
 	// display vars
 	var pillImageView:		UIImageView!
 	var colorLabel: 		UILabel!
@@ -50,9 +46,6 @@ UINavigationControllerDelegate {
 				UploadFormViewController.dismissKeyboard))
 
 	    view.addGestureRecognizer(tap)
-		
-		//showFrames()
-		
 	}// end view did load
 	
 	@objc func imageButtonTapped(_ sender: Any) {
@@ -281,6 +274,6 @@ UINavigationControllerDelegate {
 		submit()
 
 	}// end upload button action
-
+	
 }// end view controller class definition
 

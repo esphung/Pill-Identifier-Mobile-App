@@ -27,3 +27,14 @@ public func transition(sender: UIViewController, title: String) {
 					print(sender, " change view ... > ", secondViewController)
 	})
 }
+
+func isDebugOn() -> Bool {
+	if debug  == true {
+		debug = false
+		return false
+	}
+	else {
+		debug = true
+		return true
+	}
+}

@@ -1,23 +1,9 @@
+// 8888b.  88 .dP"Y8 88""Yb 88        db    Yb  dP
+//  8I  Yb 88 `Ybo." 88__dP 88       dPYb    YbdP
+//  8I  dY 88 o.`Y8b 88"""  88  .o  dP__Yb    8P
+// 8888Y"  88 8bodP' 88     88ood8 dP""""Yb  dP
 
 import UIKit.UIViewController
-
-
-
-// test harness
-struct TestData {
-	var name = """
-	Tenofovir disoproxil fumarate 300 MG Oral Tablet [Viread]
-	"""
-	var ndc11 =	"59762-6733-01"
-	var rxcuii =	404013
-	var labeler = 	"Greenstone LLC"
-	var imageUrl =	"""
-	https://rximage.nlm.nih.gov/image/images/gallery/
-	original/61958-0401-01_RXNAVIMAGE10_B81DDC0E.jpg
-	"""
-}
-
-let test = TestData()
 
 class CardDisplayViewController: NorthSouthViewController {
 	
@@ -30,7 +16,6 @@ class CardDisplayViewController: NorthSouthViewController {
 	var imageName: 	String!
 	var image:		UIImage!
 	var imageView: 	UIImageView!
-	
 
     override func loadView() {
         super.loadView()
@@ -41,8 +26,6 @@ class CardDisplayViewController: NorthSouthViewController {
         super.viewDidLoad()
 		// begin set up here
 		
-		//showFrames()
-		//showBorders()
 		
     }
 
@@ -75,25 +58,20 @@ class CardDisplayViewController: NorthSouthViewController {
 		
     }// end layouts did load
 	
-	func showBorders(){
-		myBorders = 1.0
-	}
 
 	// name label
 	func makeNameLabel(message: String) -> UILabel {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: 0,
+				y: ((south.frame.height)  * 0.0),
 				width: south.frame.width * 0.9,
 				height: myDefaultTextFieldHeight))
-		label.center = CGPoint(
-			x: south.frame.width/2,
-			y: south.frame.height * 0.1)
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = "Name:\t" + message
 		label.numberOfLines = 1
 		label.layer.borderWidth = myBorders
+		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
 		
 		return label
 	}
@@ -103,16 +81,14 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: 0,
-				width: south.frame.width * 0.9,
+				y: ((south.frame.height)  * 0.2),
+				width: (south.frame.width * 0.90),
 				height: myDefaultTextFieldHeight))
-		label.center = CGPoint(
-			x: south.frame.width/2,
-			y: south.frame.height * 0.2)
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = "NDC:\t" + message
 		label.numberOfLines = 1
 		label.layer.borderWidth = myBorders
+		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
 		
 		return label
 	}
@@ -122,13 +98,10 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: 0,
-				width: south.frame.width * 0.9,
+				y: ((south.frame.height)  * 0.4),
+				width: (south.frame.width * 0.90),
 				height: myDefaultTextFieldHeight))
-		label.center = CGPoint(
-			x: south.frame.width/2,
-			y: south.frame.height * 0.3)
-		//label.font = UIFont.systemFont(ofSize: 16)
+		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
 		//label.adjustsFontSizeToFitWidth = true
 		
 		label.text = "Rxcuii:\t" + message
@@ -140,18 +113,16 @@ class CardDisplayViewController: NorthSouthViewController {
 
 	// labeler label
 	func makeLabelerLabel(message: String) -> UILabel {
-		let label = UILabel(
-			frame: CGRect(
-				x: myListIndent,
-				y: 0,
-				width: south.frame.width * 0.9,
-				height: myDefaultTextFieldHeight))
-		label.center = CGPoint(
-			x: south.frame.width/2,
-			y: south.frame.height * 0.4)
+		let label = UILabel(frame: CGRect(
+			x: myListIndent,
+			y: ((south.frame.height)  * 0.6),
+			width: (south.frame.width * 0.90),
+			height: myDefaultTextFieldHeight))
+		
 		label.text = "Label:\t" + message
 		label.numberOfLines = 1
 		label.layer.borderWidth = myBorders
+		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
 		
 		return label
 	}
@@ -168,7 +139,6 @@ class CardDisplayViewController: NorthSouthViewController {
 		
 		return imageView
 	}
-
 	
 	
 }

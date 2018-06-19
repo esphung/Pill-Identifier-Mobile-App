@@ -8,7 +8,7 @@
 
 import UIKit.UIViewController
 
-class NorthSouthViewController: MyBasicViewController {
+class NorthSouthViewController: UIViewController {
 
 	// set up view layout
 	var north:  UIView!
@@ -33,8 +33,9 @@ class NorthSouthViewController: MyBasicViewController {
 		let south = UIView()
 		self.view.addSubview(south)
 		self.south = south
-
 		
+		showDebug()
+
 	}
 	
 	override func viewDidLayoutSubviews() {
@@ -50,6 +51,20 @@ class NorthSouthViewController: MyBasicViewController {
 		self.south.backgroundColor = .yellow
 		self.north.backgroundColor = .green
 		
+	}
+	
+	func setBorders(float: CGFloat){
+		myBorders = float
+	}
+	
+	func showDebug() {
+		if debug == true {
+			showFrames()
+			setBorders(float: 2.0)
+			//self.view.backgroundColor = .white
+		} else {
+			setBorders(float: 0.0)
+		}
 	}
 
 }
