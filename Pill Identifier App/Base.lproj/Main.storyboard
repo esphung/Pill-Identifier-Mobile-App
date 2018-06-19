@@ -45,10 +45,28 @@
             </objects>
             <point key="canvasLocation" x="1466" y="713"/>
         </scene>
-        <!--My Basic View Controller-->
+        <!--Card Display View Controller-->
+        <scene sceneID="Yhc-i9-6bq">
+            <objects>
+                <viewController id="hck-sp-31U" customClass="CardDisplayViewController" customModule="Pill_Identifier_App" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZEo-Np-O3K"/>
+                        <viewControllerLayoutGuide type="bottom" id="txi-Xg-B5W"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AUb-b7-wDg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bw6-2O-c17" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2302" y="713"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="66T-mf-nhQ">
             <objects>
-                <viewController id="9Xn-16-cyr" customClass="MyBasicViewController" customModule="Pill_Identifier_App" sceneMemberID="viewController">
+                <viewController id="9Xn-16-cyr" customClass="ViewController" customModule="Pill_Identifier_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2ei-mF-Mya"/>
                         <viewControllerLayoutGuide type="bottom" id="q7G-hL-hW5"/>
@@ -57,35 +75,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5V-A6-IUE">
-                                <rect key="frame" x="16" y="527" width="343" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="PqF-6c-X6u"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0y-pJ-uAU">
+                                <rect key="frame" x="32" y="527" width="327" height="120"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Search Form"/>
+                                <state key="normal" title="Result Display View"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="rpL-zc-6eT"/>
+                                    <segue destination="hck-sp-31U" kind="show" id="Iom-gd-F2N"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIH-q3-VT4">
-                                <rect key="frame" x="16" y="399" width="343" height="120"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8GN-cQ-oEu">
+                                <rect key="frame" x="32" y="399" width="327" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="ARa-5S-XbF"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Basic NS View"/>
+                                <state key="normal" title="Upload Search Form"/>
                                 <connections>
-                                    <segue destination="cVH-XU-fnu" kind="show" id="JJh-a6-irr"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="UgG-uj-EvZ"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="g5V-A6-IUE" firstAttribute="top" secondItem="2ei-mF-Mya" secondAttribute="bottom" constant="463" id="0ow-aQ-tQ8"/>
-                            <constraint firstItem="lIH-q3-VT4" firstAttribute="trailing" secondItem="g5V-A6-IUE" secondAttribute="trailing" id="HQR-LK-GOi"/>
-                            <constraint firstItem="g5V-A6-IUE" firstAttribute="leading" secondItem="A5P-4A-cU2" secondAttribute="leadingMargin" id="gGv-Xs-oDR"/>
-                            <constraint firstItem="lIH-q3-VT4" firstAttribute="leading" secondItem="g5V-A6-IUE" secondAttribute="leading" id="igs-ri-RIR"/>
-                            <constraint firstItem="g5V-A6-IUE" firstAttribute="trailing" secondItem="A5P-4A-cU2" secondAttribute="trailingMargin" id="qlC-O7-4pl"/>
-                            <constraint firstItem="lIH-q3-VT4" firstAttribute="top" secondItem="2ei-mF-Mya" secondAttribute="bottom" constant="335" id="ufO-Zh-1fW"/>
-                            <constraint firstItem="g5V-A6-IUE" firstAttribute="top" secondItem="lIH-q3-VT4" secondAttribute="bottom" constant="8" symbolic="YES" id="wju-wk-hh2"/>
+                            <constraint firstAttribute="bottom" secondItem="A0y-pJ-uAU" secondAttribute="bottom" constant="20" symbolic="YES" id="5e8-A9-Ti9"/>
+                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="trailing" secondItem="A5P-4A-cU2" secondAttribute="trailingMargin" id="MGV-Lm-Ojn"/>
+                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="top" secondItem="2ei-mF-Mya" secondAttribute="bottom" constant="335" id="Nl3-0M-ehF"/>
+                            <constraint firstItem="A0y-pJ-uAU" firstAttribute="top" secondItem="8GN-cQ-oEu" secondAttribute="bottom" constant="8" symbolic="YES" id="PcW-OJ-vT6"/>
+                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="leading" secondItem="A5P-4A-cU2" secondAttribute="leadingMargin" constant="16" id="Y9P-Rc-M6O"/>
+                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="trailing" secondItem="A0y-pJ-uAU" secondAttribute="trailing" id="bj4-bh-oO6"/>
+                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="leading" secondItem="A0y-pJ-uAU" secondAttribute="leading" id="i4n-Ik-QPB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LpK-Q8-4QW"/>

@@ -20,6 +20,8 @@
 		5E49D4EF20D83E70002C8469 /* MyBasicViewController copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4EE20D83E70002C8469 /* MyBasicViewController copy.swift */; };
 		5E49D4F120D851EA002C8469 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4F020D851EA002C8469 /* ViewController.swift */; };
 		5E49D4F720D87713002C8469 /* NorthSouthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */; };
+		5E49D4F920D87BCE002C8469 /* CardDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */; };
+		5E49D4FB20D89618002C8469 /* sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E49D4FA20D89618002C8469 /* sample.json */; };
 		5E575F1620D6378300B94C16 /* UploadFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E575F1520D6378300B94C16 /* UploadFormViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -171,6 +173,8 @@
 		5E49D4EE20D83E70002C8469 /* MyBasicViewController copy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MyBasicViewController copy.swift"; sourceTree = "<group>"; };
 		5E49D4F020D851EA002C8469 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorthSouthViewController.swift; sourceTree = "<group>"; };
+		5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDisplayViewController.swift; sourceTree = "<group>"; };
+		5E49D4FA20D89618002C8469 /* sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample.json; sourceTree = "<group>"; };
 		5E575F1520D6378300B94C16 /* UploadFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFormViewController.swift; sourceTree = "<group>"; };
 		5E575F3720D640D300B94C16 /* parse-request.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "parse-request.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
@@ -205,6 +209,7 @@
 		18F57B791E992E0A0013221F = {
 			isa = PBXGroup;
 			children = (
+				5E49D4FA20D89618002C8469 /* sample.json */,
 				18F57B841E992E0A0013221F /* Pill Identifier App */,
 				18F57B991E992E0A0013221F /* Pill Identifier AppTests */,
 				18F57BA41E992E0A0013221F /* Pill Identifier AppUITests */,
@@ -226,10 +231,11 @@
 		18F57B841E992E0A0013221F /* Pill Identifier App */ = {
 			isa = PBXGroup;
 			children = (
+				5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */,
 				5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */,
-				5E49D4F020D851EA002C8469 /* ViewController.swift */,
 				5E575F1520D6378300B94C16 /* UploadFormViewController.swift */,
 				5E49D4EE20D83E70002C8469 /* MyBasicViewController copy.swift */,
+				5E49D4F020D851EA002C8469 /* ViewController.swift */,
 				18F57B851E992E0A0013221F /* AppDelegate.swift */,
 				18F57B891E992E0A0013221F /* Main.storyboard */,
 				18F57B8C1E992E0A0013221F /* Assets.xcassets */,
@@ -523,6 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18F57B901E992E0A0013221F /* LaunchScreen.storyboard in Resources */,
+				5E49D4FB20D89618002C8469 /* sample.json in Resources */,
 				18F57B8D1E992E0A0013221F /* Assets.xcassets in Resources */,
 				18F57B8B1E992E0A0013221F /* Main.storyboard in Resources */,
 			);
@@ -550,6 +557,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E49D4F120D851EA002C8469 /* ViewController.swift in Sources */,
+				5E49D4F920D87BCE002C8469 /* CardDisplayViewController.swift in Sources */,
 				5E49D4EF20D83E70002C8469 /* MyBasicViewController copy.swift in Sources */,
 				5E49D4E920D836DB002C8469 /* Utility.swift in Sources */,
 				18F57B861E992E0A0013221F /* AppDelegate.swift in Sources */,

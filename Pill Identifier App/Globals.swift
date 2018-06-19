@@ -30,9 +30,10 @@ public var screenHeight: CGFloat {
 	return UIScreen.main.bounds.height
 }
 
-public let myDefaultTextFieldHeight = CGFloat(myDefaultTextFontSize + (myDefaultTextFontSize * 0.66))
+public let myDefaultTextFieldHeight = CGFloat(myDefaultTextFontSize + (myDefaultTextFontSize * 0.26))
 
 public let myDefaultTextFontSize = CGFloat(24.0)
 
 public let myListIndent = CGFloat(20.0)
 
+public var myBorders = CGFloat(0.0)

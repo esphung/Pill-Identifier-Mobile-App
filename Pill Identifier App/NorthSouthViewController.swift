@@ -33,8 +33,7 @@ class NorthSouthViewController: MyBasicViewController {
 		let south = UIView()
 		self.view.addSubview(south)
 		self.south = south
-		
-		showFrames()
+
 		
 	}
 	

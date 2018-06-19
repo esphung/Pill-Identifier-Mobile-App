@@ -1,0 +1,124 @@
+{
+  "replyStatus": {
+    "success": true,
+    "date": "2018-06-19 01:02:33 GMT",
+    "imageCount": 6,
+    "totalImageCount": 6,
+    "matchedTerms": {
+      "color": "blue",
+      "size": "17"
+    }
+  },
+  "nlmRxImages": [
+    {
+      "id": 185639209,
+      "ndc11": "61958-0401-01",
+      "part": 1,
+      "relabelersNdc9": [
+        {
+          "@sourceNdc9": "61958-0401",
+          "ndc9": [
+            "24236-0284",
+            "53808-0810",
+            "54569-5334",
+            "69189-0401",
+            "50090-0754"
+          ]
+        }
+      ],
+      "rxcui": 352050,
+      "acqDate": "06-02-2012",
+      "name": "Tenofovir disoproxil fumarate 300 MG Oral Tablet [Viread]",
+      "labeler": "Gilead Sciences, Inc.",
+      "imageUrl": "https://rximage.nlm.nih.gov/image/images/gallery/original/61958-0401-01_RXNAVIMAGE10_B81DDC0E.jpg",
+      "imageSize": 550484,
+      "attribution": "National Library of Medicine | Lister Hill National Center for Biomedical Communications | Office of High Performance Computing and Communications | Medicos Consultants LLC"
+    },
+    {
+      "id": 185655728,
+      "ndc11": "00093-1063-01",
+      "part": 1,
+      "rxcui": 904589,
+      "splSetId": "8e2772cb-7dea-42d1-ba31-d479ba7cb09a",
+      "splRootId": "ce2aaec4-9210-46ff-a9a0-cb0bd717c954",
+      "splVersion": 9,
+      "acqDate": "12-19-2012",
+      "name": "Sotalol Hydrochloride 240 MG Oral Tablet",
+      "labeler": "Teva Pharmaceuticals USA Inc",
+      "imageUrl": "https://rximage.nlm.nih.gov/image/images/gallery/original/00093-1063-01_RXNAVIMAGE10_A029D07E.jpg",
+      "imageSize": 580703,
+      "attribution": "National Library of Medicine | Lister Hill National Center for Biomedical Communications | Office of High Performance Computing and Communications | Medicos Consultants LLC"
+    },
+    {
+      "id": 185655722,
+      "ndc11": "00093-1087-01",
+      "part": 1,
+      "rxcui": 309043,
+      "splSetId": "0878bdc2-0410-4938-9890-96523aa81c2f",
+      "splRootId": "ccd58d78-3934-4bd9-ab30-9627d79222d0",
+      "splVersion": 7,
+      "acqDate": "12-19-2012",
+      "name": "12 HR Cefaclor 500 MG Extended Release Oral Tablet",
+      "labeler": "Teva Pharmaceuticals USA Inc",
+      "imageUrl": "https://rximage.nlm.nih.gov/image/images/gallery/original/00093-1087-01_RXNAVIMAGE10_9E29CF5E.jpg",
+      "imageSize": 654707,
+      "attribution": "National Library of Medicine | Lister Hill National Center for Biomedical Communications | Office of High Performance Computing and Communications | Medicos Consultants LLC"
+    },
+    {
+      "id": 186720887,
+      "ndc11": "50844-0529-02",
+      "part": 2,
+      "rxcui": 1302760,
+      "splSetId": "2d13662b-5b75-490c-bd52-fcd23cb3675a",
+      "splRootId": "d4f72832-98d4-4861-8345-bdcdabc7c5b4",
+      "splVersion": 4,
+      "acqDate": "07-25-2013",
+      "name": "{6 (Acetaminophen 325 MG / Chlorpheniramine Maleate 2 MG / Dextromethorphan Hydrobromide 10 MG / Phenylephrine Hydrochloride 5 MG Oral Tablet) / 6 (Acetaminophen 325 MG / Dextromethorphan Hydrobromide 10 MG / Phenylephrine Hydrochloride 5 MG Oral Tablet) } Pack",
+      "labeler": "L.N.K. International, Inc.",
+      "imageUrl": "https://rximage.nlm.nih.gov/image/images/gallery/original/50844-0529-02_RXNAVIMAGE10_BF35DFFE.jpg",
+      "imageSize": 799421,
+      "attribution": "National Library of Medicine | Lister Hill National Center for Biomedical Communications | Office of High Performance Computing and Communications | Medicos Consultants LLC"
+    },
+    {
+      "id": 185686275,
+      "ndc11": "59762-6733-01",
+      "part": 1,
+      "rxcui": 404013,
+      "splSetId": "062bf1a0-9a29-4dee-a8cb-f0d051f4c0b1",
+      "splRootId": "196e4a06-bf1c-4ed7-b1de-a6ada4a85625",
+      "splVersion": 12,
+      "acqDate": "03-26-2015",
+      "name": "Amlodipine 10 MG / atorvastatin 80 MG Oral Tablet",
+      "labeler": "Greenstone LLC",
+      "imageUrl": "https://rximage.nlm.nih.gov/image/images/gallery/original/59762-6733-01_RXNAVIMAGE10_BB3FDDCE.jpg",
+      "imageSize": 605323,
+      "attribution": "National Library of Medicine | Lister Hill National Center for Biomedical Communications | Office of High Performance Computing and Communications | Medicos Consultants LLC"
+    },
+    {
+      "id": 185694936,
+      "ndc11": "00603-2217-21",
+      "part": 1,
+      "relabelersNdc9": [
+        {
+          "@sourceNdc9": "00603-2217",
+          "ndc9": [
+            "24236-0005",
+            "33261-0944",
+            "63629-4304",
+            "68258-7160"
+          ]
+        }
+      ],
+      "rxcui": 856773,
+      "splSetId": "f5c826ad-0d16-41e1-a499-d395f0aec2cd",
+      "splRootId": "1d018ef2-0119-42a8-a703-aaa03e6c7f0b",
+      "splVersion": 20,
+      "acqDate": "09-29-2015",
+      "name": "Amitriptyline Hydrochloride 150 MG Oral Tablet",
+      "labeler": "Qualitest Pharmaceutical, Inc.",
+      "imageUrl": "https://rximage.nlm.nih.gov/image/images/gallery/original/00603-2217-21_RXNAVIMAGE10_31461880.jpg",
+      "imageSize": 649705,
+      "attribution": "National Library of Medicine | Lister Hill National Center for Biomedical Communications | Office of High Performance Computing and Communications | Medicos Consultants LLC"
+    }
+  ]
+}
