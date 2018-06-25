@@ -44,7 +44,7 @@ class ResultsTableViewController: UITableViewController {
 		refreshControl?.addTarget(
 			self,
 			action: #selector(refresh),
-			for: UIControsl.Event.valueChanged)
+			for: UIControl.Event.valueChanged)
 		
 		tableView.addSubview(self.refreshControl!)
 
