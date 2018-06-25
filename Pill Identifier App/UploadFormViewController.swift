@@ -38,6 +38,27 @@ UINavigationControllerDelegate {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		self.view.backgroundColor = .white
+
+/*  		
+		let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
+		self.view.addSubview(navBar);
+		let navItem = UINavigationItem(title: "Some Title");
+		let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: #selector(backAction));
+		navItem.leftBarButtonItem = doneItem;
+		//let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(UIWebView.goBack))
+		//navigationItem.leftBarButtonItem = backButton
+		navBar.setItems([navItem], animated: false); */
+	/*
+		let backbutton = UIButton(type: .custom)
+		backbutton.setImage(UIImage(named: "BackButton.png"), for: .normal) // Image can be downloaded from here below link
+		backbutton.setTitle("Back", for: .normal)
+		backbutton.setTitleColor(backbutton.tintColor, for: .normal) // You can change the TitleColor
+		backbutton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+		
+		self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backbutton)
+*/
 
         //Looks for single or multiple taps. 
 		let tap: UITapGestureRecognizer = UITapGestureRecognizer(
@@ -48,6 +69,10 @@ UINavigationControllerDelegate {
 	    view.addGestureRecognizer(tap)
 	}// end view did load
 	
+	@objc func doneTapped() {
+		print("Hello Done")
+	}
+	
 	@objc func imageButtonTapped(_ sender: Any) {
 		if (self.pillImageView.image == nil) {
 			importImage()
@@ -56,6 +81,13 @@ UINavigationControllerDelegate {
 		}
 		
 	}// end upload button action
+
+
+	@objc func backAction() -> Void {
+		self.navigationController?.popViewController(animated: true)
+	}
+	
+	
 	
 	func importImage() {
 		let imagePicker = UIImagePickerController()

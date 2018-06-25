@@ -13,9 +13,9 @@
 import UIKit.UIViewController
 
 //  set up and display wallpaper for sender view
-func setBackgroundImage(sender: UIViewController) {
+func setBackgroundImage(sender: UIViewController, filename: String) {
 	let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-	backgroundImage.image = UIImage(named: "background.png")
+	backgroundImage.image = UIImage(named: filename)
 	backgroundImage.contentMode = UIView.ContentMode.scaleToFill
 	sender.view.insertSubview(backgroundImage, at: 0)	
 }
