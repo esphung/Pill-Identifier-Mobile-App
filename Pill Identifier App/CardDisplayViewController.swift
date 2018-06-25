@@ -19,7 +19,7 @@ class CardDisplayViewController: NorthSouthViewController {
 
     override func loadView() {
         super.loadView()
-        self.view.backgroundColor = .white 
+        self.view.backgroundColor = .white
 		
     }
 	
@@ -131,15 +131,14 @@ class CardDisplayViewController: NorthSouthViewController {
 	// image view photo display
 	func makeDisplayImage(image:  UIImage) -> UIImageView {
 		imageView = UIImageView(frame: CGRect(
-			x: 0,
-			y: 0,
-			width: north.frame.width,
-			height: north.frame.height))
+			x: myListIndent,
+			y: myListPadTop,
+			width: north.frame.width * 0.9,
+			height: north.frame.height * 0.7))
 		imageView.image = image
 		imageView.layer.borderWidth = myBorders
 		
 		return imageView
 	}
-	
 	
 }

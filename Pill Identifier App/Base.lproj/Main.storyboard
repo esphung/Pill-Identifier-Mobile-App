@@ -12,7 +12,6 @@
         <!--Upload Form View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="uploadFormViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="UploadFormViewController" customModule="Pill_Identifier_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -24,14 +23,14 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2348" y="691"/>
+            <point key="canvasLocation" x="3279" y="665"/>
         </scene>
         <!--Card Display View Controller-->
         <scene sceneID="Yhc-i9-6bq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bw6-2O-c17" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="cardDsiplayViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hck-sp-31U" customClass="CardDisplayViewController" customModule="Pill_Identifier_App" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cardDisplayViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hck-sp-31U" customClass="CardDisplayViewController" customModule="Pill_Identifier_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZEo-Np-O3K"/>
                         <viewControllerLayoutGuide type="bottom" id="txi-Xg-B5W"/>
@@ -42,14 +41,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bw6-2O-c17" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1678" y="692"/>
+            <point key="canvasLocation" x="2609" y="666"/>
         </scene>
         <!--Test View Controller-->
         <scene sceneID="66T-mf-nhQ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dxt-Nw-bni" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="testViewController" id="9Xn-16-cyr" customClass="TestViewController" customModule="Pill_Identifier_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="testViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Xn-16-cyr" customClass="TestViewController" customModule="Pill_Identifier_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2ei-mF-Mya"/>
                         <viewControllerLayoutGuide type="bottom" id="q7G-hL-hW5"/>
@@ -57,44 +56,31 @@
                     <view key="view" contentMode="scaleToFill" id="A5P-4A-cU2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8GN-cQ-oEu">
-                                <rect key="frame" x="32" y="28" width="327" height="159"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="159" id="rbL-cu-eLu"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Upload Page"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="O1F-Jo-era"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZY-IO-7UD">
-                                <rect key="frame" x="32" y="195" width="327" height="159"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="159" id="UU6-TP-45D"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Display Page"/>
-                                <connections>
-                                    <segue destination="hck-sp-31U" kind="show" id="f1r-SZ-GTA"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="trailing" secondItem="YZY-IO-7UD" secondAttribute="trailing" id="1w1-kR-f66"/>
-                            <constraint firstItem="YZY-IO-7UD" firstAttribute="top" secondItem="8GN-cQ-oEu" secondAttribute="bottom" constant="8" symbolic="YES" id="3FM-0g-Zfe"/>
-                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="top" secondItem="2ei-mF-Mya" secondAttribute="bottom" constant="8" symbolic="YES" id="Rr1-OC-l8j"/>
-                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="trailing" secondItem="A5P-4A-cU2" secondAttribute="trailingMargin" id="Sr8-oE-2GP"/>
-                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="leading" secondItem="YZY-IO-7UD" secondAttribute="leading" id="gmb-Dp-2ku"/>
-                            <constraint firstItem="8GN-cQ-oEu" firstAttribute="leading" secondItem="A5P-4A-cU2" secondAttribute="leadingMargin" constant="16" id="jLW-jH-YIk"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LpK-Q8-4QW"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dxt-Nw-bni" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1983.2" y="-129.08545727136433"/>
+            <point key="canvasLocation" x="2944.8000000000002" y="-27.436281859070466"/>
+        </scene>
+        <!--My Navigation Controller-->
+        <scene sceneID="xLU-oe-EDw">
+            <objects>
+                <navigationController storyboardIdentifier="myNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nkF-qO-uWt" customClass="MyNavigationController" customModule="Pill_Identifier_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zlf-Ba-DQm">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9Xn-16-cyr" kind="relationship" relationship="rootViewController" id="QJH-5O-Nrj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PXv-D2-RKw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2005.5999999999999" y="-27.436281859070466"/>
         </scene>
     </scenes>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>

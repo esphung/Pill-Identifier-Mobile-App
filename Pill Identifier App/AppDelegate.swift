@@ -8,19 +8,16 @@
 
 import UIKit
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+	
     func application(
 		_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
 		// Sets background to a blank/empty image
 		
-
 		// Create a new window with the size of the current window and set it as our main window
 		self.window = UIWindow(frame: UIScreen.main.bounds)
 		
@@ -36,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// 5. Make our new window visible
 		self.window?.makeKeyAndVisible()
 
-		/* 		
+		// set navbar appearance application-wide
 		UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
 		// Sets shadow (line below the bar) to a blank image
 		UINavigationBar.appearance().shadowImage = UIImage()
@@ -44,7 +41,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UINavigationBar.appearance().backgroundColor = .clear
 		// Set translucent. (Default value is already true, so this can be removed if desired.)
 		UINavigationBar.appearance().isTranslucent = true
-		*/
+		
+		
+		print("App Delegate: ",self.description)
+		print(mainStoryboard.description)
+		print("Window: ", self.window?.restorationIdentifier ?? "Error Reading String WIndown")
+		print("Current View: ", self.window?.rootViewController?.restorationIdentifier ?? "Error Reading String View")
 
 		return true
     }
@@ -70,7 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 

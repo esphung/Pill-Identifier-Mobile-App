@@ -6,26 +6,66 @@
 //  Copyright © 2018 Phung Technology. All rights reserved.
 //
 
-import UIKit
+import UIKit.UIViewController
 
-class TestViewController: UIViewController {
+//let home: TestViewController = storyboard?.instantiateViewController(withIdentifier: "home") as! TestViewController
+
+class TestViewController: NorthSouthViewController {
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		setBackgroundImage(sender:self,filename: "background.png")
-		
-		var debugBtn = UIButton()
 		var uploadPageBtn = UIButton()
+		var debugBtn = UIButton()
 		var displayPageBtn = UIButton()
+		
+		// set up uploadPageBtn
+		uploadPageBtn =  UIButton(frame: CGRect(
+			x: myListIndent,
+			y: screenHeight * 0.1,
+			width: screenWidth * 0.8,
+			height: myDefaultTextFieldHeight))
+		uploadPageBtn.layer.borderWidth = 2.0;
+		uploadPageBtn.backgroundColor = UIColor.red
+		uploadPageBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+		
+		uploadPageBtn.titleLabel?.font =  UIFont.systemFont(
+			ofSize: 32, weight: .light)
+		uploadPageBtn.addTarget(
+			self,
+			action: #selector(uploadPageBtnTapped),
+			for: .touchUpInside)
+		
+		uploadPageBtn.setTitle("Upload Page", for: .normal)
+
+		// set up displayPageBtn
+		displayPageBtn =  UIButton(frame: CGRect(
+			x: myListIndent,
+			y: screenHeight * 0.2,
+			width: screenWidth * 0.8,
+			height: myDefaultTextFieldHeight))
+		displayPageBtn.layer.borderWidth = 2.0;
+		displayPageBtn.backgroundColor = UIColor.red
+		displayPageBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+
+		displayPageBtn.titleLabel?.font =  UIFont.systemFont(
+			ofSize: 32, weight: .light)
+		displayPageBtn.addTarget(
+			self,
+			action: #selector(cardDisplayPageBtnTapped),
+			for: .touchUpInside)
+
+		displayPageBtn.setTitle("Display Page", for: .normal)
 		
 		// set up debugBtn
 		debugBtn =  UIButton(frame: CGRect(
-			x: screenWidth/12, 
-			y: screenHeight/2, 
-			width: screenWidth * 0.8, 
-			height: 50))
+			x: myListIndent,
+			y: screenHeight * 0.3,
+			width: screenWidth * 0.8,
+			height: myDefaultTextFieldHeight))
 		debugBtn.layer.borderWidth = 2.0;
 		debugBtn.backgroundColor = UIColor.red
+		debugBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
 		
 		if isDebugOn() {
 			debugBtn.setTitle("Debug On", for: .normal)
@@ -38,61 +78,22 @@ class TestViewController: UIViewController {
 			self,
 			action: #selector(debugBtnTapped),
 			for: .touchUpInside)
-		
 
-		// set up uploadPageBtn
-		uploadPageBtn =  UIButton(frame: CGRect(
-			x: screenWidth/12, 
-			y: screenHeight/4, 
-			width: screenWidth * 0.8, 
-			height: 50))
-		uploadPageBtn.layer.borderWidth = 2.0;
-		uploadPageBtn.backgroundColor = UIColor.red
-
-		uploadPageBtn.titleLabel?.font =  UIFont.systemFont(
-			ofSize: 32, weight: .light)
-		uploadPageBtn.addTarget(
-			self,
-			action: #selector(uploadPageBtnTapped),
-			for: .touchUpInside)
-
-		uploadPageBtn.setTitle("Upload Page", for: .normal)
-
-		// set up displayPageBtn
-		displayPageBtn =  UIButton(frame: CGRect(
-			x: (screenWidth/12), 
-			y: (screenHeight) - (screenHeight/4), 
-			width: screenWidth * 0.8, 
-			height: 50))
-		displayPageBtn.layer.borderWidth = 2.0;
-		displayPageBtn.backgroundColor = UIColor.red
-
-		displayPageBtn.titleLabel?.font =  UIFont.systemFont(
-			ofSize: 32, weight: .light)
-		displayPageBtn.addTarget(
-			self,
-			action: #selector(cardDisplayPageBtnTapped),
-			for: .touchUpInside)
-
-		displayPageBtn.setTitle("Display Page", for: .normal)
-
-
-		self.view.addSubview(debugBtn)
-		self.view.addSubview(uploadPageBtn)
-		self.view.addSubview(displayPageBtn)
-
+		north.addSubview(uploadPageBtn)
+		north.addSubview(displayPageBtn)
+		north.addSubview(debugBtn)
 		
 	}// end view did load
 
-	@objc func cardDisplayPageBtnTapped(sender: UIButton) {
-		displayCardDisplayPage(Sender: sender)
+	@objc func cardDisplayPageBtnTapped(Sender: UIButton) {
+		displayCardDisplayPage()
 	}
 
-	@objc func uploadPageBtnTapped(sender: UIButton) {
-		displayUploadPage(Sender: sender)
+	@objc func uploadPageBtnTapped() {
+		displayUploadFormPage()
 	}
 	
-	@objc func debugBtnTapped(sender: UIButton){
+	func toggleDebug(sender: UIButton!) {
 		if isDebugOn() {
 			debug =  false
 			sender.setTitle("Debug Off", for: .normal)
@@ -102,21 +103,25 @@ class TestViewController: UIViewController {
 			sender.setTitle("Debug On", for: .normal)
 		}
 	}
-
-	func displayUploadPage(Sender: UIButton!) {
-		let secondViewController:UploadFormViewController 
-		= UploadFormViewController()
-		self.present(
-			secondViewController,
-			animated: true,
-			completion: nil)
+	
+	@objc func debugBtnTapped(sender: UIButton){
+		toggleDebug(sender:sender)
 	}
 
-	func displayCardDisplayPage(Sender: UIButton!) {
-		let secondViewController:CardDisplayViewController 
-		= CardDisplayViewController()
+	func displayUploadFormPage() {
+		let uploadFormViewController: UploadFormViewController = storyboard?.instantiateViewController(withIdentifier: "uploadFormViewController") as! UploadFormViewController
+		
 		self.present(
-			secondViewController,
+			uploadFormViewController,
+			animated: true,
+			completion: {
+		})
+	}
+
+	func displayCardDisplayPage() {
+		let cardDisplayViewController: CardDisplayViewController = storyboard?.instantiateViewController(withIdentifier: "cardDisplayViewController") as! CardDisplayViewController
+		self.present(
+			cardDisplayViewController,
 			animated: true,
 			completion: nil)
 	}

@@ -38,35 +38,16 @@ UINavigationControllerDelegate {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		self.view.backgroundColor = .white
-
-/*  		
-		let navBar: UINavigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
-		self.view.addSubview(navBar);
-		let navItem = UINavigationItem(title: "Some Title");
-		let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: nil, action: #selector(backAction));
-		navItem.leftBarButtonItem = doneItem;
-		//let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(UIWebView.goBack))
-		//navigationItem.leftBarButtonItem = backButton
-		navBar.setItems([navItem], animated: false); */
-	/*
-		let backbutton = UIButton(type: .custom)
-		backbutton.setImage(UIImage(named: "BackButton.png"), for: .normal) // Image can be downloaded from here below link
-		backbutton.setTitle("Back", for: .normal)
-		backbutton.setTitleColor(backbutton.tintColor, for: .normal) // You can change the TitleColor
-		backbutton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-		
-		self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backbutton)
-*/
-
-        //Looks for single or multiple taps. 
+		/*
+		//Looks for single or multiple taps.
 		let tap: UITapGestureRecognizer = UITapGestureRecognizer(
-			target: self, 
+			target: self,
 			action: #selector(
 				UploadFormViewController.dismissKeyboard))
+		
+		view.addGestureRecognizer(tap)
+		*/
 
-	    view.addGestureRecognizer(tap)
 	}// end view did load
 	
 	@objc func doneTapped() {
@@ -84,7 +65,7 @@ UINavigationControllerDelegate {
 
 
 	@objc func backAction() -> Void {
-		self.navigationController?.popViewController(animated: true)
+		performSegueToReturnBack()
 	}
 	
 	
@@ -146,8 +127,9 @@ UINavigationControllerDelegate {
 		imageBtn =  UIButton(
 			frame: CGRect(
 				x: myListIndent,
-				y: 0,width: north.frame.width * 0.90,
-				height: self.north.frame.height))
+				y: myListPadTop,
+				width: north.frame.width * 0.9,
+				height: north.frame.height * 0.7))
 		imageBtn.layer.borderWidth = 2.0
 		imageBtn.setTitleColor(UIColor.black, for: .normal)
 		imageBtn.setTitleColor(UIColor.lightGray, for: .disabled)
@@ -164,10 +146,10 @@ UINavigationControllerDelegate {
 	
 		// ====================  set up PILLImageVIEW (NORTH VIEW)
 		pillImageView = UIImageView(frame: CGRect(
-			x: 0,
-			y: 0,
-			width: north.frame.width,
-			height: north.frame.height))
+			x: myListIndent,
+			y: myListPadTop,
+			width: north.frame.width * 0.9,
+			height: north.frame.height * 0.7))
 		north.addSubview(pillImageView)
 
 		//south.addSubview(pickerTextField)
@@ -301,9 +283,10 @@ UINavigationControllerDelegate {
 
 	}
 
-	@objc func submitButtonTapped() {
-		
-		submit()
+	@objc func submitButtonTapped(){
+		performSegueToReturnBack()
+
+		//submit()
 
 	}// end upload button action
 	

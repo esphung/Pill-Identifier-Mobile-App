@@ -3,7 +3,7 @@
 // Yb  "88 88  .o Yb   dP 88""Yb  dP__Yb  88  .o o.`Y8b
 //  YboodP 88ood8  YbodP  88oodP dP""""Yb 88ood8 8bodP'
 
-public var debug = false
+public var debug = true
 
 //import Foundation
 import UIKit.UIViewController
@@ -17,11 +17,12 @@ public var screenHeight: CGFloat {
 	return UIScreen.main.bounds.height
 }
 
-public let myDefaultTextFieldHeight = CGFloat(myDefaultTextFontSize + (myDefaultTextFontSize * 0.26))
+public let myDefaultTextFieldHeight = CGFloat(50.0)
 
 public let myDefaultTextFontSize = CGFloat(24.0)
 
-public let myListIndent = CGFloat(20.0)
+public let myListIndent = CGFloat(19.0)
+public let myListPadTop = (myListIndent/2)
 
 public var myBorders = CGFloat(0.0)
 
