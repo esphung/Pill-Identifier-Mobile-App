@@ -15,6 +15,10 @@ class NorthSouthViewController: UIViewController {
 	var north:  UIView!
 	var south: 	UIView!
 	
+	var imageName: 	String!
+	var image:		UIImage!
+	var imageView: 	UIImageView!
+	
 	var northFrame: CGRect {
 		return CGRect(
 			x: (myView.frame.width * 0.05),
@@ -27,7 +31,7 @@ class NorthSouthViewController: UIViewController {
 		return CGRect(
 			x: (myView.frame.width * 0.05),
 			y: (myView.frame.maxY/1.8),
-			width: (myView.frame.width * 0.95),
+			width: (northFrame.width),
 			height: (myView.frame.height)/2.2)
 	}
 	
@@ -81,8 +85,6 @@ class NorthSouthViewController: UIViewController {
 		
 		// Assign the navigation item to the navigation bar
 		navigationBar.items = [navigationItem]
-		
-		
 		
 		// Make the navigation bar a subview of the current view controller
 		self.view.addSubview(navigationBar)
@@ -164,14 +166,40 @@ class NorthSouthViewController: UIViewController {
 		}
 	}
 	
-	@objc func done() {
-		// remove @objc for Swift 3
-		//navigationController?.popViewController(animated: true)
-		//navigationController?.popToRootViewController(animated: true)
+	// image view photo display
+	func makeDisplayImage(image:  UIImage) -> UIImageView {
+		imageView = UIImageView(frame: CGRect(
+			x: myListIndent,
+			y: myListPadTop,
+			width: north.frame.width * 0.9,
+			height: north.frame.height * 0.9))
+		//imageView.image = image
+		imageView.image = resizeToScreenSize(image: image)
+		imageView.layer.borderWidth = myBorders
+		imageView.contentMode = UIView.ContentMode.scaleAspectFill
+		
+		return imageView
+	}
+	
+	func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+		
+		let scale = newWidth / image.size.width
+		let newHeight = image.size.height * scale
+		
+		UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+		
+		image.draw(in: CGRect(x: 0, y: 0,width: newWidth, height: newHeight))
+		let newImage = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext()
+		
+		return newImage!
+	}
+	
+	func resizeToScreenSize(image: UIImage)->UIImage{
+		return resizeImage(image: image, newWidth: north.frame.width)
 	}
 
 }
-
 
 extension UIViewController {
 	func performSegueToReturnBack()  {

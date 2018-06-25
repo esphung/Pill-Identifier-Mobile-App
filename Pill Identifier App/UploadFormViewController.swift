@@ -55,11 +55,8 @@ UINavigationControllerDelegate {
 	}
 	
 	@objc func imageButtonTapped(_ sender: Any) {
-		if (self.pillImageView.image == nil) {
-			importImage()
-		} else {
-			return
-		}
+		importImage()
+
 		
 	}// end upload button action
 
@@ -67,8 +64,6 @@ UINavigationControllerDelegate {
 	@objc func backAction() -> Void {
 		performSegueToReturnBack()
 	}
-	
-	
 	
 	func importImage() {
 		let imagePicker = UIImagePickerController()
@@ -86,7 +81,9 @@ UINavigationControllerDelegate {
 		
 		if let pickedImage = info[
 		UIImagePickerController.InfoKey.originalImage] as? UIImage {
-			pillImageView.image = pickedImage
+			imageView.image  = pickedImage
+			//makeDisplayImage(image: pickedImage)
+			//pillImageView.image = pickedImage
 		}
 		dismiss(animated: true, completion: nil)
 	}
@@ -144,15 +141,20 @@ UINavigationControllerDelegate {
 			for: .touchUpInside)
 		north.addSubview(imageBtn)
 	
-		// ====================  set up PILLImageVIEW (NORTH VIEW)
+		// ============ load image
+		imageName = "250x250placeholder.jpg"
+		image = UIImage(named: imageName)
+		imageView = makeDisplayImage(image: image)
+		north.addSubview(imageView)
+		
+		/*
 		pillImageView = UIImageView(frame: CGRect(
 			x: myListIndent,
 			y: myListPadTop,
 			width: north.frame.width * 0.9,
 			height: north.frame.height * 0.7))
-		north.addSubview(pillImageView)
-
-		//south.addSubview(pickerTextField)
+		*/
+		//north.addSubview(pillImageView)
 		
 		// ================================  Set Up PICK SHAPE Button
 		pickShapeBtn = UIButton(frame: CGRect(

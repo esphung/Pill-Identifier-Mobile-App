@@ -13,9 +13,7 @@ class CardDisplayViewController: NorthSouthViewController {
 	var rxcuiLabel:	UILabel!
 	var labelerLabel:	UILabel!
 	
-	var imageName: 	String!
-	var image:		UIImage!
-	var imageView: 	UIImageView!
+
 
     override func loadView() {
         super.loadView()
@@ -26,7 +24,6 @@ class CardDisplayViewController: NorthSouthViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		// begin set up here
-		
 		
     }
 
@@ -128,17 +125,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		return label
 	}
 
-	// image view photo display
-	func makeDisplayImage(image:  UIImage) -> UIImageView {
-		imageView = UIImageView(frame: CGRect(
-			x: myListIndent,
-			y: myListPadTop,
-			width: north.frame.width * 0.9,
-			height: north.frame.height * 0.7))
-		imageView.image = image
-		imageView.layer.borderWidth = myBorders
-		
-		return imageView
-	}
+
+
 	
 }
