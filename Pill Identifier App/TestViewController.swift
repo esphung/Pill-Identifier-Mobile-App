@@ -15,33 +15,34 @@ class TestViewController: NorthSouthViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		var uploadPageBtn = UIButton()
-		var debugBtn = UIButton()
+		var firstBtn = UIButton()
+		var debugBtn = 		UIButton()
+		var resultsBtn = 	UIButton()
 		var displayPageBtn = UIButton()
 		
-		// set up uploadPageBtn
-		uploadPageBtn =  UIButton(frame: CGRect(
+		// set up firstBtn
+		firstBtn =  UIButton(frame: CGRect(
 			x: myListIndent,
-			y: screenHeight * 0.1,
+			y: screenHeight * 0.025,
 			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
-		uploadPageBtn.layer.borderWidth = 2.0;
-		uploadPageBtn.backgroundColor = UIColor.red
-		uploadPageBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+		firstBtn.layer.borderWidth = 2.0;
+		firstBtn.backgroundColor = UIColor.red
+		firstBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
 		
-		uploadPageBtn.titleLabel?.font =  UIFont.systemFont(
+		firstBtn.titleLabel?.font =  UIFont.systemFont(
 			ofSize: 32, weight: .light)
-		uploadPageBtn.addTarget(
+		firstBtn.addTarget(
 			self,
-			action: #selector(uploadPageBtnTapped),
+			action: #selector(firstBtnTapped),
 			for: .touchUpInside)
 		
-		uploadPageBtn.setTitle("Search Page", for: .normal)
+		firstBtn.setTitle("Upload Page", for: .normal)
 
 		// set up displayPageBtn
 		displayPageBtn =  UIButton(frame: CGRect(
 			x: myListIndent,
-			y: screenHeight * 0.2,
+			y: screenHeight * 0.125,
 			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		displayPageBtn.layer.borderWidth = 2.0;
@@ -57,10 +58,28 @@ class TestViewController: NorthSouthViewController {
 
 		displayPageBtn.setTitle("Display Page", for: .normal)
 		
+		// set up resultsBtn
+		resultsBtn =  UIButton(frame: CGRect(
+			x: myListIndent,
+			y: screenHeight * 0.225,
+			width: screenWidth * 0.8,
+			height: myDefaultTextFieldHeight))
+		resultsBtn.layer.borderWidth = 2.0;
+		resultsBtn.backgroundColor = UIColor.red
+		resultsBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+		resultsBtn.setTitle("Results Page", for: .normal)
+		
+		resultsBtn.titleLabel?.font =  UIFont.systemFont(
+			ofSize: 32, weight: .light)
+		resultsBtn.addTarget(
+			self,
+			action: #selector(resultsBtnTapped),
+			for: .touchUpInside)
+		
 		// set up debugBtn
 		debugBtn =  UIButton(frame: CGRect(
 			x: myListIndent,
-			y: screenHeight * 0.3,
+			y: screenHeight * 0.325,
 			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		debugBtn.layer.borderWidth = 2.0;
@@ -79,17 +98,24 @@ class TestViewController: NorthSouthViewController {
 			action: #selector(debugBtnTapped),
 			for: .touchUpInside)
 
-		north.addSubview(uploadPageBtn)
+		north.addSubview(firstBtn)
 		north.addSubview(displayPageBtn)
+		north.addSubview(resultsBtn)
 		north.addSubview(debugBtn)
+		
+		south.removeFromSuperview()
 		
 	}// end view did load
 
+	@objc func resultsBtnTapped(Sender: UIButton) {
+		displayResultsPage()
+	}
+	
 	@objc func cardDisplayPageBtnTapped(Sender: UIButton) {
 		displayCardDisplayPage()
 	}
 
-	@objc func uploadPageBtnTapped() {
+	@objc func firstBtnTapped() {
 		displayUploadFormPage()
 	}
 	
@@ -125,5 +151,15 @@ class TestViewController: NorthSouthViewController {
 			animated: true,
 			completion: nil)
 	}
+	
+	func displayResultsPage() {
+		let resultsTableViewController: ResultsTableViewController = storyboard?.instantiateViewController(withIdentifier: "resultsTableViewController") as! ResultsTableViewController
+		self.present(
+			resultsTableViewController,
+			animated: true,
+			completion: nil)
+	}
+	
+	
 
 }

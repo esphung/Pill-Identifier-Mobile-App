@@ -17,18 +17,23 @@ public var screenHeight: CGFloat {
 	return UIScreen.main.bounds.height
 }
 
-public let myDefaultTextFieldHeight = CGFloat(50.0)
+public let myDefaultTextFieldHeight = CGFloat(44.0)
 
-public let myDefaultTextFontSize = CGFloat(24.0)
+public let myDefaultTextFontSize = CGFloat(16.0)
 
-public let myListIndent = CGFloat(19.0)
-public let myListPadTop = (myListIndent/2)
+public let myListIndent = CGFloat(20.0)
+
+public let myListPadTop = CGFloat(20.0)
 
 public var myBorders = CGFloat(0.0)
 
-public var padding  = CGFloat(0.025)
-
 public let colorKeys = ["BULLET", "CAPSULE", "CLOVER", "DIAMOND", "DOUBLE CIRCLE", "FREEFORM", "GEAR", "HEPTAGON"," HEXAGON", "OCTAGON"," OVAL", "PENTAGON", "RECTANGLE", "ROUND", "SEMI-CIRCLE", "SQUARE", "TEAR", "TRAPEZOID", "TRIANGLE" ]
+
+
+
+
+
+
 
 // test harness
 struct TestData {
@@ -38,11 +43,12 @@ struct TestData {
 	var ndc11 =	"59762-6733-01"
 	var rxcuii =	404013
 	var labeler = 	"Greenstone LLC"
+	var image = UIImage()
 	var imageUrl =	"""
 	https://rximage.nlm.nih.gov/image/images/gallery/
 	original/61958-0401-01_RXNAVIMAGE10_B81DDC0E.jpg
 	"""
 }
 
-let test = TestData()
+var test = TestData()
 

@@ -26,15 +26,15 @@ class NorthSouthViewController: UIViewController {
 			x: (myView.frame.width * 0.05),
 			y: (myView.frame.height * 0.1),
 			width: (myView.frame.width * 0.95),
-			height: ((myView.frame.height)/2) )
+			height: ((myView.frame.height)/2.1) )
 	}
 	
 	var southFrame: CGRect {
 		return CGRect(
 			x: (myView.frame.width * 0.05),
 			y: (myView.frame.maxY/1.8),
-			width: (northFrame.width),
-			height: (myView.frame.height)/2)
+			width: (north.frame.width),
+			height: (north.frame.height))
 	}
 	
 	override func viewDidLoad() {
@@ -63,23 +63,24 @@ class NorthSouthViewController: UIViewController {
 		imageView.contentMode = UIView.ContentMode.scaleAspectFill
 		self.north.addSubview(imageView)
 
-		
 		setUpContraints()
 		//setNavigationBar()
 		showDebug()
 
 	}
 	
+	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
-		south.frame = self.southFrame
 		north.frame = self.northFrame
+		south.frame = self.southFrame
+		
 		
 	}
 	
 	func setNavigationBar() {
 		let navigationBar = UINavigationBar(frame: CGRect(
-			x: 0, y: screenHeight/24, width: screenWidth, height: myDefaultTextFieldHeight))
+			x: 0, y: screenHeight/24, width: screenWidth, height: 44))
 	
 		// Create a navigation item with a title
 		let navigationItem = UINavigationItem()
@@ -112,9 +113,8 @@ class NorthSouthViewController: UIViewController {
 		myView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		myView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 		myView.widthAnchor.constraint(equalToConstant: screenWidth * 0.95).isActive = true
-		myView.heightAnchor.constraint(equalToConstant: screenHeight *  0.9).isActive = true
+		myView.heightAnchor.constraint(equalToConstant: screenHeight *  0.95).isActive = true
 		
-		/*
 		north.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
 		north.heightAnchor.constraint(equalToConstant: 200).isActive = true
 		north.bottomAnchor.constraint(equalTo: south.topAnchor,constant: -10).isActive = true
@@ -122,8 +122,6 @@ class NorthSouthViewController: UIViewController {
 		south.bottomAnchor.constraint(
 			equalTo: bottomLayoutGuide.topAnchor,
 			constant: -20).isActive = true
-
-		*/
 
 	}
 	
@@ -134,15 +132,15 @@ class NorthSouthViewController: UIViewController {
 		myView.layer.borderColor = UIColor.black.cgColor
 		myView.layer.borderWidth = 2.0
 		
-		south.backgroundColor = UIColor(white: 1, alpha: 0.5)
-		south.layer.borderColor = UIColor.black.cgColor
-		south.layer.borderWidth = 2.0
-		//self.south.backgroundColor = .yellow
-		
 		north.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
 		north.layer.borderColor = UIColor.black.cgColor
 		north.layer.borderWidth = 2.0
 		//north.backgroundColor = .green
+
+		south.backgroundColor = UIColor(white: 1, alpha: 0.5)
+		south.layer.borderColor = UIColor.black.cgColor
+		south.layer.borderWidth = 2.0
+		//self.south.backgroundColor = .yellow
 		
 	}
 	
@@ -175,23 +173,7 @@ class NorthSouthViewController: UIViewController {
 		return imageView
 	}
 	
-	func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-		
-		let scale = newWidth / image.size.width
-		let newHeight = image.size.height * scale
-		
-		UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-		
-		image.draw(in: CGRect(x: 0, y: 0,width: newWidth, height: newHeight))
-		let newImage = UIGraphicsGetImageFromCurrentImageContext()
-		UIGraphicsEndImageContext()
-		
-		return newImage!
-	}
-	
-	func resizeToScreenSize(image: UIImage)->UIImage{
-		return resizeImage(image: image, newWidth: north.frame.width)
-	}
+
 
 }
 

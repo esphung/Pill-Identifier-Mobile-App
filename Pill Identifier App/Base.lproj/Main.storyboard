@@ -25,7 +25,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3279" y="665"/>
+            <point key="canvasLocation" x="2857" y="663"/>
         </scene>
         <!--Card Display View Controller-->
         <scene sceneID="Yhc-i9-6bq">
@@ -43,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bw6-2O-c17" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2609" y="666"/>
+            <point key="canvasLocation" x="2137" y="663"/>
         </scene>
         <!--Test View Controller-->
         <scene sceneID="66T-mf-nhQ">
@@ -63,6 +63,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxt-Nw-bni" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2944.8000000000002" y="-27.436281859070466"/>
+        </scene>
+        <!--Results Table View Controller-->
+        <scene sceneID="Svs-Bh-MdI">
+            <objects>
+                <tableViewController storyboardIdentifier="resultsTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hHQ-8A-Gf3" customClass="ResultsTableViewController" customModule="Pill_Identifier_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="03x-3a-eqK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customCell" id="cdp-bs-Xz5" customClass="TableViewCell1" customModule="Pill_Identifier_App" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cdp-bs-Xz5" id="cLq-9c-Qgi">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hHQ-8A-Gf3" id="agr-3o-fbu"/>
+                            <outlet property="delegate" destination="hHQ-8A-Gf3" id="xI0-uf-PP2"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ylj-qS-jsR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3583" y="663"/>
         </scene>
         <!--My Navigation Controller-->
         <scene sceneID="xLU-oe-EDw">

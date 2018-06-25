@@ -22,6 +22,11 @@
 		5E49D4FD20D8FFCF002C8469 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */; };
 		5E575F1620D6378300B94C16 /* UploadFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E575F1520D6378300B94C16 /* UploadFormViewController.swift */; };
 		5EF7DD4A20E14A2700EF5F2E /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7DD4920E14A2700EF5F2E /* MyNavigationController.swift */; };
+		5EF7DD4E20E18AB500EF5F2E /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */; };
+		5EF7DD5120E18BEE00EF5F2E /* TableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7DD4F20E18BEE00EF5F2E /* TableViewCell1.swift */; };
+		5EF7DD5220E18BEE00EF5F2E /* TableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF7DD5020E18BEE00EF5F2E /* TableViewCell1.xib */; };
+		5EF7DD5520E18C9E00EF5F2E /* TableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7DD5320E18C9E00EF5F2E /* TableViewCell2.swift */; };
+		5EF7DD5620E18C9E00EF5F2E /* TableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF7DD5420E18C9E00EF5F2E /* TableViewCell2.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +81,11 @@
 		5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		5E575F1520D6378300B94C16 /* UploadFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFormViewController.swift; sourceTree = "<group>"; };
 		5EF7DD4920E14A2700EF5F2E /* MyNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
+		5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
+		5EF7DD4F20E18BEE00EF5F2E /* TableViewCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell1.swift; sourceTree = "<group>"; };
+		5EF7DD5020E18BEE00EF5F2E /* TableViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell1.xib; sourceTree = "<group>"; };
+		5EF7DD5320E18C9E00EF5F2E /* TableViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell2.swift; sourceTree = "<group>"; };
+		5EF7DD5420E18C9E00EF5F2E /* TableViewCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell2.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +144,11 @@
 				5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */,
 				18F57B851E992E0A0013221F /* AppDelegate.swift */,
 				18F57B891E992E0A0013221F /* Main.storyboard */,
+				5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */,
+				5EF7DD4F20E18BEE00EF5F2E /* TableViewCell1.swift */,
+				5EF7DD5020E18BEE00EF5F2E /* TableViewCell1.xib */,
+				5EF7DD5320E18C9E00EF5F2E /* TableViewCell2.swift */,
+				5EF7DD5420E18C9E00EF5F2E /* TableViewCell2.xib */,
 				18F57B8C1E992E0A0013221F /* Assets.xcassets */,
 				18F57B8E1E992E0A0013221F /* LaunchScreen.storyboard */,
 				5E49D4EA20D837E0002C8469 /* Globals.swift */,
@@ -284,9 +299,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EF7DD5220E18BEE00EF5F2E /* TableViewCell1.xib in Resources */,
 				18F57B901E992E0A0013221F /* LaunchScreen.storyboard in Resources */,
 				5E49D4FB20D89618002C8469 /* sample.json in Resources */,
 				18F57B8D1E992E0A0013221F /* Assets.xcassets in Resources */,
+				5EF7DD5620E18C9E00EF5F2E /* TableViewCell2.xib in Resources */,
 				18F57B8B1E992E0A0013221F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,13 +329,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EF7DD5520E18C9E00EF5F2E /* TableViewCell2.swift in Sources */,
 				5E49D4F120D851EA002C8469 /* ViewController.swift in Sources */,
 				5E49D4F920D87BCE002C8469 /* CardDisplayViewController.swift in Sources */,
 				5E49D4E920D836DB002C8469 /* Utility.swift in Sources */,
+				5EF7DD4E20E18AB500EF5F2E /* ResultsTableViewController.swift in Sources */,
 				5EF7DD4A20E14A2700EF5F2E /* MyNavigationController.swift in Sources */,
 				18F57B861E992E0A0013221F /* AppDelegate.swift in Sources */,
 				5E49D4EB20D837E0002C8469 /* Globals.swift in Sources */,
 				5E49D4F720D87713002C8469 /* NorthSouthViewController.swift in Sources */,
+				5EF7DD5120E18BEE00EF5F2E /* TableViewCell1.swift in Sources */,
 				5E49D4FD20D8FFCF002C8469 /* TestViewController.swift in Sources */,
 				5E575F1620D6378300B94C16 /* UploadFormViewController.swift in Sources */,
 			);
