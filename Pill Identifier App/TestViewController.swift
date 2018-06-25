@@ -36,7 +36,7 @@ class TestViewController: NorthSouthViewController {
 			action: #selector(uploadPageBtnTapped),
 			for: .touchUpInside)
 		
-		uploadPageBtn.setTitle("Upload Page", for: .normal)
+		uploadPageBtn.setTitle("Search Page", for: .normal)
 
 		// set up displayPageBtn
 		displayPageBtn =  UIButton(frame: CGRect(

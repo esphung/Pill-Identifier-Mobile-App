@@ -23,6 +23,7 @@ class CardDisplayViewController: NorthSouthViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		setNavigationBar()
 		// begin set up here
 		
     }
@@ -51,7 +52,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		// ============ load image
 		imageName = "against.jpg"
 		image = UIImage(named: imageName)
-		self.imageView = makeDisplayImage(image: image)
+		self.imageView = makeDisplayImage(image: image!)
 		self.north.addSubview(imageView)
 		
     }// end layouts did load

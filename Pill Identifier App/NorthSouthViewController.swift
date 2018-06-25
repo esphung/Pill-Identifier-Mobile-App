@@ -8,6 +8,8 @@
 
 import UIKit.UIViewController
 
+
+
 class NorthSouthViewController: UIViewController {
 
 	// set up view layout
@@ -38,24 +40,32 @@ class NorthSouthViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
-		
+
 		let myView = UIView()
-		myView.translatesAutoresizingMaskIntoConstraints = false
-		view.addSubview(myView)
+		self.view.addSubview(myView)
 		self.myView  =  myView
 		
 		let north = UIView()
-		north.translatesAutoresizingMaskIntoConstraints = false
 		self.view.addSubview(north)
 		self.north = north
 		
 		let south = UIView()
-		south.translatesAutoresizingMaskIntoConstraints = false
 		self.view.addSubview(south)
 		self.south = south
 		
-		setViewContraints()
-		setNavigationBar()
+		let imageView = UIImageView(frame: CGRect(
+			x: myListIndent,
+			y: myListPadTop,
+			width: north.frame.width * 0.9,
+			height: north.frame.height * 0.9))
+		imageView.image = image
+		imageView.layer.borderWidth = myBorders
+		imageView.contentMode = UIView.ContentMode.scaleAspectFill
+		self.north.addSubview(imageView)
+
+		
+		setUpContraints()
+		//setNavigationBar()
 		showDebug()
 
 	}
@@ -76,7 +86,7 @@ class NorthSouthViewController: UIViewController {
 		navigationItem.title = self.restorationIdentifier!
 		
 		// Create left and right button for navigation item
-		let leftButton =  UIBarButtonItem(title: "Back", style:   .plain, target: self, action: #selector(btn_clicked))
+		let leftButton =  UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(btn_clicked))
 		//let rightButton = UIBarButtonItem(title: "Right", style: .plain, target: self, action: nil)
 		
 		// Create two buttons for the navigation item
@@ -88,54 +98,38 @@ class NorthSouthViewController: UIViewController {
 		
 		// Make the navigation bar a subview of the current view controller
 		self.view.addSubview(navigationBar)
-		
 	}
 	
 	@objc func btn_clicked() {
 		performSegueToReturnBack()
 	}
 	
-	func setViewContraints(){
+	func setUpContraints(){
+		
+		myView.translatesAutoresizingMaskIntoConstraints = false//<- never forget this line
 		
 		// myView Contraints
-		myView.centerXAnchor.constraint(
-			equalTo: view.centerXAnchor).isActive = true
-		myView.centerYAnchor.constraint(
-			equalTo: view.centerYAnchor).isActive = true
-		myView.widthAnchor.constraint(
-			equalToConstant: screenWidth * 0.95).isActive = true
-		myView.heightAnchor.constraint(
-			equalToConstant: screenHeight *  0.9).isActive = true
+		myView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+		myView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+		myView.widthAnchor.constraint(equalToConstant: screenWidth * 0.95).isActive = true
+		myView.heightAnchor.constraint(equalToConstant: screenHeight *  0.9).isActive = true
 		
-		// north constraints to myView
-		north.centerXAnchor.constraint(
-			equalTo: myView.centerXAnchor).isActive = true
-		north.centerYAnchor.constraint(
-			equalTo: myView.centerYAnchor).isActive = true
-
-		north.widthAnchor.constraint(
-			equalToConstant: myView.frame.width * 0.95).isActive = true
-		north.heightAnchor.constraint(
-			equalToConstant: myView.frame.height *  0.95).isActive = true
-
+		/*
+		north.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+		north.heightAnchor.constraint(equalToConstant: 200).isActive = true
+		north.bottomAnchor.constraint(equalTo: south.topAnchor,constant: -10).isActive = true
 		
-		// south constraints to myView
-		south.centerXAnchor.constraint(
-			equalTo: myView.centerXAnchor).isActive = true
-		south.centerYAnchor.constraint(
-			equalTo: myView.centerYAnchor).isActive = true
+		south.bottomAnchor.constraint(
+			equalTo: bottomLayoutGuide.topAnchor,
+			constant: -20).isActive = true
 
-		south.widthAnchor.constraint(
-			equalToConstant: myView.frame.width * 0.95).isActive = true
-		south.heightAnchor.constraint(
-			equalToConstant: myView.frame.height *  0.95).isActive = true
+		*/
 
-		
-		
 	}
 	
 	func showFrames() {
 		// show debug view canvases
+		//myView.backgroundColor = UIColor(white: 0.25, alpha: 0.5)
 		myView.backgroundColor = UIColor.blue
 		myView.layer.borderColor = UIColor.black.cgColor
 		myView.layer.borderWidth = 2.0
@@ -173,8 +167,8 @@ class NorthSouthViewController: UIViewController {
 			y: myListPadTop,
 			width: north.frame.width * 0.9,
 			height: north.frame.height * 0.9))
-		//imageView.image = image
-		imageView.image = resizeToScreenSize(image: image)
+		imageView.image = image
+		//imageView.image = resizeToScreenSize(image: image)
 		imageView.layer.borderWidth = myBorders
 		imageView.contentMode = UIView.ContentMode.scaleAspectFill
 		
@@ -209,4 +203,5 @@ extension UIViewController {
 			self.dismiss(animated: true, completion: nil)
 		}
 	}
+	
 }

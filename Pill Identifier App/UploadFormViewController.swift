@@ -38,6 +38,7 @@ UINavigationControllerDelegate {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		setNavigationBar()
 		/*
 		//Looks for single or multiple taps.
 		let tap: UITapGestureRecognizer = UITapGestureRecognizer(
@@ -141,6 +142,7 @@ UINavigationControllerDelegate {
 			for: .touchUpInside)
 		north.addSubview(imageBtn)
 	
+		// ====================  set up PILLImageVIEW (NORTH VIEW)
 		// ============ load image
 		imageName = "250x250placeholder.jpg"
 		image = UIImage(named: imageName)
