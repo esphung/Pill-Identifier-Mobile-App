@@ -26,7 +26,7 @@ class NorthSouthViewController: UIViewController {
 			x: (myView.frame.width * 0.05),
 			y: (myView.frame.height * 0.1),
 			width: (myView.frame.width * 0.95),
-			height: ((myView.frame.height)/2.2) )
+			height: ((myView.frame.height)/2) )
 	}
 	
 	var southFrame: CGRect {
@@ -34,7 +34,7 @@ class NorthSouthViewController: UIViewController {
 			x: (myView.frame.width * 0.05),
 			y: (myView.frame.maxY/1.8),
 			width: (northFrame.width),
-			height: (myView.frame.height)/2.2)
+			height: (myView.frame.height)/2)
 	}
 	
 	override func viewDidLoad() {
@@ -170,7 +170,7 @@ class NorthSouthViewController: UIViewController {
 		imageView.image = image
 		//imageView.image = resizeToScreenSize(image: image)
 		imageView.layer.borderWidth = myBorders
-		imageView.contentMode = UIView.ContentMode.scaleAspectFill
+		imageView.contentMode = UIView.ContentMode.scaleAspectFit
 		
 		return imageView
 	}

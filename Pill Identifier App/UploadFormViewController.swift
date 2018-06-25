@@ -104,7 +104,7 @@ UINavigationControllerDelegate {
 		takePictureBtn = UIButton(frame: CGRect(
 			x: myListIndent,
 			y: ((south.frame.height)  * 0.0),
-			width: (south.frame.width * 0.90),
+			width: (south.frame.width * 0.9),
 			height: myDefaultTextFieldHeight))
 		takePictureBtn.layer.borderWidth = 2.0
 		takePictureBtn.setTitleColor(UIColor.black, for: .normal)
@@ -127,12 +127,12 @@ UINavigationControllerDelegate {
 				x: myListIndent,
 				y: myListPadTop,
 				width: north.frame.width * 0.9,
-				height: north.frame.height * 0.7))
-		imageBtn.layer.borderWidth = 2.0
+				height: north.frame.height * 0.9))
+		imageBtn.layer.borderWidth = myBorders
 		imageBtn.setTitleColor(UIColor.black, for: .normal)
 		imageBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 		imageBtn.setTitleColor(UIColor.white, for: .highlighted)
-		imageBtn.setTitle("Pick Image", for: .normal)
+		imageBtn.setTitle("", for: .normal)
 		imageBtn.titleLabel?.font =  UIFont.systemFont(
 			ofSize: myDefaultTextFontSize,
 			weight: .light)
@@ -140,23 +140,15 @@ UINavigationControllerDelegate {
 			self,
 			action: #selector(self.imageButtonTapped),
 			for: .touchUpInside)
-		north.addSubview(imageBtn)
-	
-		// ====================  set up PILLImageVIEW (NORTH VIEW)
-		// ============ load image
+		
 		imageName = "250x250placeholder.jpg"
 		image = UIImage(named: imageName)
 		imageView = makeDisplayImage(image: image)
-		north.addSubview(imageView)
+
 		
-		/*
-		pillImageView = UIImageView(frame: CGRect(
-			x: myListIndent,
-			y: myListPadTop,
-			width: north.frame.width * 0.9,
-			height: north.frame.height * 0.7))
-		*/
-		//north.addSubview(pillImageView)
+		
+		north.addSubview(imageView)
+		north.addSubview(imageBtn)
 		
 		// ================================  Set Up PICK SHAPE Button
 		pickShapeBtn = UIButton(frame: CGRect(
