@@ -1,20 +1,24 @@
 PODS:
   - ActionSheetPicker-3.0 (2.3.0)
+  - SwiftyButton (0.8.1)
   - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
+  - SwiftyButton
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ActionSheetPicker-3.0
+    - SwiftyButton
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
+  SwiftyButton: e32bdc54d54df5caf9d2acbec205c370e1d23d6f
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: eccc3cca25a9ba0d6b3cf1d324baef2272bd5ce7
+PODFILE CHECKSUM: d1e456de1e15bd157fc9a1d5120e43d0010d5cc3
 
 COCOAPODS: 1.5.3

@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Override point for customization after application launch.
 		// Sets background to a blank/empty image
 		
+
+
+		
 		// Create a new window with the size of the current window and set it as our main window
 		self.window = UIWindow(frame: UIScreen.main.bounds)
 		

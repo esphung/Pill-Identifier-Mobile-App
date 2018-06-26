@@ -7,21 +7,21 @@
 //
 
 import UIKit.UIViewController
-
-//let home: TestViewController = storyboard?.instantiateViewController(withIdentifier: "home") as! TestViewController
+import SwiftyButton
 
 class TestViewController: NorthSouthViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
 		//setBackgroundImage(sender: self, filename: "background.png")
+		
 
 		var firstBtn = UIButton()
-		var debugBtn = 		UIButton()
+		var debugBtn: 		FlatButton!
 		var resultsBtn = 	UIButton()
-		var displayPageBtn = UIButton()
-		
+		var displayBtn = UIButton()
+
 		// set up firstBtn
 		firstBtn =  UIButton(frame: CGRect(
 			x: myListIndent,
@@ -41,24 +41,24 @@ class TestViewController: NorthSouthViewController {
 		
 		firstBtn.setTitle("Upload Page", for: .normal)
 
-		// set up displayPageBtn
-		displayPageBtn =  UIButton(frame: CGRect(
+		// set up displayBtn
+		displayBtn =  UIButton(frame: CGRect(
 			x: myListIndent,
 			y: screenHeight * 0.125,
 			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
-		displayPageBtn.layer.borderWidth = 2.0;
-		displayPageBtn.backgroundColor = UIColor.red
-		displayPageBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+		displayBtn.layer.borderWidth = 2.0;
+		displayBtn.backgroundColor = UIColor.red
+		displayBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
 
-		displayPageBtn.titleLabel?.font =  UIFont.systemFont(
+		displayBtn.titleLabel?.font =  UIFont.systemFont(
 			ofSize: 32, weight: .light)
-		displayPageBtn.addTarget(
+		displayBtn.addTarget(
 			self,
 			action: #selector(cardDisplayPageBtnTapped),
 			for: .touchUpInside)
 
-		displayPageBtn.setTitle("Display Page", for: .normal)
+		displayBtn.setTitle("Display Page", for: .normal)
 		
 		// set up resultsBtn
 		resultsBtn =  UIButton(frame: CGRect(
@@ -79,14 +79,14 @@ class TestViewController: NorthSouthViewController {
 			for: .touchUpInside)
 		
 		// set up debugBtn
-		debugBtn =  UIButton(frame: CGRect(
+		debugBtn =  FlatButton(frame: CGRect(
 			x: myListIndent,
 			y: screenHeight * 0.325,
 			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		debugBtn.layer.borderWidth = 2.0;
-		debugBtn.backgroundColor = UIColor.red
-		debugBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+		//debugBtn.backgroundColor = UIColor.red
+		//debugBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
 		
 		if isDebugOn() {
 			debugBtn.setTitle("Debug On", for: .normal)
@@ -99,17 +99,19 @@ class TestViewController: NorthSouthViewController {
 			self,
 			action: #selector(debugBtnTapped),
 			for: .touchUpInside)
+		
 
 		north.addSubview(firstBtn)
-		north.addSubview(displayPageBtn)
+		north.addSubview(displayBtn)
 		north.addSubview(resultsBtn)
 		north.addSubview(debugBtn)
 		
-		south.removeFromSuperview()
-		
+		//south.removeFromSuperview(
 		
 		
 	}// end view did load
+	
+	@objc func buttonDidPress(){}
 
 	@objc func resultsBtnTapped(Sender: UIButton) {
 		displayResultsPage()

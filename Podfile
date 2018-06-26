@@ -7,6 +7,7 @@ target 'Pill Identifier App' do
 
   pod 'SwiftyJSON', '~> 4.0'
   pod 'ActionSheetPicker-3.0'
+  pod 'SwiftyButton'
 
 
   # Pods for Pill Identifier App

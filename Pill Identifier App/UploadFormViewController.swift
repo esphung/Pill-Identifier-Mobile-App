@@ -6,7 +6,6 @@
 import UIKit.UIViewController
 import ActionSheetPicker_3_0
 
-
 class UploadFormViewController:
 NorthSouthViewController,
 UIImagePickerControllerDelegate,
