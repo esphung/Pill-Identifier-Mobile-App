@@ -1,0 +1,6 @@
+framework module Pods_Pill_Identifier_AppUITests {
+  umbrella header "Pods-Pill Identifier AppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

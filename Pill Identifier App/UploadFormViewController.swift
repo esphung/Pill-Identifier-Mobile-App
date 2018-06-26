@@ -4,6 +4,7 @@
 // `YbodP' 88     88ood8  YbodP  dP""""Yb 8888Y"
 
 import UIKit.UIViewController
+import ActionSheetPicker_3_0
 
 class UploadFormViewController:
 NorthSouthViewController,
@@ -155,10 +156,8 @@ UINavigationControllerDelegate {
 			weight: .light)
 		pickImprintBtn.addTarget(
 			self,
-			action: #selector(pickColorBtnTapped),
+			action: #selector(pickImprintBtnTapped),
 			for: .touchUpInside)
-		
-		south.addSubview(pickImprintBtn)
 
 		// ====================================  Set Up Submit Button
 		submitButton = UIButton(frame: CGRect(
@@ -180,6 +179,7 @@ UINavigationControllerDelegate {
 			for: .touchUpInside)
 		submitButton.isEnabled = false
 
+		south.addSubview(pickImprintBtn)
 		south.addSubview(submitButton)
 
 	}
@@ -187,16 +187,61 @@ UINavigationControllerDelegate {
 	@objc func takePictureBtnTapped(){
 		showActionSheet()
 	}
-	
-	@objc func pickColorBtnTapped(){
-	}
 
-	@objc func pickShapeBtnTapped(){
-	}
+	@objc func pickShapeBtnTapped(sender: UIButton){
+		
+		ActionSheetMultipleStringPicker.show(
+			withTitle: "Pick a Shape",
+			rows: [
+				shapes
+			],
+			initialSelection: [0],
+			doneBlock: {
+				picker, indexes, values in
+				//print("shape = \(values!)")
+				//print("indexes = \(indexes!)")
+				let value = shapes[indexes?.first as! Int]
+				let txt = "SHAPE: " + String(value)
+				print(txt)
+				sender.setTitle(txt,for: .normal)
+				sender.isEnabled = false
+				
+				return
+		},
+			cancel: {ActionMultipleStringCancelBlock in return },
+			origin: sender)
+	}// end pick shape
+	
+	@objc func pickColorBtnTapped(sender: UIButton){
+		ActionSheetMultipleStringPicker.show(
+			withTitle: "Pick a Color",
+			rows: [
+				colors
+			],
+			initialSelection: [0, 0],
+			doneBlock: {
+				picker, indexes, values in
+				//print("color = \(values!)")
+				//print("indexes = \(indexes!)")
+				let value = colors[indexes?.first as! Int]
+				let txt = "SHAPE: " + String(value)
+				print(txt)
+				sender.setTitle(txt,for: .normal)
+				sender.isEnabled = false
+				
+				return
+		},
+			cancel: {ActionMultipleStringCancelBlock in return },
+			origin: sender)
+	}// end pick color
 
 	func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
 		self.view.endEditing(true)
 		return true
+	}
+	
+	@objc func pickImprintBtnTapped(sender: UIButton) {
+		print("Imprint Button")
 	}
 	
 	func submit() {
@@ -254,6 +299,8 @@ UINavigationControllerDelegate {
 			UIImagePickerController.InfoKey.originalImage] as? UIImage {
 			imageView.image  = pickedImage
 			self.submitButton.isEnabled = true
+			takePictureBtn.setTitle("PICTURE: SELECTED", for: .normal)
+			takePictureBtn.isEnabled = false
 		}
 		dismiss(animated: true, completion: nil)
 	}
@@ -304,7 +351,7 @@ UINavigationControllerDelegate {
 		
 		self.present(actionSheet, animated: true, completion: nil)
 	}
-	
+
 
 }// end view controller class definition
 
