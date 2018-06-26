@@ -94,13 +94,13 @@ class NorthSouthViewController: UIViewController {
 		
 	}
 	
-	func setNavigationBar() {
+	func setNavigationBar(title: String) {
 		let navigationBar = UINavigationBar(frame: CGRect(
 			x: 0, y: screenHeight/24, width: screenWidth, height: 44))
 	
 		// Create a navigation item with a title
 		let navigationItem = UINavigationItem()
-		navigationItem.title = self.restorationIdentifier!
+		navigationItem.title = title
 		
 		// Create left and right button for navigation item
 		let leftButton =  UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(btn_clicked))
@@ -206,9 +206,9 @@ extension UIViewController {
 		if let swipeGesture = gesture as? UISwipeGestureRecognizer {
 			switch swipeGesture.direction {
 			case UISwipeGestureRecognizer.Direction.right:
+				self.dismiss(animated: true, completion: nil)
 				print("Swiped right")
 			case UISwipeGestureRecognizer.Direction.down:
-				self.dismiss(animated: true, completion: nil)
 				print("Swiped down")
 			case UISwipeGestureRecognizer.Direction.left:
 				print("Swiped left")

@@ -32,9 +32,6 @@ public let colorKeys = ["BULLET", "CAPSULE", "CLOVER", "DIAMOND", "DOUBLE CIRCLE
 
 
 
-
-
-
 // test harness
 struct TestData {
 	var name = """

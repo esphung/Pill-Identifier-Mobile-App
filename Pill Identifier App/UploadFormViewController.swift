@@ -38,7 +38,7 @@ UINavigationControllerDelegate {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		//setNavigationBar()
+		setNavigationBar(title: "Search Pill")
 		/*
 		//Looks for single or multiple taps.
 		let tap: UITapGestureRecognizer = UITapGestureRecognizer(

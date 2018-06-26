@@ -54,7 +54,7 @@ class ResultsTableViewController: UITableViewController {
 		swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
 		self.view.addGestureRecognizer(swipeLeft)
 		
-		/*
+		
 		refreshControl = UIRefreshControl()
 		refreshControl?.attributedTitle = NSAttributedString(
 			string: "Pull Refresh")
@@ -64,13 +64,12 @@ class ResultsTableViewController: UITableViewController {
 			for: UIControl.Event.valueChanged)
 		
 		tableView.addSubview(self.refreshControl!)
-		*/
+
 
     }// end viewdidload
 	
 	@objc func refresh() {
 		//  do stuff on swipe down refresh
-		self.dismiss(animated: true, completion: nil)
 		self.refreshControl?.endRefreshing()
 	}
 
@@ -212,9 +211,9 @@ class ResultsTableViewController: UITableViewController {
 		if let swipeGesture = gesture as? UISwipeGestureRecognizer {
 			switch swipeGesture.direction {
 			case UISwipeGestureRecognizer.Direction.right:
+				self.dismiss(animated: true, completion: nil)
 				print("Swiped right")
 			case UISwipeGestureRecognizer.Direction.down:
-				self.dismiss(animated: true, completion: nil)
 				print("Swiped down")
 			case UISwipeGestureRecognizer.Direction.left:
 				print("Swiped left")

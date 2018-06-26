@@ -21,7 +21,6 @@
 		5E49D4FB20D89618002C8469 /* sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E49D4FA20D89618002C8469 /* sample.json */; };
 		5E49D4FD20D8FFCF002C8469 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */; };
 		5E575F1620D6378300B94C16 /* UploadFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E575F1520D6378300B94C16 /* UploadFormViewController.swift */; };
-		5EF7DD4A20E14A2700EF5F2E /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7DD4920E14A2700EF5F2E /* MyNavigationController.swift */; };
 		5EF7DD4E20E18AB500EF5F2E /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */; };
 		5EF7DD5120E18BEE00EF5F2E /* TableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7DD4F20E18BEE00EF5F2E /* TableViewCell1.swift */; };
 		5EF7DD5220E18BEE00EF5F2E /* TableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF7DD5020E18BEE00EF5F2E /* TableViewCell1.xib */; };
@@ -80,7 +79,7 @@
 		5E49D4FA20D89618002C8469 /* sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample.json; sourceTree = "<group>"; };
 		5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		5E575F1520D6378300B94C16 /* UploadFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFormViewController.swift; sourceTree = "<group>"; };
-		5EF7DD4920E14A2700EF5F2E /* MyNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
+		5E7AC2A320E1C1020090AC7D /* Pill Identifier App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Pill Identifier App.entitlements"; sourceTree = "<group>"; };
 		5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		5EF7DD4F20E18BEE00EF5F2E /* TableViewCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell1.swift; sourceTree = "<group>"; };
 		5EF7DD5020E18BEE00EF5F2E /* TableViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell1.xib; sourceTree = "<group>"; };
@@ -138,9 +137,10 @@
 		18F57B841E992E0A0013221F /* Pill Identifier App */ = {
 			isa = PBXGroup;
 			children = (
+				5E7AC2A320E1C1020090AC7D /* Pill Identifier App.entitlements */,
 				5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */,
-				5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */,
 				5E575F1520D6378300B94C16 /* UploadFormViewController.swift */,
+				5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */,
 				5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */,
 				18F57B851E992E0A0013221F /* AppDelegate.swift */,
 				18F57B891E992E0A0013221F /* Main.storyboard */,
@@ -155,7 +155,6 @@
 				5E49D4E820D836DB002C8469 /* Utility.swift */,
 				5E49D4F020D851EA002C8469 /* ViewController.swift */,
 				18F57B911E992E0A0013221F /* Info.plist */,
-				5EF7DD4920E14A2700EF5F2E /* MyNavigationController.swift */,
 			);
 			path = "Pill Identifier App";
 			sourceTree = "<group>";
@@ -257,6 +256,11 @@
 						DevelopmentTeam = 5L5HNZENM9;
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 0;
+							};
+						};
 					};
 					18F57B951E992E0A0013221F = {
 						CreatedOnToolsVersion = 8.3;
@@ -334,7 +338,6 @@
 				5E49D4F920D87BCE002C8469 /* CardDisplayViewController.swift in Sources */,
 				5E49D4E920D836DB002C8469 /* Utility.swift in Sources */,
 				5EF7DD4E20E18AB500EF5F2E /* ResultsTableViewController.swift in Sources */,
-				5EF7DD4A20E14A2700EF5F2E /* MyNavigationController.swift in Sources */,
 				18F57B861E992E0A0013221F /* AppDelegate.swift in Sources */,
 				5E49D4EB20D837E0002C8469 /* Globals.swift in Sources */,
 				5E49D4F720D87713002C8469 /* NorthSouthViewController.swift in Sources */,
@@ -514,11 +517,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5L5HNZENM9;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Pill Identifier App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.phungtech.Pill-Identifier-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.2;
 			};
@@ -529,11 +535,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5L5HNZENM9;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Pill Identifier App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.phungtech.Pill-Identifier-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.2;
 			};
