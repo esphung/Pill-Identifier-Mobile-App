@@ -66,6 +66,22 @@ class NorthSouthViewController: UIViewController {
 		setUpContraints()
 		//setNavigationBar()
 		showDebug()
+		
+		let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+		swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+		self.view.addGestureRecognizer(swipeRight)
+		
+		let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+		swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+		self.view.addGestureRecognizer(swipeDown)
+		
+		let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+		swipeUp.direction = UISwipeGestureRecognizer.Direction.up
+		self.view.addGestureRecognizer(swipeUp)
+		
+		let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+		swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+		self.view.addGestureRecognizer(swipeLeft)
 
 	}
 	
@@ -113,7 +129,7 @@ class NorthSouthViewController: UIViewController {
 		myView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		myView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 		myView.widthAnchor.constraint(equalToConstant: screenWidth * 0.95).isActive = true
-		myView.heightAnchor.constraint(equalToConstant: screenHeight *  0.95).isActive = true
+		myView.heightAnchor.constraint(equalToConstant: screenHeight *  0.9).isActive = true
 		
 		north.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
 		north.heightAnchor.constraint(equalToConstant: 200).isActive = true
@@ -186,4 +202,21 @@ extension UIViewController {
 		}
 	}
 	
+	@objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+		if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+			switch swipeGesture.direction {
+			case UISwipeGestureRecognizer.Direction.right:
+				print("Swiped right")
+			case UISwipeGestureRecognizer.Direction.down:
+				self.dismiss(animated: true, completion: nil)
+				print("Swiped down")
+			case UISwipeGestureRecognizer.Direction.left:
+				print("Swiped left")
+			case UISwipeGestureRecognizer.Direction.up:
+				print("Swiped up")
+			default:
+				break
+			}
+		}
+	}
 }

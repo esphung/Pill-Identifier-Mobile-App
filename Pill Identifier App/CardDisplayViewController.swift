@@ -23,7 +23,7 @@ class CardDisplayViewController: NorthSouthViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		setNavigationBar()
+		//setNavigationBar()
 		// begin set up here
 		
     }

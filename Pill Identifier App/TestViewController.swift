@@ -14,6 +14,8 @@ class TestViewController: NorthSouthViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		//setBackgroundImage(sender: self, filename: "background.png")
 
 		var firstBtn = UIButton()
 		var debugBtn = 		UIButton()
@@ -104,6 +106,8 @@ class TestViewController: NorthSouthViewController {
 		north.addSubview(debugBtn)
 		
 		south.removeFromSuperview()
+		
+		
 		
 	}// end view did load
 

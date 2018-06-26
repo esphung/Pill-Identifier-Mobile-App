@@ -38,6 +38,23 @@ class ResultsTableViewController: UITableViewController {
 			cellData(cell: 2, text:  "world", image: #imageLiteral(resourceName: "test"))
 		]
 		
+		let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+		swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+		self.view.addGestureRecognizer(swipeRight)
+		
+		let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+		swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+		self.view.addGestureRecognizer(swipeDown)
+		
+		let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+		swipeUp.direction = UISwipeGestureRecognizer.Direction.up
+		self.view.addGestureRecognizer(swipeUp)
+		
+		let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+		swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+		self.view.addGestureRecognizer(swipeLeft)
+		
+		/*
 		refreshControl = UIRefreshControl()
 		refreshControl?.attributedTitle = NSAttributedString(
 			string: "Pull Refresh")
@@ -47,6 +64,7 @@ class ResultsTableViewController: UITableViewController {
 			for: UIControl.Event.valueChanged)
 		
 		tableView.addSubview(self.refreshControl!)
+		*/
 
     }// end viewdidload
 	
@@ -189,6 +207,24 @@ class ResultsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+	
+	@objc override func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+		if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+			switch swipeGesture.direction {
+			case UISwipeGestureRecognizer.Direction.right:
+				print("Swiped right")
+			case UISwipeGestureRecognizer.Direction.down:
+				self.dismiss(animated: true, completion: nil)
+				print("Swiped down")
+			case UISwipeGestureRecognizer.Direction.left:
+				print("Swiped left")
+			case UISwipeGestureRecognizer.Direction.up:
+				print("Swiped up")
+			default:
+				break
+			}
+		}
+	}
 
 }
 
