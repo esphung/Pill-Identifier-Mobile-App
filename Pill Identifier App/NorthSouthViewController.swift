@@ -9,7 +9,6 @@
 import UIKit.UIViewController
 
 
-
 class NorthSouthViewController: UIViewController {
 
 	// set up view layout

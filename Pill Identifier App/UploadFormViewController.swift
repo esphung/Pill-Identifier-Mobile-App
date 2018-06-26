@@ -6,6 +6,7 @@
 import UIKit.UIViewController
 import ActionSheetPicker_3_0
 
+
 class UploadFormViewController:
 NorthSouthViewController,
 UIImagePickerControllerDelegate,
@@ -37,6 +38,7 @@ UINavigationControllerDelegate {
 	var pickShapeBtn:  	UIButton!
 	var pickImprintBtn:	UIButton!
 	var takePictureBtn:	UIButton!
+	var sampleTextField: UITextField!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -159,6 +161,20 @@ UINavigationControllerDelegate {
 			action: #selector(pickImprintBtnTapped),
 			for: .touchUpInside)
 
+		sampleTextField =  UITextField(frame: CGRect(
+			x: myListIndent,
+			y: ((south.frame.height)  * 0.6),
+			width: (south.frame.width * 0.90),
+			height: myDefaultTextFieldHeight))
+		sampleTextField.placeholder = "Enter text here"
+		sampleTextField.layer.borderWidth = 2.0
+		sampleTextField.font = UIFont.systemFont(ofSize: 16)
+		sampleTextField.autocorrectionType = UITextAutocorrectionType.no
+		sampleTextField.keyboardType = UIKeyboardType.default
+		sampleTextField.returnKeyType = UIReturnKeyType.done
+		
+		
+
 		// ====================================  Set Up Submit Button
 		submitButton = UIButton(frame: CGRect(
 			x: myListIndent,
@@ -179,7 +195,10 @@ UINavigationControllerDelegate {
 			for: .touchUpInside)
 		submitButton.isEnabled = false
 
+
+
 		south.addSubview(pickImprintBtn)
+		//south.addSubview(sampleTextField)
 		south.addSubview(submitButton)
 
 	}
@@ -201,7 +220,7 @@ UINavigationControllerDelegate {
 				//print("shape = \(values!)")
 				//print("indexes = \(indexes!)")
 				let value = shapes[indexes?.first as! Int]
-				let txt = "SHAPE: " + String(value)
+				let txt = ("Shape: " + String(value)).uppercased()
 				print(txt)
 				sender.setTitle(txt,for: .normal)
 				sender.isEnabled = false
@@ -224,7 +243,7 @@ UINavigationControllerDelegate {
 				//print("color = \(values!)")
 				//print("indexes = \(indexes!)")
 				let value = colors[indexes?.first as! Int]
-				let txt = "SHAPE: " + String(value)
+				let txt = ("Color: " + String(value)).uppercased()
 				print(txt)
 				sender.setTitle(txt,for: .normal)
 				sender.isEnabled = false
@@ -299,7 +318,7 @@ UINavigationControllerDelegate {
 			UIImagePickerController.InfoKey.originalImage] as? UIImage {
 			imageView.image  = pickedImage
 			self.submitButton.isEnabled = true
-			takePictureBtn.setTitle("PICTURE: SELECTED", for: .normal)
+			takePictureBtn.setTitle(("Picture: Selected").uppercased(), for: .normal)
 			takePictureBtn.isEnabled = false
 		}
 		dismiss(animated: true, completion: nil)

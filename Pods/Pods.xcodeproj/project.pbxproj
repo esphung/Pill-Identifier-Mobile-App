@@ -81,15 +81,15 @@
 		0433AFCAEBDD3F51DA43B78AA4DC8780 /* Pods-Pill Identifier AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pill Identifier AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		07B0C4068F8739F67F3A6676E412CAA8 /* Pods-Pill Identifier App-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pill Identifier App-resources.sh"; sourceTree = "<group>"; };
 		08924FCEF7AA19101520E6DBA24D560C /* Pods-Pill Identifier AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pill Identifier AppTests.release.xcconfig"; sourceTree = "<group>"; };
-		0A5462A06EE500C1948160F29E82FB28 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A5462A06EE500C1948160F29E82FB28 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F7892B47AA96F5DC06D8C3ED40676B3 /* ActionSheetPicker-3.0.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ActionSheetPicker-3.0.xcconfig"; sourceTree = "<group>"; };
 		10D75CCF95EC026E102A089CBAA9A1A8 /* Pods-Pill Identifier AppTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pill Identifier AppTests-frameworks.sh"; sourceTree = "<group>"; };
 		12D462BFA1A6B3A81D1475568BB30C68 /* ActionSheetMultipleStringPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetMultipleStringPicker.m; path = Pickers/ActionSheetMultipleStringPicker.m; sourceTree = "<group>"; };
-		185AE24A0CF606560B91DAB7A1191F31 /* Pods_Pill_Identifier_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pill_Identifier_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		185AE24A0CF606560B91DAB7A1191F31 /* Pods_Pill_Identifier_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Pill_Identifier_AppUITests.framework; path = "Pods-Pill Identifier AppUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19937691E8A8016B482C7468558283FF /* Pods-Pill Identifier App-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pill Identifier App-frameworks.sh"; sourceTree = "<group>"; };
 		1D3775F9EAAC6CBA4A4ADD47A6E79A20 /* AbstractActionSheetPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AbstractActionSheetPicker.m; path = Pickers/AbstractActionSheetPicker.m; sourceTree = "<group>"; };
 		1DB65C491E2A8EFA4EA4CDBD49AEC1D1 /* SWActionSheet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWActionSheet.h; path = Pickers/SWActionSheet.h; sourceTree = "<group>"; };
-		1F53D0DF134238B9B6F6C5C441FBF5E8 /* ActionSheetPicker_3_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ActionSheetPicker_3_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F53D0DF134238B9B6F6C5C441FBF5E8 /* ActionSheetPicker_3_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ActionSheetPicker_3_0.framework; path = "ActionSheetPicker-3.0.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2078F16CD7CCCDA067C6990D4AFC6238 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
 		23BB306EB4C25C47CB0B7B7DE8F23CDE /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
 		24AE04D6A9866D34DD660ABAB365647D /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		908E902E026C5C22904CF9014A5604AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		90B2226E5C383F21CE52E1F2EB5DD6DD /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
 		917211BB34523093E474132E7D7F3846 /* ActionSheetMultipleStringPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetMultipleStringPicker.h; path = Pickers/ActionSheetMultipleStringPicker.h; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		942AAEEC54D96E843730A79BFAB6F2D5 /* ActionSheetDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetDatePicker.m; path = Pickers/ActionSheetDatePicker.m; sourceTree = "<group>"; };
 		9494ED60B9612F5294AAF9315636FC4F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97817CEF7FD818ABE1C6A94A7188DB86 /* Pods-Pill Identifier AppTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pill Identifier AppTests-dummy.m"; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		B733FB8D15B10BC8D1C9F07E538DE29A /* Pods-Pill Identifier AppTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Pill Identifier AppTests.modulemap"; sourceTree = "<group>"; };
 		BB2F52D14BD6B8BBDD3D8DF689BE0CB6 /* ActionSheetLocalePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetLocalePicker.h; path = Pickers/ActionSheetLocalePicker.h; sourceTree = "<group>"; };
 		BC2C02191C153C1554B35DEE8B2D09D4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		BC4110112C6F9F5FEA4A5467B7F4202D /* Pods_Pill_Identifier_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pill_Identifier_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC4110112C6F9F5FEA4A5467B7F4202D /* Pods_Pill_Identifier_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Pill_Identifier_App.framework; path = "Pods-Pill Identifier App.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCA8755473C73B5294B940C9F20BF482 /* Pods-Pill Identifier AppUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pill Identifier AppUITests-umbrella.h"; sourceTree = "<group>"; };
 		BF99DF41A4763CD8AB5ABC57B375E9FF /* ActionSheetPicker-3.0-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ActionSheetPicker-3.0-dummy.m"; sourceTree = "<group>"; };
 		C3D24CF281E0F18260858CF42C0A5ABE /* DistancePickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DistancePickerView.m; path = Pickers/DistancePickerView.m; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 		C48B52CCD6209E1025AA91D9B3BBD864 /* ActionSheetCustomPickerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetCustomPickerDelegate.h; path = Pickers/ActionSheetCustomPickerDelegate.h; sourceTree = "<group>"; };
 		CA34FAF4F7A16EB5F86D650A0ADE76CE /* DistancePickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DistancePickerView.h; path = Pickers/DistancePickerView.h; sourceTree = "<group>"; };
 		CAF17FBDFCAE36F451E4B1D158E79F1C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CDAFF49B4C501B81582256F82DEB68CE /* Pods_Pill_Identifier_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pill_Identifier_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDAFF49B4C501B81582256F82DEB68CE /* Pods_Pill_Identifier_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Pill_Identifier_AppTests.framework; path = "Pods-Pill Identifier AppTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFF759C37C4D7BAA9F6218A77DCF208F /* ActionSheetPicker-3.0-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActionSheetPicker-3.0-prefix.pch"; sourceTree = "<group>"; };
 		D18EECBE7A9DE854BEE50B06DE706856 /* Pods-Pill Identifier AppUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pill Identifier AppUITests-frameworks.sh"; sourceTree = "<group>"; };
 		D7E675BE713BDA86BBD4708283927A7F /* Pods-Pill Identifier AppTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pill Identifier AppTests-resources.sh"; sourceTree = "<group>"; };
@@ -266,6 +266,7 @@
 				38F6FCD7F1EA827F755075E8D3D9AECA /* SWActionSheet.m */,
 				042070C39EC227937AC491105917BE73 /* Support Files */,
 			);
+			name = "ActionSheetPicker-3.0";
 			path = "ActionSheetPicker-3.0";
 			sourceTree = "<group>";
 		};
@@ -341,6 +342,7 @@
 				23BB306EB4C25C47CB0B7B7DE8F23CDE /* SwiftyJSON.swift */,
 				093EC1078BA977F95D052E70EC1907C0 /* Support Files */,
 			);
+			name = SwiftyJSON;
 			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
@@ -527,7 +529,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -920,7 +922,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
