@@ -12,13 +12,10 @@ class CardDisplayViewController: NorthSouthViewController {
 	var ndcLabel:	UILabel!
 	var rxcuiLabel:	UILabel!
 	var labelerLabel:	UILabel!
-	
-
 
     override func loadView() {
         super.loadView()
-        self.view.backgroundColor = .white
-		
+        //self.view.backgroundColor = .white
     }
 	
     override func viewDidLoad() {

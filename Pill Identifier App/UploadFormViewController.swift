@@ -17,6 +17,7 @@ UINavigationControllerDelegate {
 	override func loadView() {
 		super.loadView()
 		
+		
 	}// end loadview
 	
 	// input variables
@@ -38,61 +39,9 @@ UINavigationControllerDelegate {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setNavigationBar(title: "Search Pill")
-		/*
-		//Looks for single or multiple taps.
-		let tap: UITapGestureRecognizer = UITapGestureRecognizer(
-			target: self,
-			action: #selector(
-				UploadFormViewController.dismissKeyboard))
-		
-		view.addGestureRecognizer(tap)
-		*/
+		setNavigationBar(title: "Enter Pill Information")
 
 	}// end view did load
-	
-	@objc func doneTapped() {
-		print("Hello Done")
-	}
-	
-	@objc func imageButtonTapped(_ sender: Any) {
-		importImage()
-
-		
-	}// end upload button action
-
-
-	@objc func backAction() -> Void {
-		performSegueToReturnBack()
-	}
-	
-	func importImage() {
-		let imagePicker = UIImagePickerController()
-		imagePicker.delegate = self
-		imagePicker.allowsEditing = false
-		imagePicker.sourceType = .photoLibrary
-		present(imagePicker, animated: true, completion: nil)
-	}
-
-	// MARK: - ImagePicker Delegate
-	@objc func imagePickerController(
-		_ picker: UIImagePickerController,
-		didFinishPickingMediaWithInfo info: [
-		UIImagePickerController.InfoKey : Any]) {
-		
-		if let pickedImage = info[
-		UIImagePickerController.InfoKey.originalImage] as? UIImage {
-			imageView.image  = pickedImage
-			//makeDisplayImage(image: pickedImage)
-			//pillImageView.image = pickedImage
-		}
-		dismiss(animated: true, completion: nil)
-	}
-	
-	@objc func imagePickerControllerDidCancel(
-		_ picker: UIImagePickerController) {
-		dismiss(animated: true, completion: nil)
-	}
 	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
@@ -110,7 +59,7 @@ UINavigationControllerDelegate {
 		takePictureBtn.setTitleColor(UIColor.black, for: .normal)
 		takePictureBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 		takePictureBtn.setTitleColor(UIColor.white, for: .highlighted)
-		takePictureBtn.setTitle("Take a Picture", for: .normal)
+		takePictureBtn.setTitle("Choose a Picture", for: .normal)
 		takePictureBtn.titleLabel?.font =  UIFont.systemFont(
 			ofSize: myDefaultTextFontSize,
 			weight: .light)
@@ -128,7 +77,7 @@ UINavigationControllerDelegate {
 				y: myListPadTop,
 				width: north.frame.width * 0.9,
 				height: north.frame.height * 0.9))
-		imageBtn.layer.borderWidth = myBorders
+		imageBtn.layer.borderWidth = 2.0
 		imageBtn.setTitleColor(UIColor.black, for: .normal)
 		imageBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 		imageBtn.setTitleColor(UIColor.white, for: .highlighted)
@@ -144,8 +93,6 @@ UINavigationControllerDelegate {
 		imageName = "250x250placeholder.jpg"
 		image = UIImage(named: imageName)
 		imageView = makeDisplayImage(image: image)
-
-		
 		
 		north.addSubview(imageView)
 		north.addSubview(imageBtn)
@@ -231,13 +178,14 @@ UINavigationControllerDelegate {
 			self,
 			action: #selector(submitButtonTapped),
 			for: .touchUpInside)
-		//submitButton.isEnabled = false
+		submitButton.isEnabled = false
 
 		south.addSubview(submitButton)
 
 	}
 
 	@objc func takePictureBtnTapped(){
+		showActionSheet()
 	}
 	
 	@objc func pickColorBtnTapped(){
@@ -246,11 +194,6 @@ UINavigationControllerDelegate {
 	@objc func pickShapeBtnTapped(){
 	}
 
-	//Calls this function when the tap is recognized.
-	@objc func dismissKeyboard() {
-	    self.view.endEditing(true)
-	}
-	
 	func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
 		self.view.endEditing(true)
 		return true
@@ -280,11 +223,89 @@ UINavigationControllerDelegate {
 	}
 
 	@objc func submitButtonTapped(){
-		performSegueToReturnBack()
+		//performSegueToReturnBack()
 
 		//submit()
 
 	}// end upload button action
 	
+	@objc func imageButtonTapped(_ sender: Any) {
+		showActionSheet()
+		//importImage()
+	}// end upload button action
+	
+	func importImage() {
+		let imagePicker = UIImagePickerController()
+		imagePicker.delegate = self
+		imagePicker.allowsEditing = false
+		imagePicker.sourceType = .photoLibrary
+		present(imagePicker, animated: true, completion: {
+			//self.submitButton.isEnabled = true
+		})
+	}
+	
+	// MARK: - ImagePicker Delegate
+	@objc func imagePickerController(
+		_ picker: UIImagePickerController,
+		didFinishPickingMediaWithInfo info: [
+		UIImagePickerController.InfoKey : Any]) {
+		
+		if let pickedImage = info[
+			UIImagePickerController.InfoKey.originalImage] as? UIImage {
+			imageView.image  = pickedImage
+			self.submitButton.isEnabled = true
+		}
+		dismiss(animated: true, completion: nil)
+	}
+	
+	@objc func imagePickerControllerDidCancel(
+		_ picker: UIImagePickerController) {
+		dismiss(animated: true, completion: nil)
+	}
+	
+	func camera()
+	{
+		if UIImagePickerController.isSourceTypeAvailable(.camera){
+			let myPickerController = UIImagePickerController()
+			myPickerController.delegate = self;
+			myPickerController.sourceType = .camera
+			self.present(myPickerController, animated: true, completion: {
+				print("Accessing Camera...")
+			})
+		}
+		
+	}
+	
+	func photoLibrary()
+	{
+		
+		if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+			let myPickerController = UIImagePickerController()
+			myPickerController.delegate = self;
+			myPickerController.sourceType = .photoLibrary
+			self.present(myPickerController, animated: true, completion: {
+				print("Acessing Photo Library...")
+			})
+		}
+	}
+	
+	func showActionSheet() {
+		let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+		
+		actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+			self.camera()
+		}))
+		
+		actionSheet.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+			self.photoLibrary()
+		}))
+		
+		actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		
+		self.present(actionSheet, animated: true, completion: nil)
+	}
+	
+
 }// end view controller class definition
+
 

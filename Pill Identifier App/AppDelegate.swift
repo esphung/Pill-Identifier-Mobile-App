@@ -42,12 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Set translucent. (Default value is already true, so this can be removed if desired.)
 		UINavigationBar.appearance().isTranslucent = true
 		
-		
-		print("App Delegate: ",self.description)
-		print(mainStoryboard.description)
-		print("Window: ", self.window?.restorationIdentifier ?? "Error Reading String WIndown")
-		print("Current View: ", self.window?.rootViewController?.restorationIdentifier ?? "Error Reading String View")
-
 		return true
     }
 
