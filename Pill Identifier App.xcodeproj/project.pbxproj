@@ -152,8 +152,8 @@
 		18F57B841E992E0A0013221F /* Pill Identifier App */ = {
 			isa = PBXGroup;
 			children = (
-				5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */,
 				5E575F1520D6378300B94C16 /* UploadFormViewController.swift */,
+				5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */,
 				5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */,
 				5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */,
 				18F57B851E992E0A0013221F /* AppDelegate.swift */,
@@ -425,11 +425,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Pill Identifier App/Pods-Pill Identifier App-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

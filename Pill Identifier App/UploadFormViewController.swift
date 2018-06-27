@@ -5,6 +5,8 @@
 
 import UIKit.UIViewController
 import ActionSheetPicker_3_0
+import  SwiftyJSON
+import Alamofire
 
 class UploadFormViewController:
 NorthSouthViewController,
@@ -15,29 +17,22 @@ UINavigationControllerDelegate {
 	var shape: String!
 	var imprint: String!
 
+	// pick buttons
+	var imageBtn:		UIButton!
+	var pickColorBtn:	UIButton!
+	var pickShapeBtn:  	UIButton!
+	var pickImprintBtn:	UIButton!
+	var takePictureBtn:	UIButton!
+	var sampleTextField: UITextField!
+	var submitButton: 	UIButton!
+	
 	override func loadView() {
 		super.loadView()
 		
 		
 	}// end loadview
 	
-	// input variables
-	var imageBtn:			UIButton!
-	var submitButton: 		UIButton!
 
-	// display vars
-	var pillImageView:		UIImageView!
-	var colorLabel: 		UILabel!
-	var shapeLabel: 		UILabel!
-	var imprintLabel:		UILabel!
-	var searchLabel:		UILabel!
-	
-	// pick buttons
-	var pickColorBtn:	UIButton!
-	var pickShapeBtn:  	UIButton!
-	var pickImprintBtn:	UIButton!
-	var takePictureBtn:	UIButton!
-	var sampleTextField: UITextField!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -70,7 +65,6 @@ UINavigationControllerDelegate {
 			action: #selector(takePictureBtnTapped),
 			for: .touchUpInside)
 		
-		south.addSubview(takePictureBtn)
 
 		// ====================  set up IMAGE BUTTON (NORTH VIEW)
 		imageBtn =  UIButton(
@@ -96,34 +90,10 @@ UINavigationControllerDelegate {
 		image = UIImage(named: imageName)
 		imageView = makeDisplayImage(image: image)
 		
-		north.addSubview(imageView)
-		north.addSubview(imageBtn)
-		
-		// ================================  Set Up PICK SHAPE Button
-		pickShapeBtn = UIButton(frame: CGRect(
-			x: myListIndent,
-			y: ((south.frame.height)  * 0.2),
-			width: (south.frame.width * 0.90),
-			height: myDefaultTextFieldHeight))
-		pickShapeBtn.layer.borderWidth = 2.0
-		pickShapeBtn.setTitleColor(UIColor.black, for: .normal)
-		pickShapeBtn.setTitleColor(UIColor.lightGray, for: .disabled)
-		pickShapeBtn.setTitleColor(UIColor.white, for: .highlighted)
-		pickShapeBtn.setTitle("Pick Shape", for: .normal)
-		pickShapeBtn.titleLabel?.font =  UIFont.systemFont(
-			ofSize: myDefaultTextFontSize,
-			weight: .light)
-		pickShapeBtn.addTarget(
-			self,
-			action: #selector(pickShapeBtnTapped),
-			for: .touchUpInside)
-		
-		south.addSubview(pickShapeBtn)
-		
 		// ================================  Set Up PICK COLOR Button
 		pickColorBtn = UIButton(frame: CGRect(
 			x: myListIndent,
-			y: ((south.frame.height)  * 0.4),
+			y: ((south.frame.height)  * 0.2),
 			width: (south.frame.width * 0.90),
 			height: myDefaultTextFieldHeight))
 		pickColorBtn.layer.borderWidth = 2.0
@@ -138,8 +108,25 @@ UINavigationControllerDelegate {
 			self,
 			action: #selector(pickColorBtnTapped),
 			for: .touchUpInside)
-		
-		south.addSubview(pickColorBtn)
+
+		// ================================  Set Up PICK SHAPE Button
+		pickShapeBtn = UIButton(frame: CGRect(
+			x: myListIndent,
+			y: ((south.frame.height)  * 0.4),
+			width: (south.frame.width * 0.90),
+			height: myDefaultTextFieldHeight))
+		pickShapeBtn.layer.borderWidth = 2.0
+		pickShapeBtn.setTitleColor(UIColor.black, for: .normal)
+		pickShapeBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+		pickShapeBtn.setTitleColor(UIColor.white, for: .highlighted)
+		pickShapeBtn.setTitle("Pick Shape", for: .normal)
+		pickShapeBtn.titleLabel?.font =  UIFont.systemFont(
+			ofSize: myDefaultTextFontSize,
+			weight: .light)
+		pickShapeBtn.addTarget(
+			self,
+			action: #selector(pickShapeBtnTapped),
+			for: .touchUpInside)
 		
 		// ============================  Set Up PICK IMPRINT Button
 		pickImprintBtn = UIButton(frame: CGRect(
@@ -171,8 +158,6 @@ UINavigationControllerDelegate {
 		sampleTextField.autocorrectionType = UITextAutocorrectionType.no
 		sampleTextField.keyboardType = UIKeyboardType.default
 		sampleTextField.returnKeyType = UIReturnKeyType.done
-		
-		
 
 		// ====================================  Set Up Submit Button
 		submitButton = UIButton(frame: CGRect(
@@ -192,10 +177,15 @@ UINavigationControllerDelegate {
 			self,
 			action: #selector(submitButtonTapped),
 			for: .touchUpInside)
-		submitButton.isEnabled = false
+		
+		//submitButton.isEnabled = false
+		
+		north.addSubview(imageView)
+		north.addSubview(imageBtn)
 
-
-
+		south.addSubview(takePictureBtn)
+		south.addSubview(pickColorBtn)
+		south.addSubview(pickShapeBtn)
 		south.addSubview(pickImprintBtn)
 		//south.addSubview(sampleTextField)
 		south.addSubview(submitButton)
@@ -203,36 +193,12 @@ UINavigationControllerDelegate {
 	}
 
 	@objc func takePictureBtnTapped(){
-		showActionSheet()
+		showImageActionSheet()
 	}
-
-	@objc func pickShapeBtnTapped(sender: UIButton){
-		
-		ActionSheetMultipleStringPicker.show(
-			withTitle: "Pick a Shape",
-			rows: [
-				shapes
-			],
-			initialSelection: [0],
-			doneBlock: {
-				picker, indexes, values in
-				//print("shape = \(values!)")
-				//print("indexes = \(indexes!)")
-				let value = shapes[indexes?.first as! Int]
-				let txt = ("Shape: " + String(value)).uppercased()
-				print(txt)
-				sender.setTitle(txt,for: .normal)
-				sender.isEnabled = false
-				
-				return
-		},
-			cancel: {ActionMultipleStringCancelBlock in return },
-			origin: sender)
-	}// end pick shape
 	
 	@objc func pickColorBtnTapped(sender: UIButton){
 		ActionSheetMultipleStringPicker.show(
-			withTitle: "Pick a Color",
+			withTitle: "Pick Color",
 			rows: [
 				colors
 			],
@@ -242,10 +208,13 @@ UINavigationControllerDelegate {
 				//print("color = \(values!)")
 				//print("indexes = \(indexes!)")
 				let value = colors[indexes?.first as! Int]
-				let txt = ("Color: " + String(value)).uppercased()
+				self.color = String(value).uppercased()
+				
+				let txt = "Color: " + self.color
 				print(txt)
+				
 				sender.setTitle(txt,for: .normal)
-				sender.isEnabled = false
+				//sender.isEnabled = false
 				
 				return
 		},
@@ -253,47 +222,119 @@ UINavigationControllerDelegate {
 			origin: sender)
 	}// end pick color
 
-	func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
-		self.view.endEditing(true)
-		return true
-	}
+	@objc func pickShapeBtnTapped(sender: UIButton){
+		
+		ActionSheetMultipleStringPicker.show(
+			withTitle: "Pick Shape",
+			rows: [
+				shapes
+			],
+			initialSelection: [0],
+			doneBlock: {
+				picker, indexes, values in
+				//print("shape = \(values!)")
+				//print("indexes = \(indexes!)")
+				let value = shapes[indexes?.first as! Int]
+				self.shape = String(value).uppercased()
+				
+				let txt = ("Shape: " + self.shape)
+				print(txt)
+				sender.setTitle(txt,for: .normal)
+				//sender.isEnabled = false
+				
+				return
+		},
+			cancel: {ActionMultipleStringCancelBlock in return },
+			origin: sender)
+	}// end pick shape
 	
 	@objc func pickImprintBtnTapped(sender: UIButton) {
-		print("Imprint Button")
+		self.imprint = "Hello Imprint"
+		print("Imprint: " + self.imprint)
 	}
 	
 	func submit() {
+		// create json object with search data
+		//var json = JSON()
+		
+		//json[0] = JSON(1)
+		
+		//json["id"].int =  1234567890
+		//json["coordinate"].double =  8766.766
+		//json["name"].string =  "Jack"
+		//json.arrayObject = [1,2,3,4]
+		//json.dictionaryObject = ["name":"Jack","age":25]
 
-		guard let color = color else {
+		guard let color = self.color else {
 			print("No color to submit")
 			return
 		}
 		
-		guard let shape = shape else {
+		guard let shape = self.shape else {
 			print("No shape to submit")
 			return
 		}
 
-		guard let imprint = imprint else {
+		/*
+		guard let imprint = self.imprint else {
 			print("No imprint to submit")
 			return
+		}*/
+		
+		/*
+		json["color"] = JSON(color)
+		json["shape"] = JSON(shape)
+		json["imprint"] = JSON(imprint)
+		
+		print(json)
+		*/
+		
+		// make http request string
+		// http://rximage.nlm.nih.gov/api/{apiName}/{apiVersion}/{resourcePath}?{parameters}
+		// http://rximage.nlm.nih.gov/api/rximage/1/rxnav?color=blue&size=17&sizeT=0
+		
+		let url = "http://rximage.nlm.nih.gov/api/" + "rximage/" + "1/" + "rxnav?"
+		+ "color=" + color
+		+ "&"
+		+ "shape=" + shape
+		
+		print(url)
+		
+		// get http request
+		
+		Alamofire.request(url).responseJSON { response in
+			//print("Request: \(String(describing: response.request))")   // original url request
+			
+			if let json = response.result.value {
+				//print("JSON: \(json)") // serialized json response
+				let swiftyJsonVar = JSON(json)//  conert json response to swiftyJSON
+				print(swiftyJsonVar["replyStatus"])
+				
+				// get results as pill array
+				//print(swiftyJsonVar["nlmRxImages"])// list of pills
+				
+				// one or more pill found
+				if swiftyJsonVar["replyStatus"]["totalImageCount"]  > 0 {
+					// send pill array to results page here
+					self.displayResultsPage(json: swiftyJsonVar)
+				} else {
+					// no results found
+				}
+				
+			}
 		}
 		
-		print(color)
-		print(shape)
-		print(imprint)
 
-	}
+	}// end submit
 
 	@objc func submitButtonTapped(){
 		//performSegueToReturnBack()
-
-		//submit()
+		submit()
 
 	}// end upload button action
 	
 	@objc func imageButtonTapped(_ sender: Any) {
-		showActionSheet()
+		showImageActionSheet()
 		//importImage()
 	}// end upload button action
 	
@@ -326,7 +367,7 @@ UINavigationControllerDelegate {
 	@objc func imagePickerControllerDidCancel(
 		_ picker: UIImagePickerController) {
 		dismiss(animated: true, completion: nil)
-	}
+	}// end imagepicker cancel
 	
 	func camera()
 	{
@@ -339,7 +380,7 @@ UINavigationControllerDelegate {
 			})
 		}
 		
-	}
+	}// end camera
 	
 	func photoLibrary()
 	{
@@ -352,25 +393,61 @@ UINavigationControllerDelegate {
 				print("Acessing Photo Library...")
 			})
 		}
-	}
+	}// end photolibrary
 	
-	func showActionSheet() {
-		let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+	func showImageActionSheet() {
+		let actionSheet = UIAlertController(
+			title: nil,
+			message: nil,
+			preferredStyle: .actionSheet)
 		
-		actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+		actionSheet.addAction(UIAlertAction(
+			title: "Camera",
+			style: .default,
+			handler: { (alert:UIAlertAction!) -> Void in
 			self.camera()
 		}))
 		
-		actionSheet.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { (alert:UIAlertAction!) -> Void in
+		actionSheet.addAction(UIAlertAction(
+			title: "Gallery",
+			style: .default,
+			handler: { (alert:UIAlertAction!) -> Void in
 			self.photoLibrary()
 		}))
 		
-		actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		actionSheet.addAction(UIAlertAction(
+			title: "Cancel",
+			style: .cancel,
+			handler: nil))
 		
 		self.present(actionSheet, animated: true, completion: nil)
+	}// end show actionsheet
+	
+	func displayResultsPage(json: JSON) {
+		let resultsTableViewController: ResultsTableViewController = storyboard?.instantiateViewController(withIdentifier: "resultsTableViewController") as! ResultsTableViewController
+		
+		let nlmRxImages = json["nlmRxImages"].array!
+		
+		// set new cell data in cell array for results page
+		var i = 0
+		while i < nlmRxImages.count {
+			resultsTableViewController.arrayOfCellData.append(cellData(
+				cell: i,
+				text: nlmRxImages[i]["name"].string,
+				image: #imageLiteral(resourceName: "250x250placeholder"),
+				imageUrl: nlmRxImages[i]["imageUrl"].string
+				//image: #imageLiteral(resourceName: "250x250placeholder")
+			))
+			i = i + 1
+		}
+
+		//resultsTableViewController.arrayOfCellData = cellArray
+		
+		self.present(
+			resultsTableViewController,
+			animated: true,
+			completion: {})
 	}
 
-
 }// end view controller class definition
-
 

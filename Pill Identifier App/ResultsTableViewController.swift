@@ -7,23 +7,28 @@
 //
 
 import UIKit.UIViewController
+import Kingfisher
 
 struct cellData {
 	let cell:  	Int!
 	let text: 	String!
 	let image: 	UIImage!
+	let imageUrl: String!
 }
 
 class ResultsTableViewController: UITableViewController {
 	var arrayOfCellData = [cellData]()
 	
+	/*
 	override func viewWillAppear(_ animated: Bool) {
 		tableView.reloadData()
-		print("Data Reloaded")
-	}
+		//print("Data Reloaded")
+	}*/
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		//stableView.separatorStyle = .none
 		
 		tableView.translatesAutoresizingMaskIntoConstraints =  false
 		//self.tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0);
@@ -33,10 +38,11 @@ class ResultsTableViewController: UITableViewController {
 			bottom: 0,
 			right: 0);
 		
+		/*
 		arrayOfCellData = [
 			cellData(cell: 1, text:  "hello", image: #imageLiteral(resourceName: "against")),
 			cellData(cell: 2, text:  "world", image: #imageLiteral(resourceName: "test"))
-		]
+		]*/
 		
 		let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
 		swipeRight.direction = UISwipeGestureRecognizer.Direction.right
@@ -55,6 +61,7 @@ class ResultsTableViewController: UITableViewController {
 		self.view.addGestureRecognizer(swipeLeft)
 		
 		
+		/*
 		refreshControl = UIRefreshControl()
 		refreshControl?.attributedTitle = NSAttributedString(
 			string: "Pull Refresh")
@@ -64,6 +71,7 @@ class ResultsTableViewController: UITableViewController {
 			for: UIControl.Event.valueChanged)
 		
 		tableView.addSubview(self.refreshControl!)
+		*/
 
 
     }// end viewdidload
@@ -85,7 +93,11 @@ class ResultsTableViewController: UITableViewController {
 		//tableView.register(UITableViewCell.self, forCellReuseIdentifier: "customCell")
 		
 		let cell = Bundle.main.loadNibNamed("TableViewCell2", owner: self, options: nil)?.first as! TableViewCell2
-		cell.mainImageView.image = arrayOfCellData[indexPath.row].image
+		
+		//cell.mainImageView.image = arrayOfCellData[indexPath.row].image
+		let url = URL(string: arrayOfCellData[indexPath.row].imageUrl)
+		cell.mainImageView.kf.setImage(with: url)
+		
 		cell.mainLabel.text = arrayOfCellData[indexPath.row].text
 		
 		return cell

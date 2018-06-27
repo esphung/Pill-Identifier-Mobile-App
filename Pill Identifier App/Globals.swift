@@ -30,10 +30,42 @@ public let myListPadTop = CGFloat(20.0)
 
 public var myBorders = CGFloat(0.0)
 
-public let shapes = ["BULLET", "CAPSULE", "CLOVER", "DIAMOND", "DOUBLE CIRCLE", "FREEFORM", "GEAR", "HEPTAGON"," HEXAGON", "OCTAGON"," OVAL", "PENTAGON", "RECTANGLE", "ROUND", "SEMI-CIRCLE", "SQUARE", "TEAR", "TRAPEZOID", "TRIANGLE" ]
+public let shapes = [
+	"BULLET",
+	"CAPSULE",
+	"CLOVER",
+	"DIAMOND",
+	"DOUBLE CIRCLE",
+	"FREEFORM",
+	"GEAR",
+	"HEPTAGON",
+	"HEXAGON", 
+	"OCTAGON",
+	"OVAL",
+	"PENTAGON",
+	"RECTANGLE",
+	"ROUND",
+	"SEMI-CIRCLE",
+	"SQUARE",
+	"TEAR",
+	"TRAPEZOID",
+	"TRIANGLE"
+]
 
-public let colors =  ["Black","Blue","Brown","Gray","Green","Orange","Pink","Purple","Red","Turquoise","White","Yellow"]
-
+public let colors =  [
+	"Black",
+	"Blue",
+	"Brown",
+	"Gray",
+	"Green",
+	"Orange",
+	"Pink",
+	"Purple",
+	"Red",
+	"Turquoise",
+	"White",
+	"Yellow"
+]
 
 // test harness
 struct TestData {

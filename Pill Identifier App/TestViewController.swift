@@ -85,7 +85,7 @@ class TestViewController: NorthSouthViewController {
 			height: myDefaultTextFieldHeight))
 		debugBtn.layer.borderWidth = 2.0;
 		//debugBtn.backgroundColor = UIColor.red
-		//debugBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+		debugBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
 		
 		if isDebugOn() {
 			debugBtn.setTitle("Debug On", for: .normal)
