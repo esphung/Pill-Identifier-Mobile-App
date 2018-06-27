@@ -7,7 +7,6 @@
 //
 
 import UIKit.UIViewController
-import SwiftyButton
 
 class TestViewController: NorthSouthViewController {
 
@@ -18,7 +17,7 @@ class TestViewController: NorthSouthViewController {
 		
 
 		var firstBtn = UIButton()
-		var debugBtn: 		FlatButton!
+		var debugBtn: 		UIButton!
 		var resultsBtn = 	UIButton()
 		var displayBtn = UIButton()
 
@@ -79,7 +78,7 @@ class TestViewController: NorthSouthViewController {
 			for: .touchUpInside)
 		
 		// set up debugBtn
-		debugBtn =  FlatButton(frame: CGRect(
+		debugBtn =  UIButton(frame: CGRect(
 			x: myListIndent,
 			y: screenHeight * 0.325,
 			width: screenWidth * 0.8,

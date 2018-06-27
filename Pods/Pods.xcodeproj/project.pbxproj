@@ -7,49 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E3BFC96C6A7CCADAF3DA6C3C80F35EC /* SWActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = CB0A54D7BF9A42B5C4B15F1874E345F2 /* SWActionSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1648AB9E52071D70CD79280AB21C94D1 /* ActionSheetDistancePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 48450CAB1CB297A356D0E6DE6EE4BD97 /* ActionSheetDistancePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1A0130E51AF422F68818416677EE6595 /* ActionSheetDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DD242C3139FBF9A5D2EFFCCA7A0BC7C4 /* ActionSheetDatePicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		246DD685C951FFF04D55232211F076CD /* ActionSheetDistancePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F8B3302B6BFA708BF5EB82BA65DE0E /* ActionSheetDistancePicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		2680FB2A9AAFE79796C23A20390CEF45 /* AbstractActionSheetPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 384E4CDB449991C6E3423B36E7427983 /* AbstractActionSheetPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27E9B5DF5CEF3AE41E19298DB027344F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
-		29C34B43AFA7A1D88AB188801C76E08C /* ActionSheetPicker-3.0-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EF84672BBD894F105E67D154AE0D4BBC /* ActionSheetPicker-3.0-dummy.m */; };
-		2E71CFFE081DFE6A3268AEC24B5347C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
-		2F28F4C747CEFCE5C8BFF6B4763FCB84 /* CustomPressableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B8B733F2FBC5F5E97E467E0CECD622 /* CustomPressableButton.swift */; };
-		3C8D2470783809376BA929A9603C21D9 /* DistancePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E57F6512B073DDF76343946C30C671 /* DistancePickerView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		4221950C77F4C36D9CBE9C05E5ACF872 /* SwiftyButton-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AB929A62C8AAC9FE41E8055F98D6B90 /* SwiftyButton-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		430E0A46B42F47FF79AE16168D1613E9 /* ActionSheetLocalePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F8ED927C8131AF9C08D7EDC5E5ED533D /* ActionSheetLocalePicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		6C16BD3BCB1B65194E7CEA5CF15AD446 /* ActionSheetMultipleStringPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = A81CCD50684F95AB2D03D29BEBB46C83 /* ActionSheetMultipleStringPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E3BFC96C6A7CCADAF3DA6C3C80F35EC /* SWActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DB65C491E2A8EFA4EA4CDBD49AEC1D1 /* SWActionSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1648AB9E52071D70CD79280AB21C94D1 /* ActionSheetDistancePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = C4307330DED3C6233ABB04F1BC3DACC4 /* ActionSheetDistancePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1A0130E51AF422F68818416677EE6595 /* ActionSheetDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 942AAEEC54D96E843730A79BFAB6F2D5 /* ActionSheetDatePicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1C62FB0D9B8F51A2D1E74670CFE3F1F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
+		246DD685C951FFF04D55232211F076CD /* ActionSheetDistancePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 46382B5B5F7CDA3364EA88DA63F11CE8 /* ActionSheetDistancePicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2680FB2A9AAFE79796C23A20390CEF45 /* AbstractActionSheetPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C604DDCCE0D04BC6F400EF169844999 /* AbstractActionSheetPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29C34B43AFA7A1D88AB188801C76E08C /* ActionSheetPicker-3.0-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BF99DF41A4763CD8AB5ABC57B375E9FF /* ActionSheetPicker-3.0-dummy.m */; };
+		3C8D2470783809376BA929A9603C21D9 /* DistancePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D24CF281E0F18260858CF42C0A5ABE /* DistancePickerView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		430E0A46B42F47FF79AE16168D1613E9 /* ActionSheetLocalePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAF5509101A32ED40EF52955D7B2D1E /* ActionSheetLocalePicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		511681382BB8C89575ACD4B98E879209 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BB306EB4C25C47CB0B7B7DE8F23CDE /* SwiftyJSON.swift */; };
+		6149C7D5F477D4D5E3EBEAF811B262E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
+		6A6B2820C9785C51188BBDE93BDE7C59 /* Pods-Pill Identifier App-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 775625AB99FE56BF4E3FEA3D8E54FC0A /* Pods-Pill Identifier App-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C16BD3BCB1B65194E7CEA5CF15AD446 /* ActionSheetMultipleStringPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 917211BB34523093E474132E7D7F3846 /* ActionSheetMultipleStringPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C7E671411EE991F3833DF634EF87461 /* Pods-Pill Identifier AppTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 97817CEF7FD818ABE1C6A94A7188DB86 /* Pods-Pill Identifier AppTests-dummy.m */; };
+		6CDAA1C519992D1D70EA2C1072D5731E /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 24AE04D6A9866D34DD660ABAB365647D /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		72EEF051DD740C716816EBD3121B89DD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2C02191C153C1554B35DEE8B2D09D4 /* UIKit.framework */; };
 		78EEB1DF95B57528988CB3AAC01DF3A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
-		7D39C08EB780DE5C134CFF883C502CD5 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358940F12868EAAA600D7CA85BB8F721 /* SwiftyJSON.swift */; };
-		82DB07E1965CC9FFA0340EDA2C5A05A0 /* ActionSheetLocalePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 766F7B375DA5F417F37BC609A05BBBFE /* ActionSheetLocalePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		83678861FC71A2BE986560E60D265F1C /* ActionSheetPicker-3.0-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9E3CB56133644EF90582E52F3229DB /* ActionSheetPicker-3.0-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		82DB07E1965CC9FFA0340EDA2C5A05A0 /* ActionSheetLocalePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = BB2F52D14BD6B8BBDD3D8DF689BE0CB6 /* ActionSheetLocalePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		83678861FC71A2BE986560E60D265F1C /* ActionSheetPicker-3.0-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FB1B203F13A0E9962EAF9E2149A896D /* ActionSheetPicker-3.0-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90C50679CC3E73A19F9A917789D3BF07 /* Pods-Pill Identifier AppUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BCA8755473C73B5294B940C9F20BF482 /* Pods-Pill Identifier AppUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		90E3389D33DD00DE304548BE9C52C69F /* ActionSheetCustomPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = D2702A13FC48D90115CE2BF28C46CCA3 /* ActionSheetCustomPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90E3389D33DD00DE304548BE9C52C69F /* ActionSheetCustomPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B828DFD514DE2E6FDA8A62301BF8E87 /* ActionSheetCustomPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		92693D7891AAE818D44735D4270053E5 /* Pods-Pill Identifier AppUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 507D4839D6D515596DE825C073D427DB /* Pods-Pill Identifier AppUITests-dummy.m */; };
-		9B2B8491E6B1B8EA1C9ACD37341C726B /* ActionSheetPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = D79AB5C6CF1DCC4CF482FBAA6ECB0BB9 /* ActionSheetPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9B867960879FDDD089A9E41F027E13B9 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B621EB923AF802885EA17356CA67FE85 /* AbstractActionSheetPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		9BC276383ED044BB0926AFDFD73F928E /* ActionSheetDatePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = ED0608073A3555A15E97BF7C173F3ADA /* ActionSheetDatePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A110F853683C16321B9BBE16AC9E332A /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 59C6CEAFC4D7EDD38D90B95F9AA4E864 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A70EAAD50A469C0DA407C35957E9FA12 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC2C02191C153C1554B35DEE8B2D09D4 /* UIKit.framework */; };
-		ABC2A898F9EAABE93486EA51F9D9B535 /* FlatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DE1093B0FED780920B8514347E353E /* FlatButton.swift */; };
-		ABFD24F0B32FE5F82EA04D1D050CCA5B /* PressableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F3376705FB65A8D7A23771B61FD01C /* PressableButton.swift */; };
-		AE84E0341C26A9B5C8E1501C8E8AAC8F /* ActionSheetCustomPickerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = D25ABA91D0A48D87CFEBC082F6B7BDFC /* ActionSheetCustomPickerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B0EE49C818D01F1644BA24B62D3EB7E8 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F9BA2C564910EB627FE8D2CF576CAF /* SwiftyJSON-dummy.m */; };
-		BDBFA441010D34FB51DC32F28314AD8D /* ActionSheetStringPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = AC6D72B5CEDDF895C15A6C3582DFA20B /* ActionSheetStringPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BFF59736E276F2C0E3A1C0B8C9325436 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D68CEAF843D9FAF86DA6EC7D9D76FC /* Utils.swift */; };
-		C64C94B27A0D612D23EAE27673E840BC /* Pods-Pill Identifier App-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 775625AB99FE56BF4E3FEA3D8E54FC0A /* Pods-Pill Identifier App-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C6CB72E223B27A0C2B06910EC0FADF67 /* ActionSheetStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 28BA40C367BCAA8D8596F6F13CB6CEBA /* ActionSheetStringPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		9B2B8491E6B1B8EA1C9ACD37341C726B /* ActionSheetPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 55EB7FB60491A9B31353B940D10B2792 /* ActionSheetPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9B867960879FDDD089A9E41F027E13B9 /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3775F9EAAC6CBA4A4ADD47A6E79A20 /* AbstractActionSheetPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		9BC276383ED044BB0926AFDFD73F928E /* ActionSheetDatePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EF0FC1A7C2876D4A6CC4A340042613B /* ActionSheetDatePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AE84E0341C26A9B5C8E1501C8E8AAC8F /* ActionSheetCustomPickerDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C48B52CCD6209E1025AA91D9B3BBD864 /* ActionSheetCustomPickerDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BDBFA441010D34FB51DC32F28314AD8D /* ActionSheetStringPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = E07DFDA806E55884E09E430285B7014C /* ActionSheetStringPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C6CB72E223B27A0C2B06910EC0FADF67 /* ActionSheetStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DF993ADC808CA361D9C244D976192E /* ActionSheetStringPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		C9FFC444A8870DE87970E75DA1E08625 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
-		CA068FC25E80824549668A53EC9379EC /* DistancePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E54B9F881CF19B98620A2B27E1AC260 /* DistancePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D617C06E0AD3D40FE0E4FF20FB30AC49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
-		DA732A6C79E7252A25F23A1497ACD0FD /* ActionSheetMultipleStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7288187C2DEC799023222BCC19B553DF /* ActionSheetMultipleStringPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		DF68BA6E3FEEAB361FD6525B8BEB3A70 /* Pods-Pill Identifier App-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF2E7DB60715858F1783D1447A6E2FA /* Pods-Pill Identifier App-dummy.m */; };
-		E049CE807DA7A012BA222DE64920C3D1 /* SWActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B281C801B37495F9BB341C80D480081 /* SWActionSheet.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		E61ED7FAF083B75902728EB20AC4BD92 /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DB128F28AC72431E8F49E8A27E7C89E1 /* ActionSheetCustomPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		EE990602E6C82A8E360EEDF396889B21 /* SwiftyButton-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8F97B00AD597FFB4D4F464591FECA1 /* SwiftyButton-dummy.m */; };
+		CA068FC25E80824549668A53EC9379EC /* DistancePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = CA34FAF4F7A16EB5F86D650A0ADE76CE /* DistancePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DA732A6C79E7252A25F23A1497ACD0FD /* ActionSheetMultipleStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D462BFA1A6B3A81D1475568BB30C68 /* ActionSheetMultipleStringPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E049CE807DA7A012BA222DE64920C3D1 /* SWActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F6FCD7F1EA827F755075E8D3D9AECA /* SWActionSheet.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E61ED7FAF083B75902728EB20AC4BD92 /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F38EC0B70AB2D0B3B638A69FDF33069 /* ActionSheetCustomPicker.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E692DB1B8C36540287A19E240DEF7879 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB66DB5AA5B34AF60CADDADA2F6AF94 /* SwiftyJSON-dummy.m */; };
+		EF27E928B39518D1FCF011B3B18122D6 /* Pods-Pill Identifier App-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF2E7DB60715858F1783D1447A6E2FA /* Pods-Pill Identifier App-dummy.m */; };
 		EFF7CE44C7A72FAFC63519AADD823E4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908E902E026C5C22904CF9014A5604AD /* Foundation.framework */; };
 		F61A26D9FD8FD8F75A07FBB33FF461C2 /* Pods-Pill Identifier AppTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F3DCCFC92D016F5B8FD4D78466E98E2B /* Pods-Pill Identifier AppTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -59,130 +51,112 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = EA1D2E20D9DFCE0D04A1ACC65FE6AB38;
+			remoteGlobalIDString = 5F3D0C8FC01209D3E245851A9C9315BB;
 			remoteInfo = "Pods-Pill Identifier App";
 		};
-		BAF5DB7A8374572B1E3B957303A2202D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 031B7F8A054CC782EC81882504EC5CF6;
-			remoteInfo = SwiftyButton;
-		};
-		C9EDCAB5D9E397AE3E1A22C9D6BF026A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EA1D2E20D9DFCE0D04A1ACC65FE6AB38;
-			remoteInfo = "Pods-Pill Identifier App";
-		};
-		D41C744BC19F271C031FBCFF8783BCAA /* PBXContainerItemProxy */ = {
+		BD49F815DC3CFC046B8D8BE60C4A72E6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 965699190112DDBD9B7864D091660DBC;
 			remoteInfo = "ActionSheetPicker-3.0";
 		};
-		F5D53D6A9E4B5CE2E78349EFDF7E885C /* PBXContainerItemProxy */ = {
+		C9EDCAB5D9E397AE3E1A22C9D6BF026A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9808F93FC88A10BEF7F3680E452E750D;
+			remoteGlobalIDString = 5F3D0C8FC01209D3E245851A9C9315BB;
+			remoteInfo = "Pods-Pill Identifier App";
+		};
+		D22FABFFF5C6C275C09966506F087FC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 15BA0A4513515B2DEC75E6FF77E77673;
 			remoteInfo = SwiftyJSON;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0433AFCAEBDD3F51DA43B78AA4DC8780 /* Pods-Pill Identifier AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pill Identifier AppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		06DE1093B0FED780920B8514347E353E /* FlatButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FlatButton.swift; path = SwiftyButton/FlatButton.swift; sourceTree = "<group>"; };
 		07B0C4068F8739F67F3A6676E412CAA8 /* Pods-Pill Identifier App-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pill Identifier App-resources.sh"; sourceTree = "<group>"; };
 		08924FCEF7AA19101520E6DBA24D560C /* Pods-Pill Identifier AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pill Identifier AppTests.release.xcconfig"; sourceTree = "<group>"; };
-		0A9E3CB56133644EF90582E52F3229DB /* ActionSheetPicker-3.0-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActionSheetPicker-3.0-umbrella.h"; sourceTree = "<group>"; };
-		0ABD02AE360B8F2BECA54402FF26C475 /* ActionSheetPicker-3.0-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActionSheetPicker-3.0-prefix.pch"; sourceTree = "<group>"; };
+		0A5462A06EE500C1948160F29E82FB28 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F7892B47AA96F5DC06D8C3ED40676B3 /* ActionSheetPicker-3.0.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ActionSheetPicker-3.0.xcconfig"; sourceTree = "<group>"; };
 		10D75CCF95EC026E102A089CBAA9A1A8 /* Pods-Pill Identifier AppTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pill Identifier AppTests-frameworks.sh"; sourceTree = "<group>"; };
-		15F8B3302B6BFA708BF5EB82BA65DE0E /* ActionSheetDistancePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetDistancePicker.m; path = Pickers/ActionSheetDistancePicker.m; sourceTree = "<group>"; };
+		12D462BFA1A6B3A81D1475568BB30C68 /* ActionSheetMultipleStringPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetMultipleStringPicker.m; path = Pickers/ActionSheetMultipleStringPicker.m; sourceTree = "<group>"; };
+		185AE24A0CF606560B91DAB7A1191F31 /* Pods_Pill_Identifier_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pill_Identifier_AppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19937691E8A8016B482C7468558283FF /* Pods-Pill Identifier App-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pill Identifier App-frameworks.sh"; sourceTree = "<group>"; };
-		20D68CEAF843D9FAF86DA6EC7D9D76FC /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = SwiftyButton/Utils.swift; sourceTree = "<group>"; };
-		222399C3BB4770B2C23DAB42CFE9ED00 /* ActionSheetPicker_3_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ActionSheetPicker_3_0.framework; path = "ActionSheetPicker-3.0.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		28BA40C367BCAA8D8596F6F13CB6CEBA /* ActionSheetStringPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetStringPicker.m; path = Pickers/ActionSheetStringPicker.m; sourceTree = "<group>"; };
+		1D3775F9EAAC6CBA4A4ADD47A6E79A20 /* AbstractActionSheetPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AbstractActionSheetPicker.m; path = Pickers/AbstractActionSheetPicker.m; sourceTree = "<group>"; };
+		1DB65C491E2A8EFA4EA4CDBD49AEC1D1 /* SWActionSheet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWActionSheet.h; path = Pickers/SWActionSheet.h; sourceTree = "<group>"; };
+		1F53D0DF134238B9B6F6C5C441FBF5E8 /* ActionSheetPicker_3_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ActionSheetPicker_3_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2078F16CD7CCCDA067C6990D4AFC6238 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		23BB306EB4C25C47CB0B7B7DE8F23CDE /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		24AE04D6A9866D34DD660ABAB365647D /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
 		2F8EB49A5E609212CF54ED8BCA6AFD5C /* Pods-Pill Identifier AppTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pill Identifier AppTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		358940F12868EAAA600D7CA85BB8F721 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
-		3833734DFC2D81AA0A371567D153F52C /* SwiftyButton.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyButton.xcconfig; sourceTree = "<group>"; };
-		384E4CDB449991C6E3423B36E7427983 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AbstractActionSheetPicker.h; path = Pickers/AbstractActionSheetPicker.h; sourceTree = "<group>"; };
-		38EDDBB5AE426D95B13BE0371A284FB9 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
-		3ED89BBF75E6C641C02274E69BAB4D9A /* Pods_Pill_Identifier_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Pill_Identifier_App.framework; path = "Pods-Pill Identifier App.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		418A73503AF84B36AEFB6C6764433DA1 /* SwiftyButton.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyButton.modulemap; sourceTree = "<group>"; };
+		38F6FCD7F1EA827F755075E8D3D9AECA /* SWActionSheet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWActionSheet.m; path = Pickers/SWActionSheet.m; sourceTree = "<group>"; };
+		3C604DDCCE0D04BC6F400EF169844999 /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AbstractActionSheetPicker.h; path = Pickers/AbstractActionSheetPicker.h; sourceTree = "<group>"; };
+		43730EC957B5FA73CE9AF4C994C28157 /* ActionSheetPicker-3.0.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ActionSheetPicker-3.0.modulemap"; sourceTree = "<group>"; };
+		46382B5B5F7CDA3364EA88DA63F11CE8 /* ActionSheetDistancePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetDistancePicker.m; path = Pickers/ActionSheetDistancePicker.m; sourceTree = "<group>"; };
 		47A27ED3F57688C85CE2A6FF9216ED5F /* Pods-Pill Identifier App-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pill Identifier App-acknowledgements.plist"; sourceTree = "<group>"; };
-		48450CAB1CB297A356D0E6DE6EE4BD97 /* ActionSheetDistancePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetDistancePicker.h; path = Pickers/ActionSheetDistancePicker.h; sourceTree = "<group>"; };
-		4AB929A62C8AAC9FE41E8055F98D6B90 /* SwiftyButton-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyButton-umbrella.h"; sourceTree = "<group>"; };
-		4BD4ECBD7DE7EA279D826BC4071F2EDF /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FB1B203F13A0E9962EAF9E2149A896D /* ActionSheetPicker-3.0-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActionSheetPicker-3.0-umbrella.h"; sourceTree = "<group>"; };
 		507D4839D6D515596DE825C073D427DB /* Pods-Pill Identifier AppUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pill Identifier AppUITests-dummy.m"; sourceTree = "<group>"; };
 		527CD5CE1E907AA4679B9DD064410FE7 /* Pods-Pill Identifier AppUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Pill Identifier AppUITests.modulemap"; sourceTree = "<group>"; };
-		5574C5893AC33EFDA872DCF4ADA354EF /* SwiftyButton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyButton-prefix.pch"; sourceTree = "<group>"; };
-		56E57F6512B073DDF76343946C30C671 /* DistancePickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DistancePickerView.m; path = Pickers/DistancePickerView.m; sourceTree = "<group>"; };
-		56F9BA2C564910EB627FE8D2CF576CAF /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
-		59C6CEAFC4D7EDD38D90B95F9AA4E864 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
-		5B281C801B37495F9BB341C80D480081 /* SWActionSheet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SWActionSheet.m; path = Pickers/SWActionSheet.m; sourceTree = "<group>"; };
+		55EB7FB60491A9B31353B940D10B2792 /* ActionSheetPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetPicker.h; path = Pickers/ActionSheetPicker.h; sourceTree = "<group>"; };
 		5DD8252A2D96F5795838AB78A0738404 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5DFCC91A46182DA9FA4D2CCC15C32B38 /* ActionSheetPicker-3.0.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "ActionSheetPicker-3.0.modulemap"; sourceTree = "<group>"; };
+		627A41D01792F8785468DB19D48CEEF7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62DD7C97E38859E0038B7281F49585F0 /* Pods-Pill Identifier AppUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Pill Identifier AppUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		69FD3240B0764D3E230353918F752538 /* Pods-Pill Identifier App.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Pill Identifier App.modulemap"; sourceTree = "<group>"; };
-		6E54B9F881CF19B98620A2B27E1AC260 /* DistancePickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DistancePickerView.h; path = Pickers/DistancePickerView.h; sourceTree = "<group>"; };
-		7288187C2DEC799023222BCC19B553DF /* ActionSheetMultipleStringPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetMultipleStringPicker.m; path = Pickers/ActionSheetMultipleStringPicker.m; sourceTree = "<group>"; };
-		766F7B375DA5F417F37BC609A05BBBFE /* ActionSheetLocalePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetLocalePicker.h; path = Pickers/ActionSheetLocalePicker.h; sourceTree = "<group>"; };
+		6F38EC0B70AB2D0B3B638A69FDF33069 /* ActionSheetCustomPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetCustomPicker.m; path = Pickers/ActionSheetCustomPicker.m; sourceTree = "<group>"; };
 		76C61B36B14A15E0909536E8DDCA105A /* Pods-Pill Identifier AppUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pill Identifier AppUITests-resources.sh"; sourceTree = "<group>"; };
 		775625AB99FE56BF4E3FEA3D8E54FC0A /* Pods-Pill Identifier App-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pill Identifier App-umbrella.h"; sourceTree = "<group>"; };
+		7AAF5509101A32ED40EF52955D7B2D1E /* ActionSheetLocalePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetLocalePicker.m; path = Pickers/ActionSheetLocalePicker.m; sourceTree = "<group>"; };
+		7AB66DB5AA5B34AF60CADDADA2F6AF94 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
 		8129278D1AACEC91BEA4D91104EB43FC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		89A92DA79DDADBDB4B63B005EA7FD7A8 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		8B828DFD514DE2E6FDA8A62301BF8E87 /* ActionSheetCustomPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetCustomPicker.h; path = Pickers/ActionSheetCustomPicker.h; sourceTree = "<group>"; };
 		908E902E026C5C22904CF9014A5604AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		91F3376705FB65A8D7A23771B61FD01C /* PressableButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PressableButton.swift; path = SwiftyButton/PressableButton.swift; sourceTree = "<group>"; };
-		92347F0588A08C0F66B5CC87D6395CDD /* ActionSheetPicker-3.0.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ActionSheetPicker-3.0.xcconfig"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		90B2226E5C383F21CE52E1F2EB5DD6DD /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		917211BB34523093E474132E7D7F3846 /* ActionSheetMultipleStringPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetMultipleStringPicker.h; path = Pickers/ActionSheetMultipleStringPicker.h; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		942AAEEC54D96E843730A79BFAB6F2D5 /* ActionSheetDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetDatePicker.m; path = Pickers/ActionSheetDatePicker.m; sourceTree = "<group>"; };
 		9494ED60B9612F5294AAF9315636FC4F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97817CEF7FD818ABE1C6A94A7188DB86 /* Pods-Pill Identifier AppTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pill Identifier AppTests-dummy.m"; sourceTree = "<group>"; };
-		984B2143D23741C7A64601BD73E158B9 /* Pods_Pill_Identifier_AppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Pill_Identifier_AppUITests.framework; path = "Pods-Pill Identifier AppUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B91FFCDDB45DE3606E6E978F2DE0680 /* Pods-Pill Identifier App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pill Identifier App.release.xcconfig"; sourceTree = "<group>"; };
+		9EF0FC1A7C2876D4A6CC4A340042613B /* ActionSheetDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetDatePicker.h; path = Pickers/ActionSheetDatePicker.h; sourceTree = "<group>"; };
 		9EFB6F8830C303C1988D490D967FC619 /* Pods-Pill Identifier AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pill Identifier AppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A1AD26863976A45A3786BEEEEFA85CDE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A81CCD50684F95AB2D03D29BEBB46C83 /* ActionSheetMultipleStringPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetMultipleStringPicker.h; path = Pickers/ActionSheetMultipleStringPicker.h; sourceTree = "<group>"; };
+		A2DF993ADC808CA361D9C244D976192E /* ActionSheetStringPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetStringPicker.m; path = Pickers/ActionSheetStringPicker.m; sourceTree = "<group>"; };
 		ABF417D9643171AFEA0400023F97ABCC /* Pods-Pill Identifier AppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pill Identifier AppUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		AC6D72B5CEDDF895C15A6C3582DFA20B /* ActionSheetStringPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetStringPicker.h; path = Pickers/ActionSheetStringPicker.h; sourceTree = "<group>"; };
-		ACFF240AFCD5200A6C4DAA6B181E2413 /* SwiftyButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyButton.framework; path = SwiftyButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEF2E7DB60715858F1783D1447A6E2FA /* Pods-Pill Identifier App-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pill Identifier App-dummy.m"; sourceTree = "<group>"; };
-		B59D699172F303F26C6CD719E6D43D60 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B621EB923AF802885EA17356CA67FE85 /* AbstractActionSheetPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AbstractActionSheetPicker.m; path = Pickers/AbstractActionSheetPicker.m; sourceTree = "<group>"; };
 		B733FB8D15B10BC8D1C9F07E538DE29A /* Pods-Pill Identifier AppTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Pill Identifier AppTests.modulemap"; sourceTree = "<group>"; };
-		B913B4EF6311E966AA5878CB4E2050F9 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		BB2F52D14BD6B8BBDD3D8DF689BE0CB6 /* ActionSheetLocalePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetLocalePicker.h; path = Pickers/ActionSheetLocalePicker.h; sourceTree = "<group>"; };
 		BC2C02191C153C1554B35DEE8B2D09D4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		BC4110112C6F9F5FEA4A5467B7F4202D /* Pods_Pill_Identifier_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pill_Identifier_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCA8755473C73B5294B940C9F20BF482 /* Pods-Pill Identifier AppUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pill Identifier AppUITests-umbrella.h"; sourceTree = "<group>"; };
-		BD047D4F4F47ECFC8EE64F3CEEF3AD8D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF99DF41A4763CD8AB5ABC57B375E9FF /* ActionSheetPicker-3.0-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ActionSheetPicker-3.0-dummy.m"; sourceTree = "<group>"; };
+		C3D24CF281E0F18260858CF42C0A5ABE /* DistancePickerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DistancePickerView.m; path = Pickers/DistancePickerView.m; sourceTree = "<group>"; };
+		C4307330DED3C6233ABB04F1BC3DACC4 /* ActionSheetDistancePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetDistancePicker.h; path = Pickers/ActionSheetDistancePicker.h; sourceTree = "<group>"; };
 		C433DADB22CCC1BC5F0AA490D35BDE55 /* Pods-Pill Identifier AppUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pill Identifier AppUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		CB0A54D7BF9A42B5C4B15F1874E345F2 /* SWActionSheet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SWActionSheet.h; path = Pickers/SWActionSheet.h; sourceTree = "<group>"; };
-		CB8F97B00AD597FFB4D4F464591FECA1 /* SwiftyButton-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyButton-dummy.m"; sourceTree = "<group>"; };
+		C48B52CCD6209E1025AA91D9B3BBD864 /* ActionSheetCustomPickerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetCustomPickerDelegate.h; path = Pickers/ActionSheetCustomPickerDelegate.h; sourceTree = "<group>"; };
+		CA34FAF4F7A16EB5F86D650A0ADE76CE /* DistancePickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DistancePickerView.h; path = Pickers/DistancePickerView.h; sourceTree = "<group>"; };
+		CAF17FBDFCAE36F451E4B1D158E79F1C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDAFF49B4C501B81582256F82DEB68CE /* Pods_Pill_Identifier_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pill_Identifier_AppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFF759C37C4D7BAA9F6218A77DCF208F /* ActionSheetPicker-3.0-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActionSheetPicker-3.0-prefix.pch"; sourceTree = "<group>"; };
 		D18EECBE7A9DE854BEE50B06DE706856 /* Pods-Pill Identifier AppUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pill Identifier AppUITests-frameworks.sh"; sourceTree = "<group>"; };
-		D25ABA91D0A48D87CFEBC082F6B7BDFC /* ActionSheetCustomPickerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetCustomPickerDelegate.h; path = Pickers/ActionSheetCustomPickerDelegate.h; sourceTree = "<group>"; };
-		D2702A13FC48D90115CE2BF28C46CCA3 /* ActionSheetCustomPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetCustomPicker.h; path = Pickers/ActionSheetCustomPicker.h; sourceTree = "<group>"; };
-		D79AB5C6CF1DCC4CF482FBAA6ECB0BB9 /* ActionSheetPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetPicker.h; path = Pickers/ActionSheetPicker.h; sourceTree = "<group>"; };
 		D7E675BE713BDA86BBD4708283927A7F /* Pods-Pill Identifier AppTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pill Identifier AppTests-resources.sh"; sourceTree = "<group>"; };
-		D91B116C728DB2C59A3EBFBEB8ECD0C3 /* Pods_Pill_Identifier_AppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Pill_Identifier_AppTests.framework; path = "Pods-Pill Identifier AppTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB128F28AC72431E8F49E8A27E7C89E1 /* ActionSheetCustomPicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetCustomPicker.m; path = Pickers/ActionSheetCustomPicker.m; sourceTree = "<group>"; };
-		DD242C3139FBF9A5D2EFFCCA7A0BC7C4 /* ActionSheetDatePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetDatePicker.m; path = Pickers/ActionSheetDatePicker.m; sourceTree = "<group>"; };
-		E1B8B733F2FBC5F5E97E467E0CECD622 /* CustomPressableButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomPressableButton.swift; path = SwiftyButton/CustomPressableButton.swift; sourceTree = "<group>"; };
+		DB01D2A012624D795B9E1E42067625D6 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		E07DFDA806E55884E09E430285B7014C /* ActionSheetStringPicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetStringPicker.h; path = Pickers/ActionSheetStringPicker.h; sourceTree = "<group>"; };
 		E612C98642603CA6490113204A428825 /* Pods-Pill Identifier App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pill Identifier App.debug.xcconfig"; sourceTree = "<group>"; };
 		EA5D22D416681EB0E21A4F6E37D9125E /* Pods-Pill Identifier App-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Pill Identifier App-acknowledgements.markdown"; sourceTree = "<group>"; };
-		ED0608073A3555A15E97BF7C173F3ADA /* ActionSheetDatePicker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ActionSheetDatePicker.h; path = Pickers/ActionSheetDatePicker.h; sourceTree = "<group>"; };
-		EF84672BBD894F105E67D154AE0D4BBC /* ActionSheetPicker-3.0-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ActionSheetPicker-3.0-dummy.m"; sourceTree = "<group>"; };
 		F3DCCFC92D016F5B8FD4D78466E98E2B /* Pods-Pill Identifier AppTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pill Identifier AppTests-umbrella.h"; sourceTree = "<group>"; };
-		F8ED927C8131AF9C08D7EDC5E5ED533D /* ActionSheetLocalePicker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ActionSheetLocalePicker.m; path = Pickers/ActionSheetLocalePicker.m; sourceTree = "<group>"; };
 		FAAF8AC6BA484CB8D209B254547013DA /* Pods-Pill Identifier AppTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Pill Identifier AppTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2D7F29C3A1400A6F84C85A369F2DEAE0 /* Frameworks */ = {
+		336DA2D8EB121A8CB2A7A93ED461C1DB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27E9B5DF5CEF3AE41E19298DB027344F /* Foundation.framework in Frameworks */,
+				1C62FB0D9B8F51A2D1E74670CFE3F1F6 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,14 +165,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				78EEB1DF95B57528988CB3AAC01DF3A9 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5B76AB8B4865DCEC5DE8E49669B9A759 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2E71CFFE081DFE6A3268AEC24B5347C9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,15 +177,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		68BC40474AF9F5C05DEC160D34D9DAC2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D617C06E0AD3D40FE0E4FF20FB30AC49 /* Foundation.framework in Frameworks */,
-				A70EAAD50A469C0DA407C35957E9FA12 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		982014652B6002488178E45BF0F9CC3F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -228,20 +185,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BC4E3084205D4F535862427F0B3F4A54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6149C7D5F477D4D5E3EBEAF811B262E9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		106357201EA8B91E5FD4547A70FDB648 /* SwiftyButton */ = {
+		042070C39EC227937AC491105917BE73 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E1B8B733F2FBC5F5E97E467E0CECD622 /* CustomPressableButton.swift */,
-				06DE1093B0FED780920B8514347E353E /* FlatButton.swift */,
-				91F3376705FB65A8D7A23771B61FD01C /* PressableButton.swift */,
-				20D68CEAF843D9FAF86DA6EC7D9D76FC /* Utils.swift */,
-				35BFDF6AE0DA0843D981CE05491DF408 /* Support Files */,
+				43730EC957B5FA73CE9AF4C994C28157 /* ActionSheetPicker-3.0.modulemap */,
+				0F7892B47AA96F5DC06D8C3ED40676B3 /* ActionSheetPicker-3.0.xcconfig */,
+				BF99DF41A4763CD8AB5ABC57B375E9FF /* ActionSheetPicker-3.0-dummy.m */,
+				CFF759C37C4D7BAA9F6218A77DCF208F /* ActionSheetPicker-3.0-prefix.pch */,
+				4FB1B203F13A0E9962EAF9E2149A896D /* ActionSheetPicker-3.0-umbrella.h */,
+				CAF17FBDFCAE36F451E4B1D158E79F1C /* Info.plist */,
 			);
-			name = SwiftyButton;
-			path = SwiftyButton;
+			name = "Support Files";
+			path = "../Target Support Files/ActionSheetPicker-3.0";
+			sourceTree = "<group>";
+		};
+		093EC1078BA977F95D052E70EC1907C0 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				627A41D01792F8785468DB19D48CEEF7 /* Info.plist */,
+				2078F16CD7CCCDA067C6990D4AFC6238 /* SwiftyJSON.modulemap */,
+				DB01D2A012624D795B9E1E42067625D6 /* SwiftyJSON.xcconfig */,
+				7AB66DB5AA5B34AF60CADDADA2F6AF94 /* SwiftyJSON-dummy.m */,
+				90B2226E5C383F21CE52E1F2EB5DD6DD /* SwiftyJSON-prefix.pch */,
+				24AE04D6A9866D34DD660ABAB365647D /* SwiftyJSON-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyJSON";
 			sourceTree = "<group>";
 		};
 		10DEDCB394BAA0C7FEDEBE330207B074 /* iOS */ = {
@@ -253,30 +233,6 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		35BFDF6AE0DA0843D981CE05491DF408 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				A1AD26863976A45A3786BEEEEFA85CDE /* Info.plist */,
-				418A73503AF84B36AEFB6C6764433DA1 /* SwiftyButton.modulemap */,
-				3833734DFC2D81AA0A371567D153F52C /* SwiftyButton.xcconfig */,
-				CB8F97B00AD597FFB4D4F464591FECA1 /* SwiftyButton-dummy.m */,
-				5574C5893AC33EFDA872DCF4ADA354EF /* SwiftyButton-prefix.pch */,
-				4AB929A62C8AAC9FE41E8055F98D6B90 /* SwiftyButton-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftyButton";
-			sourceTree = "<group>";
-		};
-		3F9956C377447C67C0E45292833A25FA /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				46F7C69D3F69F83A96F00C28D2D9E4FC /* ActionSheetPicker-3.0 */,
-				106357201EA8B91E5FD4547A70FDB648 /* SwiftyButton */,
-				73C120A9A4656651F1D653DAAAEAF30E /* SwiftyJSON */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,70 +241,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		46F7C69D3F69F83A96F00C28D2D9E4FC /* ActionSheetPicker-3.0 */ = {
+		54A4B190EBD1359AE79F396040F13116 /* ActionSheetPicker-3.0 */ = {
 			isa = PBXGroup;
 			children = (
-				384E4CDB449991C6E3423B36E7427983 /* AbstractActionSheetPicker.h */,
-				B621EB923AF802885EA17356CA67FE85 /* AbstractActionSheetPicker.m */,
-				D2702A13FC48D90115CE2BF28C46CCA3 /* ActionSheetCustomPicker.h */,
-				DB128F28AC72431E8F49E8A27E7C89E1 /* ActionSheetCustomPicker.m */,
-				D25ABA91D0A48D87CFEBC082F6B7BDFC /* ActionSheetCustomPickerDelegate.h */,
-				ED0608073A3555A15E97BF7C173F3ADA /* ActionSheetDatePicker.h */,
-				DD242C3139FBF9A5D2EFFCCA7A0BC7C4 /* ActionSheetDatePicker.m */,
-				48450CAB1CB297A356D0E6DE6EE4BD97 /* ActionSheetDistancePicker.h */,
-				15F8B3302B6BFA708BF5EB82BA65DE0E /* ActionSheetDistancePicker.m */,
-				766F7B375DA5F417F37BC609A05BBBFE /* ActionSheetLocalePicker.h */,
-				F8ED927C8131AF9C08D7EDC5E5ED533D /* ActionSheetLocalePicker.m */,
-				A81CCD50684F95AB2D03D29BEBB46C83 /* ActionSheetMultipleStringPicker.h */,
-				7288187C2DEC799023222BCC19B553DF /* ActionSheetMultipleStringPicker.m */,
-				D79AB5C6CF1DCC4CF482FBAA6ECB0BB9 /* ActionSheetPicker.h */,
-				AC6D72B5CEDDF895C15A6C3582DFA20B /* ActionSheetStringPicker.h */,
-				28BA40C367BCAA8D8596F6F13CB6CEBA /* ActionSheetStringPicker.m */,
-				6E54B9F881CF19B98620A2B27E1AC260 /* DistancePickerView.h */,
-				56E57F6512B073DDF76343946C30C671 /* DistancePickerView.m */,
-				CB0A54D7BF9A42B5C4B15F1874E345F2 /* SWActionSheet.h */,
-				5B281C801B37495F9BB341C80D480081 /* SWActionSheet.m */,
-				52DE3E5F1AE35D8D59D9DE899C3C9231 /* Support Files */,
+				3C604DDCCE0D04BC6F400EF169844999 /* AbstractActionSheetPicker.h */,
+				1D3775F9EAAC6CBA4A4ADD47A6E79A20 /* AbstractActionSheetPicker.m */,
+				8B828DFD514DE2E6FDA8A62301BF8E87 /* ActionSheetCustomPicker.h */,
+				6F38EC0B70AB2D0B3B638A69FDF33069 /* ActionSheetCustomPicker.m */,
+				C48B52CCD6209E1025AA91D9B3BBD864 /* ActionSheetCustomPickerDelegate.h */,
+				9EF0FC1A7C2876D4A6CC4A340042613B /* ActionSheetDatePicker.h */,
+				942AAEEC54D96E843730A79BFAB6F2D5 /* ActionSheetDatePicker.m */,
+				C4307330DED3C6233ABB04F1BC3DACC4 /* ActionSheetDistancePicker.h */,
+				46382B5B5F7CDA3364EA88DA63F11CE8 /* ActionSheetDistancePicker.m */,
+				BB2F52D14BD6B8BBDD3D8DF689BE0CB6 /* ActionSheetLocalePicker.h */,
+				7AAF5509101A32ED40EF52955D7B2D1E /* ActionSheetLocalePicker.m */,
+				917211BB34523093E474132E7D7F3846 /* ActionSheetMultipleStringPicker.h */,
+				12D462BFA1A6B3A81D1475568BB30C68 /* ActionSheetMultipleStringPicker.m */,
+				55EB7FB60491A9B31353B940D10B2792 /* ActionSheetPicker.h */,
+				E07DFDA806E55884E09E430285B7014C /* ActionSheetStringPicker.h */,
+				A2DF993ADC808CA361D9C244D976192E /* ActionSheetStringPicker.m */,
+				CA34FAF4F7A16EB5F86D650A0ADE76CE /* DistancePickerView.h */,
+				C3D24CF281E0F18260858CF42C0A5ABE /* DistancePickerView.m */,
+				1DB65C491E2A8EFA4EA4CDBD49AEC1D1 /* SWActionSheet.h */,
+				38F6FCD7F1EA827F755075E8D3D9AECA /* SWActionSheet.m */,
+				042070C39EC227937AC491105917BE73 /* Support Files */,
 			);
-			name = "ActionSheetPicker-3.0";
 			path = "ActionSheetPicker-3.0";
-			sourceTree = "<group>";
-		};
-		52DE3E5F1AE35D8D59D9DE899C3C9231 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				5DFCC91A46182DA9FA4D2CCC15C32B38 /* ActionSheetPicker-3.0.modulemap */,
-				92347F0588A08C0F66B5CC87D6395CDD /* ActionSheetPicker-3.0.xcconfig */,
-				EF84672BBD894F105E67D154AE0D4BBC /* ActionSheetPicker-3.0-dummy.m */,
-				0ABD02AE360B8F2BECA54402FF26C475 /* ActionSheetPicker-3.0-prefix.pch */,
-				0A9E3CB56133644EF90582E52F3229DB /* ActionSheetPicker-3.0-umbrella.h */,
-				B59D699172F303F26C6CD719E6D43D60 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/ActionSheetPicker-3.0";
-			sourceTree = "<group>";
-		};
-		73C120A9A4656651F1D653DAAAEAF30E /* SwiftyJSON */ = {
-			isa = PBXGroup;
-			children = (
-				358940F12868EAAA600D7CA85BB8F721 /* SwiftyJSON.swift */,
-				F1D659759A2E559715E8AE72D1AC25E0 /* Support Files */,
-			);
-			name = SwiftyJSON;
-			path = SwiftyJSON;
-			sourceTree = "<group>";
-		};
-		75475C82EE826D160285274833AE5952 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				222399C3BB4770B2C23DAB42CFE9ED00 /* ActionSheetPicker_3_0.framework */,
-				3ED89BBF75E6C641C02274E69BAB4D9A /* Pods_Pill_Identifier_App.framework */,
-				D91B116C728DB2C59A3EBFBEB8ECD0C3 /* Pods_Pill_Identifier_AppTests.framework */,
-				984B2143D23741C7A64601BD73E158B9 /* Pods_Pill_Identifier_AppUITests.framework */,
-				ACFF240AFCD5200A6C4DAA6B181E2413 /* SwiftyButton.framework */,
-				4BD4ECBD7DE7EA279D826BC4071F2EDF /* SwiftyJSON.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -356,10 +274,19 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
-				3F9956C377447C67C0E45292833A25FA /* Pods */,
-				75475C82EE826D160285274833AE5952 /* Products */,
+				87E1D003605F1D08E583BCE4E65FC241 /* Pods */,
+				BC526AA405A726B1C9432385A3AD27E6 /* Products */,
 				A922544A8F6FD0F878EA12567AAEA25D /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		87E1D003605F1D08E583BCE4E65FC241 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				54A4B190EBD1359AE79F396040F13116 /* ActionSheetPicker-3.0 */,
+				ACBF4BF21EB06A830CA91AF1EA7F063F /* SwiftyJSON */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		90A52E61A9CFBE3F467842BCB5036E62 /* Pods-Pill Identifier AppTests */ = {
@@ -408,6 +335,27 @@
 			path = "Target Support Files/Pods-Pill Identifier AppUITests";
 			sourceTree = "<group>";
 		};
+		ACBF4BF21EB06A830CA91AF1EA7F063F /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				23BB306EB4C25C47CB0B7B7DE8F23CDE /* SwiftyJSON.swift */,
+				093EC1078BA977F95D052E70EC1907C0 /* Support Files */,
+			);
+			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		BC526AA405A726B1C9432385A3AD27E6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F53D0DF134238B9B6F6C5C441FBF5E8 /* ActionSheetPicker_3_0.framework */,
+				BC4110112C6F9F5FEA4A5467B7F4202D /* Pods_Pill_Identifier_App.framework */,
+				CDAFF49B4C501B81582256F82DEB68CE /* Pods_Pill_Identifier_AppTests.framework */,
+				185AE24A0CF606560B91DAB7A1191F31 /* Pods_Pill_Identifier_AppUITests.framework */,
+				0A5462A06EE500C1948160F29E82FB28 /* SwiftyJSON.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C51A05A3626D6F5C4AF151A1270498A6 /* Pods-Pill Identifier App */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,36 +374,14 @@
 			path = "Target Support Files/Pods-Pill Identifier App";
 			sourceTree = "<group>";
 		};
-		F1D659759A2E559715E8AE72D1AC25E0 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				BD047D4F4F47ECFC8EE64F3CEEF3AD8D /* Info.plist */,
-				38EDDBB5AE426D95B13BE0371A284FB9 /* SwiftyJSON.modulemap */,
-				89A92DA79DDADBDB4B63B005EA7FD7A8 /* SwiftyJSON.xcconfig */,
-				56F9BA2C564910EB627FE8D2CF576CAF /* SwiftyJSON-dummy.m */,
-				B913B4EF6311E966AA5878CB4E2050F9 /* SwiftyJSON-prefix.pch */,
-				59C6CEAFC4D7EDD38D90B95F9AA4E864 /* SwiftyJSON-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftyJSON";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		27531DB3E1C4C8E3F9F14345B7D57918 /* Headers */ = {
+		23EEE6C525B53540B7F1440F0E9E357D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4221950C77F4C36D9CBE9C05E5ACF872 /* SwiftyButton-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		66970E294FBE81DCE36726E542B85D91 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C64C94B27A0D612D23EAE27673E840BC /* Pods-Pill Identifier App-umbrella.h in Headers */,
+				6CDAA1C519992D1D70EA2C1072D5731E /* SwiftyJSON-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +404,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A2740632312223CB959D20CCCC2E62B4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A6B2820C9785C51188BBDE93BDE7C59 /* Pods-Pill Identifier App-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A2E01151615F654AFDD9F38587AC8D5B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -494,32 +428,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DFEDA41F37D9D51B04EF795A3E27204B /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A110F853683C16321B9BBE16AC9E332A /* SwiftyJSON-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		031B7F8A054CC782EC81882504EC5CF6 /* SwiftyButton */ = {
+		15BA0A4513515B2DEC75E6FF77E77673 /* SwiftyJSON */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A7E5EEFD71E8A5C651EC982B7DFFFD5A /* Build configuration list for PBXNativeTarget "SwiftyButton" */;
+			buildConfigurationList = 81F4E4D2AF3963B55111B6DB6509C690 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
 			buildPhases = (
-				673DC8D0076C54A3EEBDEE785AA55AD9 /* Sources */,
-				68BC40474AF9F5C05DEC160D34D9DAC2 /* Frameworks */,
-				27531DB3E1C4C8E3F9F14345B7D57918 /* Headers */,
+				6EEC2940DAAC1B887AFAC18D9C5E7C30 /* Sources */,
+				336DA2D8EB121A8CB2A7A93ED461C1DB /* Frameworks */,
+				23EEE6C525B53540B7F1440F0E9E357D /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SwiftyButton;
-			productName = SwiftyButton;
-			productReference = ACFF240AFCD5200A6C4DAA6B181E2413 /* SwiftyButton.framework */;
+			name = SwiftyJSON;
+			productName = SwiftyJSON;
+			productReference = 0A5462A06EE500C1948160F29E82FB28 /* SwiftyJSON.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5F3D0C8FC01209D3E245851A9C9315BB /* Pods-Pill Identifier App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 774A0561AB2C9B7D70F81681907C17A1 /* Build configuration list for PBXNativeTarget "Pods-Pill Identifier App" */;
+			buildPhases = (
+				9D309BE4B7B31BF6D630043A535A9676 /* Sources */,
+				BC4E3084205D4F535862427F0B3F4A54 /* Frameworks */,
+				A2740632312223CB959D20CCCC2E62B4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9AA7658CA27D304C46D6A01CF9694863 /* PBXTargetDependency */,
+				03D9EE2B7A800085ACBDFB045E8EB1ED /* PBXTargetDependency */,
+			);
+			name = "Pods-Pill Identifier App";
+			productName = "Pods-Pill Identifier App";
+			productReference = BC4110112C6F9F5FEA4A5467B7F4202D /* Pods_Pill_Identifier_App.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		965699190112DDBD9B7864D091660DBC /* ActionSheetPicker-3.0 */ = {
@@ -536,24 +481,7 @@
 			);
 			name = "ActionSheetPicker-3.0";
 			productName = "ActionSheetPicker-3.0";
-			productReference = 222399C3BB4770B2C23DAB42CFE9ED00 /* ActionSheetPicker_3_0.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		9808F93FC88A10BEF7F3680E452E750D /* SwiftyJSON */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FE22968B4FC69B6A557673E5F36DCB4E /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
-			buildPhases = (
-				DCD9EF8F4681A0779688855F969617F8 /* Sources */,
-				2D7F29C3A1400A6F84C85A369F2DEAE0 /* Frameworks */,
-				DFEDA41F37D9D51B04EF795A3E27204B /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SwiftyJSON;
-			productName = SwiftyJSON;
-			productReference = 4BD4ECBD7DE7EA279D826BC4071F2EDF /* SwiftyJSON.framework */;
+			productReference = 1F53D0DF134238B9B6F6C5C441FBF5E8 /* ActionSheetPicker_3_0.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A537B49A48F9771E9CEF6918DD6BC6F5 /* Pods-Pill Identifier AppTests */ = {
@@ -571,27 +499,7 @@
 			);
 			name = "Pods-Pill Identifier AppTests";
 			productName = "Pods-Pill Identifier AppTests";
-			productReference = D91B116C728DB2C59A3EBFBEB8ECD0C3 /* Pods_Pill_Identifier_AppTests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		EA1D2E20D9DFCE0D04A1ACC65FE6AB38 /* Pods-Pill Identifier App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 203C880B3C9BF1228BC47931C26EF588 /* Build configuration list for PBXNativeTarget "Pods-Pill Identifier App" */;
-			buildPhases = (
-				2B5D1A15A06EB3C1E8525D3D779CE301 /* Sources */,
-				5B76AB8B4865DCEC5DE8E49669B9A759 /* Frameworks */,
-				66970E294FBE81DCE36726E542B85D91 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7B85CDCEB7CFD2754A15486F2610A7F5 /* PBXTargetDependency */,
-				7B7DB4328E10C507D44375CB3BDC70D2 /* PBXTargetDependency */,
-				60305921447CC3AB6B1F2358A8AC0E70 /* PBXTargetDependency */,
-			);
-			name = "Pods-Pill Identifier App";
-			productName = "Pods-Pill Identifier App";
-			productReference = 3ED89BBF75E6C641C02274E69BAB4D9A /* Pods_Pill_Identifier_App.framework */;
+			productReference = CDAFF49B4C501B81582256F82DEB68CE /* Pods_Pill_Identifier_AppTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		FE12DD5981377F4D7B27D05E196B672D /* Pods-Pill Identifier AppUITests */ = {
@@ -609,7 +517,7 @@
 			);
 			name = "Pods-Pill Identifier AppUITests";
 			productName = "Pods-Pill Identifier AppUITests";
-			productReference = 984B2143D23741C7A64601BD73E158B9 /* Pods_Pill_Identifier_AppUITests.framework */;
+			productReference = 185AE24A0CF606560B91DAB7A1191F31 /* Pods_Pill_Identifier_AppUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -619,7 +527,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1000;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -629,16 +537,15 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 75475C82EE826D160285274833AE5952 /* Products */;
+			productRefGroup = BC526AA405A726B1C9432385A3AD27E6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				965699190112DDBD9B7864D091660DBC /* ActionSheetPicker-3.0 */,
-				EA1D2E20D9DFCE0D04A1ACC65FE6AB38 /* Pods-Pill Identifier App */,
+				5F3D0C8FC01209D3E245851A9C9315BB /* Pods-Pill Identifier App */,
 				A537B49A48F9771E9CEF6918DD6BC6F5 /* Pods-Pill Identifier AppTests */,
 				FE12DD5981377F4D7B27D05E196B672D /* Pods-Pill Identifier AppUITests */,
-				031B7F8A054CC782EC81882504EC5CF6 /* SwiftyButton */,
-				9808F93FC88A10BEF7F3680E452E750D /* SwiftyJSON */,
+				15BA0A4513515B2DEC75E6FF77E77673 /* SwiftyJSON */,
 			);
 		};
 /* End PBXProject section */
@@ -652,23 +559,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2B5D1A15A06EB3C1E8525D3D779CE301 /* Sources */ = {
+		6EEC2940DAAC1B887AFAC18D9C5E7C30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF68BA6E3FEEAB361FD6525B8BEB3A70 /* Pods-Pill Identifier App-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		673DC8D0076C54A3EEBDEE785AA55AD9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2F28F4C747CEFCE5C8BFF6B4763FCB84 /* CustomPressableButton.swift in Sources */,
-				ABC2A898F9EAABE93486EA51F9D9B535 /* FlatButton.swift in Sources */,
-				ABFD24F0B32FE5F82EA04D1D050CCA5B /* PressableButton.swift in Sources */,
-				EE990602E6C82A8E360EEDF396889B21 /* SwiftyButton-dummy.m in Sources */,
-				BFF59736E276F2C0E3A1C0B8C9325436 /* Utils.swift in Sources */,
+				E692DB1B8C36540287A19E240DEF7879 /* SwiftyJSON-dummy.m in Sources */,
+				511681382BB8C89575ACD4B98E879209 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,46 +593,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DCD9EF8F4681A0779688855F969617F8 /* Sources */ = {
+		9D309BE4B7B31BF6D630043A535A9676 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0EE49C818D01F1644BA24B62D3EB7E8 /* SwiftyJSON-dummy.m in Sources */,
-				7D39C08EB780DE5C134CFF883C502CD5 /* SwiftyJSON.swift in Sources */,
+				EF27E928B39518D1FCF011B3B18122D6 /* Pods-Pill Identifier App-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		60305921447CC3AB6B1F2358A8AC0E70 /* PBXTargetDependency */ = {
+		03D9EE2B7A800085ACBDFB045E8EB1ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftyJSON;
-			target = 9808F93FC88A10BEF7F3680E452E750D /* SwiftyJSON */;
-			targetProxy = F5D53D6A9E4B5CE2E78349EFDF7E885C /* PBXContainerItemProxy */;
+			target = 15BA0A4513515B2DEC75E6FF77E77673 /* SwiftyJSON */;
+			targetProxy = D22FABFFF5C6C275C09966506F087FC0 /* PBXContainerItemProxy */;
 		};
-		7B7DB4328E10C507D44375CB3BDC70D2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftyButton;
-			target = 031B7F8A054CC782EC81882504EC5CF6 /* SwiftyButton */;
-			targetProxy = BAF5DB7A8374572B1E3B957303A2202D /* PBXContainerItemProxy */;
-		};
-		7B85CDCEB7CFD2754A15486F2610A7F5 /* PBXTargetDependency */ = {
+		9AA7658CA27D304C46D6A01CF9694863 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ActionSheetPicker-3.0";
 			target = 965699190112DDBD9B7864D091660DBC /* ActionSheetPicker-3.0 */;
-			targetProxy = D41C744BC19F271C031FBCFF8783BCAA /* PBXContainerItemProxy */;
+			targetProxy = BD49F815DC3CFC046B8D8BE60C4A72E6 /* PBXContainerItemProxy */;
 		};
 		ADBEC7B63495F28178B6BE5D09E15D02 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-Pill Identifier App";
-			target = EA1D2E20D9DFCE0D04A1ACC65FE6AB38 /* Pods-Pill Identifier App */;
+			target = 5F3D0C8FC01209D3E245851A9C9315BB /* Pods-Pill Identifier App */;
 			targetProxy = B02E127DD2324F9B866B137FBB9785E6 /* PBXContainerItemProxy */;
 		};
 		CB6094010860B9FE62A099505288EC36 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-Pill Identifier App";
-			target = EA1D2E20D9DFCE0D04A1ACC65FE6AB38 /* Pods-Pill Identifier App */;
+			target = 5F3D0C8FC01209D3E245851A9C9315BB /* Pods-Pill Identifier App */;
 			targetProxy = C9EDCAB5D9E397AE3E1A22C9D6BF026A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -811,9 +700,9 @@
 			};
 			name = Debug;
 		};
-		2310065257638987C580C3B6789A3C4A /* Release */ = {
+		2316B2BB5BDF9FABFFAF94278E063DD2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89A92DA79DDADBDB4B63B005EA7FD7A8 /* SwiftyJSON.xcconfig */;
+			baseConfigurationReference = DB01D2A012624D795B9E1E42067625D6 /* SwiftyJSON.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -835,14 +724,13 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		4F407F6E1FCCD37943249181ED90F189 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -879,10 +767,12 @@
 			};
 			name = Release;
 		};
-		50EFEE4938A3AD1E8AA83E092170B3D3 /* Release */ = {
+		4F87D9F611E1806532275BE953F8CD2F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3833734DFC2D81AA0A371567D153F52C /* SwiftyButton.xcconfig */;
+			baseConfigurationReference = 9B91FFCDDB45DE3606E6E978F2DE0680 /* Pods-Pill Identifier App.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -892,19 +782,20 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyButton/SwiftyButton-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyButton/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Pill Identifier App/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftyButton/SwiftyButton.modulemap";
-				PRODUCT_MODULE_NAME = SwiftyButton;
-				PRODUCT_NAME = SwiftyButton;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Pill Identifier App/Pods-Pill Identifier App.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1029,49 +920,14 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		5AA77D8F849E8C575733312418D3EB2A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9B91FFCDDB45DE3606E6E978F2DE0680 /* Pods-Pill Identifier App.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Pill Identifier App/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Pill Identifier App/Pods-Pill Identifier App.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
 		5B2A8B5111F629383576A838BFB56B57 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92347F0588A08C0F66B5CC87D6395CDD /* ActionSheetPicker-3.0.xcconfig */;
+			baseConfigurationReference = 0F7892B47AA96F5DC06D8C3ED40676B3 /* ActionSheetPicker-3.0.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1101,9 +957,9 @@
 			};
 			name = Release;
 		};
-		952D4B031BDF6A0DD1D89FA03AB9B7C2 /* Debug */ = {
+		780B6221DCEBCD1E6A26BA0893B20078 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89A92DA79DDADBDB4B63B005EA7FD7A8 /* SwiftyJSON.xcconfig */;
+			baseConfigurationReference = DB01D2A012624D795B9E1E42067625D6 /* SwiftyJSON.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1125,18 +981,21 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		A40F6C17753A5ECD2E635864D15B309C /* Debug */ = {
+		7D702BFD082BC3B48F95E4B7FD8676C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3833734DFC2D81AA0A371567D153F52C /* SwiftyButton.xcconfig */;
+			baseConfigurationReference = E612C98642603CA6490113204A428825 /* Pods-Pill Identifier App.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1146,19 +1005,21 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyButton/SwiftyButton-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyButton/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Pill Identifier App/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftyButton/SwiftyButton.modulemap";
-				PRODUCT_MODULE_NAME = SwiftyButton;
-				PRODUCT_NAME = SwiftyButton;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Pill Identifier App/Pods-Pill Identifier App.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1199,45 +1060,9 @@
 			};
 			name = Debug;
 		};
-		BCBFEDCA4F4ED0E3328338ED798BCEC6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E612C98642603CA6490113204A428825 /* Pods-Pill Identifier App.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Pill Identifier App/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Pill Identifier App/Pods-Pill Identifier App.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		DC340E83614BDA07739F26DB1508B79B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92347F0588A08C0F66B5CC87D6395CDD /* ActionSheetPicker-3.0.xcconfig */;
+			baseConfigurationReference = 0F7892B47AA96F5DC06D8C3ED40676B3 /* ActionSheetPicker-3.0.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1269,15 +1094,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		203C880B3C9BF1228BC47931C26EF588 /* Build configuration list for PBXNativeTarget "Pods-Pill Identifier App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BCBFEDCA4F4ED0E3328338ED798BCEC6 /* Debug */,
-				5AA77D8F849E8C575733312418D3EB2A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1296,6 +1112,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		774A0561AB2C9B7D70F81681907C17A1 /* Build configuration list for PBXNativeTarget "Pods-Pill Identifier App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D702BFD082BC3B48F95E4B7FD8676C5 /* Debug */,
+				4F87D9F611E1806532275BE953F8CD2F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7E127E32D0465A08437982F8B2A3077E /* Build configuration list for PBXNativeTarget "ActionSheetPicker-3.0" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1305,11 +1130,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A7E5EEFD71E8A5C651EC982B7DFFFD5A /* Build configuration list for PBXNativeTarget "SwiftyButton" */ = {
+		81F4E4D2AF3963B55111B6DB6509C690 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A40F6C17753A5ECD2E635864D15B309C /* Debug */,
-				50EFEE4938A3AD1E8AA83E092170B3D3 /* Release */,
+				2316B2BB5BDF9FABFFAF94278E063DD2 /* Debug */,
+				780B6221DCEBCD1E6A26BA0893B20078 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1319,15 +1144,6 @@
 			buildConfigurations = (
 				0BDCB37386BC791D9A8C56EFB5ADE58A /* Debug */,
 				010D830169CF6E173B1589765DE7F3AC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FE22968B4FC69B6A557673E5F36DCB4E /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				952D4B031BDF6A0DD1D89FA03AB9B7C2 /* Debug */,
-				2310065257638987C580C3B6789A3C4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
