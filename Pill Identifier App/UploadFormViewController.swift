@@ -22,12 +22,11 @@ UITextFieldDelegate {
 	var imageViewButton:		UIButton!
 	var pickColorBtn:	UIButton!
 	var pickShapeBtn:  	UIButton!
-	var pickImprintBtn:	UIButton!
 	var choosePictureBtn:	UIButton!
 	var sampleTextField: UITextField!
 	var submitButton: 	UIButton!
 	
-	var myTextField: UITextField!
+	var imprintTextField: UITextField!
 	
 	override func loadView() {
 		super.loadView()
@@ -139,25 +138,6 @@ UITextFieldDelegate {
 			self,
 			action: #selector(pickShapeBtnTapped),
 			for: .touchUpInside)
-		
-		// ============================  Set Up PICK IMPRINT Button
-		pickImprintBtn = UIButton(frame: CGRect(
-			x: myListIndent,
-			y: screenHeight * 0.325,
-			width: screenWidth * 0.8,
-			height: myDefaultTextFieldHeight))
-		pickImprintBtn.layer.borderWidth = 2.0
-		pickImprintBtn.setTitleColor(UIColor.black, for: .normal)
-		pickImprintBtn.setTitleColor(UIColor.lightGray, for: .disabled)
-		pickImprintBtn.setTitleColor(UIColor.white, for: .highlighted)
-		pickImprintBtn.setTitle("Pill Imprint", for: .normal)
-		pickImprintBtn.titleLabel?.font =  UIFont.systemFont(
-			ofSize: myDefaultTextFontSize,
-			weight: .light)
-		pickImprintBtn.addTarget(
-			self,
-			action: #selector(pickImprintBtnTapped),
-			for: .touchUpInside)
 
 		// ====================================  Set Up Submit Button
 		submitButton = UIButton(frame: CGRect(
@@ -178,48 +158,42 @@ UITextFieldDelegate {
 			action: #selector(submitButtonTapped),
 			for: .touchUpInside)
 		
-		//submitButton.isEnabled = false
-
 		// Create UITextField
-		let myTextField: UITextField = UITextField(frame: CGRect(
+		let imprintTextField: UITextField = UITextField(frame: CGRect(
 			x: myListIndent,
 			y: screenHeight * 0.325,
 			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		
 		// Set UITextField placeholder text
-		myTextField.placeholder = "Enter Pill Imprint"
-		myTextField.clearsOnBeginEditing = true
-		myTextField.delegate = self
+		imprintTextField.placeholder = "Enter Pill Imprint"
+		imprintTextField.clearsOnBeginEditing = true
+		imprintTextField.delegate = self
 		
 		// Set text to UItextField
-		//myTextField.text = "Enter Imprint"
-		myTextField.textAlignment = .center
+		//imprintTextField.text = "Enter Imprint"
+		imprintTextField.textAlignment = .center
 		
 		// Set UITextField border style
-		myTextField.borderStyle = UITextField.BorderStyle.line
-		myTextField.layer.borderWidth = 2.0
+		imprintTextField.borderStyle = UITextField.BorderStyle.line
+		imprintTextField.layer.borderWidth = 2.0
 		
 		// Set UITextField background colour
-		//myTextField.backgroundColor = UIColor.clear
-		myTextField.backgroundColor = UIColor.white
-		//myTextField.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+		//imprintTextField.backgroundColor = UIColor.clear
+		imprintTextField.backgroundColor = UIColor.white
+		//imprintTextField.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
 		
 		// Set UITextField text color
-		myTextField.textColor = UIColor.black
+		imprintTextField.textColor = UIColor.black
 		
 		// Add UITextField as a subview
-		north.addSubview(myTextField)
+		north.addSubview(imprintTextField)
 		
-		
-		
-
 		
 		// NORTH VIEW SET
 		north.addSubview(choosePictureBtn)
 		north.addSubview(pickColorBtn)
 		north.addSubview(pickShapeBtn)
-		//north.addSubview(pickImprintBtn)
 		
 		// SOUTH VIEW SET
 		//south.addSubview(imageView)
@@ -227,18 +201,7 @@ UITextFieldDelegate {
 		south.addSubview(submitButton)
 
 	}// end viewdidlayoutsubviews
-	
-	/*
-	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		//Color #3 - While touching outside the textField.
-		if isDebugOn() {
-			view.backgroundColor = UIColor.cyan
-		}
-		self.view.endEditing(true)
-	}
-	*/
 
-	
 	// when user hits return key on keyboard
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		//print(textField.text!)
@@ -304,12 +267,6 @@ UITextFieldDelegate {
 			origin: sender)
 	}// end pick shape
 	
-	@objc func pickImprintBtnTapped(sender: UIButton) {
-		showImprintActionSheet()
-		//self.imprint = "Hello Imprint"
-		//print("Imprint: " + self.imprint)
-	}
-	
 	func submit() {
 
 		guard let color = self.color else {
@@ -322,12 +279,6 @@ UITextFieldDelegate {
 			return
 		}
 
-		/*
-		guard let imprint = self.imprint else {
-			print("No imprint to submit")
-			return
-		}*/
-		
 		// make http request string
 		// http://rximage.nlm.nih.gov/api/{apiName}/{apiVersion}/{resourcePath}?{parameters}
 		// http://rximage.nlm.nih.gov/api/rximage/1/rxnav?color=blue&size=17&sizeT=0
@@ -344,10 +295,8 @@ UITextFieldDelegate {
 		print(url)
 		
 		// get http request
-		
 		Alamofire.request(url).responseJSON { response in
 			//print("Request: \(String(describing: response.request))")   // original url request
-			
 			if let json = response.result.value {
 				//print("JSON: \(json)") // serialized json response
 				let swiftyJsonVar = JSON(json)//  conert json response to swiftyJSON
@@ -403,7 +352,7 @@ UITextFieldDelegate {
 			self.submitButton.isEnabled = true
 			choosePictureBtn.setTitle(
 				("Picture: Selected").uppercased(), for: .normal)
-			choosePictureBtn.isEnabled = false
+			//choosePictureBtn.isEnabled = false
 			choosePictureBtn.setImage(pickedImage, for: .normal)
 			choosePictureBtn.imageView?.contentMode = .scaleAspectFill
 		}
@@ -415,8 +364,7 @@ UITextFieldDelegate {
 		dismiss(animated: true, completion: nil)
 	}// end imagepicker cancel
 	
-	func camera()
-	{
+	func camera() {
 		if UIImagePickerController.isSourceTypeAvailable(.camera){
 			let myPickerController = UIImagePickerController()
 			myPickerController.delegate = self;
@@ -431,9 +379,7 @@ UITextFieldDelegate {
 		
 	}// end camera
 	
-	func photoLibrary()
-	{
-		
+	func photoLibrary() {
 		if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
 			let myPickerController = UIImagePickerController()
 			myPickerController.delegate = self;
@@ -471,35 +417,6 @@ UITextFieldDelegate {
 		
 		self.present(actionSheet, animated: true, completion: nil)
 	}// end show actionsheet
-	
-	func showImprintActionSheet() {
-		
-		let alertController = UIAlertController(
-			title: "Pill Imprint",
-			message: "",
-			preferredStyle: UIAlertController.Style.alert)
-		
-		let saveAction = UIAlertAction(
-			title: "Save",
-			style: UIAlertAction.Style.default,
-			handler: { alert -> Void in
-				_ = alertController.textFields![0] as UITextField
-		})
-		
-		let cancelAction = UIAlertAction(
-			title: "Cancel",
-			style: UIAlertAction.Style.default,
-			handler: { (
-				action : UIAlertAction!) -> Void in })
-		alertController.addTextField { (textField : UITextField!) -> Void in
-			textField.placeholder = "Enter Imprint Here"
-		}
-		
-		alertController.addAction(saveAction)
-		alertController.addAction(cancelAction)
-		
-		self.present(alertController, animated: true, completion: nil)
-	}
 	
 	func displayResultsPage(json: JSON) {
 		let resultsTableViewController: ResultsTableViewController

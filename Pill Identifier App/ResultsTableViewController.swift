@@ -137,10 +137,13 @@ class ResultsTableViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		//print(arrayOfCellData[indexPath.row])
+		
 		print(arrayOfCellData[indexPath.row].text!)
-		var data = TestData()
-		data.image = arrayOfCellData[indexPath.row].image!
-		data.name = arrayOfCellData[indexPath.row].text!
+		let data = cellData(
+			cell:  arrayOfCellData[indexPath.row].cell!,
+			text: arrayOfCellData[indexPath.row].text!,
+			image: arrayOfCellData[indexPath.row].image!,
+			imageUrl: arrayOfCellData[indexPath.row].imageUrl!)
 		displayCardDisplayPage(data: data)
 		
 	}
@@ -161,12 +164,10 @@ class ResultsTableViewController: UITableViewController {
 
 	}
 	
-	func displayCardDisplayPage(data: TestData) {
+	func displayCardDisplayPage(data: cellData) {
 		let cardDisplayViewController: CardDisplayViewController = storyboard?.instantiateViewController(withIdentifier: "cardDisplayViewController") as! CardDisplayViewController
 		
-		
-		test.image = data.image
-		test.name = data.name
+		cardDisplayViewController.cellData = data
 		
 		self.present(
 			cardDisplayViewController,

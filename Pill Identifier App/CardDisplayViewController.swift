@@ -4,6 +4,7 @@
 // 8888Y"  88 8bodP' 88     88ood8 dP""""Yb  dP
 
 import UIKit.UIViewController
+import Kingfisher
 
 class CardDisplayViewController: NorthSouthViewController {
 	
@@ -12,6 +13,9 @@ class CardDisplayViewController: NorthSouthViewController {
 	var ndcLabel:	UILabel!
 	var rxcuiLabel:	UILabel!
 	var labelerLabel:	UILabel!
+	
+	//  incoming variables
+	var cellData: cellData!
 
     override func loadView() {
         super.loadView()
@@ -28,29 +32,45 @@ class CardDisplayViewController: NorthSouthViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 		
+		print(cellData)
+		
 		// ================ drug name label
-		self.nameLabel = makeNameLabel(message: test.name)
+		self.nameLabel = makeNameLabel(message: cellData.text)
 		self.south.addSubview(nameLabel)
 		
 		// ==== ndc11 national drug code number label
 		self.ndcLabel = makeNdcLabel(message: test.ndc11)
-		self.south.addSubview(ndcLabel)
+		//self.south.addSubview(ndcLabel)
 		
 		// ==== rxcui label (apis and software doc)
 		self.rxcuiLabel = makeRxcuiLabel(
 			message: String(test.rxcuii))
-		self.south.addSubview(rxcuiLabel)
+		//self.south.addSubview(rxcuiLabel)
 		
 		// ================ labeler rx company
 		self.labelerLabel = makeLabelerLabel(
 			message: String(test.labeler))
-		self.south.addSubview(labelerLabel)
+		//self.south.addSubview(labelerLabel)
 		
 		// ============ load image
-		imageName = "250x250placeholder.jpg"
-		image = UIImage(named: imageName)
+		let url = URL(string: cellData.imageUrl)
+		let image = UIImage(named: "250x250placeholder.png")
+		
 		self.imageView = makeDisplayImage(image: image!)
+		
+		self.imageView.kf.setImage(with: url, placeholder: image)
 		self.north.addSubview(imageView)
+		
+		//imageName = "250x250placeholder.jpg"
+		//image = UIImage(named: imageName)
+		//self.imageView = makeDisplayImage(image: image!)
+		//self.north.addSubview(imageView)
+		
+		/*
+		let url = URL(string: test.imageUrl)
+		let image = UIImage(named: "250x250placeholder.png")
+		self.imageView.kf.setImage(with: url, placeholder: image)
+		self.north.addSubview(imageView)*/
 		
     }// end layouts did load
 	
@@ -64,7 +84,7 @@ class CardDisplayViewController: NorthSouthViewController {
 				width: south.frame.width * 0.9,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
-		label.text = "Name:\t" + message
+		label.text = message
 		label.numberOfLines = 1
 		label.layer.borderWidth = myBorders
 		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
