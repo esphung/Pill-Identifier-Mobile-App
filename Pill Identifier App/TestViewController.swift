@@ -24,7 +24,7 @@ class TestViewController: NorthSouthViewController {
 		// set up firstBtn
 		firstBtn =  UIButton(frame: CGRect(
 			x: myListIndent,
-			y: screenHeight * 0.025,
+			y: screenHeight * 0.325,
 			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		firstBtn.layer.borderWidth = 2.0;
@@ -38,7 +38,7 @@ class TestViewController: NorthSouthViewController {
 			action: #selector(firstBtnTapped),
 			for: .touchUpInside)
 		
-		firstBtn.setTitle("Upload Page", for: .normal)
+		firstBtn.setTitle("Search Pill", for: .normal)
 
 		// set up displayBtn
 		displayBtn =  UIButton(frame: CGRect(
@@ -101,9 +101,9 @@ class TestViewController: NorthSouthViewController {
 		
 
 		north.addSubview(firstBtn)
-		north.addSubview(displayBtn)
-		north.addSubview(resultsBtn)
-		north.addSubview(debugBtn)
+		//north.addSubview(displayBtn)
+		//north.addSubview(resultsBtn)
+		//north.addSubview(debugBtn)
 		
 		//south.removeFromSuperview(
 		

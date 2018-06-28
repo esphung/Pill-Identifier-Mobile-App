@@ -19,14 +19,14 @@ UITextFieldDelegate {
 	var imprint: String!
 
 	// pick buttons
-	var imageViewButton:		UIButton!
-	var pickColorBtn:	UIButton!
-	var pickShapeBtn:  	UIButton!
+	var imageViewButton:	UIButton!
+	var pickColorBtn:		UIButton!
+	var pickShapeBtn:  		UIButton!
 	var choosePictureBtn:	UIButton!
-	var sampleTextField: UITextField!
-	var submitButton: 	UIButton!
+	var sampleTextField: 	UITextField!
+	var submitButton: 		UIButton!
 	
-	var imprintTextField: UITextField!
+	var imprintTextField: 	UITextField!
 	
 	override func loadView() {
 		super.loadView()
@@ -44,8 +44,7 @@ UITextFieldDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setNavigationBar(title: "Enter Pill Information")
-
-
+		
 	}// end view did load
 	
 	override func viewDidLayoutSubviews() {
@@ -182,13 +181,15 @@ UITextFieldDelegate {
 		//imprintTextField.backgroundColor = UIColor.clear
 		imprintTextField.backgroundColor = UIColor.white
 		//imprintTextField.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+		imprintTextField.autocorrectionType  = .no
+		imprintTextField.autocapitalizationType = .none
+		imprintTextField.spellCheckingType = .no
 		
 		// Set UITextField text color
 		imprintTextField.textColor = UIColor.black
 		
 		// Add UITextField as a subview
 		north.addSubview(imprintTextField)
-		
 		
 		// NORTH VIEW SET
 		north.addSubview(choosePictureBtn)
@@ -320,9 +321,7 @@ UITextFieldDelegate {
 	}// end submit
 
 	@objc func submitButtonTapped(){
-		//performSegueToReturnBack()
 		submit()
-
 	}// end upload button action
 	
 	@objc func imageButtonTapped(_ sender: Any) {
@@ -335,9 +334,7 @@ UITextFieldDelegate {
 		imagePicker.delegate = self
 		imagePicker.allowsEditing = false
 		imagePicker.sourceType = .photoLibrary
-		present(imagePicker, animated: true, completion: {
-			//self.submitButton.isEnabled = true
-		})
+		present(imagePicker, animated: true, completion: nil)
 	}
 	
 	// MARK: - ImagePicker Delegate
@@ -352,7 +349,6 @@ UITextFieldDelegate {
 			self.submitButton.isEnabled = true
 			choosePictureBtn.setTitle(
 				("Picture: Selected").uppercased(), for: .normal)
-			//choosePictureBtn.isEnabled = false
 			choosePictureBtn.setImage(pickedImage, for: .normal)
 			choosePictureBtn.imageView?.contentMode = .scaleAspectFill
 		}
@@ -376,7 +372,6 @@ UITextFieldDelegate {
 				print("Accessing Camera...")
 			})
 		}
-		
 	}// end camera
 	
 	func photoLibrary() {
@@ -432,31 +427,33 @@ UITextFieldDelegate {
 				cell: i,
 				text: nlmRxImages[i]["name"].string,
 				image: #imageLiteral(resourceName: "250x250placeholder"),
-				imageUrl: nlmRxImages[i]["imageUrl"].string
+				imageUrl: nlmRxImages[i]["imageUrl"].string,
+				color: color,
+				shape: shape,
+				imprint: self.imprint
 				//image: #imageLiteral(resourceName: "250x250placeholder")
 			))
 			i = i + 1
 		}
 
 		//resultsTableViewController.arrayOfCellData = cellArray
-		
+
 		self.present(
 			resultsTableViewController,
 			animated: true,
-			completion: {})
+			completion: nil)
+	}
+
+	// Put this piece of code anywhere you like
+	func hideKeyboardWhenTappedAround() {
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+		tap.cancelsTouchesInView = false
+		view.addGestureRecognizer(tap)
 	}
 	
-	// Put this piece of code anywhere you like
-
-		func hideKeyboardWhenTappedAround() {
-			let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-			tap.cancelsTouchesInView = false
-			view.addGestureRecognizer(tap)
-		}
-		
-		@objc func dismissKeyboard() {
-			view.endEditing(true)
-		}
+	@objc func dismissKeyboard() {
+		view.endEditing(true)
+	}
 
 }// end view controller class definition
 

@@ -14,10 +14,14 @@ struct cellData {
 	let text: 	String!
 	let image: 	UIImage!
 	let imageUrl: String!
+	let color:	String!
+	let shape:	String!
+	let imprint: String!
 }
 
 class ResultsTableViewController: UITableViewController {
 	var arrayOfCellData = [cellData]()
+	//private var myTableView: UITableView!
 	
 	/*
 	override func viewWillAppear(_ animated: Bool) {
@@ -28,10 +32,21 @@ class ResultsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		//stableView.separatorStyle = .none
+		/*
+		let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+		let displayWidth: CGFloat = self.view.frame.width * 0.95
+		let displayHeight: CGFloat = self.view.frame.height/2
 		
+		myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
+		myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+		myTableView.dataSource = self
+		myTableView.delegate = self
+		self.view.addSubview(myTableView)
+		*/
+		
+		tableView.separatorStyle = .none
 		tableView.translatesAutoresizingMaskIntoConstraints =  false
-		//self.tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0);
+		//tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0);
 		tableView.contentInset = UIEdgeInsets(
 			top: screenWidth/24,
 			left: 0,
@@ -138,12 +153,22 @@ class ResultsTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		//print(arrayOfCellData[indexPath.row])
 		
+		// check imprint
+		var imprint = ""
+		if arrayOfCellData[indexPath.row].imprint != nil {
+			imprint = arrayOfCellData[indexPath.row].imprint!
+		}
+		
 		print(arrayOfCellData[indexPath.row].text!)
 		let data = cellData(
-			cell:  arrayOfCellData[indexPath.row].cell!,
-			text: arrayOfCellData[indexPath.row].text!,
-			image: arrayOfCellData[indexPath.row].image!,
-			imageUrl: arrayOfCellData[indexPath.row].imageUrl!)
+			cell:  		arrayOfCellData[indexPath.row].cell!,
+			text: 		arrayOfCellData[indexPath.row].text!,
+			image: 		arrayOfCellData[indexPath.row].image!,
+			imageUrl: 	arrayOfCellData[indexPath.row].imageUrl!,
+			color: 		arrayOfCellData[indexPath.row].color!,
+			shape: 		arrayOfCellData[indexPath.row].shape!,
+			imprint: 	imprint
+		)
 		displayCardDisplayPage(data: data)
 		
 	}

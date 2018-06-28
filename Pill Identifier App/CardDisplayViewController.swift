@@ -8,14 +8,18 @@ import Kingfisher
 
 class CardDisplayViewController: NorthSouthViewController {
 	
-	// information label
-	var nameLabel:	UILabel!
+	// information labels
 	var ndcLabel:	UILabel!
 	var rxcuiLabel:	UILabel!
 	var labelerLabel:	UILabel!
 	
 	//  incoming variables
 	var cellData: cellData!
+	
+	var nameLabel:	UILabel!
+	var colorLabel: UILabel!
+	var shapeLabel: UILabel!
+	var imprintLabel: UILabel!
 
     override func loadView() {
         super.loadView()
@@ -24,8 +28,8 @@ class CardDisplayViewController: NorthSouthViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		setNavigationBar(title: "Pill Description")
 		// begin set up here
+		setNavigationBar(title: "Pill Description")
 		
     }
 
@@ -37,6 +41,18 @@ class CardDisplayViewController: NorthSouthViewController {
 		// ================ drug name label
 		self.nameLabel = makeNameLabel(message: cellData.text)
 		self.south.addSubview(nameLabel)
+		
+		// ================ color label
+		self.colorLabel = makeColorLabel(message: cellData.color)
+		self.south.addSubview(colorLabel)
+		
+		// ================ shape label
+		self.shapeLabel = makeShapeLabel(message: cellData.shape)
+		self.south.addSubview(shapeLabel)
+		
+		// ================ imprint label
+		self.imprintLabel = makeImprintLabel(message: cellData.imprint)
+		self.south.addSubview(imprintLabel)
 		
 		// ==== ndc11 national drug code number label
 		self.ndcLabel = makeNdcLabel(message: test.ndc11)
@@ -81,6 +97,57 @@ class CardDisplayViewController: NorthSouthViewController {
 			frame: CGRect(
 				x: myListIndent,
 				y: ((south.frame.height)  * 0.0),
+				width: south.frame.width * 0.9,
+				height: myDefaultTextFieldHeight))
+		//label.font = UIFont.systemFont(ofSize: 16)
+		label.text = message
+		label.numberOfLines = 1
+		label.layer.borderWidth = myBorders
+		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
+		
+		return label
+	}
+
+	// color label
+	func makeColorLabel(message: String) -> UILabel {
+		let label = UILabel(
+			frame: CGRect(
+				x: myListIndent,
+				y: ((south.frame.height)  * 0.1),
+				width: south.frame.width * 0.9,
+				height: myDefaultTextFieldHeight))
+		//label.font = UIFont.systemFont(ofSize: 16)
+		label.text = message
+		label.numberOfLines = 1
+		label.layer.borderWidth = myBorders
+		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
+		
+		return label
+	}
+	
+	// shape label
+	func makeShapeLabel(message: String) -> UILabel {
+		let label = UILabel(
+			frame: CGRect(
+				x: myListIndent,
+				y: ((south.frame.height)  * 0.2),
+				width: south.frame.width * 0.9,
+				height: myDefaultTextFieldHeight))
+		//label.font = UIFont.systemFont(ofSize: 16)
+		label.text = message
+		label.numberOfLines = 1
+		label.layer.borderWidth = myBorders
+		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
+		
+		return label
+	}
+	
+	// imprint label
+	func makeImprintLabel(message: String) -> UILabel {
+		let label = UILabel(
+			frame: CGRect(
+				x: myListIndent,
+				y: ((south.frame.height)  * 0.3),
 				width: south.frame.width * 0.9,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
