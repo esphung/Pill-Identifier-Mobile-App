@@ -18,7 +18,6 @@ UITextFieldDelegate {
 	var shape: String!
 	var imprint: String!
 
-	// pick buttons
 	var imageViewButton:	UIButton!
 	var pickColorBtn:		UIButton!
 	var pickShapeBtn:  		UIButton!
@@ -26,19 +25,16 @@ UITextFieldDelegate {
 	var sampleTextField: 	UITextField!
 	var submitButton: 		UIButton!
 	
+	var isChecked = 		true
+	var imprintButton: 		UIButton!
 	var imprintTextField: 	UITextField!
 	
 	override func loadView() {
 		super.loadView()
-		
 		//Looks for single or multiple taps.
 		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UploadFormViewController.dismissKeyboard))
-		
-		//Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-		//tap.cancelsTouchesInView = false
-		
 		view.addGestureRecognizer(tap)
-
+		
 	}// end loadview
 	
 	override func viewDidLoad() {
@@ -53,10 +49,6 @@ UITextFieldDelegate {
 		south.frame = self.southFrame
 		north.frame = self.northFrame
 		
-		//self.color = " "
-		//self.shape = " "
-		//self.imprint  = "no-imprint"
-
 		// ====================================  Choose Picture Button
 		choosePictureBtn = UIButton(frame: CGRect(
 			x: myListIndent,
@@ -158,14 +150,14 @@ UITextFieldDelegate {
 			for: .touchUpInside)
 		
 		// Create UITextField
-		let imprintTextField: UITextField = UITextField(frame: CGRect(
-			x: myListIndent,
+		imprintTextField = UITextField(frame: CGRect(
+			x: (screenWidth/2) - myListIndent,
 			y: screenHeight * 0.325,
-			width: screenWidth * 0.8,
+			width: screenWidth * 0.8/2,
 			height: myDefaultTextFieldHeight))
 		
 		// Set UITextField placeholder text
-		imprintTextField.placeholder = "Enter Pill Imprint"
+		imprintTextField.placeholder = "Enter Imprint"
 		imprintTextField.clearsOnBeginEditing = true
 		imprintTextField.delegate = self
 		
@@ -188,6 +180,28 @@ UITextFieldDelegate {
 		// Set UITextField text color
 		imprintTextField.textColor = UIColor.black
 		
+		
+		imprintButton = UIButton(frame: CGRect(
+			x: myListIndent,
+			y: screenHeight * 0.325,
+			width: screenWidth * 0.8/2,
+			height: myDefaultTextFieldHeight))
+		imprintButton.layer.borderWidth = 2.0
+		imprintButton.setTitleColor(UIColor.black, for: .normal)
+		imprintButton.setTitleColor(UIColor.lightGray, for: .disabled)
+		imprintButton.setTitleColor(UIColor.white, for: .highlighted)
+		imprintButton.setTitle("Imprint ✓", for: .normal)
+		imprintButton.setTitleColor(.green, for: .normal)
+		imprintButton.titleLabel?.font =  UIFont.systemFont(
+			ofSize: myDefaultTextFontSize,
+			weight: .light)
+		imprintButton.addTarget(
+			self,
+			action: #selector(imprintButtonTapped),
+			for: .touchUpInside)
+		
+		
+		north.addSubview(imprintButton)
 		// Add UITextField as a subview
 		north.addSubview(imprintTextField)
 		
@@ -200,14 +214,52 @@ UITextFieldDelegate {
 		//south.addSubview(imageView)
 		//south.addSubview(imageViewButton)
 		south.addSubview(submitButton)
+		
+
 
 	}// end viewdidlayoutsubviews
+
+	
+	func setIsChecked(bool: Bool){
+		if bool {
+			isChecked = true
+		} else {
+			isChecked = false
+		}
+	}
+	
+	func toggleIsChecked() {
+		if isChecked {
+			setIsChecked(bool: false)
+		} else  {
+			setIsChecked(bool: true)
+		}
+	}
+	
+	func toggleImprintField(){
+		if imprintTextField.isEnabled {
+			imprintTextField.isEnabled = false
+			imprintTextField.text = ""
+			self.imprint = imprintTextField.text!
+			
+		}  else {
+			imprintTextField.isEnabled = true
+			imprintTextField.text = ""
+			self.imprint = imprintTextField.text!
+			
+		}
+	}
 
 	// when user hits return key on keyboard
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		//print(textField.text!)
 		self.imprint = textField.text!
-		print(self.imprint!)
+		print("Imprint: " + self.imprint!)
+		
+		setIsChecked(bool: true)
+		imprintButton.setTitle("Imprint ✓", for: .normal)
+		imprintButton.setTitleColor(.green, for: .normal)
+		
 		textField.resignFirstResponder()
 		return true
 	}
@@ -243,7 +295,6 @@ UITextFieldDelegate {
 	}// end pick color
 
 	@objc func pickShapeBtnTapped(sender: UIButton){
-		
 		ActionSheetMultipleStringPicker.show(
 			withTitle: "Pick Shape",
 			rows: [
@@ -268,20 +319,62 @@ UITextFieldDelegate {
 			origin: sender)
 	}// end pick shape
 	
-	func checkHasImprint () {
-		let alert = UIAlertController(
-			title: "Pill Imprint?",
-			message: "Does the pill have an imprint?",
-			preferredStyle: .alert)
+	
+	@objc func submitButtonTapped(){
+		submit()
+	}// end submit btn tapped
+	
+	@objc func imageButtonTapped(_ sender: Any) {
+		showImageActionSheet()
+		//importImage()
+	}// end upload imprintButton action
+	
+	// MARK: - ImagePicker Delegate
+	@objc func imagePickerController(
+		_ picker: UIImagePickerController,
+		didFinishPickingMediaWithInfo info: [
+		UIImagePickerController.InfoKey : Any]) {
 		
-		alert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: nil))
-		alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
-			self.imprint  = "no-imprint"
-			print(self.imprint)
-		}))
-		
-		
-		self.present(alert, animated: true)
+		if let pickedImage = info[
+			UIImagePickerController.InfoKey.originalImage] as? UIImage {
+			imageView.image  = pickedImage
+			self.submitButton.isEnabled = true
+			choosePictureBtn.setTitle(
+				("Picture: Selected").uppercased(), for: .normal)
+			choosePictureBtn.setImage(pickedImage, for: .normal)
+			choosePictureBtn.imageView?.contentMode = .scaleAspectFill
+		}
+		dismiss(animated: true, completion: nil)
+	}
+	
+	@objc func imagePickerControllerDidCancel(
+		_ picker: UIImagePickerController) {
+		dismiss(animated: true, completion: nil)
+	}// end imagepicker cancel
+	
+	func hasImprint(sender: UIButton) -> Bool {
+		if isChecked {
+			sender.setTitle("Imprint ✓", for: .normal)
+			sender.setTitleColor(.green, for: .normal)
+			return true
+		} else {
+			sender.setTitle("No Imprint X", for: .normal)
+			sender.setTitleColor(.red, for: .normal)
+
+			return false
+		}
+	}
+	
+	@objc func imprintButtonTapped(_ sender: UIButton) {
+		toggleIsChecked()
+		toggleImprintField()
+		if hasImprint(sender: sender) {
+			self.imprint = ""
+			print("Imprint: " + self.imprint!)
+		} else {
+			self.imprint = "no-imprint"
+			print("Imprint: " + self.imprint!)
+		}
 	}
 	
 	func submit() {
@@ -338,49 +431,8 @@ UITextFieldDelegate {
 			}
 		}
 		
-
-	}// end submit
-	
-
-	@objc func submitButtonTapped(){
-		submit()
-	}// end upload button action
-	
-	@objc func imageButtonTapped(_ sender: Any) {
-		showImageActionSheet()
-		//importImage()
-	}// end upload button action
-	
-	func importImage() {
-		let imagePicker = UIImagePickerController()
-		imagePicker.delegate = self
-		imagePicker.allowsEditing = false
-		imagePicker.sourceType = .photoLibrary
-		present(imagePicker, animated: true, completion: nil)
-	}
-	
-	// MARK: - ImagePicker Delegate
-	@objc func imagePickerController(
-		_ picker: UIImagePickerController,
-		didFinishPickingMediaWithInfo info: [
-		UIImagePickerController.InfoKey : Any]) {
 		
-		if let pickedImage = info[
-			UIImagePickerController.InfoKey.originalImage] as? UIImage {
-			imageView.image  = pickedImage
-			self.submitButton.isEnabled = true
-			choosePictureBtn.setTitle(
-				("Picture: Selected").uppercased(), for: .normal)
-			choosePictureBtn.setImage(pickedImage, for: .normal)
-			choosePictureBtn.imageView?.contentMode = .scaleAspectFill
-		}
-		dismiss(animated: true, completion: nil)
-	}
-	
-	@objc func imagePickerControllerDidCancel(
-		_ picker: UIImagePickerController) {
-		dismiss(animated: true, completion: nil)
-	}// end imagepicker cancel
+	}// end submit
 	
 	func camera() {
 		if UIImagePickerController.isSourceTypeAvailable(.camera){
@@ -406,6 +458,14 @@ UITextFieldDelegate {
 			})
 		}
 	}// end photolibrary
+	
+	func importImage() {
+		let imagePicker = UIImagePickerController()
+		imagePicker.delegate = self
+		imagePicker.allowsEditing = false
+		imagePicker.sourceType = .photoLibrary
+		present(imagePicker, animated: true, completion: nil)
+	}
 	
 	func showImageActionSheet() {
 		let actionSheet = UIAlertController(
@@ -457,20 +517,11 @@ UITextFieldDelegate {
 			))
 			i = i + 1
 		}
-
-		//resultsTableViewController.arrayOfCellData = cellArray
-
+		
 		self.present(
 			resultsTableViewController,
 			animated: true,
 			completion: nil)
-	}
-
-	// Put this piece of code anywhere you like
-	func hideKeyboardWhenTappedAround() {
-		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-		tap.cancelsTouchesInView = false
-		view.addGestureRecognizer(tap)
 	}
 	
 	@objc func dismissKeyboard() {
