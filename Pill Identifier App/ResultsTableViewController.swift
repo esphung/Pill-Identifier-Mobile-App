@@ -95,8 +95,9 @@ class ResultsTableViewController: UITableViewController {
 		let cell = Bundle.main.loadNibNamed("TableViewCell2", owner: self, options: nil)?.first as! TableViewCell2
 		
 		//cell.mainImageView.image = arrayOfCellData[indexPath.row].image
+		let image = UIImage(named: "250x250placeholder.png")
 		let url = URL(string: arrayOfCellData[indexPath.row].imageUrl)
-		cell.mainImageView.kf.setImage(with: url)
+		cell.mainImageView.kf.setImage(with: url, placeholder: image)
 		
 		cell.mainLabel.text = arrayOfCellData[indexPath.row].text
 		

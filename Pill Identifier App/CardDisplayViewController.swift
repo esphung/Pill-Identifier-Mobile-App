@@ -47,7 +47,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		self.south.addSubview(labelerLabel)
 		
 		// ============ load image
-		imageName = "against.jpg"
+		imageName = "250x250placeholder.jpg"
 		image = UIImage(named: imageName)
 		self.imageView = makeDisplayImage(image: image!)
 		self.north.addSubview(imageView)

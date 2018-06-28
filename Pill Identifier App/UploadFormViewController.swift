@@ -5,38 +5,47 @@
 
 import UIKit.UIViewController
 import ActionSheetPicker_3_0
-import  SwiftyJSON
+import SwiftyJSON
 import Alamofire
 
 class UploadFormViewController:
 NorthSouthViewController,
 UIImagePickerControllerDelegate,
-UINavigationControllerDelegate {
-
+UINavigationControllerDelegate,
+UITextFieldDelegate {
+	
 	var color: String!
 	var shape: String!
 	var imprint: String!
 
 	// pick buttons
-	var imageBtn:		UIButton!
+	var imageViewButton:		UIButton!
 	var pickColorBtn:	UIButton!
 	var pickShapeBtn:  	UIButton!
 	var pickImprintBtn:	UIButton!
-	var takePictureBtn:	UIButton!
+	var choosePictureBtn:	UIButton!
 	var sampleTextField: UITextField!
 	var submitButton: 	UIButton!
+	
+	var myTextField: UITextField!
 	
 	override func loadView() {
 		super.loadView()
 		
+		//Looks for single or multiple taps.
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UploadFormViewController.dismissKeyboard))
 		
+		//Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+		//tap.cancelsTouchesInView = false
+		
+		view.addGestureRecognizer(tap)
+
 	}// end loadview
 	
-
-
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setNavigationBar(title: "Enter Pill Information")
+
 
 	}// end view did load
 	
@@ -45,43 +54,46 @@ UINavigationControllerDelegate {
 		
 		south.frame = self.southFrame
 		north.frame = self.northFrame
+		
+		//self.color = " "
+		//self.shape = " "
+		//self.imprint  = "no-imprint"
 
-		// ====================================  Take Picture Button
-		takePictureBtn = UIButton(frame: CGRect(
+		// ====================================  Choose Picture Button
+		choosePictureBtn = UIButton(frame: CGRect(
 			x: myListIndent,
-			y: ((south.frame.height)  * 0.0),
-			width: (south.frame.width * 0.9),
+			y: screenHeight * 0.025,
+			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
-		takePictureBtn.layer.borderWidth = 2.0
-		takePictureBtn.setTitleColor(UIColor.black, for: .normal)
-		takePictureBtn.setTitleColor(UIColor.lightGray, for: .disabled)
-		takePictureBtn.setTitleColor(UIColor.white, for: .highlighted)
-		takePictureBtn.setTitle("Choose a Picture", for: .normal)
-		takePictureBtn.titleLabel?.font =  UIFont.systemFont(
+		choosePictureBtn.layer.borderWidth = 2.0
+		choosePictureBtn.setTitleColor(UIColor.black, for: .normal)
+		choosePictureBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+		choosePictureBtn.setTitleColor(UIColor.white, for: .highlighted)
+		choosePictureBtn.setTitle("Choose a Picture", for: .normal)
+		choosePictureBtn.titleLabel?.font =  UIFont.systemFont(
 			ofSize: myDefaultTextFontSize,
 			weight: .light)
-		takePictureBtn.addTarget(
+		choosePictureBtn.addTarget(
 			self,
-			action: #selector(takePictureBtnTapped),
+			action: #selector(choosePictureBtnTapped),
 			for: .touchUpInside)
 		
-
 		// ====================  set up IMAGE BUTTON (NORTH VIEW)
-		imageBtn =  UIButton(
+		imageViewButton =  UIButton(
 			frame: CGRect(
 				x: myListIndent,
 				y: myListPadTop,
 				width: north.frame.width * 0.9,
 				height: north.frame.height * 0.9))
-		imageBtn.layer.borderWidth = 2.0
-		imageBtn.setTitleColor(UIColor.black, for: .normal)
-		imageBtn.setTitleColor(UIColor.lightGray, for: .disabled)
-		imageBtn.setTitleColor(UIColor.white, for: .highlighted)
-		imageBtn.setTitle("", for: .normal)
-		imageBtn.titleLabel?.font =  UIFont.systemFont(
+		imageViewButton.layer.borderWidth = 2.0
+		imageViewButton.setTitleColor(UIColor.black, for: .normal)
+		imageViewButton.setTitleColor(UIColor.lightGray, for: .disabled)
+		imageViewButton.setTitleColor(UIColor.white, for: .highlighted)
+		imageViewButton.setTitle("", for: .normal)
+		imageViewButton.titleLabel?.font =  UIFont.systemFont(
 			ofSize: myDefaultTextFontSize,
 			weight: .light)
-		imageBtn.addTarget(
+		imageViewButton.addTarget(
 			self,
 			action: #selector(self.imageButtonTapped),
 			for: .touchUpInside)
@@ -93,8 +105,8 @@ UINavigationControllerDelegate {
 		// ================================  Set Up PICK COLOR Button
 		pickColorBtn = UIButton(frame: CGRect(
 			x: myListIndent,
-			y: ((south.frame.height)  * 0.2),
-			width: (south.frame.width * 0.90),
+			y: screenHeight * 0.125,
+			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		pickColorBtn.layer.borderWidth = 2.0
 		pickColorBtn.setTitleColor(UIColor.black, for: .normal)
@@ -112,8 +124,8 @@ UINavigationControllerDelegate {
 		// ================================  Set Up PICK SHAPE Button
 		pickShapeBtn = UIButton(frame: CGRect(
 			x: myListIndent,
-			y: ((south.frame.height)  * 0.4),
-			width: (south.frame.width * 0.90),
+			y: screenHeight * 0.225,
+			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		pickShapeBtn.layer.borderWidth = 2.0
 		pickShapeBtn.setTitleColor(UIColor.black, for: .normal)
@@ -131,8 +143,8 @@ UINavigationControllerDelegate {
 		// ============================  Set Up PICK IMPRINT Button
 		pickImprintBtn = UIButton(frame: CGRect(
 			x: myListIndent,
-			y: ((south.frame.height)  * 0.6),
-			width: (south.frame.width * 0.90),
+			y: screenHeight * 0.325,
+			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		pickImprintBtn.layer.borderWidth = 2.0
 		pickImprintBtn.setTitleColor(UIColor.black, for: .normal)
@@ -146,18 +158,6 @@ UINavigationControllerDelegate {
 			self,
 			action: #selector(pickImprintBtnTapped),
 			for: .touchUpInside)
-
-		sampleTextField =  UITextField(frame: CGRect(
-			x: myListIndent,
-			y: ((south.frame.height)  * 0.6),
-			width: (south.frame.width * 0.90),
-			height: myDefaultTextFieldHeight))
-		sampleTextField.placeholder = "Enter text here"
-		sampleTextField.layer.borderWidth = 2.0
-		sampleTextField.font = UIFont.systemFont(ofSize: 16)
-		sampleTextField.autocorrectionType = UITextAutocorrectionType.no
-		sampleTextField.keyboardType = UIKeyboardType.default
-		sampleTextField.returnKeyType = UIReturnKeyType.done
 
 		// ====================================  Set Up Submit Button
 		submitButton = UIButton(frame: CGRect(
@@ -179,20 +179,76 @@ UINavigationControllerDelegate {
 			for: .touchUpInside)
 		
 		//submitButton.isEnabled = false
-		
-		north.addSubview(imageView)
-		north.addSubview(imageBtn)
 
-		south.addSubview(takePictureBtn)
-		south.addSubview(pickColorBtn)
-		south.addSubview(pickShapeBtn)
-		south.addSubview(pickImprintBtn)
-		//south.addSubview(sampleTextField)
+		// Create UITextField
+		let myTextField: UITextField = UITextField(frame: CGRect(
+			x: myListIndent,
+			y: screenHeight * 0.325,
+			width: screenWidth * 0.8,
+			height: myDefaultTextFieldHeight))
+		
+		// Set UITextField placeholder text
+		myTextField.placeholder = "Enter Pill Imprint"
+		myTextField.clearsOnBeginEditing = true
+		myTextField.delegate = self
+		
+		// Set text to UItextField
+		//myTextField.text = "Enter Imprint"
+		myTextField.textAlignment = .center
+		
+		// Set UITextField border style
+		myTextField.borderStyle = UITextField.BorderStyle.line
+		myTextField.layer.borderWidth = 2.0
+		
+		// Set UITextField background colour
+		//myTextField.backgroundColor = UIColor.clear
+		myTextField.backgroundColor = UIColor.white
+		//myTextField.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+		
+		// Set UITextField text color
+		myTextField.textColor = UIColor.black
+		
+		// Add UITextField as a subview
+		north.addSubview(myTextField)
+		
+		
+		
+
+		
+		// NORTH VIEW SET
+		north.addSubview(choosePictureBtn)
+		north.addSubview(pickColorBtn)
+		north.addSubview(pickShapeBtn)
+		//north.addSubview(pickImprintBtn)
+		
+		// SOUTH VIEW SET
+		//south.addSubview(imageView)
+		//south.addSubview(imageViewButton)
 		south.addSubview(submitButton)
 
+	}// end viewdidlayoutsubviews
+	
+	/*
+	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+		//Color #3 - While touching outside the textField.
+		if isDebugOn() {
+			view.backgroundColor = UIColor.cyan
+		}
+		self.view.endEditing(true)
 	}
+	*/
 
-	@objc func takePictureBtnTapped(){
+	
+	// when user hits return key on keyboard
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		//print(textField.text!)
+		self.imprint = textField.text!
+		print(self.imprint!)
+		textField.resignFirstResponder()
+		return true
+	}
+	
+	@objc func choosePictureBtnTapped(){
 		showImageActionSheet()
 	}
 	
@@ -249,21 +305,12 @@ UINavigationControllerDelegate {
 	}// end pick shape
 	
 	@objc func pickImprintBtnTapped(sender: UIButton) {
-		self.imprint = "Hello Imprint"
-		print("Imprint: " + self.imprint)
+		showImprintActionSheet()
+		//self.imprint = "Hello Imprint"
+		//print("Imprint: " + self.imprint)
 	}
 	
 	func submit() {
-		// create json object with search data
-		//var json = JSON()
-		
-		//json[0] = JSON(1)
-		
-		//json["id"].int =  1234567890
-		//json["coordinate"].double =  8766.766
-		//json["name"].string =  "Jack"
-		//json.arrayObject = [1,2,3,4]
-		//json.dictionaryObject = ["name":"Jack","age":25]
 
 		guard let color = self.color else {
 			print("No color to submit")
@@ -281,22 +328,18 @@ UINavigationControllerDelegate {
 			return
 		}*/
 		
-		/*
-		json["color"] = JSON(color)
-		json["shape"] = JSON(shape)
-		json["imprint"] = JSON(imprint)
-		
-		print(json)
-		*/
-		
 		// make http request string
 		// http://rximage.nlm.nih.gov/api/{apiName}/{apiVersion}/{resourcePath}?{parameters}
 		// http://rximage.nlm.nih.gov/api/rximage/1/rxnav?color=blue&size=17&sizeT=0
 		
-		let url = "http://rximage.nlm.nih.gov/api/" + "rximage/" + "1/" + "rxnav?"
+		var url = "http://rximage.nlm.nih.gov/api/" + "rximage/" + "1/" + "rxnav?"
 		+ "color=" + color
 		+ "&"
 		+ "shape=" + shape
+		
+		if (imprint != nil) && (imprint.isEmpty == false) {
+			url = url + "&" + "imprint=" + imprint
+		}
 		
 		print(url)
 		
@@ -358,8 +401,11 @@ UINavigationControllerDelegate {
 			UIImagePickerController.InfoKey.originalImage] as? UIImage {
 			imageView.image  = pickedImage
 			self.submitButton.isEnabled = true
-			takePictureBtn.setTitle(("Picture: Selected").uppercased(), for: .normal)
-			takePictureBtn.isEnabled = false
+			choosePictureBtn.setTitle(
+				("Picture: Selected").uppercased(), for: .normal)
+			choosePictureBtn.isEnabled = false
+			choosePictureBtn.setImage(pickedImage, for: .normal)
+			choosePictureBtn.imageView?.contentMode = .scaleAspectFill
 		}
 		dismiss(animated: true, completion: nil)
 	}
@@ -375,7 +421,10 @@ UINavigationControllerDelegate {
 			let myPickerController = UIImagePickerController()
 			myPickerController.delegate = self;
 			myPickerController.sourceType = .camera
-			self.present(myPickerController, animated: true, completion: {
+			self.present(
+				myPickerController,
+				animated: true,
+				completion: {
 				print("Accessing Camera...")
 			})
 		}
@@ -423,8 +472,39 @@ UINavigationControllerDelegate {
 		self.present(actionSheet, animated: true, completion: nil)
 	}// end show actionsheet
 	
+	func showImprintActionSheet() {
+		
+		let alertController = UIAlertController(
+			title: "Pill Imprint",
+			message: "",
+			preferredStyle: UIAlertController.Style.alert)
+		
+		let saveAction = UIAlertAction(
+			title: "Save",
+			style: UIAlertAction.Style.default,
+			handler: { alert -> Void in
+				_ = alertController.textFields![0] as UITextField
+		})
+		
+		let cancelAction = UIAlertAction(
+			title: "Cancel",
+			style: UIAlertAction.Style.default,
+			handler: { (
+				action : UIAlertAction!) -> Void in })
+		alertController.addTextField { (textField : UITextField!) -> Void in
+			textField.placeholder = "Enter Imprint Here"
+		}
+		
+		alertController.addAction(saveAction)
+		alertController.addAction(cancelAction)
+		
+		self.present(alertController, animated: true, completion: nil)
+	}
+	
 	func displayResultsPage(json: JSON) {
-		let resultsTableViewController: ResultsTableViewController = storyboard?.instantiateViewController(withIdentifier: "resultsTableViewController") as! ResultsTableViewController
+		let resultsTableViewController: ResultsTableViewController
+		= storyboard?.instantiateViewController(withIdentifier:
+			"resultsTableViewController") as! ResultsTableViewController
 		
 		let nlmRxImages = json["nlmRxImages"].array!
 		
@@ -448,6 +528,18 @@ UINavigationControllerDelegate {
 			animated: true,
 			completion: {})
 	}
+	
+	// Put this piece of code anywhere you like
+
+		func hideKeyboardWhenTappedAround() {
+			let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+			tap.cancelsTouchesInView = false
+			view.addGestureRecognizer(tap)
+		}
+		
+		@objc func dismissKeyboard() {
+			view.endEditing(true)
+		}
 
 }// end view controller class definition
 

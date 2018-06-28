@@ -25,13 +25,13 @@ class NorthSouthViewController: UIViewController {
 			x: (myView.frame.width * 0.05),
 			y: (myView.frame.height * 0.1),
 			width: (myView.frame.width * 0.95),
-			height: ((myView.frame.height)/2.1) )
+			height: ((myView.frame.height)/2.2) )
 	}
 	
 	var southFrame: CGRect {
 		return CGRect(
 			x: (myView.frame.width * 0.05),
-			y: (myView.frame.maxY/1.8),
+			y: (myView.frame.height)/1.7,
 			width: (north.frame.width),
 			height: (north.frame.height))
 	}
@@ -89,7 +89,6 @@ class NorthSouthViewController: UIViewController {
 		super.viewDidLayoutSubviews()
 		north.frame = self.northFrame
 		south.frame = self.southFrame
-		
 		
 	}
 	
@@ -189,7 +188,6 @@ class NorthSouthViewController: UIViewController {
 	}
 	
 
-
 }
 
 extension UIViewController {
@@ -218,4 +216,6 @@ extension UIViewController {
 			}
 		}
 	}
+
 }
+
