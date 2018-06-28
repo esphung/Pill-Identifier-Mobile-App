@@ -190,8 +190,8 @@ UITextFieldDelegate {
 		imprintButton.setTitleColor(UIColor.black, for: .normal)
 		imprintButton.setTitleColor(UIColor.lightGray, for: .disabled)
 		imprintButton.setTitleColor(UIColor.white, for: .highlighted)
-		imprintButton.setTitle("Imprint ✓", for: .normal)
-		imprintButton.setTitleColor(.green, for: .normal)
+		imprintButton.setTitle("Any Imprint ✓", for: .normal)
+		imprintButton.setTitleColor(.orange, for: .normal)
 		imprintButton.titleLabel?.font =  UIFont.systemFont(
 			ofSize: myDefaultTextFontSize,
 			weight: .light)
@@ -242,6 +242,7 @@ UITextFieldDelegate {
 			imprintTextField.text = ""
 			self.imprint = imprintTextField.text!
 			
+			
 		}  else {
 			imprintTextField.isEnabled = true
 			imprintTextField.text = ""
@@ -256,9 +257,17 @@ UITextFieldDelegate {
 		self.imprint = textField.text!
 		print("Imprint: " + self.imprint!)
 		
-		setIsChecked(bool: true)
-		imprintButton.setTitle("Imprint ✓", for: .normal)
-		imprintButton.setTitleColor(.green, for: .normal)
+		if imprintTextField.text! ==  "" {
+			setIsChecked(bool: true)
+			imprintButton.setTitle("Any Imprint ✓", for: .normal)
+			imprintButton.setTitleColor(.orange, for: .normal)
+		} else {
+			setIsChecked(bool: true)
+			imprintButton.setTitle("Imprint ✓", for: .normal)
+			imprintButton.setTitleColor(.green, for: .normal)
+		}
+		
+		
 		
 		textField.resignFirstResponder()
 		return true
@@ -352,19 +361,6 @@ UITextFieldDelegate {
 		dismiss(animated: true, completion: nil)
 	}// end imagepicker cancel
 	
-	func hasImprint(sender: UIButton) -> Bool {
-		if isChecked {
-			sender.setTitle("Imprint ✓", for: .normal)
-			sender.setTitleColor(.green, for: .normal)
-			return true
-		} else {
-			sender.setTitle("No Imprint X", for: .normal)
-			sender.setTitleColor(.red, for: .normal)
-
-			return false
-		}
-	}
-	
 	@objc func imprintButtonTapped(_ sender: UIButton) {
 		toggleIsChecked()
 		toggleImprintField()
@@ -374,6 +370,19 @@ UITextFieldDelegate {
 		} else {
 			self.imprint = "no-imprint"
 			print("Imprint: " + self.imprint!)
+		}
+	}
+	
+	func hasImprint(sender: UIButton) -> Bool {
+		if isChecked {
+			sender.setTitle("Any Imprint ✓", for: .normal)
+			sender.setTitleColor(.orange, for: .normal)
+			return true
+		} else {
+			sender.setTitle("No Imprint X", for: .normal)
+			sender.setTitleColor(.red, for: .normal)
+			
+			return false
 		}
 	}
 	
