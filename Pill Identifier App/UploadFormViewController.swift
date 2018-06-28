@@ -268,29 +268,50 @@ UITextFieldDelegate {
 			origin: sender)
 	}// end pick shape
 	
-	func submit() {
-
-		guard let color = self.color else {
-			print("No color to submit")
-			return
-		}
+	func checkHasImprint () {
+		let alert = UIAlertController(
+			title: "Pill Imprint?",
+			message: "Does the pill have an imprint?",
+			preferredStyle: .alert)
 		
-		guard let shape = self.shape else {
-			print("No shape to submit")
-			return
-		}
-
+		alert.addAction(UIAlertAction(title: "Yes", style: .cancel, handler: nil))
+		alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
+			self.imprint  = "no-imprint"
+			print(self.imprint)
+		}))
+		
+		
+		self.present(alert, animated: true)
+	}
+	
+	func submit() {
+		
 		// make http request string
 		// http://rximage.nlm.nih.gov/api/{apiName}/{apiVersion}/{resourcePath}?{parameters}
 		// http://rximage.nlm.nih.gov/api/rximage/1/rxnav?color=blue&size=17&sizeT=0
 		
 		var url = "http://rximage.nlm.nih.gov/api/" + "rximage/" + "1/" + "rxnav?"
-		+ "color=" + color
-		+ "&"
-		+ "shape=" + shape
 		
+		// check color
+		if (color != nil) && (color.isEmpty == false) {
+			url = url + "&color=" + color
+		} else {
+			color = ""
+		}
+		
+		// check shape
+		if (shape != nil) && (shape.isEmpty == false) {
+			url = url + "&shape=" + shape
+		} else {
+			shape = ""
+		}
+		
+		// check imprint
 		if (imprint != nil) && (imprint.isEmpty == false) {
-			url = url + "&" + "imprint=" + imprint
+			url = url + "&imprint=" + imprint
+		} else {
+			// user chose "no imprint"
+			//url = url + "&" + "imprint=" + "no-imprint"
 		}
 		
 		print(url)
@@ -319,6 +340,7 @@ UITextFieldDelegate {
 		
 
 	}// end submit
+	
 
 	@objc func submitButtonTapped(){
 		submit()
