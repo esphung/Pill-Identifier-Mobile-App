@@ -14,7 +14,6 @@ class NorthSouthViewController: UIViewController {
 	// set up view layout
 	var myView : UIView!
 	var north:  UIView!
-	var south: 	UIView!
 	
 	var imageName: 	String!
 	var image:		UIImage!
@@ -28,14 +27,7 @@ class NorthSouthViewController: UIViewController {
 			height: ((myView.frame.height)/2.2) )
 	}
 	
-	var southFrame: CGRect {
-		return CGRect(
-			x: (myView.frame.width * 0.05),
-			y: (myView.frame.height)/1.7,
-			width: (north.frame.width),
-			height: (north.frame.height))
-	}
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
@@ -48,9 +40,10 @@ class NorthSouthViewController: UIViewController {
 		self.view.addSubview(north)
 		self.north = north
 		
+		/*
 		let south = UIView()
 		self.view.addSubview(south)
-		self.south = south
+		self.south = south*/
 		
 		let imageView = UIImageView(frame: CGRect(
 			x: myListIndent,
@@ -88,7 +81,7 @@ class NorthSouthViewController: UIViewController {
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		north.frame = self.northFrame
-		south.frame = self.southFrame
+		//south.frame = self.southFrame
 		
 	}
 	
@@ -131,12 +124,13 @@ class NorthSouthViewController: UIViewController {
 		
 		north.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
 		north.heightAnchor.constraint(equalToConstant: 200).isActive = true
-		north.bottomAnchor.constraint(equalTo: south.topAnchor,constant: -10).isActive = true
+		north.bottomAnchor.constraint(equalTo: myView.topAnchor,constant: -10).isActive = true
 		
+		/*
 		south.bottomAnchor.constraint(
 			equalTo: bottomLayoutGuide.topAnchor,
 			constant: -20).isActive = true
-
+		*/
 	}
 	
 	func showFrames() {
@@ -151,11 +145,12 @@ class NorthSouthViewController: UIViewController {
 		north.layer.borderWidth = 2.0
 		//north.backgroundColor = .green
 
+		/*
 		south.backgroundColor = UIColor(white: 1, alpha: 0.5)
 		south.layer.borderColor = UIColor.black.cgColor
 		south.layer.borderWidth = 2.0
-		//self.south.backgroundColor = .yellow
-		
+		self.south.backgroundColor = .yellow
+		*/
 	}
 	
 	func setBorders(float: CGFloat){

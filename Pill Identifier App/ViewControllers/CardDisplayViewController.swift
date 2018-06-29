@@ -38,35 +38,36 @@ class CardDisplayViewController: NorthSouthViewController {
 		
 		print(cellData)
 		
+		/*
 		// ================ drug name label
 		self.nameLabel = makeNameLabel(message: cellData.text)
-		self.south.addSubview(nameLabel)
+		self.north.addSubview(nameLabel)
 		
 		// ================ color label
 		self.colorLabel = makeColorLabel(message: cellData.color)
-		self.south.addSubview(colorLabel)
+		self.north.addSubview(colorLabel)
 		
 		// ================ shape label
 		self.shapeLabel = makeShapeLabel(message: cellData.shape)
-		self.south.addSubview(shapeLabel)
+		self.north.addSubview(shapeLabel)
 		
 		// ================ imprint label
 		self.imprintLabel = makeImprintLabel(message: cellData.imprint)
-		self.south.addSubview(imprintLabel)
-		
+		self.north.addSubview(imprintLabel)
+		*/
 		// ==== ndc11 national drug code number label
 		self.ndcLabel = makeNdcLabel(message: test.ndc11)
-		//self.south.addSubview(ndcLabel)
+		//self.north.addSubview(ndcLabel)
 		
 		// ==== rxcui label (apis and software doc)
 		self.rxcuiLabel = makeRxcuiLabel(
 			message: String(test.rxcuii))
-		//self.south.addSubview(rxcuiLabel)
+		//self.north.addSubview(rxcuiLabel)
 		
 		// ================ labeler rx company
 		self.labelerLabel = makeLabelerLabel(
 			message: String(test.labeler))
-		//self.south.addSubview(labelerLabel)
+		//self.north.addSubview(labelerLabel)
 		
 		// ============ load image
 		let url = URL(string: cellData.imageUrl)
@@ -96,8 +97,8 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: ((south.frame.height)  * 0.0),
-				width: south.frame.width * 0.9,
+				y: ((view.frame.height)  * 0.0),
+				width: view.frame.width * 0.9,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = message
@@ -113,8 +114,8 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: ((south.frame.height)  * 0.1),
-				width: south.frame.width * 0.9,
+				y: ((north.frame.height)  * 0.1),
+				width: north.frame.width * 0.9,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = message
@@ -130,8 +131,8 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: ((south.frame.height)  * 0.2),
-				width: south.frame.width * 0.9,
+				y: ((north.frame.height)  * 0.2),
+				width: north.frame.width * 0.9,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = message
@@ -147,8 +148,8 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: ((south.frame.height)  * 0.3),
-				width: south.frame.width * 0.9,
+				y: ((north.frame.height)  * 0.3),
+				width: north.frame.width * 0.9,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = message
@@ -164,8 +165,8 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: ((south.frame.height)  * 0.2),
-				width: (south.frame.width * 0.90),
+				y: ((north.frame.height)  * 0.2),
+				width: (north.frame.width * 0.90),
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = "NDC:\t" + message
@@ -181,8 +182,8 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: ((south.frame.height)  * 0.4),
-				width: (south.frame.width * 0.90),
+				y: ((north.frame.height)  * 0.4),
+				width: (north.frame.width * 0.90),
 				height: myDefaultTextFieldHeight))
 		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
 		//label.adjustsFontSizeToFitWidth = true
@@ -198,8 +199,8 @@ class CardDisplayViewController: NorthSouthViewController {
 	func makeLabelerLabel(message: String) -> UILabel {
 		let label = UILabel(frame: CGRect(
 			x: myListIndent,
-			y: ((south.frame.height)  * 0.6),
-			width: (south.frame.width * 0.90),
+			y: ((north.frame.height)  * 0.6),
+			width: (north.frame.width * 0.90),
 			height: myDefaultTextFieldHeight))
 		
 		label.text = "Label:\t" + message

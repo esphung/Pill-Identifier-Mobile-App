@@ -3,7 +3,7 @@
 // Yb  "88 88  .o Yb   dP 88""Yb  dP__Yb  88  .o o.`Y8b
 //  YboodP 88ood8  YbodP  88oodP dP""""Yb 88ood8 8bodP'
 
-public var debug = true
+public var debug = false
 
 //import Foundation
 import UIKit.UIViewController

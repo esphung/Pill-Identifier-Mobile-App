@@ -14,9 +14,10 @@ UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,
 UITextFieldDelegate {
 	
-	var color: String!
-	var shape: String!
-	var imprint: String!
+	var color: 		String!
+	var shape: 		String!
+	var imprint: 	String!
+	var score:		Int!
 
 	var imageViewButton:	UIButton!
 	var pickColorBtn:		UIButton!
@@ -28,6 +29,9 @@ UITextFieldDelegate {
 	var isChecked = 		true
 	var imprintButton: 		UIButton!
 	var imprintTextField: 	UITextField!
+	
+	var scoreBtn:			UIButton!
+	var isScored = 			false
 	
 	override func loadView() {
 		super.loadView()
@@ -46,8 +50,29 @@ UITextFieldDelegate {
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		
-		south.frame = self.southFrame
+		//south.frame = self.southFrame
 		north.frame = self.northFrame
+		
+		// ====================================  Choose choose pill score
+		choosePictureBtn = UIButton(frame: CGRect(
+			x: myListIndent,
+			y: screenHeight * 0.425,
+			width: screenWidth * 0.8,
+			height: myDefaultTextFieldHeight))
+		choosePictureBtn.layer.borderWidth = 2.0
+		choosePictureBtn.setTitleColor(UIColor.black, for: .normal)
+		choosePictureBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+		choosePictureBtn.setTitleColor(UIColor.white, for: .highlighted)
+		choosePictureBtn.setTitle("Choose Score", for: .normal)
+		choosePictureBtn.titleLabel?.font =  UIFont.systemFont(
+			ofSize: myDefaultTextFontSize,
+			weight: .light)
+		choosePictureBtn.addTarget(
+			self,
+			action: #selector(choosePictureBtnTapped),
+			for: .touchUpInside)
+		
+		north.addSubview(choosePictureBtn)
 		
 		// ====================================  Choose Picture Button
 		choosePictureBtn = UIButton(frame: CGRect(
@@ -130,11 +155,12 @@ UITextFieldDelegate {
 			action: #selector(pickShapeBtnTapped),
 			for: .touchUpInside)
 
+		showFrames()
 		// ====================================  Set Up Submit Button
 		submitButton = UIButton(frame: CGRect(
 			x: myListIndent,
-			y: ((south.frame.height)  * 0.8),
-			width: (south.frame.width * 0.90),
+			y: screenHeight * 0.525,
+			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		submitButton.layer.borderWidth = 2.0
 		submitButton.setTitleColor(UIColor.black, for: .normal)
@@ -213,7 +239,7 @@ UITextFieldDelegate {
 		// SOUTH VIEW SET
 		//south.addSubview(imageView)
 		//south.addSubview(imageViewButton)
-		south.addSubview(submitButton)
+		north.addSubview(submitButton)
 		
 
 
@@ -377,10 +403,14 @@ UITextFieldDelegate {
 		if isChecked {
 			sender.setTitle("Any Imprint ✓", for: .normal)
 			sender.setTitleColor(.orange, for: .normal)
+			imprintTextField.placeholder = "Enter Imprint"
+			//imprintTextField.isHidden = false
 			return true
 		} else {
 			sender.setTitle("No Imprint X", for: .normal)
 			sender.setTitleColor(.red, for: .normal)
+			imprintTextField.placeholder = ""
+			//imprintTextField.isHidden = true
 			
 			return false
 		}
@@ -411,10 +441,14 @@ UITextFieldDelegate {
 		// check imprint
 		if (imprint != nil) && (imprint.isEmpty == false) {
 			url = url + "&imprint=" + imprint
-		} else {
-			// user chose "no imprint"
-			//url = url + "&" + "imprint=" + "no-imprint"
 		}
+		
+		// check imprint
+		if (score != nil) && (score >= 0 && score <= 4) {
+			// contains score input [1,2,3,4]
+			url = url + "&score=" + String(score)
+		}
+		
 		
 		print(url)
 		

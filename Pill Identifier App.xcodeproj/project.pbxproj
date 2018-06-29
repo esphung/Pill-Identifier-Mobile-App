@@ -152,22 +152,9 @@
 		18F57B841E992E0A0013221F /* Pill Identifier App */ = {
 			isa = PBXGroup;
 			children = (
-				5E575F1520D6378300B94C16 /* UploadFormViewController.swift */,
-				5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */,
-				5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */,
-				5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */,
-				18F57B851E992E0A0013221F /* AppDelegate.swift */,
-				18F57B891E992E0A0013221F /* Main.storyboard */,
-				5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */,
-				5EF7DD4F20E18BEE00EF5F2E /* TableViewCell1.swift */,
-				5EF7DD5020E18BEE00EF5F2E /* TableViewCell1.xib */,
-				5EF7DD5320E18C9E00EF5F2E /* TableViewCell2.swift */,
-				5EF7DD5420E18C9E00EF5F2E /* TableViewCell2.xib */,
-				18F57B8C1E992E0A0013221F /* Assets.xcassets */,
-				18F57B8E1E992E0A0013221F /* LaunchScreen.storyboard */,
-				5E49D4EA20D837E0002C8469 /* Globals.swift */,
-				5E49D4E820D836DB002C8469 /* Utility.swift */,
-				5E49D4F020D851EA002C8469 /* ViewController.swift */,
+				5E7756D120E5B74100510808 /* ViewControllers */,
+				5E7756D020E5AE0F00510808 /* Supporting Files */,
+				5E7756D220E5B76A00510808 /* TableCells */,
 				18F57B911E992E0A0013221F /* Info.plist */,
 			);
 			path = "Pill Identifier App";
@@ -199,6 +186,43 @@
 				B8661E58B30132A77B1C1924 /* Pods_Pill_Identifier_AppUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5E7756D020E5AE0F00510808 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				18F57B851E992E0A0013221F /* AppDelegate.swift */,
+				18F57B8C1E992E0A0013221F /* Assets.xcassets */,
+				18F57B8E1E992E0A0013221F /* LaunchScreen.storyboard */,
+				5E49D4F020D851EA002C8469 /* ViewController.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5E7756D120E5B74100510808 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5E575F1520D6378300B94C16 /* UploadFormViewController.swift */,
+				5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */,
+				5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */,
+				5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */,
+				5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */,
+				5E49D4EA20D837E0002C8469 /* Globals.swift */,
+				5E49D4E820D836DB002C8469 /* Utility.swift */,
+				18F57B891E992E0A0013221F /* Main.storyboard */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5E7756D220E5B76A00510808 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				5EF7DD4F20E18BEE00EF5F2E /* TableViewCell1.swift */,
+				5EF7DD5020E18BEE00EF5F2E /* TableViewCell1.xib */,
+				5EF7DD5320E18C9E00EF5F2E /* TableViewCell2.swift */,
+				5EF7DD5420E18C9E00EF5F2E /* TableViewCell2.xib */,
+			);
+			path = TableCells;
 			sourceTree = "<group>";
 		};
 		B99B76D3C0981C1D910857E7 /* Pods */ = {
