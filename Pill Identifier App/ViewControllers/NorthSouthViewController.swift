@@ -228,12 +228,11 @@ class NorthSouthViewController: UIViewController {
 	
 	// image view photo display
 	func makeDisplayImage(image:  UIImage) -> UIImageView {
-		
 		imageView = UIImageView(frame: CGRect(
-			x: 0,
+			x: myListIndent,
 			y: 0,
 			width: screenWidth * 0.8,
-			height: screenHeight * 0.8))
+			height: screenHeight/2))
 		imageView.image = image
 		imageView.contentMode = UIView.ContentMode.scaleAspectFit
 		

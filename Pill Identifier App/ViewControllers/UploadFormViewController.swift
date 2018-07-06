@@ -27,7 +27,6 @@ UITextFieldDelegate {
 	var pickPictureBtn:		UIButton!
 	var submitButton: 		UIButton!
 
-	
 	var isChecked = 			true
 	var pickImprintBtn: 		UIButton!
 	var pickImprintTextField: 	UITextField!
@@ -41,6 +40,10 @@ UITextFieldDelegate {
 		//Looks for single or multiple taps.
 		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UploadFormViewController.dismissKeyboard))
 		view.addGestureRecognizer(tap)
+		
+		
+		
+		
 		
 	}// end loadview
 	
@@ -74,6 +77,7 @@ UITextFieldDelegate {
 			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		pickColorBtn.layer.borderWidth = 2.0
+		pickColorBtn.borderColor =  .orange
 		pickColorBtn.setTitleColor(UIColor.black, for: .normal)
 		pickColorBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 		pickColorBtn.setTitleColor(UIColor.white, for: .highlighted)
@@ -93,6 +97,7 @@ UITextFieldDelegate {
 			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		pickShapeBtn.layer.borderWidth = 2.0
+		pickShapeBtn.borderColor = .orange
 		pickShapeBtn.setTitleColor(UIColor.black, for: .normal)
 		pickShapeBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 		pickShapeBtn.setTitleColor(UIColor.white, for: .highlighted)
@@ -125,6 +130,7 @@ UITextFieldDelegate {
 		// Set UITextField border style
 		pickImprintTextField.borderStyle = UITextField.BorderStyle.line
 		pickImprintTextField.layer.borderWidth = 2.0
+		pickImprintTextField.borderColor = .orange
 		
 		// Set UITextField background colour
 		//pickImprintTextField.backgroundColor = UIColor.clear
@@ -144,11 +150,12 @@ UITextFieldDelegate {
 			width: screenWidth * 0.8/2,
 			height: myDefaultTextFieldHeight))
 		pickImprintBtn.layer.borderWidth = 2.0
+		pickImprintBtn.borderColor = .orange
 		pickImprintBtn.setTitleColor(UIColor.black, for: .normal)
 		pickImprintBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 		pickImprintBtn.setTitleColor(UIColor.white, for: .highlighted)
 		pickImprintBtn.setTitle("Any Imprint ✓", for: .normal)
-		pickImprintBtn.setTitleColor(.orange, for: .normal)
+		pickImprintBtn.setTitleColor(.green, for: .normal)
 		pickImprintBtn.titleLabel?.font =  UIFont.systemFont(
 			ofSize: myDefaultTextFontSize,
 			weight: .light)
@@ -203,8 +210,8 @@ UITextFieldDelegate {
 		
 		// NORTH VIEW SET
 		north.addSubview(pickPictureBtn)
-		pickPictureBtn.isEnabled = false
-		
+		//pickPictureBtn.isEnabled = false
+
 		north.addSubview(pickImprintBtn)
 		north.addSubview(pickImprintTextField)
 		
@@ -268,7 +275,7 @@ UITextFieldDelegate {
 		if pickImprintTextField.text! ==  "" {
 			setIsChecked(bool: true)
 			pickImprintBtn.setTitle("Any Imprint ✓", for: .normal)
-			pickImprintBtn.setTitleColor(.orange, for: .normal)
+			pickImprintBtn.setTitleColor(.green, for: .normal)
 		} else {
 			setIsChecked(bool: true)
 			pickImprintBtn.setTitle("Imprint ✓", for: .normal)
@@ -302,6 +309,7 @@ UITextFieldDelegate {
 				//print(txt)
 				
 				sender.setTitle(txt,for: .normal)
+				sender.setTitleColor(.green, for: .normal)
 				//sender.isEnabled = false
 				
 				return
@@ -328,6 +336,7 @@ UITextFieldDelegate {
 				//print(txt)
 				
 				sender.setTitle(txt,for: .normal)
+				sender.setTitleColor(.green, for: .normal)
 				//sender.isEnabled = false
 				
 				return
@@ -335,6 +344,7 @@ UITextFieldDelegate {
 			cancel: {ActionMultipleStringCancelBlock in return },
 			origin: sender)
 	}// end pick shape
+	
 	
 	@objc func pickScoreBtnTapped(){
 		ActionSheetMultipleStringPicker.show(
@@ -365,6 +375,9 @@ UITextFieldDelegate {
 				if num == 4 {
 					self.pickScoreBtn.setTitle("Score:\tIIII",for: .normal)
 				}
+				
+				self.pickScoreBtn.borderColor =  .orange
+				self.pickScoreBtn.setTitleColor(.green, for: .normal)
 				
 				return
 		},
@@ -432,14 +445,14 @@ UITextFieldDelegate {
 		
 		self.north.addSubview(imageView)
 		self.navigationItem.leftBarButtonItem?.isEnabled = false
-		self.navigationItem.hidesBackButton = false
-		self.submitButton.setTitle("Coming Soon", for: .normal)
+
+		self.submitButton.setTitle("Feature Coming Soon", for: .normal)
 		self.submitButton.addTarget(
 			self,
 			action: #selector(rightButtonTapped),
 			for: .touchUpInside)
 		
-		//imageView.borderColor  = .black
+		//imageView.borderColor  = .orange
 		//imageView.borderWidth = 1.0
 		
 
@@ -479,7 +492,7 @@ UITextFieldDelegate {
 	func hasImprint(sender: UIButton) -> Bool {
 		if isChecked {
 			sender.setTitle("Any Imprint ✓", for: .normal)
-			sender.setTitleColor(.orange, for: .normal)
+			sender.setTitleColor(.green, for: .normal)
 			pickImprintTextField.placeholder = "Enter Imprint"
 			//pickImprintTextField.isHidden = false
 			return true
