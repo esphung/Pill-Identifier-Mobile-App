@@ -8,8 +8,6 @@
 
 import UIKit
 
-//let appvar = UIApplication.shared.delegate as! AppDelegate
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

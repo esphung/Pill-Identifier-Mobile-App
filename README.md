@@ -15,21 +15,26 @@ Run the simulator on an iphone device in Xcode
 
 - [RzImage API Paramaters](https://rxnav.nlm.nih.gov/RxImageAPIParameters.html)
 
-#### View Layouts
-<img src="./Notes/Screens/displaypill.png" alt="display-page" width="100px"/>
-<img src="./Notes/Screens/originalsearch.png" alt="search-page" width="100px"/>
 <!--
-![Alt text](./Notes/Screens/displaypill.png)
-![Alt text](./Notes/Screens/originalsearch.png)
+#### View Layouts
+<img src="./notes/screenies/displaypill.png" alt="display-page" width="100px"/>
+<img src="./notes/screenies/originalsearch.png" alt="search-page" width="100px"/>
+-->
+<!--
+![Alt text](./Notes/screenies/displaypill.png)
+![Alt text](./Notes/screenies/originalsearch.png)
 -->
 
 ##### Background Images
-<img src="./Notes/Screens/cherylbackground.png" alt="page-background" width="100px"/>
+<img src="./notes/screenies/cherylbackground.png" alt="page-background" width="100px"/>
 
-## CocoaPod Libraries
-pod 'SwiftyJSON', '~> 4.0' <br>
-pod 'ActionSheetPicker-3.0' <br>
-pod 'Alamofire', '~> 4.7' <br>
-pod 'Kingfisher', '~> 4.0' <br>
+#### CocoaPod Libraries
+
+```language
+pod 'SwiftyJSON', '~> 4.0'
+pod 'ActionSheetPicker-3.0'
+pod 'Alamofire', '~> 4.7'
+pod 'Kingfisher', '~> 4.0'
+```
 
 ***Copyright Eric Phung 2018***

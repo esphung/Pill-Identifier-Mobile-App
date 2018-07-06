@@ -14,12 +14,12 @@
 		18F57B901E992E0A0013221F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F57B8E1E992E0A0013221F /* LaunchScreen.storyboard */; };
 		18F57B9B1E992E0A0013221F /* Pill_Identifier_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F57B9A1E992E0A0013221F /* Pill_Identifier_AppTests.swift */; };
 		18F57BA61E992E0A0013221F /* Pill_Identifier_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F57BA51E992E0A0013221F /* Pill_Identifier_AppUITests.swift */; };
+		5E29F7B320EFCA2A00549742 /* notes in Resources */ = {isa = PBXBuildFile; fileRef = 5E29F7B220EFCA2900549742 /* notes */; };
 		5E49D4E920D836DB002C8469 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4E820D836DB002C8469 /* Utility.swift */; };
 		5E49D4EB20D837E0002C8469 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4EA20D837E0002C8469 /* Globals.swift */; };
 		5E49D4F120D851EA002C8469 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4F020D851EA002C8469 /* ViewController.swift */; };
 		5E49D4F720D87713002C8469 /* NorthSouthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */; };
 		5E49D4F920D87BCE002C8469 /* CardDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */; };
-		5E49D4FB20D89618002C8469 /* sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 5E49D4FA20D89618002C8469 /* sample.json */; };
 		5E49D4FD20D8FFCF002C8469 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */; };
 		5E575F1620D6378300B94C16 /* UploadFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E575F1520D6378300B94C16 /* UploadFormViewController.swift */; };
 		5EF7DD4E20E18AB500EF5F2E /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */; };
@@ -76,12 +76,12 @@
 		18F57BA51E992E0A0013221F /* Pill_Identifier_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pill_Identifier_AppUITests.swift; sourceTree = "<group>"; };
 		18F57BA71E992E0A0013221F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3741B1114C70319E10746FF5 /* Pods-Pill Identifier AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pill Identifier AppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pill Identifier AppTests/Pods-Pill Identifier AppTests.release.xcconfig"; sourceTree = "<group>"; };
+		5E29F7B220EFCA2900549742 /* notes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = notes; sourceTree = "<group>"; };
 		5E49D4E820D836DB002C8469 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		5E49D4EA20D837E0002C8469 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		5E49D4F020D851EA002C8469 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorthSouthViewController.swift; sourceTree = "<group>"; };
 		5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDisplayViewController.swift; sourceTree = "<group>"; };
-		5E49D4FA20D89618002C8469 /* sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sample.json; sourceTree = "<group>"; };
 		5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		5E575F1520D6378300B94C16 /* UploadFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFormViewController.swift; sourceTree = "<group>"; };
 		5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		18F57B791E992E0A0013221F = {
 			isa = PBXGroup;
 			children = (
-				5E49D4FA20D89618002C8469 /* sample.json */,
+				5E29F7B220EFCA2900549742 /* notes */,
 				18F57B841E992E0A0013221F /* Pill Identifier App */,
 				18F57B991E992E0A0013221F /* Pill Identifier AppTests */,
 				18F57BA41E992E0A0013221F /* Pill Identifier AppUITests */,
@@ -363,9 +363,9 @@
 			files = (
 				5EF7DD5220E18BEE00EF5F2E /* TableViewCell1.xib in Resources */,
 				18F57B901E992E0A0013221F /* LaunchScreen.storyboard in Resources */,
-				5E49D4FB20D89618002C8469 /* sample.json in Resources */,
 				18F57B8D1E992E0A0013221F /* Assets.xcassets in Resources */,
 				5EF7DD5620E18C9E00EF5F2E /* TableViewCell2.xib in Resources */,
+				5E29F7B320EFCA2A00549742 /* notes in Resources */,
 				18F57B8B1E992E0A0013221F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
