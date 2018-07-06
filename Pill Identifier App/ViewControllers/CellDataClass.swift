@@ -67,7 +67,6 @@ let eric = CellDataClass(cell: 2,
 	imprint: "ABC"
 )
 
-
 eric.setName(str: "Chomsky Gnome")
 
 print(eric.getName())

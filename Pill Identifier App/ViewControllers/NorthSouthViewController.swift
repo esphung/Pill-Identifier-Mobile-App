@@ -12,7 +12,7 @@ class NorthSouthViewController: UIViewController {
 	// set up view layout
 	var myView : UIView!
 	var north:  UIView!
-	var south: UIView!
+
 	
 	var imageName: 	String!
 	var image:		UIImage!
@@ -26,13 +26,7 @@ class NorthSouthViewController: UIViewController {
 			height: ((myView.frame.height) - (myView.frame.height) * 0.05 ) )
 	}
 	
-	var southFrame: CGRect {
-		return CGRect(
-			x: (myView.frame.width * 0.05),
-			y: (myView.frame.height * 0.1)/2,
-			width: (myView.frame.width * 0.95),
-			height: ((myView.frame.height)/2.2) )
-	}
+
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -45,12 +39,7 @@ class NorthSouthViewController: UIViewController {
 		let north = UIView()
 		self.view.addSubview(north)
 		self.north = north
-		
-		
-		let south = UIView()
-		//self.view.addSubview(south)
-		self.south = south
-		
+
 		/*
 		let imageView = UIImageView(frame: CGRect(
 			x: 0,
@@ -71,19 +60,15 @@ class NorthSouthViewController: UIViewController {
 		setUpContraints()
 		//showDebug()
 
-
 	}
 	
 	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		north.frame = self.northFrame
-		south.frame = self.southFrame
 		
 	}
 	
-	
-
 	func setNavigationBar(title: String) {
 		let navigationBar = UINavigationBar(frame: CGRect(
 			x: 0, y: screenHeight/24, width: screenWidth, height: 44))
@@ -113,16 +98,16 @@ class NorthSouthViewController: UIViewController {
 	}
 	
 	@objc func rightButtonTapped() {
-		displayUploadFormPage()
+		displaySearchFormPage()
 		self.view.removeFromSuperview()
 		
 	}
 	
-	func displayUploadFormPage() {
-		let uploadFormViewController: UploadFormViewController = storyboard?.instantiateViewController(withIdentifier: "uploadFormViewController") as! UploadFormViewController
+	func displaySearchFormPage() {
+		let searchViewController: SearchViewController = storyboard?.instantiateViewController(withIdentifier: "searchViewController") as! SearchViewController
 		
 		self.present(
-			uploadFormViewController,
+			searchViewController,
 			animated: true,
 			completion: {
 		})

@@ -3,14 +3,12 @@
 // Y8   8P 88"""  88  .o Yb   dP  dP__Yb   8I  dY
 // `YbodP' 88     88ood8  YbodP  dP""""Yb 8888Y"
 
-import UIKit.UIViewController
+//import UIKit.UIViewController
 import ActionSheetPicker_3_0
 import SwiftyJSON
 import Alamofire
 
-let scores  = [1,2,3,4]
-
-class UploadFormViewController:
+class SearchViewController:
 NorthSouthViewController,
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,
@@ -42,7 +40,7 @@ UITextFieldDelegate {
 	override func loadView() {
 		super.loadView()
 		//Looks for single or multiple taps.
-		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UploadFormViewController.dismissKeyboard))
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.dismissKeyboard))
 		view.addGestureRecognizer(tap)
 		
 		
@@ -216,7 +214,7 @@ UITextFieldDelegate {
 		
 		
 		// NORTH VIEW SET
-		north.addSubview(pickPictureBtn)
+		//north.addSubview(pickPictureBtn)
 		//pickPictureBtn.isEnabled = false
 
 		north.addSubview(pickImprintBtn)
@@ -316,7 +314,7 @@ UITextFieldDelegate {
 			rows: [
 				colors
 			],
-			initialSelection: [0, 0],
+			initialSelection: [0],
 			doneBlock: {
 				picker, indexes, values in
 				//print("color = \(values!)")

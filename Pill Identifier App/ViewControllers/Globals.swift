@@ -17,8 +17,6 @@ public var screenHeight: CGFloat {
 	return UIScreen.main.bounds.height
 }
 
-public let centerX = screenWidth / 2;
-public let centerY = screenHeight / 2;
 
 public let myDefaultTextFieldHeight = CGFloat(44.0)
 
@@ -67,4 +65,4 @@ public let colors =  [
 	"Yellow"
 ]
 
-
+public let scores  = [1,2,3,4]

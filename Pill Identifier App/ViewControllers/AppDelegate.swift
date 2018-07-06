@@ -20,20 +20,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// 2. Instantiate a storyboard that we can use to create our new initial view controller
 		let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
 		
-		/*
+		
 		// 3. Instantiate our new initial view controller based on it's Storyboard ID
 		let testViewController: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "testViewController")
 		
 		// 4. Set our new window's root view controller as our the new controller we just initiated
 		self.window?.rootViewController = testViewController
-		*/
-		
-		
+
+		/*
 		// 3. Instantiate our new initial view controller based on it's Storyboard ID
 		let uploadFormViewController: UploadFormViewController = mainStoryboard.instantiateViewController(withIdentifier: "uploadFormViewController") as! UploadFormViewController
 		
 		// 4. Set our new window's root view controller as our the new controller we just initiated
 		self.window?.rootViewController = uploadFormViewController
+		r*/
 		
 		// 5. Make our new window visible
 		self.window?.makeKeyAndVisible()

@@ -12,6 +12,10 @@ class TestViewController: NorthSouthViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+		backgroundImage.image = UIImage(named: "background.jpg")
+		self.view.insertSubview(backgroundImage, at: 0)
 
 		var firstBtn = UIButton()
 		var debugBtn: 		UIButton!
@@ -42,7 +46,7 @@ class TestViewController: NorthSouthViewController {
 		// set up firstBtn
 		firstBtn =  UIButton(frame: CGRect(
 			x: myListIndent,
-			y: screenHeight * 0.325,
+			y: screenHeight * 0.225,
 			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		firstBtn.layer.borderWidth = 2.0;
@@ -56,7 +60,7 @@ class TestViewController: NorthSouthViewController {
 			action: #selector(firstBtnTapped),
 			for: .touchUpInside)
 		
-		firstBtn.setTitle("Search Pill", for: .normal)
+		firstBtn.setTitle("Find Information 💊", for: .normal)
 
 		// set up displayBtn
 		displayBtn =  UIButton(frame: CGRect(
@@ -80,7 +84,7 @@ class TestViewController: NorthSouthViewController {
 		// set up resultsBtn
 		resultsBtn =  UIButton(frame: CGRect(
 			x: myListIndent,
-			y: screenHeight * 0.225,
+			y: screenHeight * 0.325,
 			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		resultsBtn.layer.borderWidth = 2.0;
@@ -120,7 +124,7 @@ class TestViewController: NorthSouthViewController {
 
 		north.addSubview(firstBtn)
 		//north.addSubview(displayBtn)
-		north.addSubview(resultsBtn)
+		//north.addSubview(resultsBtn)
 		//north.addSubview(debugBtn)
 		//north.addSubview(showWikipediaBtn)
 		
@@ -174,10 +178,8 @@ class TestViewController: NorthSouthViewController {
 	}
 
 	@objc func firstBtnTapped() {
-		displayUploadFormPage()
+		displaySearchFormPage()
 	}
-	
-
 
 	func displayCardDisplayPage() {
 		let cardDisplayViewController: CardDisplayViewController = storyboard?.instantiateViewController(withIdentifier: "cardDisplayViewController") as! CardDisplayViewController
@@ -195,6 +197,6 @@ class TestViewController: NorthSouthViewController {
 			completion: nil)
 	}
 	
-	
+	 
 
 }
