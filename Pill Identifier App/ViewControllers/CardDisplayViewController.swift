@@ -125,7 +125,7 @@ class CardDisplayViewController: NorthSouthViewController {
 			north.addSubview(nameLabel)
 			
 			north.addSubview(showWikipediaBtn)
-			north.addSubview(dosageLabel)
+			//north.addSubview(dosageLabel)
 		}
     }// end layouts did load
 	
