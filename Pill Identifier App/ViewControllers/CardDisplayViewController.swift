@@ -100,7 +100,7 @@ class CardDisplayViewController: NorthSouthViewController {
 			// WIKIPEDIA PAGE BUTTON
 			showWikipediaBtn =  UIButton(frame: CGRect(
 				x: myListIndent,
-				y: screenHeight * 0.225,
+				y: screenHeight * 0.725,
 				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 			//showWikipediaBtn.layer.borderWidth = 1.0;
@@ -117,7 +117,7 @@ class CardDisplayViewController: NorthSouthViewController {
 				self,
 				action: #selector(showWikipediaBtnTapped),
 				for: .touchUpInside)
-			showWikipediaBtn.setTitle("Wikipedia Page", for: .normal)
+			showWikipediaBtn.setTitle("Wikipedia", for: .normal)
 
 			// ============================ SET VIEW OBJECTS
 			north.addSubview(imageView)
