@@ -96,6 +96,8 @@ class NorthSouthViewController: UIViewController {
 		
 	}
 	
+	
+
 	func setNavigationBar(title: String) {
 		let navigationBar = UINavigationBar(frame: CGRect(
 			x: 0, y: screenHeight/24, width: screenWidth, height: 44))

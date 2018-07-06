@@ -27,12 +27,12 @@ UITextFieldDelegate {
 	var exitBtn: UIButton!
 	
 	
-	var isChecked = 		true
+	var isChecked = 			true
 	var pickImprintBtn: 		UIButton!
 	var pickImprintTextField: 	UITextField!
 	
-	var pickScoreBtn:		UIButton!
-	var isScored = 			false
+	var pickScoreBtn:			UIButton!
+	var isScored = 				false
 	
 	
 	override func loadView() {
@@ -215,7 +215,7 @@ UITextFieldDelegate {
 			weight: .light)
 		
 		submitButton.borderWidth = 1.0
-		submitButton.borderColor = .blue
+		submitButton.borderColor = .lightGray
 		submitButton.addTarget(
 			self,
 			action: #selector(submitButtonTapped),
@@ -241,7 +241,7 @@ UITextFieldDelegate {
 			for: .touchUpInside)
 		
 		exitBtn.borderWidth = 2.0
-		exitBtn.borderColor = .lightGray
+		//exitBtn.borderColor = .lightGray
 		//exitBtn.backgroundColor = UIColor.red
 		
 		//north.addSubview(exitBtn)
@@ -351,7 +351,7 @@ UITextFieldDelegate {
 				let value = colors[indexes?.first as! Int]
 				self.color = String(value).uppercased()
 				
-				let txt = "Color: " + self.color
+				let txt = "Color: " + self.color  + " ✓"
 				//print(txt)
 				
 				sender.setTitle(txt,for: .normal)
@@ -377,8 +377,9 @@ UITextFieldDelegate {
 				let value = shapes[indexes?.first as! Int]
 				self.shape = String(value).uppercased()
 				
-				let txt = ("Shape: " + self.shape)
+				let txt = ("Shape: " + self.shape + " ✓")
 				//print(txt)
+
 				sender.setTitle(txt,for: .normal)
 				//sender.isEnabled = false
 				

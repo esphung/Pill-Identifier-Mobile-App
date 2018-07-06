@@ -21,6 +21,7 @@ struct cellData {
 
 class ResultsTableViewController: UITableViewController {
 	var arrayOfCellData = [cellData]()
+	
 	//private var myTableView: UITableView!
 	
 	/*
@@ -31,11 +32,6 @@ class ResultsTableViewController: UITableViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		
-		let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
-		let displayWidth: CGFloat = self.view.frame.width * 0.95
-		let displayHeight: CGFloat = self.view.frame.height/2
 		
 		let tableView = UITableView()
 		
@@ -108,7 +104,6 @@ class ResultsTableViewController: UITableViewController {
 		cell.mainLabel.text = arrayOfCellData[indexPath.row].text
 		
 		return cell
-		
 
 		/*
 		let cell = tableView.dequeueReusableCell(withIdentifier: "customCell")!
@@ -237,6 +232,7 @@ class ResultsTableViewController: UITableViewController {
     }
     */
 	
+
 	@objc override func respondToSwipeGesture(gesture: UIGestureRecognizer) {
 		if let swipeGesture = gesture as? UISwipeGestureRecognizer {
 			switch swipeGesture.direction {
