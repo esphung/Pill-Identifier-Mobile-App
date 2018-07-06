@@ -29,138 +29,120 @@ class CardDisplayViewController: NorthSouthViewController {
 	
 	// regexp
 	
-	var name: String!
+	@objc var name: String!
 	var dosage: String!
 
-	
     override func loadView() {
         super.loadView()
-        //self.view.backgroundColor = .white
     }
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		// begin set up here
 		setNavigationBar(title: "Pill Description")
-		
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 		
 		// ============ CHECK IF CELLDATA
-		
 		if cellData != nil {
 			
-			// match regexp patterns
-			name  = getName(str: cellData.text!)
-			dosage = getDosage(str: cellData.text!)
+			// LOAD DRUG NAME
+			name = getName(str: cellData.text!)// pull through input
 			
+			name = getStringRemovedFromSpecialChars(text: name)// sanitize
+			name = name.replace(target: "HR", withString: "")
+			name = name.replace(target: "MG", withString: "").capitalized// also lowers
+			name = name.trimmingCharacters(in: .whitespacesAndNewlines)// trim whitespace
 			
-			// load for image
+			//nameLabel.textColor = UIColor.red
+			nameLabel = makeNameLabel(message: "Name: " + name)
+			
+			// LOAD THE IMAGE
 			url = URL(string: cellData.imageUrl)
 			
 			imageView = makeDisplayImage(image: image!)
 			imageView.kf.setImage(with: url, placeholder: image)
-			//imageView.frame.origin = CGPoint(x: 20, y: 20)
+			imageView.frame.origin = CGPoint(x: myListIndent, y: screenHeight/12)
+
 			
+			//  LOAD DOSAGE
+			dosage = getDosage(str: cellData.text!)
+			let dosageLabel = getDosageLabel(message: dosage)
 			
-			// LOAD DRUG NAME  (ALSO REGEX THE BASE NAMEr)
-			nameLabel = makeNameLabel(message: "Name: " + name)
-			
-			
-			//  LOAD DRUG DOSAGE LABEL
-			let dosageLbl = UILabel(
-				frame: CGRect(
-					x: myListIndent,
-					y: screenHeight * (0.125/2),
-					width: screenWidth * 0.8,
-					height: myDefaultTextFieldHeight))
-			//label.font = UIFont.systemFont(ofSize: 16)
-			dosageLbl.text = "Dosage: " + dosage
-			dosageLbl.numberOfLines = 1
-			dosageLbl.layer.borderWidth = myBorders
-			dosageLbl.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
-			
-			
-			// load color label
+			// LOAD COLOR
 			colorLabel = makeColorLabel(message: cellData.color)
-			print(cellData.color)
 			north.addSubview(colorLabel)
 			
-			
-			/*
-			
-			
-			// ================ shape label
+			// shape label
 			shapeLabel = makeShapeLabel(message: cellData.shape)
 			north.addSubview(shapeLabel)
 			
-			// ================ imprint label
+			// imprint label
 			imprintLabel = makeImprintLabel(message: cellData.imprint)
 			north.addSubview(imprintLabel)
 			
-			// ==== ndc11 national drug code number label
+			// ndc11 national drug code number label
 			ndcLabel = makeNdcLabel(message: test.ndc11)
 			north.addSubview(ndcLabel)
 			
-			// ==== rxcui label (apis and software doc)
+			// rxcui label (apis and software doc)
 			rxcuiLabel = makeRxcuiLabel(
 				message: String(test.rxcuii))
 			north.addSubview(rxcuiLabel)
 			
-			// ================ labeler rx company
+			// labeler rx company
 			labelerLabel = makeLabelerLabel(
 				message: String(test.labeler))
-			//self.north.addSubview(labelerLabel)
+			self.north.addSubview(labelerLabel)
 			
-			*/
-			
-			// set up firstBtn
+			// WIKIPEDIA PAGE BUTTON
 			showWikipediaBtn =  UIButton(frame: CGRect(
 				x: myListIndent,
-				y: screenHeight * 0.7,
+				y: screenHeight * 0.225,
 				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
-			showWikipediaBtn.layer.borderWidth = 2.0;
-			//showWikipediaBtn.backgroundColor = UIColor.red
-			showWikipediaBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
-			
+			//showWikipediaBtn.layer.borderWidth = 1.0;
+			//showWikipediaBtn.titleLabel?.textColor = UIColor.black
+			showWikipediaBtn.layer.borderWidth = 2.0
+			showWikipediaBtn.setTitleColor(UIColor.black, for: .normal)
+			showWikipediaBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+			showWikipediaBtn.setTitleColor(UIColor.white, for: .highlighted)
+
 			showWikipediaBtn.titleLabel?.font =  UIFont.systemFont(
-				ofSize: 32, weight: .light)
+				ofSize: myDefaultTextFontSize,
+				weight: .light)
 			showWikipediaBtn.addTarget(
 				self,
 				action: #selector(showWikipediaBtnTapped),
 				for: .touchUpInside)
-			
-			showWikipediaBtn.setTitle("Show Wikipedia", for: .normal)
+			showWikipediaBtn.setTitle("Wikipedia Page", for: .normal)
 
 			// ============================ SET VIEW OBJECTS
-			
 			north.addSubview(imageView)
 			north.addSubview(nameLabel)
 			
 			north.addSubview(showWikipediaBtn)
-			north.addSubview(dosageLbl)
-			
-			
+			north.addSubview(dosageLabel)
 		}
-
-
-		
-		//imageName = "250x250placeholder.jpg"
-		//image = UIImage(named: imageName)
-		//self.imageView = makeDisplayImage(image: image!)
-		//self.north.addSubview(imageView)
-		
-		/*
-		let url = URL(string: test.imageUrl)
-		let image = UIImage(named: "250x250placeholder.png")
-		self.imageView.kf.setImage(with: url, placeholder: image)
-		self.north.addSubview(imageView)
-		*/
-		
     }// end layouts did load
+	
+	// dosage func
+	func getDosageLabel(message: String) -> UILabel {
+		let dosageLbl = UILabel(
+		frame: CGRect(
+		x: myListIndent,
+		y: screenHeight * (0.1),
+		width: screenWidth * 0.8,
+		height: myDefaultTextFieldHeight))
+		//label.font = UIFont.systemFont(ofSize: 16)
+		dosageLbl.text = "Dosage: " + message
+		dosageLbl.numberOfLines = 1
+		dosageLbl.layer.borderWidth = myBorders
+		dosageLbl.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
+		return dosageLbl
+	}
 	
 
 	// name label
@@ -168,7 +150,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: screenHeight * 0.125,
+				y: screenHeight * 0,
 				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
@@ -185,11 +167,11 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: screenHeight * (0),
+				y: screenHeight * (0.025),
 				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
-		label.text = message
+		label.text = "Color: "  + message.capitalized
 		label.numberOfLines = 1
 		label.layer.borderWidth = myBorders
 		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
@@ -202,11 +184,11 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: screenHeight * 0.225,
+				y: screenHeight * 0.05,
 				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
-		label.text = message
+		label.text = "Shape: " + message.capitalized
 		label.numberOfLines = 1
 		label.layer.borderWidth = myBorders
 		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
@@ -219,11 +201,17 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: screenHeight * 0.325,
+				y: screenHeight * 0.15,
 				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
-		label.text = message
+		if message.isEmpty {
+			label.text = "Imprint:"
+		} else if message == "no-imprint" {
+			label.text = "Imprint: NO IMPRINT"
+		} else {
+			label.text = "Imprint: " + message
+		}
 		label.numberOfLines = 1
 		label.layer.borderWidth = myBorders
 		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
@@ -236,7 +224,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: screenHeight * 0.425,
+				y: screenHeight * 0.125,
 				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
@@ -253,7 +241,8 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: screenHeight * 0.525,
+				y: screenHeight * 0.175,
+				//y: screenHeight * 0.075,
 				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
@@ -270,7 +259,8 @@ class CardDisplayViewController: NorthSouthViewController {
 	func makeLabelerLabel(message: String) -> UILabel {
 		let label = UILabel(frame: CGRect(
 			x: myListIndent,
-			y: screenHeight * 0.625,
+			y: screenHeight * 0.075,
+			
 			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		label.text = "Label:\t" + message
@@ -284,30 +274,47 @@ class CardDisplayViewController: NorthSouthViewController {
 	func displayWikipediaPage(base: URL, str: String) {
 		// only does first term right now
 		let matched = matches(for: "([^\\s]+)", in: str)
-		name = matched.first!
 		
-		print(name)
-		// base url
-		//let urlString = URL(string: "http://en.wikipedia.org/wiki/")
-		let urlString = base
-		
-		// article url
-		//let article      = URL(string: "adderall", relativeTo: urlString)
-		let article      = URL(string: name, relativeTo: urlString)
-		
-		// string from article url
-		let articleString = article?.absoluteString
-		//ArticleString now contains: baseurl + article
-		
-		if let url = URL(string: articleString!) {
-			if #available(iOS 10.0, *) {
-				UIApplication.shared.open(url, options: [:], completionHandler: nil)
-			} else {
-				UIApplication.shared.openURL(url)
-			}
-		} else {
-			print("could not open url, it was nil")
+		// check for nil
+		guard let name = matched.first else {
+			print("name failed guard")
+			return
 		}
+		
+		// validate name
+		if isValid(name: name) {
+			print("Valid: ", name)
+			// base url
+			//let urlString = URL(string: "http://en.wikipedia.org/wiki/")
+			let urlString = base
+			
+			// article url
+			//let article      = URL(string: "adderall", relativeTo: urlString)
+			let article      	= URL(string: name, relativeTo: urlString)
+			
+			// string from article url
+			let articleString = article?.absoluteString
+			//ArticleString now contains: baseurl + article
+			
+			if let url = URL(string: articleString!) {
+				if #available(iOS 10.0, *) {
+					UIApplication.shared.open(url, options: [:], completionHandler: nil)
+				} else {
+					UIApplication.shared.openURL(url)
+				}
+			} else {
+				print("could not open url, it was nil")
+			}
+			
+		} else {
+			//self.dismiss(animated: true, completion: nil)
+			print("Invalid Name: "  + name)
+			
+			return
+		}
+		
+		
+
 	}
 	
 	@objc func showWikipediaBtnTapped() {
@@ -319,26 +326,15 @@ class CardDisplayViewController: NorthSouthViewController {
 		
 	}
 	
-	func matches(for regex: String, in text: String) -> [String] {
-		
-		do {
-			let regex = try NSRegularExpression(pattern: regex)
-			let results = regex.matches(in: text,
-										range: NSRange(text.startIndex..., in: text))
-			return results.map {
-				String(text[Range($0.range, in: text)!])
-			}
-		} catch let error {
-			print("invalid regex: \(error.localizedDescription)")
-			return []
-		}
-	}
 	
 
 	func getName(str: String) -> String {
 		var fullName = ""
+		
+
 		// FIND BASIC NAME
 		let matched = matches(for: "([^\\s]+)", in: str)
+		
 		
 		//print(splitDeck.left) // ["J", "Q"]
 		//print(splitDeck.right) // ["K", "A"]
@@ -348,11 +344,11 @@ class CardDisplayViewController: NorthSouthViewController {
 		
 		for (index, element) in deck.enumerated() {
 			// if a number split aray in half -> name, dosage
-			print("Item \(index): \(element)")
+			//print("Item \(index): \(element)")
 			
 			let num = Int(element)
 			if num != nil {
-				print("Valid Integer", index)
+				//print("Valid Integer", index)
 				
 				let splitDeck = deck.split(pos: index)
 				
@@ -360,7 +356,7 @@ class CardDisplayViewController: NorthSouthViewController {
 					fullName = (fullName + " " + item)
 				}
 				
-				print(fullName)
+				//print(fullName)
 				return fullName
 	
 			}
@@ -381,32 +377,77 @@ class CardDisplayViewController: NorthSouthViewController {
 		}
 	}
 	
-	/*
-	// EXAMPLE
-	let string = "🇩🇪€40 MG(*&(*MG9 { sdlksdfjlk 6000 MG }"
-	
-	// possible  dosage match expressions
-	//[0-9]+[0-9]+[0-9]*.(MG)
-	//([0-9]).+([M][G])
-	
-	let matched = matches(for: "[0-9]+[0-9]+[0-9]*.(MG)", in: string)
-	
-	print(matched)
-	// ["4", "9"]
-	*/
-	
-}
-
-	extension Array {
-		func split(pos: Int) -> (left: [Element], right: [Element]) {
-			let ct = self.count
-			let half = ct / 2
-			let leftSplit = self[0 ..< half - 1]
-			let rightSplit = self[pos ..< ct]
-			return (left: Array(leftSplit), right: Array(rightSplit))
+	func getStringRemovedFromSpecialChars(text: String) -> String {
+		// return cleaned string  sanitized spec chars
+		let okayChars = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ+-=().!_\n")
+		return text.filter {okayChars.contains($0) }
 	}
 
 	
+	func matches(for regex: String, in text: String) -> [String] {
+		
+		do {
+			let regex = try NSRegularExpression(pattern: regex)
+			let results = regex.matches(in: text,
+										range: NSRange(text.startIndex..., in: text))
+			return results.map {
+				String(text[Range($0.range, in: text)!])
+			}
+		} catch let error {
+			print("invalid regex: \(error.localizedDescription)")
+			return []
+		}
+	}
+	
+	
+	
+	func isValid(name: String) -> Bool {
+		// check the name is between 4 and ... characters
+		if !(4...20 ~= name.count) {
+			print(name.count)
+			return false
+		}
+		return true
+	}
+
+	
+}// end class
+
+// ==== CLASS  EXTENSIONS
+
+extension String {
+	func removeWhitespaces() -> String {
+		return components(separatedBy: .whitespaces).joined()
+	}
+}
+
+extension String {
+	func replace(target: String, withString: String) -> String
+	{
+		return self.replacingOccurrences(of: target, with: withString)
+	}
+}
+
+extension String {
+	func capitalizingFirstLetter() -> String {
+		return prefix(1).uppercased() + dropFirst()
+	}
+	
+	mutating func capitalizeFirstLetter() {
+		self = self.capitalizingFirstLetter()
+	}
+}
+
+extension Array
+{
+	func split(pos: Int) -> (left: [Element], right: [Element]) {
+		let ct = self.count
+		let half = ct / 2
+		let leftSplit = self[0 ..< half - 1]
+		let rightSplit = self[pos ..< ct]
+		return (left: Array(leftSplit), right: Array(rightSplit))
+	}
+
 }
 
 

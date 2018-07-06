@@ -12,6 +12,9 @@ class TestViewController: NorthSouthViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		
+		
 
 		//setBackgroundImage(sender: self, filename: "background.png")
 		
@@ -50,7 +53,7 @@ class TestViewController: NorthSouthViewController {
 			height: myDefaultTextFieldHeight))
 		firstBtn.layer.borderWidth = 2.0;
 		firstBtn.backgroundColor = UIColor.red
-		firstBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+		//firstBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
 		
 		firstBtn.titleLabel?.font =  UIFont.systemFont(
 			ofSize: 32, weight: .light)
@@ -129,6 +132,7 @@ class TestViewController: NorthSouthViewController {
 		
 		//south.removeFromSuperview(
 		
+
 		
 	}// end view did load
 
@@ -180,15 +184,6 @@ class TestViewController: NorthSouthViewController {
 	}
 	
 
-	func displayUploadFormPage() {
-		let uploadFormViewController: UploadFormViewController = storyboard?.instantiateViewController(withIdentifier: "uploadFormViewController") as! UploadFormViewController
-		
-		self.present(
-			uploadFormViewController,
-			animated: true,
-			completion: {
-		})
-	}
 
 	func displayCardDisplayPage() {
 		let cardDisplayViewController: CardDisplayViewController = storyboard?.instantiateViewController(withIdentifier: "cardDisplayViewController") as! CardDisplayViewController

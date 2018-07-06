@@ -22,15 +22,16 @@ UITextFieldDelegate {
 	var imageViewButton:	UIButton!
 	var pickColorBtn:		UIButton!
 	var pickShapeBtn:  		UIButton!
-	var pickPictureBtn:	UIButton!
-	var sampleTextField: 	UITextField!
+	var pickPictureBtn:		UIButton!
 	var submitButton: 		UIButton!
+	var exitBtn: UIButton!
+	
 	
 	var isChecked = 		true
 	var pickImprintBtn: 		UIButton!
 	var pickImprintTextField: 	UITextField!
 	
-	var pickScoreBtn:			UIButton!
+	var pickScoreBtn:		UIButton!
 	var isScored = 			false
 	
 	
@@ -45,16 +46,7 @@ UITextFieldDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setNavigationBar(title: "Enter Pill Information")
-		
-	}// end view did load
-	
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		
-		//south.frame = self.southFrame
-		north.frame = self.northFrame
-		
-		// ====================================  pick pill picture button
+			// ====================================  pick pill picture button
 		pickPictureBtn = UIButton(frame: CGRect(
 			x: myListIndent,
 			y: screenHeight * 0.025,
@@ -206,13 +198,14 @@ UITextFieldDelegate {
 			action: #selector(pickScoreBtnTapped),
 			for: .touchUpInside)
 		
+
 		// ====================================  Set Up Submit Button
 		submitButton = UIButton(frame: CGRect(
-			x: myListIndent,
-			y: screenHeight * 0.525,
-			width: screenWidth * 0.8,
+			x: screenWidth * 0.8 * 0.333 - myListIndent,
+			y: screenHeight * 0.725,
+			width: screenWidth * 0.8 * 0.666,
 			height: myDefaultTextFieldHeight))
-		submitButton.layer.borderWidth = 2.0
+		//submitButton.layer.borderWidth = 2.0
 		submitButton.setTitleColor(UIColor.black, for: .normal)
 		submitButton.setTitleColor(UIColor.lightGray, for: .disabled)
 		submitButton.setTitleColor(UIColor.white, for: .highlighted)
@@ -220,25 +213,66 @@ UITextFieldDelegate {
 		submitButton.titleLabel?.font =  UIFont.systemFont(
 			ofSize: myDefaultTextFontSize,
 			weight: .light)
+		
+		submitButton.borderWidth = 1.0
+		submitButton.borderColor = .blue
 		submitButton.addTarget(
 			self,
 			action: #selector(submitButtonTapped),
 			for: .touchUpInside)
+		//submitButton.backgroundColor = UIColor.red
+		
+		exitBtn = UIButton(frame: CGRect(
+			x: myListIndent,
+			y: screenHeight * 0.625,
+			width: screenWidth * 0.8 * 0.333,
+			height: myDefaultTextFieldHeight))
+		//exitBtn.layer.borderWidth = 2.0
+		exitBtn.setTitleColor(UIColor.black, for: .normal)
+		exitBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+		exitBtn.setTitleColor(UIColor.white, for: .highlighted)
+		exitBtn.setTitle(":D ✌️", for: .normal)
+		exitBtn.titleLabel?.font =  UIFont.systemFont(
+			ofSize: myDefaultTextFontSize,
+			weight: .light)
+		exitBtn.addTarget(
+			self,
+			action: #selector(exitButtonTapped),
+			for: .touchUpInside)
+		
+		exitBtn.borderWidth = 2.0
+		exitBtn.borderColor = .lightGray
+		//exitBtn.backgroundColor = UIColor.red
+		
+		//north.addSubview(exitBtn)
+		
 		
 		// NORTH VIEW SET
 		north.addSubview(pickPictureBtn)
+		pickPictureBtn.isEnabled = false
+		
 		north.addSubview(pickImprintBtn)
 		north.addSubview(pickImprintTextField)
+		
 		north.addSubview(pickScoreBtn)
+		pickScoreBtn.isEnabled = false
+		
 		north.addSubview(pickColorBtn)
 		north.addSubview(pickShapeBtn)
-		
 		north.addSubview(submitButton)
+		
+		
 		
 		// SOUTH VIEW SET
 		//north.addSubview(imageView)
-		//north.addSubview(imageViewButton)
+		//north.addSubview(imageViewButton)	
+	}// end view did load
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
 		
+		//south.frame = self.southFrame
+		north.frame = self.northFrame
 
 	}// end viewdidlayoutsubviews
 	
@@ -282,7 +316,7 @@ UITextFieldDelegate {
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		//print(textField.text!)
 		self.imprint = textField.text!
-		print("Imprint: " + self.imprint!)
+		//print("Imprint: " + self.imprint!)
 		
 		if pickImprintTextField.text! ==  "" {
 			setIsChecked(bool: true)
@@ -318,7 +352,7 @@ UITextFieldDelegate {
 				self.color = String(value).uppercased()
 				
 				let txt = "Color: " + self.color
-				print(txt)
+				//print(txt)
 				
 				sender.setTitle(txt,for: .normal)
 				//sender.isEnabled = false
@@ -344,7 +378,7 @@ UITextFieldDelegate {
 				self.shape = String(value).uppercased()
 				
 				let txt = ("Shape: " + self.shape)
-				print(txt)
+				//print(txt)
 				sender.setTitle(txt,for: .normal)
 				//sender.isEnabled = false
 				
@@ -353,7 +387,10 @@ UITextFieldDelegate {
 			cancel: {ActionMultipleStringCancelBlock in return },
 			origin: sender)
 	}// end pick shape
-	
+
+	@objc func exitButtonTapped(){
+		exit(0)
+	}// end submit btn tapped
 	
 	@objc func submitButtonTapped(){
 		submit()
@@ -392,10 +429,10 @@ UITextFieldDelegate {
 		toggleImprintField()
 		if hasImprint(sender: sender) {
 			self.imprint = ""
-			print("Imprint: " + self.imprint!)
+			//print("Imprint: " + self.imprint!)
 		} else {
 			self.imprint = "no-imprint"
-			print("Imprint: " + self.imprint!)
+			//print("Imprint: " + self.imprint!)
 		}
 	}
 	
@@ -449,7 +486,6 @@ UITextFieldDelegate {
 			url = url + "&score=" + String(score)
 		}
 		
-		
 		print(url)
 		
 		// get http request
@@ -492,6 +528,7 @@ UITextFieldDelegate {
 	}// end camera
 	
 	func photoLibrary() {
+		return
 		if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
 			let myPickerController = UIImagePickerController()
 			myPickerController.delegate = self;
@@ -573,3 +610,33 @@ UITextFieldDelegate {
 
 }// end view controller class definition
 
+extension UIView {
+	
+	@IBInspectable var cornerRadius: CGFloat {
+		get {
+			return layer.cornerRadius
+		}
+		set {
+			layer.cornerRadius = newValue
+			layer.masksToBounds = newValue > 0
+		}
+	}
+	
+	@IBInspectable var borderWidth: CGFloat {
+		get {
+			return layer.borderWidth
+		}
+		set {
+			layer.borderWidth = newValue
+		}
+	}
+	
+	@IBInspectable var borderColor: UIColor? {
+		get {
+			return UIColor(cgColor: layer.borderColor!)
+		}
+		set {
+			layer.borderColor = newValue?.cgColor
+		}
+	}
+}

@@ -32,48 +32,43 @@ class ResultsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		/*
+		
 		let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
 		let displayWidth: CGFloat = self.view.frame.width * 0.95
 		let displayHeight: CGFloat = self.view.frame.height/2
 		
-		myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
-		myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
-		myTableView.dataSource = self
-		myTableView.delegate = self
-		self.view.addSubview(myTableView)
-		*/
+		let tableView = UITableView()
 		
-		tableView.separatorStyle = .none
-		tableView.translatesAutoresizingMaskIntoConstraints =  false
-		//tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0);
-		tableView.contentInset = UIEdgeInsets(
-			top: screenWidth/24,
-			left: 0,
-			bottom: 0,
-			right: 0);
 		
-		/*
-		arrayOfCellData = [
-			cellData(cell: 1, text:  "hello", image: #imageLiteral(resourceName: "against")),
-			cellData(cell: 2, text:  "world", image: #imageLiteral(resourceName: "test"))
-		]*/
-		
+		tableView.separatorStyle = .singleLine
+		//tableView.translatesAutoresizingMaskIntoConstraints =  false
+		tableView.contentInset = UIEdgeInsets(top: screenHeight/24, left: 120, bottom: 120, right: -120);
+
+		if arrayOfCellData.isEmpty {
+			// default results list items and test harness
+			arrayOfCellData = [
+				cellData(cell: 1, text:  "hello", image: #imageLiteral(resourceName: "against"), imageUrl: "", color: "", shape: "", imprint: ""),
+				cellData(cell: 2, text:  "world", image: #imageLiteral(resourceName: "test"),  imageUrl: "", color: "", shape: "", imprint: "")
+			]
+		}
+
 		let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
 		swipeRight.direction = UISwipeGestureRecognizer.Direction.right
 		self.view.addGestureRecognizer(swipeRight)
 		
+		/*
 		let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
 		swipeDown.direction = UISwipeGestureRecognizer.Direction.down
-		self.view.addGestureRecognizer(swipeDown)
+		//self.view.addGestureRecognizer(swipeDown)
 		
 		let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
 		swipeUp.direction = UISwipeGestureRecognizer.Direction.up
-		self.view.addGestureRecognizer(swipeUp)
+		//self.view.addGestureRecognizer(swipeUp)
 		
 		let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
 		swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
-		self.view.addGestureRecognizer(swipeLeft)
+		//self.view.addGestureRecognizer(swipeLeft)
+		*/
 		
 		
 		/*
@@ -91,10 +86,6 @@ class ResultsTableViewController: UITableViewController {
 
     }// end viewdidload
 	
-	@objc func refresh() {
-		//  do stuff on swipe down refresh
-		self.refreshControl?.endRefreshing()
-	}
 
     // MARK: - Table view data source
 

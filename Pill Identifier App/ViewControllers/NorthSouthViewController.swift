@@ -66,25 +66,25 @@ class NorthSouthViewController: UIViewController {
 		north.addSubview(imageView)
 
 		setUpContraints()
-		//setNavigationBar()
-		showDebug()
+		//showDebug()
 
-		
 		let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
 		swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-		self.view.addGestureRecognizer(swipeRight)
+		//self.view.addGestureRecognizer(swipeRight)
 		
+		/*
 		let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
 		swipeDown.direction = UISwipeGestureRecognizer.Direction.down
-		self.view.addGestureRecognizer(swipeDown)
+		//self.view.addGestureRecognizer(swipeDown)
 		
 		let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
 		swipeUp.direction = UISwipeGestureRecognizer.Direction.up
-		self.view.addGestureRecognizer(swipeUp)
+		//self.view.addGestureRecognizer(swipeUp)
 		
 		let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
 		swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
-		self.view.addGestureRecognizer(swipeLeft)
+		//self.view.addGestureRecognizer(swipeLeft)
+		*/
 
 	}
 	
@@ -106,7 +106,7 @@ class NorthSouthViewController: UIViewController {
 		
 		// Create left and right button for navigation item
 		let leftButton =  UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backBtnTapped))
-		let rightButton = UIBarButtonItem(title: "Debug", style: .plain, target: self, action: #selector(debugButtonTapped))
+		let rightButton = UIBarButtonItem(title:  "🔍", style: .plain, target: self, action: #selector(rightButtonTapped))
 		
 		// Create two buttons for the navigation item
 		navigationItem.leftBarButtonItem = leftButton
@@ -124,6 +124,21 @@ class NorthSouthViewController: UIViewController {
 		print("Debug Button Tapped")
 	}
 	
+	@objc func rightButtonTapped() {
+		displayUploadFormPage()
+		self.view.removeFromSuperview()
+		
+	}
+	
+	func displayUploadFormPage() {
+		let uploadFormViewController: UploadFormViewController = storyboard?.instantiateViewController(withIdentifier: "uploadFormViewController") as! UploadFormViewController
+		
+		self.present(
+			uploadFormViewController,
+			animated: true,
+			completion: {
+		})
+	}
 	
 	@objc func backBtnTapped() {
 		performSegueToReturnBack()
@@ -166,11 +181,14 @@ class NorthSouthViewController: UIViewController {
 		north.layer.borderWidth = 2.0
 		//north.backgroundColor = .green
 		
-		
+		/*
 		south.backgroundColor = UIColor(white: 1, alpha: 0.5)
 		south.layer.borderColor = UIColor.black.cgColor
 		south.layer.borderWidth = 2.0
 		south.backgroundColor = .yellow
+		*/
+		
+		myBorders = 2.0
 		
 	}
 	func hideFrames() {
@@ -185,6 +203,8 @@ class NorthSouthViewController: UIViewController {
 		north.layer.borderWidth = 0.0
 		//north.backgroundColor = .green
 		
+		myBorders = 0.0
+		
 
 		
 	}
@@ -192,24 +212,18 @@ class NorthSouthViewController: UIViewController {
 	func setBorders(float: CGFloat){
 		myBorders = float
 	}
+	
 	func hideDebug(){
 		hideFrames()
-		setBorders(float: 0.0)
-		print("<#T##items: Any...##Any#>")
 	}
 	
 	@objc func showDebug() {
-		if debug == true {
 			showFrames()
-			setBorders(float: 2.0)
-			//self.view.backgroundColor = .white
-		} else {
-			setBorders(float: 0.0)
-		}
 	}
 	
 	// image view photo display
 	func makeDisplayImage(image:  UIImage) -> UIImageView {
+		
 		imageView = UIImageView(frame: CGRect(
 			x: myListIndent,
 			y: myListPadTop,
