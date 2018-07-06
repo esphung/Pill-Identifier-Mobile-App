@@ -1,11 +1,11 @@
-Pill Identifier
--
+# Pill Identifier
+
 An ios mobile app for identifying and researching
 prescription medications
 
-***Developed by Eric Phung.***
+*Developed by Eric Phung*
 
-#### NLM RxImages
+#### Resource Links
 - [NLM RxIMAGE API](https://lhncbc.nlm.nih.gov/rximage-api)
 
 - [RzImage API Paramaters](https://rxnav.nlm.nih.gov/RxImageAPIParameters.html)
@@ -18,12 +18,13 @@ prescription medications
 ![Alt text](./Notes/Screens/originalsearch.png)
 -->
 
-#### Background Images
+##### Background Images
 <img src="./Notes/Screens/cherylbackground.png" alt="page-background" width="100px"/>
 
-#### CocoaPod Libraries
+## CocoaPod Libraries
 pod 'SwiftyJSON', '~> 4.0' <br>
 pod 'ActionSheetPicker-3.0' <br>
 pod 'Alamofire', '~> 4.7' <br>
 pod 'Kingfisher', '~> 4.0' <br>
 
+***Copyright Eric Phung 2018***
