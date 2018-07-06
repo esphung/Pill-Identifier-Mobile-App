@@ -5,6 +5,11 @@ prescription medications
 
 *Developed by Eric Phung*
 
+#### Run Instructions
+>Open up ***Pill Identifier App.xcworkspace*** file <br>
+Run the simulator on an iphone device in Xcode
+
+
 #### Resource Links
 - [NLM RxIMAGE API](https://lhncbc.nlm.nih.gov/rximage-api)
 
