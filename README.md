@@ -17,6 +17,7 @@ prescription medications
 ![Alt text](./Notes/Screens/displaypill.png)
 ![Alt text](./Notes/Screens/originalsearch.png)
 -->
+
 #### Background Images
 <img src="./Notes/Screens/cherylbackground.png" alt="page-background" width="100px"/>
 
