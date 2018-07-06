@@ -1,24 +1,26 @@
-// 88   88 88""Yb 88      dP"Yb     db    8888b.
-// 88   88 88__dP 88     dP   Yb   dPYb    8I  Yb
-// Y8   8P 88"""  88  .o Yb   dP  dP__Yb   8I  dY
-// `YbodP' 88     88ood8  YbodP  dP""""Yb 8888Y"
+//
+//  SearchViewController.swift
+//  ActionSheetPicker-3.0
+//
+//  Created by Eric Phung on 7/5/18.
+//
 
 import UIKit.UIViewController
 import ActionSheetPicker_3_0
 import SwiftyJSON
 import Alamofire
 
-class UploadFormViewController:
-NorthSouthViewController,
-UIImagePickerControllerDelegate,
-UINavigationControllerDelegate,
+class SearchViewController:
+	NorthSouthViewController,
+	UIImagePickerControllerDelegate,
+	UINavigationControllerDelegate,
 UITextFieldDelegate {
 	
 	var color: 		String!
 	var shape: 		String!
 	var imprint: 	String!
 	var score:		Int!
-
+	
 	var imageViewButton:	UIButton!
 	var pickColorBtn:		UIButton!
 	var pickShapeBtn:  		UIButton!
@@ -92,9 +94,9 @@ UITextFieldDelegate {
 			action: #selector(self.imageButtonTapped),
 			for: .touchUpInside)
 		
-/* 		imageName = "250x250placeholder.jpg"
+		imageName = "250x250placeholder.jpg"
 		image = UIImage(named: imageName)
-		imageView = makeDisplayImage(image: image) */
+		imageView = makeDisplayImage(image: image)
 		
 		// ================================  Set Up PICK COLOR Button
 		pickColorBtn = UIButton(frame: CGRect(
@@ -114,7 +116,7 @@ UITextFieldDelegate {
 			self,
 			action: #selector(pickColorBtnTapped),
 			for: .touchUpInside)
-
+		
 		// ================================  Set Up PICK SHAPE Button
 		pickShapeBtn = UIButton(frame: CGRect(
 			x: myListIndent,
@@ -238,13 +240,13 @@ UITextFieldDelegate {
 		//north.addSubview(imageView)
 		//north.addSubview(imageViewButton)
 		
-
+		
 	}// end viewdidlayoutsubviews
 	
 	@objc func pickScoreBtnTapped(){
 		print("hello")
 	}
-
+	
 	
 	func setIsChecked(bool: Bool){
 		if bool {
@@ -276,7 +278,7 @@ UITextFieldDelegate {
 			
 		}
 	}
-
+	
 	// when user hits return key on keyboard
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		//print(textField.text!)
@@ -327,7 +329,7 @@ UITextFieldDelegate {
 			cancel: {ActionMultipleStringCancelBlock in return },
 			origin: sender)
 	}// end pick color
-
+	
 	@objc func pickShapeBtnTapped(sender: UIButton){
 		ActionSheetMultipleStringPicker.show(
 			withTitle: "Pick Shape",
@@ -485,7 +487,7 @@ UITextFieldDelegate {
 				myPickerController,
 				animated: true,
 				completion: {
-				print("Accessing Camera...")
+					print("Accessing Camera...")
 			})
 		}
 	}// end camera
@@ -519,14 +521,14 @@ UITextFieldDelegate {
 			title: "Camera",
 			style: .default,
 			handler: { (alert:UIAlertAction!) -> Void in
-			self.camera()
+				self.camera()
 		}))
 		
 		actionSheet.addAction(UIAlertAction(
 			title: "Gallery",
 			style: .default,
 			handler: { (alert:UIAlertAction!) -> Void in
-			self.photoLibrary()
+				self.photoLibrary()
 		}))
 		
 		actionSheet.addAction(UIAlertAction(
@@ -539,8 +541,8 @@ UITextFieldDelegate {
 	
 	func displayResultsPage(json: JSON) {
 		let resultsTableViewController: ResultsTableViewController
-		= storyboard?.instantiateViewController(withIdentifier:
-			"resultsTableViewController") as! ResultsTableViewController
+			= storyboard?.instantiateViewController(withIdentifier:
+				"resultsTableViewController") as! ResultsTableViewController
 		
 		let nlmRxImages = json["nlmRxImages"].array!
 		
@@ -569,6 +571,6 @@ UITextFieldDelegate {
 	@objc func dismissKeyboard() {
 		view.endEditing(true)
 	}
-
+	
 }// end view controller class definition
 

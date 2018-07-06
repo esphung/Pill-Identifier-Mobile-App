@@ -20,6 +20,27 @@ class TestViewController: NorthSouthViewController {
 		var debugBtn: 		UIButton!
 		var resultsBtn = 	UIButton()
 		var displayBtn = UIButton()
+		var showWikipediaBtn = UIButton()
+
+				// set up firstBtn
+		showWikipediaBtn =  UIButton(frame: CGRect(
+			x: myListIndent,
+			y: screenHeight * 0.525,
+			width: screenWidth * 0.8,
+			height: myDefaultTextFieldHeight))
+		showWikipediaBtn.layer.borderWidth = 2.0;
+		showWikipediaBtn.backgroundColor = UIColor.red
+		showWikipediaBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+		
+		showWikipediaBtn.titleLabel?.font =  UIFont.systemFont(
+			ofSize: 32, weight: .light)
+		showWikipediaBtn.addTarget(
+			self,
+			action: #selector(showWikipediaBtnTapped),
+			for: .touchUpInside)
+		
+		showWikipediaBtn.setTitle("Show Wikipedia", for: .normal)
+
 
 		// set up firstBtn
 		firstBtn =  UIButton(frame: CGRect(
@@ -80,11 +101,11 @@ class TestViewController: NorthSouthViewController {
 		// set up debugBtn
 		debugBtn =  UIButton(frame: CGRect(
 			x: myListIndent,
-			y: screenHeight * 0.325,
+			y: screenHeight * 0.425,
 			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		debugBtn.layer.borderWidth = 2.0;
-		//debugBtn.backgroundColor = UIColor.red
+		debugBtn.backgroundColor = UIColor.red
 		debugBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
 		
 		if isDebugOn() {
@@ -101,14 +122,48 @@ class TestViewController: NorthSouthViewController {
 		
 
 		north.addSubview(firstBtn)
-		//north.addSubview(displayBtn)
-		//north.addSubview(resultsBtn)
-		//north.addSubview(debugBtn)
+		north.addSubview(displayBtn)
+		north.addSubview(resultsBtn)
+		north.addSubview(debugBtn)
+		north.addSubview(showWikipediaBtn)
 		
 		//south.removeFromSuperview(
 		
 		
 	}// end view did load
+
+	func displayWikipediaPage(base: URL, str: String) {
+		// base url
+		//let urlString = URL(string: "http://en.wikipedia.org/wiki/")
+		let urlString = base
+		
+		// article url
+		//let article      = URL(string: "adderall", relativeTo: urlString)
+		let article      = URL(string: str, relativeTo: urlString)
+		
+		// string from article url
+		let articleString = article?.absoluteString
+		//ArticleString now contains: baseurl + article
+		
+		if let url = URL(string: articleString!) {
+			if #available(iOS 10.0, *) {
+				UIApplication.shared.open(url, options: [:], completionHandler: nil)
+			} else {
+				UIApplication.shared.openURL(url)
+			}
+		} else {
+			print("could not open url, it was nil")
+		}
+	}
+
+	@objc  func showWikipediaBtnTapped() {
+		let baseUrl = URL(string: "http://en.wikipedia.org/wiki/")
+		let baseName = "acetaminophen"
+		
+		// search wikipedia by pill's name
+		displayWikipediaPage(base: baseUrl!, str: baseName)
+		
+	}
 	
 	@objc func buttonDidPress(){}
 

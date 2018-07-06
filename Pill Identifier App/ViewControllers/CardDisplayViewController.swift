@@ -8,6 +8,8 @@ import Kingfisher
 
 class CardDisplayViewController: NorthSouthViewController {
 	
+	var url: URL!
+	
 	// information labels
 	var ndcLabel:	UILabel!
 	var rxcuiLabel:	UILabel!
@@ -20,6 +22,8 @@ class CardDisplayViewController: NorthSouthViewController {
 	var colorLabel: UILabel!
 	var shapeLabel: UILabel!
 	var imprintLabel: UILabel!
+	
+	var myPillView: UIView!
 
     override func loadView() {
         super.loadView()
@@ -36,47 +40,56 @@ class CardDisplayViewController: NorthSouthViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 		
-		print(cellData)
+		// ============ CHECK IF CELLDATA
 		
-		/*
-		// ================ drug name label
-		self.nameLabel = makeNameLabel(message: cellData.text)
-		self.north.addSubview(nameLabel)
-		
-		// ================ color label
-		self.colorLabel = makeColorLabel(message: cellData.color)
-		self.north.addSubview(colorLabel)
-		
-		// ================ shape label
-		self.shapeLabel = makeShapeLabel(message: cellData.shape)
-		self.north.addSubview(shapeLabel)
-		
-		// ================ imprint label
-		self.imprintLabel = makeImprintLabel(message: cellData.imprint)
-		self.north.addSubview(imprintLabel)
-		*/
-		// ==== ndc11 national drug code number label
-		self.ndcLabel = makeNdcLabel(message: test.ndc11)
-		//self.north.addSubview(ndcLabel)
-		
-		// ==== rxcui label (apis and software doc)
-		self.rxcuiLabel = makeRxcuiLabel(
-			message: String(test.rxcuii))
-		//self.north.addSubview(rxcuiLabel)
-		
-		// ================ labeler rx company
-		self.labelerLabel = makeLabelerLabel(
-			message: String(test.labeler))
-		//self.north.addSubview(labelerLabel)
-		
-		// ============ load image
-		let url = URL(string: cellData.imageUrl)
-		let image = UIImage(named: "250x250placeholder.png")
-		
-		self.imageView = makeDisplayImage(image: image!)
-		
-		self.imageView.kf.setImage(with: url, placeholder: image)
-		self.north.addSubview(imageView)
+		if cellData != nil {
+			
+			// load for image
+			url = URL(string: cellData.imageUrl)
+			
+			imageView = makeDisplayImage(image: image!)
+			imageView.kf.setImage(with: url, placeholder: image)
+			//imageView.frame.origin = CGPoint(x: 20, y: 20)
+			
+			north.addSubview(imageView)
+			
+			// DRUG NAME  (ALSO REGEX THE BASE NAME)
+			nameLabel = makeNameLabel(message: cellData.text)
+			north.addSubview(nameLabel)
+			
+			/*
+			// ================ color label
+			colorLabel = makeColorLabel(message: cellData.color)
+			north.addSubview(colorLabel)
+			
+			
+			// ================ shape label
+			shapeLabel = makeShapeLabel(message: cellData.shape)
+			north.addSubview(shapeLabel)
+			
+			// ================ imprint label
+			imprintLabel = makeImprintLabel(message: cellData.imprint)
+			north.addSubview(imprintLabel)
+			
+			// ==== ndc11 national drug code number label
+			ndcLabel = makeNdcLabel(message: test.ndc11)
+			north.addSubview(ndcLabel)
+			
+			// ==== rxcui label (apis and software doc)
+			rxcuiLabel = makeRxcuiLabel(
+				message: String(test.rxcuii))
+			north.addSubview(rxcuiLabel)
+			
+			// ================ labeler rx company
+			labelerLabel = makeLabelerLabel(
+				message: String(test.labeler))
+			//self.north.addSubview(labelerLabel)
+			*/
+			
+			
+		}
+
+
 		
 		//imageName = "250x250placeholder.jpg"
 		//image = UIImage(named: imageName)
@@ -87,9 +100,18 @@ class CardDisplayViewController: NorthSouthViewController {
 		let url = URL(string: test.imageUrl)
 		let image = UIImage(named: "250x250placeholder.png")
 		self.imageView.kf.setImage(with: url, placeholder: image)
-		self.north.addSubview(imageView)*/
+		self.north.addSubview(imageView)
+		*/
 		
     }// end layouts did load
+	
+	//  open webpage of a url in safari
+	
+
+
+	
+	
+	
 	
 
 	// name label
@@ -97,8 +119,8 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: ((view.frame.height)  * 0.0),
-				width: view.frame.width * 0.9,
+				y: screenHeight * 0.025,
+				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = message
@@ -114,8 +136,8 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: ((north.frame.height)  * 0.1),
-				width: north.frame.width * 0.9,
+				y: screenHeight * 0.125,
+				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = message
@@ -131,8 +153,8 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: ((north.frame.height)  * 0.2),
-				width: north.frame.width * 0.9,
+				y: screenHeight * 0.225,
+				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = message
@@ -148,8 +170,8 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: ((north.frame.height)  * 0.3),
-				width: north.frame.width * 0.9,
+				y: screenHeight * 0.325,
+				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = message
@@ -165,8 +187,8 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: ((north.frame.height)  * 0.2),
-				width: (north.frame.width * 0.90),
+				y: screenHeight * 0.425,
+				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = "NDC:\t" + message
@@ -182,8 +204,8 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: ((north.frame.height)  * 0.4),
-				width: (north.frame.width * 0.90),
+				y: screenHeight * 0.525,
+				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
 		//label.adjustsFontSizeToFitWidth = true
@@ -199,10 +221,9 @@ class CardDisplayViewController: NorthSouthViewController {
 	func makeLabelerLabel(message: String) -> UILabel {
 		let label = UILabel(frame: CGRect(
 			x: myListIndent,
-			y: ((north.frame.height)  * 0.6),
-			width: (north.frame.width * 0.90),
+			y: screenHeight * 0.625,
+			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
-		
 		label.text = "Label:\t" + message
 		label.numberOfLines = 1
 		label.layer.borderWidth = myBorders

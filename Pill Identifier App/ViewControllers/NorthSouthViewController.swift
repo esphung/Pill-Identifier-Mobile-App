@@ -8,12 +8,11 @@
 
 import UIKit.UIViewController
 
-
 class NorthSouthViewController: UIViewController {
-
 	// set up view layout
 	var myView : UIView!
 	var north:  UIView!
+	var south: UIView!
 	
 	var imageName: 	String!
 	var image:		UIImage!
@@ -24,9 +23,16 @@ class NorthSouthViewController: UIViewController {
 			x: (myView.frame.width * 0.05),
 			y: (myView.frame.height * 0.1),
 			width: (myView.frame.width * 0.95),
-			height: ((myView.frame.height)/2.2) )
+			height: ((myView.frame.height) - (myView.frame.height) * 0.05 ) )
 	}
 	
+	var southFrame: CGRect {
+		return CGRect(
+			x: (myView.frame.width * 0.05),
+			y: (myView.frame.height * 0.1)/2,
+			width: (myView.frame.width * 0.95),
+			height: ((myView.frame.height)/2.2) )
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -40,24 +46,30 @@ class NorthSouthViewController: UIViewController {
 		self.view.addSubview(north)
 		self.north = north
 		
-		/*
+		
 		let south = UIView()
-		self.view.addSubview(south)
-		self.south = south*/
+		//self.view.addSubview(south)
+		self.south = south
 		
 		let imageView = UIImageView(frame: CGRect(
-			x: myListIndent,
-			y: myListPadTop,
+			x: 0,
+			y: 0,
 			width: north.frame.width * 0.9,
 			height: north.frame.height * 0.9))
-		imageView.image = image
+				imageName = "250x250placeholder.jpg"
+		image = UIImage(named: imageName)
+		//imageView = makeDisplayImage(image: image)
 		imageView.layer.borderWidth = myBorders
 		imageView.contentMode = UIView.ContentMode.scaleAspectFill
+
+
+
 		self.north.addSubview(imageView)
 
 		setUpContraints()
 		//setNavigationBar()
 		showDebug()
+
 		
 		let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
 		swipeRight.direction = UISwipeGestureRecognizer.Direction.right
@@ -81,7 +93,7 @@ class NorthSouthViewController: UIViewController {
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		north.frame = self.northFrame
-		//south.frame = self.southFrame
+		south.frame = self.southFrame
 		
 	}
 	
@@ -94,12 +106,12 @@ class NorthSouthViewController: UIViewController {
 		navigationItem.title = title
 		
 		// Create left and right button for navigation item
-		let leftButton =  UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(btn_clicked))
-		//let rightButton = UIBarButtonItem(title: "Right", style: .plain, target: self, action: nil)
+		let leftButton =  UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backBtnTapped))
+		let rightButton = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(resetButtonTapped))
 		
 		// Create two buttons for the navigation item
 		navigationItem.leftBarButtonItem = leftButton
-		//navigationItem.rightBarButtonItem = rightButton
+		navigationItem.rightBarButtonItem = rightButton
 		
 		// Assign the navigation item to the navigation bar
 		navigationBar.items = [navigationItem]
@@ -108,8 +120,14 @@ class NorthSouthViewController: UIViewController {
 		self.view.addSubview(navigationBar)
 	}
 	
-	@objc func btn_clicked() {
+	@objc func resetButtonTapped() {
+		print("Reset Button Tapped")
+	}
+	
+	
+	@objc func backBtnTapped() {
 		performSegueToReturnBack()
+		print("Back Button Tapped")
 	}
 	
 	func setUpContraints(){
@@ -121,16 +139,7 @@ class NorthSouthViewController: UIViewController {
 		myView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 		myView.widthAnchor.constraint(equalToConstant: screenWidth * 0.95).isActive = true
 		myView.heightAnchor.constraint(equalToConstant: screenHeight *  0.9).isActive = true
-		
-		north.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
-		north.heightAnchor.constraint(equalToConstant: 200).isActive = true
-		north.bottomAnchor.constraint(equalTo: myView.topAnchor,constant: -10).isActive = true
-		
-		/*
-		south.bottomAnchor.constraint(
-			equalTo: bottomLayoutGuide.topAnchor,
-			constant: -20).isActive = true
-		*/
+
 	}
 	
 	func showFrames() {
@@ -145,12 +154,12 @@ class NorthSouthViewController: UIViewController {
 		north.layer.borderWidth = 2.0
 		//north.backgroundColor = .green
 
-		/*
+		
 		south.backgroundColor = UIColor(white: 1, alpha: 0.5)
 		south.layer.borderColor = UIColor.black.cgColor
 		south.layer.borderWidth = 2.0
-		self.south.backgroundColor = .yellow
-		*/
+		south.backgroundColor = .yellow
+		
 	}
 	
 	func setBorders(float: CGFloat){
@@ -181,8 +190,6 @@ class NorthSouthViewController: UIViewController {
 		
 		return imageView
 	}
-	
-
 }
 
 extension UIViewController {
@@ -213,4 +220,3 @@ extension UIViewController {
 	}
 
 }
-
