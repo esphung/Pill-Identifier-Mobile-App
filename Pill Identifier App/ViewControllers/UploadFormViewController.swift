@@ -8,17 +8,19 @@ import ActionSheetPicker_3_0
 import SwiftyJSON
 import Alamofire
 
+let scores  = [1,2,3,4]
+
 class UploadFormViewController:
 NorthSouthViewController,
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,
 UITextFieldDelegate {
+	
 
 	var color: 		String!
 	var shape: 		String!
 	var imprint: 	String!
 	var score:		Int!
-
 
 	var pickColorBtn:		UIButton!
 	var pickShapeBtn:  		UIButton!
@@ -64,11 +66,7 @@ UITextFieldDelegate {
 			action: #selector(pickPictureBtnTapped),
 			for: .touchUpInside)
 
-		
-/* 		imageName = "250x250placeholder.jpg"
-		image = UIImage(named: imageName)
-		imageView = makeDisplayImage(image: image) */
-		
+
 		// ================================  Set Up PICK COLOR Button
 		pickColorBtn = UIButton(frame: CGRect(
 			x: myListIndent,
@@ -211,7 +209,7 @@ UITextFieldDelegate {
 		north.addSubview(pickImprintTextField)
 		
 		north.addSubview(pickScoreBtn)
-		pickScoreBtn.isEnabled = false
+		//pickScoreBtn.isEnabled = false
 		
 		north.addSubview(pickColorBtn)
 		north.addSubview(pickShapeBtn)
@@ -228,9 +226,6 @@ UITextFieldDelegate {
 
 	}// end viewdidlayoutsubviews
 	
-	@objc func pickScoreBtnTapped(){
-		print("hello")
-	}
 
 	
 	func setIsChecked(bool: Bool){
@@ -331,7 +326,7 @@ UITextFieldDelegate {
 				
 				let txt = ("Shape: " + self.shape + " ✓").capitalized
 				//print(txt)
-
+				
 				sender.setTitle(txt,for: .normal)
 				//sender.isEnabled = false
 				
@@ -339,6 +334,42 @@ UITextFieldDelegate {
 		},
 			cancel: {ActionMultipleStringCancelBlock in return },
 			origin: sender)
+	}// end pick shape
+	
+	@objc func pickScoreBtnTapped(){
+		ActionSheetMultipleStringPicker.show(
+			withTitle: "Pick Score",
+			rows: [
+				scores
+			],
+			initialSelection: [0],
+			doneBlock: {
+				picker, indexes, values in
+				//print("shape = \(values!)")
+				//print("indexes = \(indexes!)")
+				let value = scores[indexes?.first as! Int]
+				self.score = value
+				
+				let num = (self.score)
+				//print(txt)
+				
+				if num == 1 {
+					self.pickScoreBtn.setTitle("Score:\tI",for: .normal)
+				}
+				if num == 2 {
+					self.pickScoreBtn.setTitle("Score:\tII",for: .normal)
+				}
+				if num == 3 {
+					self.pickScoreBtn.setTitle("Score:\tIII",for: .normal)
+				}
+				if num == 4 {
+					self.pickScoreBtn.setTitle("Score:\tIIII",for: .normal)
+				}
+				
+				return
+		},
+			cancel: {ActionMultipleStringCancelBlock in return },
+			origin: pickScoreBtn)
 	}// end pick shape
 
 	@objc func exitButtonTapped(){
