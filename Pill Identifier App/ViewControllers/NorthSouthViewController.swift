@@ -56,15 +56,14 @@ class NorthSouthViewController: UIViewController {
 			y: 0,
 			width: north.frame.width * 0.9,
 			height: north.frame.height * 0.9))
-				imageName = "250x250placeholder.jpg"
+		
+		imageName = "250x250placeholder.jpg"
 		image = UIImage(named: imageName)
-		//imageView = makeDisplayImage(image: image)
+
 		imageView.layer.borderWidth = myBorders
 		imageView.contentMode = UIView.ContentMode.scaleAspectFill
 
-
-
-		self.north.addSubview(imageView)
+		north.addSubview(imageView)
 
 		setUpContraints()
 		//setNavigationBar()
@@ -107,7 +106,7 @@ class NorthSouthViewController: UIViewController {
 		
 		// Create left and right button for navigation item
 		let leftButton =  UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backBtnTapped))
-		let rightButton = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(resetButtonTapped))
+		let rightButton = UIBarButtonItem(title: "Debug", style: .plain, target: self, action: #selector(debugButtonTapped))
 		
 		// Create two buttons for the navigation item
 		navigationItem.leftBarButtonItem = leftButton
@@ -120,8 +119,9 @@ class NorthSouthViewController: UIViewController {
 		self.view.addSubview(navigationBar)
 	}
 	
-	@objc func resetButtonTapped() {
-		print("Reset Button Tapped")
+	@objc func debugButtonTapped(sender: UIButton) {
+		toggleDebug()
+		print("Debug Button Tapped")
 	}
 	
 	
@@ -141,6 +141,18 @@ class NorthSouthViewController: UIViewController {
 		myView.heightAnchor.constraint(equalToConstant: screenHeight *  0.9).isActive = true
 
 	}
+
+	func toggleDebug() {
+		if isDebugOn() {
+			debug =  false
+			hideDebug()
+		}
+		else {
+			debug = true
+			showDebug()
+			//sender.setTitle("Debug On", for: .normal)
+		}
+	}
 	
 	func showFrames() {
 		// show debug view canvases
@@ -153,7 +165,7 @@ class NorthSouthViewController: UIViewController {
 		north.layer.borderColor = UIColor.black.cgColor
 		north.layer.borderWidth = 2.0
 		//north.backgroundColor = .green
-
+		
 		
 		south.backgroundColor = UIColor(white: 1, alpha: 0.5)
 		south.layer.borderColor = UIColor.black.cgColor
@@ -161,9 +173,29 @@ class NorthSouthViewController: UIViewController {
 		south.backgroundColor = .yellow
 		
 	}
+	func hideFrames() {
+		// show debug view canvases
+		//myView.backgroundColor = UIColor(white: 0.25, alpha: 0.5)
+		myView.backgroundColor = UIColor.clear
+		//myView.layer.borderColor = UIColor.black.cgColor
+		myView.layer.borderWidth = 0.0
+		
+		north.backgroundColor = UIColor.clear
+		//north.layer.borderColor = UIColor.black.cgColor
+		north.layer.borderWidth = 0.0
+		//north.backgroundColor = .green
+		
+
+		
+	}
 	
 	func setBorders(float: CGFloat){
 		myBorders = float
+	}
+	func hideDebug(){
+		hideFrames()
+		setBorders(float: 0.0)
+		print("<#T##items: Any...##Any#>")
 	}
 	
 	@objc func showDebug() {

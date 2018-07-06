@@ -33,6 +33,7 @@ UITextFieldDelegate {
 	var pickScoreBtn:			UIButton!
 	var isScored = 			false
 	
+	
 	override func loadView() {
 		super.loadView()
 		//Looks for single or multiple taps.
@@ -372,7 +373,7 @@ UITextFieldDelegate {
 		if let pickedImage = info[
 			UIImagePickerController.InfoKey.originalImage] as? UIImage {
 			imageView.image  = pickedImage
-			self.submitButton.isEnabled = true
+			submitButton.isEnabled = true
 			pickPictureBtn.setTitle(
 				("Picture: Selected").uppercased(), for: .normal)
 			pickPictureBtn.setImage(pickedImage, for: .normal)

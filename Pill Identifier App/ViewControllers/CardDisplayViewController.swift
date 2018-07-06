@@ -24,7 +24,8 @@ class CardDisplayViewController: NorthSouthViewController {
 	var imprintLabel: UILabel!
 	
 	var myPillView: UIView!
-
+	var showWikipediaBtn = UIButton()
+	
     override func loadView() {
         super.loadView()
         //self.view.backgroundColor = .white
@@ -53,7 +54,7 @@ class CardDisplayViewController: NorthSouthViewController {
 			
 			north.addSubview(imageView)
 			
-			// DRUG NAME  (ALSO REGEX THE BASE NAME)
+			// DRUG NAME  (ALSO REGEX THE BASE NAMEr)
 			nameLabel = makeNameLabel(message: cellData.text)
 			north.addSubview(nameLabel)
 			
@@ -86,6 +87,28 @@ class CardDisplayViewController: NorthSouthViewController {
 			//self.north.addSubview(labelerLabel)
 			*/
 			
+			// set up firstBtn
+			showWikipediaBtn =  UIButton(frame: CGRect(
+				x: myListIndent,
+				y: screenHeight * 0.625,
+				width: screenWidth * 0.8,
+				height: myDefaultTextFieldHeight))
+			showWikipediaBtn.layer.borderWidth = 2.0;
+			//showWikipediaBtn.backgroundColor = UIColor.red
+			showWikipediaBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+			
+			showWikipediaBtn.titleLabel?.font =  UIFont.systemFont(
+				ofSize: 32, weight: .light)
+			showWikipediaBtn.addTarget(
+				self,
+				action: #selector(showWikipediaBtnTapped),
+				for: .touchUpInside)
+			
+			showWikipediaBtn.setTitle("Show Wikipedia", for: .normal)
+
+			
+			north.addSubview(showWikipediaBtn)
+			
 			
 		}
 
@@ -104,14 +127,6 @@ class CardDisplayViewController: NorthSouthViewController {
 		*/
 		
     }// end layouts did load
-	
-	//  open webpage of a url in safari
-	
-
-
-	
-	
-	
 	
 
 	// name label
@@ -230,6 +245,39 @@ class CardDisplayViewController: NorthSouthViewController {
 		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
 		
 		return label
+	}
+	
+	func displayWikipediaPage(base: URL, str: String) {
+		// base url
+		//let urlString = URL(string: "http://en.wikipedia.org/wiki/")
+		let urlString = base
+		
+		// article url
+		//let article      = URL(string: "adderall", relativeTo: urlString)
+		let article      = URL(string: str, relativeTo: urlString)
+		
+		// string from article url
+		let articleString = article?.absoluteString
+		//ArticleString now contains: baseurl + article
+		
+		if let url = URL(string: articleString!) {
+			if #available(iOS 10.0, *) {
+				UIApplication.shared.open(url, options: [:], completionHandler: nil)
+			} else {
+				UIApplication.shared.openURL(url)
+			}
+		} else {
+			print("could not open url, it was nil")
+		}
+	}
+	
+	@objc  func showWikipediaBtnTapped() {
+		let baseUrl = URL(string: "http://en.wikipedia.org/wiki/")
+		let baseName = "acetaminophen"
+		
+		// search wikipedia by pill's name
+		displayWikipediaPage(base: baseUrl!, str: baseName)
+		
 	}
 
 

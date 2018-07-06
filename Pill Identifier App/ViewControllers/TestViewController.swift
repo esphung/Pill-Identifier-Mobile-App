@@ -117,7 +117,7 @@ class TestViewController: NorthSouthViewController {
 			ofSize: 32, weight: .light)
 		debugBtn.addTarget(
 			self,
-			action: #selector(debugBtnTapped),
+			action: #selector(debugButtonTapped),
 			for: .touchUpInside)
 		
 
@@ -179,20 +179,6 @@ class TestViewController: NorthSouthViewController {
 		displayUploadFormPage()
 	}
 	
-	func toggleDebug(sender: UIButton!) {
-		if isDebugOn() {
-			debug =  false
-			sender.setTitle("Debug Off", for: .normal)
-		}
-		else {
-			debug = true
-			sender.setTitle("Debug On", for: .normal)
-		}
-	}
-	
-	@objc func debugBtnTapped(sender: UIButton){
-		toggleDebug(sender:sender)
-	}
 
 	func displayUploadFormPage() {
 		let uploadFormViewController: UploadFormViewController = storyboard?.instantiateViewController(withIdentifier: "uploadFormViewController") as! UploadFormViewController
