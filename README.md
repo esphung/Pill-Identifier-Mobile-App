@@ -1,13 +1,15 @@
 Pill Identifier
 =
 
-* An ios mobile app for identifying and researching presription medications
-* Developed by Eric Phung.
+An ios mobile app for identifying and researching
+prescription medications
 
-<!-- [Hello Google](https://www.google.com/ "google https url")
-	***https://www.google.com/***
--->
-<img src="./Screens/displaypill.png" alt="drawing" width="200px"/>
+***Developed by Eric Phung.***
+
+[NLM RxIMAGE API](https://lhncbc.nlm.nih.gov/rximage-api)
+
+[RzImage API Paramaters](https://rxnav.nlm.nih.gov/RxImageAPIParameters.html)
+
 
 CocoaPod Libraries:
 ---
@@ -15,4 +17,7 @@ CocoaPod Libraries:
 - pod 'ActionSheetPicker-3.0'
 - pod 'Alamofire', '~> 4.7'
 - pod 'Kingfisher', '~> 4.0'
+
+<img src="./Screens/displaypill.png" alt="drawing" width="200px"/>
+
 
