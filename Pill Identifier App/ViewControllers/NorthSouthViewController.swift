@@ -71,19 +71,6 @@ class NorthSouthViewController: UIViewController {
 		setUpContraints()
 		//showDebug()
 
-		/*
-		let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-		swipeDown.direction = UISwipeGestureRecognizer.Direction.down
-		//self.view.addGestureRecognizer(swipeDown)
-		
-		let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-		swipeUp.direction = UISwipeGestureRecognizer.Direction.up
-		//self.view.addGestureRecognizer(swipeUp)
-		
-		let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-		swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
-		//self.view.addGestureRecognizer(swipeLeft)
-		*/
 
 	}
 	

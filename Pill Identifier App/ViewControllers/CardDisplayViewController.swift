@@ -84,23 +84,22 @@ class CardDisplayViewController: NorthSouthViewController {
 				north.addSubview(shapeLabel)
 			}
 			
-			
 			// imprint label
 			imprintLabel = makeImprintLabel(message: cellData.imprint)
 			//north.addSubview(imprintLabel)
 			
 			// ndc11 national drug code number label
-			ndcLabel = makeNdcLabel(message: test.ndc11)
+			//ndcLabel = makeNdcLabel(message: test.ndc11)
 			//north.addSubview(ndcLabel)
 			
 			// rxcui label (apis and software doc)
-			rxcuiLabel = makeRxcuiLabel(
-				message: String(test.rxcuii))
+			//rxcuiLabel = makeRxcuiLabel(
+				//message: String(test.rxcuii))
 			//north.addSubview(rxcuiLabel)
 			
 			// labeler rx company
-			labelerLabel = makeLabelerLabel(
-				message: String(test.labeler))
+			//labelerLabel = makeLabelerLabel(
+				//message: String(test.labeler))
 			//self.north.addSubview(labelerLabel)
 			
 			// WIKIPEDIA PAGE BUTTON

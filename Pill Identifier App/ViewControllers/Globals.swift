@@ -67,21 +67,4 @@ public let colors =  [
 	"Yellow"
 ]
 
-// test harness
-struct TestData {
-	var name = """
-	Tenofovir disoproxil fumarate 300 MG Oral Tablet [Viread]
-	"""
-	var ndc11 =	"59762-6733-01"
-	var rxcuii =	404013
-	var labeler = 	"Greenstone LLC"
-	var image = UIImage()
-	var imageUrl =	"""
-	https://rximage.nlm.nih.gov/image/images/gallery/
-	original/61958-0401-01_RXNAVIMAGE10_B81DDC0E.jpg
-	"""
-}
-
-var test = TestData()
-
 
