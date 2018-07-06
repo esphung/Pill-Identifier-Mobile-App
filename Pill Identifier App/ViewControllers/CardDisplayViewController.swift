@@ -5,9 +5,9 @@
 
 import UIKit.UIViewController
 import Kingfisher
-//import Cocoa
 
 class CardDisplayViewController: NorthSouthViewController {
+
 	
 	var url: URL!
 	
@@ -57,7 +57,7 @@ class CardDisplayViewController: NorthSouthViewController {
 			name = name.trimmingCharacters(in: .whitespacesAndNewlines)// trim whitespace
 			
 			//nameLabel.textColor = UIColor.red
-			nameLabel = makeNameLabel(message: "Name: " + name)
+			nameLabel = makeNameLabel(message: "Name:\t" + name)
 			
 			// LOAD THE IMAGE
 			url = URL(string: cellData.imageUrl)
@@ -99,20 +99,21 @@ class CardDisplayViewController: NorthSouthViewController {
 			
 			// WIKIPEDIA PAGE BUTTON
 			showWikipediaBtn =  UIButton(frame: CGRect(
-				x: myListIndent,
-				y: screenHeight * 0.725,
-				width: screenWidth * 0.8,
+				x: screenWidth * 0.8 * 0.333 - myListIndent,
+				y: screenHeight * 0.8,
+				width: screenWidth * 0.8 * 0.666,
 				height: myDefaultTextFieldHeight))
-			//showWikipediaBtn.layer.borderWidth = 1.0;
-			//showWikipediaBtn.titleLabel?.textColor = UIColor.black
-			showWikipediaBtn.layer.borderWidth = 2.0
+			//submitButton.layer.borderWidth = 2.0
 			showWikipediaBtn.setTitleColor(UIColor.black, for: .normal)
 			showWikipediaBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 			showWikipediaBtn.setTitleColor(UIColor.white, for: .highlighted)
-
+			showWikipediaBtn.setTitle("Submit", for: .normal)
 			showWikipediaBtn.titleLabel?.font =  UIFont.systemFont(
 				ofSize: myDefaultTextFontSize,
 				weight: .light)
+			
+			showWikipediaBtn.borderWidth = 1.0
+			showWikipediaBtn.borderColor = .lightGray
 			showWikipediaBtn.addTarget(
 				self,
 				action: #selector(showWikipediaBtnTapped),
@@ -137,7 +138,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		width: screenWidth * 0.8,
 		height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
-		dosageLbl.text = "Dosage: " + message
+		dosageLbl.text = "Dosage:\t" + message
 		dosageLbl.numberOfLines = 1
 		dosageLbl.layer.borderWidth = myBorders
 		dosageLbl.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
@@ -171,7 +172,7 @@ class CardDisplayViewController: NorthSouthViewController {
 				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
-		label.text = "Color: "  + message.capitalized
+		label.text = "Color:\t"  + message.capitalized
 		label.numberOfLines = 1
 		label.layer.borderWidth = myBorders
 		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
@@ -188,7 +189,7 @@ class CardDisplayViewController: NorthSouthViewController {
 				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
-		label.text = "Shape: " + message.capitalized
+		label.text = "Shape:\t" + message.capitalized
 		label.numberOfLines = 1
 		label.layer.borderWidth = myBorders
 		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
@@ -206,11 +207,11 @@ class CardDisplayViewController: NorthSouthViewController {
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		if message.isEmpty {
-			label.text = "Imprint:"
+			label.text = "Imprint:\t"
 		} else if message == "no-imprint" {
-			label.text = "Imprint: NO IMPRINT"
+			label.text = "Imprint:\tNO IMPRINT"
 		} else {
-			label.text = "Imprint: " + message
+			label.text = "Imprint:\t" + message
 		}
 		label.numberOfLines = 1
 		label.layer.borderWidth = myBorders

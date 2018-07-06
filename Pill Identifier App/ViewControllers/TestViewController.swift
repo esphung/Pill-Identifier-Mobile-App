@@ -111,7 +111,7 @@ class TestViewController: NorthSouthViewController {
 		debugBtn.backgroundColor = UIColor.red
 		debugBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
 		
-		if isDebugOn() {
+		if debug == true {
 			debugBtn.setTitle("Debug On", for: .normal)
 		} else {
 			debugBtn.setTitle("Debug Off", for: .normal)

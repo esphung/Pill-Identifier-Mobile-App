@@ -807,7 +807,7 @@
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 1000;
 				TargetAttributes = {
-					965699190112DDBD9B7864D091660DBC = {
+					4F87037150ABE2C9238B54E8F6E33F36 = {
 						LastSwiftMigration = 1000;
 					};
 				};
@@ -1279,7 +1279,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F7A43666655BB4DBE0571DC6A74F4AAF /* ActionSheetPicker-3.0.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1476,7 +1475,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F7A43666655BB4DBE0571DC6A74F4AAF /* ActionSheetPicker-3.0.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1497,7 +1495,6 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

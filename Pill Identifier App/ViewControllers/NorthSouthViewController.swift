@@ -51,17 +51,20 @@ class NorthSouthViewController: UIViewController {
 		//self.view.addSubview(south)
 		self.south = south
 		
+		/*
 		let imageView = UIImageView(frame: CGRect(
 			x: 0,
 			y: 0,
 			width: north.frame.width * 0.9,
 			height: north.frame.height * 0.9))
+		*/
 		
 		imageName = "250x250placeholder.jpg"
 		image = UIImage(named: imageName)
 
-		imageView.layer.borderWidth = myBorders
-		imageView.contentMode = UIView.ContentMode.scaleAspectFill
+		let imageView = UIImageView()
+		//imageView.layer.borderWidth = myBorders
+		//imageView.contentMode = UIView.ContentMode.scaleAspectFill
 
 		north.addSubview(imageView)
 
@@ -108,7 +111,7 @@ class NorthSouthViewController: UIViewController {
 		
 		// Create left and right button for navigation item
 		let leftButton =  UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backBtnTapped))
-		let rightButton = UIBarButtonItem(title:  "🔍", style: .plain, target: self, action: #selector(rightButtonTapped))
+		let rightButton = UIBarButtonItem(title:  "🔍💊", style: .plain, target: self, action: #selector(rightButtonTapped))
 		
 		// Create two buttons for the navigation item
 		navigationItem.leftBarButtonItem = leftButton
@@ -160,7 +163,7 @@ class NorthSouthViewController: UIViewController {
 	}
 
 	func toggleDebug() {
-		if isDebugOn() {
+		if debug {
 			debug =  false
 			hideDebug()
 		}
@@ -227,17 +230,16 @@ class NorthSouthViewController: UIViewController {
 	func makeDisplayImage(image:  UIImage) -> UIImageView {
 		
 		imageView = UIImageView(frame: CGRect(
-			x: myListIndent,
-			y: myListPadTop,
-			width: north.frame.width * 0.9,
-			height: north.frame.height * 0.9))
+			x: 0,
+			y: 0,
+			width: screenWidth * 0.8,
+			height: screenHeight * 0.8))
 		imageView.image = image
-		//imageView.image = resizeToScreenSize(image: image)
-		imageView.layer.borderWidth = myBorders
 		imageView.contentMode = UIView.ContentMode.scaleAspectFit
 		
 		return imageView
 	}
+	
 }
 
 extension UIViewController {
