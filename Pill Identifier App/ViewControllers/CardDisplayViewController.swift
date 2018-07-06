@@ -5,6 +5,7 @@
 
 import UIKit.UIViewController
 import Kingfisher
+//import Cocoa
 
 class CardDisplayViewController: NorthSouthViewController {
 	
@@ -26,6 +27,12 @@ class CardDisplayViewController: NorthSouthViewController {
 	var myPillView: UIView!
 	var showWikipediaBtn = UIButton()
 	
+	// regexp
+	
+	var name: String!
+	var dosage: String!
+
+	
     override func loadView() {
         super.loadView()
         //self.view.backgroundColor = .white
@@ -45,6 +52,11 @@ class CardDisplayViewController: NorthSouthViewController {
 		
 		if cellData != nil {
 			
+			// match regexp patterns
+			name  = getName(str: cellData.text!)
+			dosage = getDosage(str: cellData.text!)
+			
+			
 			// load for image
 			url = URL(string: cellData.imageUrl)
 			
@@ -52,16 +64,32 @@ class CardDisplayViewController: NorthSouthViewController {
 			imageView.kf.setImage(with: url, placeholder: image)
 			//imageView.frame.origin = CGPoint(x: 20, y: 20)
 			
-			north.addSubview(imageView)
 			
-			// DRUG NAME  (ALSO REGEX THE BASE NAMEr)
-			nameLabel = makeNameLabel(message: cellData.text)
-			north.addSubview(nameLabel)
+			// LOAD DRUG NAME  (ALSO REGEX THE BASE NAMEr)
+			nameLabel = makeNameLabel(message: "Name: " + name)
+			
+			
+			//  LOAD DRUG DOSAGE LABEL
+			let dosageLbl = UILabel(
+				frame: CGRect(
+					x: myListIndent,
+					y: screenHeight * (0.125/2),
+					width: screenWidth * 0.8,
+					height: myDefaultTextFieldHeight))
+			//label.font = UIFont.systemFont(ofSize: 16)
+			dosageLbl.text = "Dosage: " + dosage
+			dosageLbl.numberOfLines = 1
+			dosageLbl.layer.borderWidth = myBorders
+			dosageLbl.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
+			
+			
+			// load color label
+			colorLabel = makeColorLabel(message: cellData.color)
+			print(cellData.color)
+			north.addSubview(colorLabel)
+			
 			
 			/*
-			// ================ color label
-			colorLabel = makeColorLabel(message: cellData.color)
-			north.addSubview(colorLabel)
 			
 			
 			// ================ shape label
@@ -85,12 +113,13 @@ class CardDisplayViewController: NorthSouthViewController {
 			labelerLabel = makeLabelerLabel(
 				message: String(test.labeler))
 			//self.north.addSubview(labelerLabel)
+			
 			*/
 			
 			// set up firstBtn
 			showWikipediaBtn =  UIButton(frame: CGRect(
 				x: myListIndent,
-				y: screenHeight * 0.625,
+				y: screenHeight * 0.7,
 				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 			showWikipediaBtn.layer.borderWidth = 2.0;
@@ -106,8 +135,13 @@ class CardDisplayViewController: NorthSouthViewController {
 			
 			showWikipediaBtn.setTitle("Show Wikipedia", for: .normal)
 
+			// ============================ SET VIEW OBJECTS
+			
+			north.addSubview(imageView)
+			north.addSubview(nameLabel)
 			
 			north.addSubview(showWikipediaBtn)
+			north.addSubview(dosageLbl)
 			
 			
 		}
@@ -134,7 +168,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: screenHeight * 0.025,
+				y: screenHeight * 0.125,
 				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
@@ -151,7 +185,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: myListIndent,
-				y: screenHeight * 0.125,
+				y: screenHeight * (0),
 				width: screenWidth * 0.8,
 				height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
@@ -248,13 +282,18 @@ class CardDisplayViewController: NorthSouthViewController {
 	}
 	
 	func displayWikipediaPage(base: URL, str: String) {
+		// only does first term right now
+		let matched = matches(for: "([^\\s]+)", in: str)
+		name = matched.first!
+		
+		print(name)
 		// base url
 		//let urlString = URL(string: "http://en.wikipedia.org/wiki/")
 		let urlString = base
 		
 		// article url
 		//let article      = URL(string: "adderall", relativeTo: urlString)
-		let article      = URL(string: str, relativeTo: urlString)
+		let article      = URL(string: name, relativeTo: urlString)
 		
 		// string from article url
 		let articleString = article?.absoluteString
@@ -271,16 +310,103 @@ class CardDisplayViewController: NorthSouthViewController {
 		}
 	}
 	
-	@objc  func showWikipediaBtnTapped() {
+	@objc func showWikipediaBtnTapped() {
 		let baseUrl = URL(string: "http://en.wikipedia.org/wiki/")
-		let baseName = "acetaminophen"
+		//let baseName = "acetaminophen"
 		
 		// search wikipedia by pill's name
-		displayWikipediaPage(base: baseUrl!, str: baseName)
+		displayWikipediaPage(base: baseUrl!, str: name)
 		
 	}
+	
+	func matches(for regex: String, in text: String) -> [String] {
+		
+		do {
+			let regex = try NSRegularExpression(pattern: regex)
+			let results = regex.matches(in: text,
+										range: NSRange(text.startIndex..., in: text))
+			return results.map {
+				String(text[Range($0.range, in: text)!])
+			}
+		} catch let error {
+			print("invalid regex: \(error.localizedDescription)")
+			return []
+		}
+	}
+	
 
+	func getName(str: String) -> String {
+		var fullName = ""
+		// FIND BASIC NAME
+		let matched = matches(for: "([^\\s]+)", in: str)
+		
+		//print(splitDeck.left) // ["J", "Q"]
+		//print(splitDeck.right) // ["K", "A"]
 
+		let deck = matched
+		
+		
+		for (index, element) in deck.enumerated() {
+			// if a number split aray in half -> name, dosage
+			print("Item \(index): \(element)")
+			
+			let num = Int(element)
+			if num != nil {
+				print("Valid Integer", index)
+				
+				let splitDeck = deck.split(pos: index)
+				
+				for (item) in splitDeck.left {
+					fullName = (fullName + " " + item)
+				}
+				
+				print(fullName)
+				return fullName
+	
+			}
+		}
+		
+		return fullName
+	}
+	
+	func getDosage(str:  String) -> String {
+		// return dosage of drug
+		let matched = matches(for: "[0-9]+[0-9]+[0-9]*.(MG)", in: str)
+		
+		if matched.first != nil {
+			return matched.first!
+		}
+		else {
+			return ""
+		}
+	}
+	
+	/*
+	// EXAMPLE
+	let string = "🇩🇪€40 MG(*&(*MG9 { sdlksdfjlk 6000 MG }"
+	
+	// possible  dosage match expressions
+	//[0-9]+[0-9]+[0-9]*.(MG)
+	//([0-9]).+([M][G])
+	
+	let matched = matches(for: "[0-9]+[0-9]+[0-9]*.(MG)", in: string)
+	
+	print(matched)
+	// ["4", "9"]
+	*/
+	
+}
+
+	extension Array {
+		func split(pos: Int) -> (left: [Element], right: [Element]) {
+			let ct = self.count
+			let half = ct / 2
+			let leftSplit = self[0 ..< half - 1]
+			let rightSplit = self[pos ..< ct]
+			return (left: Array(leftSplit), right: Array(rightSplit))
+	}
 
 	
 }
+
+
