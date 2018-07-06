@@ -77,7 +77,7 @@ UITextFieldDelegate {
 			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		pickColorBtn.layer.borderWidth = 2.0
-		pickColorBtn.borderColor =  .orange
+		pickColorBtn.borderColor =  .black
 		pickColorBtn.setTitleColor(UIColor.black, for: .normal)
 		pickColorBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 		pickColorBtn.setTitleColor(UIColor.white, for: .highlighted)
@@ -97,7 +97,7 @@ UITextFieldDelegate {
 			width: screenWidth * 0.8,
 			height: myDefaultTextFieldHeight))
 		pickShapeBtn.layer.borderWidth = 2.0
-		pickShapeBtn.borderColor = .orange
+		pickShapeBtn.borderColor = .black
 		pickShapeBtn.setTitleColor(UIColor.black, for: .normal)
 		pickShapeBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 		pickShapeBtn.setTitleColor(UIColor.white, for: .highlighted)
@@ -130,7 +130,7 @@ UITextFieldDelegate {
 		// Set UITextField border style
 		pickImprintTextField.borderStyle = UITextField.BorderStyle.line
 		pickImprintTextField.layer.borderWidth = 2.0
-		pickImprintTextField.borderColor = .orange
+		pickImprintTextField.borderColor = .black
 		
 		// Set UITextField background colour
 		//pickImprintTextField.backgroundColor = UIColor.clear
@@ -150,7 +150,7 @@ UITextFieldDelegate {
 			width: screenWidth * 0.8/2,
 			height: myDefaultTextFieldHeight))
 		pickImprintBtn.layer.borderWidth = 2.0
-		pickImprintBtn.borderColor = .orange
+		pickImprintBtn.borderColor = .black
 		pickImprintBtn.setTitleColor(UIColor.black, for: .normal)
 		pickImprintBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 		pickImprintBtn.setTitleColor(UIColor.white, for: .highlighted)
@@ -376,7 +376,7 @@ UITextFieldDelegate {
 					self.pickScoreBtn.setTitle("Score:\tIIII",for: .normal)
 				}
 				
-				self.pickScoreBtn.borderColor =  .orange
+				self.pickScoreBtn.borderColor =  .black
 				self.pickScoreBtn.setTitleColor(.green, for: .normal)
 				
 				return
@@ -452,7 +452,7 @@ UITextFieldDelegate {
 			action: #selector(rightButtonTapped),
 			for: .touchUpInside)
 		
-		//imageView.borderColor  = .orange
+		//imageView.borderColor  = .black
 		//imageView.borderWidth = 1.0
 		
 
