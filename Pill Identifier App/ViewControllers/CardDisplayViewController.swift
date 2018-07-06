@@ -7,8 +7,6 @@ import UIKit.UIViewController
 import Kingfisher
 
 class CardDisplayViewController: NorthSouthViewController {
-
-	
 	var url: URL!
 	
 	// information labels
@@ -17,7 +15,7 @@ class CardDisplayViewController: NorthSouthViewController {
 	var labelerLabel:	UILabel!
 	
 	//  incoming variables
-	var cellData: cellData!
+	var cellData: CellDataClass!
 	
 	var nameLabel:	UILabel!
 	var colorLabel: UILabel!
@@ -49,7 +47,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		if cellData != nil {
 			
 			// LOAD DRUG NAME
-			name = getName(str: cellData.text!)// pull through input
+			name = getName(str: cellData.name!)// pull through input
 			
 			name = getStringRemovedFromSpecialChars(text: name)// sanitize
 			name = name.replace(target: "HR", withString: "")
@@ -68,7 +66,7 @@ class CardDisplayViewController: NorthSouthViewController {
 
 			
 			//  LOAD DOSAGE
-			dosage = getDosage(str: cellData.text!)
+			dosage = getDosage(str: cellData.name!)
 			//let dosageLabel = getDosageLabel(message: dosage)
 			
 			// LOAD COLOR

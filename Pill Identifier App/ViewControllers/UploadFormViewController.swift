@@ -16,6 +16,8 @@ UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,
 UITextFieldDelegate {
 	
+	var url: URL!
+	var limit: Int!
 
 	var color: 		String!
 	var shape: 		String!
@@ -36,7 +38,6 @@ UITextFieldDelegate {
 	
 	var name: String!
 	var nameTextField: UITextField!
-	
 	
 	override func loadView() {
 		super.loadView()
@@ -71,6 +72,9 @@ UITextFieldDelegate {
 			self,
 			action: #selector(pickPictureBtnTapped),
 			for: .touchUpInside)
+		
+		
+		pickPictureBtn.isEnabled = false
 
 
 		// ================================  Set Up PICK COLOR Button
@@ -512,6 +516,7 @@ UITextFieldDelegate {
 			sender.setTitle("Any Imprint ✓", for: .normal)
 			sender.setTitleColor(.green, for: .normal)
 			pickImprintTextField.placeholder = "Enter Imprint"
+			imprint = ""
 			//pickImprintTextField.isHidden = false
 			return true
 		} else {
@@ -519,6 +524,7 @@ UITextFieldDelegate {
 			sender.setTitleColor(.red, for: .normal)
 			pickImprintTextField.placeholder = ""
 			//pickImprintTextField.isHidden = true
+			imprint = "no-imprint"
 			
 			return false
 		}
@@ -549,19 +555,28 @@ UITextFieldDelegate {
 		// check imprint
 		if (imprint != nil) && (imprint.isEmpty == false) {
 			url = url + "&imprint=" + imprint
+		} else {
+			imprint  = ""
 		}
-		
-		// check imprint
-		if (score != nil) && (score >= 0 && score <= 4) {
+
+		// check score
+		if (score != nil) && (score > 0 && score <= 4) {
 			// contains score input [1,2,3,4]
 			url = url + "&score=" + String(score)
 		}
 		
 		// check name
-		guard let name = self.nameTextField.text else { return }
-		if (name.count >= 3) {
+		//guard let name = self.nameTextField.text else { return }
+		if (name != nil) && (name.isEmpty == false) {
 			// contains score input [1,2,3,4]
 			url = url + "&name=" + String(name)
+		} else {
+			name = ""
+		}
+		
+		// check limit
+		if (limit != nil) {
+			url = url + "&rLimit=" + String(limit)
 		}
 		
 		
@@ -665,15 +680,15 @@ UITextFieldDelegate {
 		// set new cell data in cell array for results page
 		var i = 0
 		while i < nlmRxImages.count {
-			resultsTableViewController.arrayOfCellData.append(cellData(
-				cell: i,
-				text: nlmRxImages[i]["name"].string,
-				image: #imageLiteral(resourceName: "250x250placeholder"),
-				imageUrl: nlmRxImages[i]["imageUrl"].string,
-				color: color,
-				shape: shape,
-				imprint: self.imprint
-				//image: #imageLiteral(resourceName: "250x250placeholder")
+			resultsTableViewController.arrayOfCellData.append(
+				CellDataClass(
+					cell: i,
+					name: nlmRxImages[i]["name"].string!,
+					image: #imageLiteral(resourceName: "250x250placeholder"),
+					imageUrl: nlmRxImages[i]["imageUrl"].string!,
+					color: color,
+					shape: shape,
+					imprint: imprint
 			))
 			i = i + 1
 		}

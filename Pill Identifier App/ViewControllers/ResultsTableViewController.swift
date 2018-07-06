@@ -9,6 +9,7 @@
 import UIKit.UIViewController
 import Kingfisher
 
+/*
 struct cellData {
 	let cell:  	Int!
 	let text: 	String!
@@ -18,9 +19,10 @@ struct cellData {
 	let shape:	String!
 	let imprint: String!
 }
+*/
 
 class ResultsTableViewController: UITableViewController {
-	var arrayOfCellData = [cellData]()
+	var arrayOfCellData = [CellDataClass]()
 	
 	//private var myTableView: UITableView!
 	
@@ -36,12 +38,10 @@ class ResultsTableViewController: UITableViewController {
 		if arrayOfCellData.isEmpty {
 			// default results list items and test harness
 			arrayOfCellData = [
-				cellData(cell: 1, text:  "hello", image: #imageLiteral(resourceName: "against"), imageUrl: "", color: "", shape: "", imprint: ""),
-				cellData(cell: 2, text:  "world", image: #imageLiteral(resourceName: "test"),  imageUrl: "", color: "", shape: "", imprint: "")
+				CellDataClass(cell: 1, name:  "hello", image: #imageLiteral(resourceName: "against"), imageUrl: "", color: "", shape: "", imprint: ""),
+				CellDataClass(cell: 2, name:  "world", image: #imageLiteral(resourceName: "test"),  imageUrl: "", color: "", shape: "", imprint: "")
 			]
 		}
-
-
     }// end viewdidload
 	
 
@@ -63,7 +63,7 @@ class ResultsTableViewController: UITableViewController {
 		let url = URL(string: arrayOfCellData[indexPath.row].imageUrl)
 		cell.mainImageView.kf.setImage(with: url, placeholder: image)
 		
-		cell.mainLabel.text = arrayOfCellData[indexPath.row].text
+		cell.mainLabel.text = arrayOfCellData[indexPath.row].name
 		
 		return cell
 
@@ -107,10 +107,10 @@ class ResultsTableViewController: UITableViewController {
 			imprint = arrayOfCellData[indexPath.row].imprint!
 		}
 		
-		print(arrayOfCellData[indexPath.row].text!)
-		let data = cellData(
+		print(arrayOfCellData[indexPath.row].name!)
+		let data = CellDataClass(
 			cell:  		arrayOfCellData[indexPath.row].cell!,
-			text: 		arrayOfCellData[indexPath.row].text!,
+			name: 		arrayOfCellData[indexPath.row].name!,
 			image: 		arrayOfCellData[indexPath.row].image!,
 			imageUrl: 	arrayOfCellData[indexPath.row].imageUrl!,
 			color: 		arrayOfCellData[indexPath.row].color!,
@@ -137,7 +137,7 @@ class ResultsTableViewController: UITableViewController {
 
 	}
 	
-	func displayCardDisplayPage(data: cellData) {
+	func displayCardDisplayPage(data: CellDataClass) {
 		let cardDisplayViewController: CardDisplayViewController = storyboard?.instantiateViewController(withIdentifier: "cardDisplayViewController") as! CardDisplayViewController
 		
 		cardDisplayViewController.cellData = data

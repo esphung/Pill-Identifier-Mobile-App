@@ -15,13 +15,13 @@
 		18F57B9B1E992E0A0013221F /* Pill_Identifier_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F57B9A1E992E0A0013221F /* Pill_Identifier_AppTests.swift */; };
 		18F57BA61E992E0A0013221F /* Pill_Identifier_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F57BA51E992E0A0013221F /* Pill_Identifier_AppUITests.swift */; };
 		5E29F7B320EFCA2A00549742 /* notes in Resources */ = {isa = PBXBuildFile; fileRef = 5E29F7B220EFCA2900549742 /* notes */; };
-		5E49D4E920D836DB002C8469 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4E820D836DB002C8469 /* Utility.swift */; };
+		5E29F7BC20EFD67900549742 /* UploadFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E575F1520D6378300B94C16 /* UploadFormViewController.swift */; };
+		5E29F7C320EFDA2F00549742 /* CellDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29F7B620EFCE1B00549742 /* CellDataClass.swift */; };
 		5E49D4EB20D837E0002C8469 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4EA20D837E0002C8469 /* Globals.swift */; };
 		5E49D4F120D851EA002C8469 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4F020D851EA002C8469 /* ViewController.swift */; };
 		5E49D4F720D87713002C8469 /* NorthSouthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */; };
 		5E49D4F920D87BCE002C8469 /* CardDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */; };
 		5E49D4FD20D8FFCF002C8469 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */; };
-		5E575F1620D6378300B94C16 /* UploadFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E575F1520D6378300B94C16 /* UploadFormViewController.swift */; };
 		5EF7DD4E20E18AB500EF5F2E /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */; };
 		5EF7DD5120E18BEE00EF5F2E /* TableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7DD4F20E18BEE00EF5F2E /* TableViewCell1.swift */; };
 		5EF7DD5220E18BEE00EF5F2E /* TableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF7DD5020E18BEE00EF5F2E /* TableViewCell1.xib */; };
@@ -77,7 +77,7 @@
 		18F57BA71E992E0A0013221F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3741B1114C70319E10746FF5 /* Pods-Pill Identifier AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pill Identifier AppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pill Identifier AppTests/Pods-Pill Identifier AppTests.release.xcconfig"; sourceTree = "<group>"; };
 		5E29F7B220EFCA2900549742 /* notes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = notes; sourceTree = "<group>"; };
-		5E49D4E820D836DB002C8469 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		5E29F7B620EFCE1B00549742 /* CellDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CellDataClass.swift; path = "Pill Identifier App/ViewControllers/CellDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		5E49D4EA20D837E0002C8469 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		5E49D4F020D851EA002C8469 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NorthSouthViewController.swift; sourceTree = "<group>"; };
@@ -191,7 +191,6 @@
 		5E7756D020E5AE0F00510808 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				18F57B851E992E0A0013221F /* AppDelegate.swift */,
 				18F57B8C1E992E0A0013221F /* Assets.xcassets */,
 				18F57B8E1E992E0A0013221F /* LaunchScreen.storyboard */,
 				5E49D4F020D851EA002C8469 /* ViewController.swift */,
@@ -202,14 +201,15 @@
 		5E7756D120E5B74100510808 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5E29F7B620EFCE1B00549742 /* CellDataClass.swift */,
 				5E575F1520D6378300B94C16 /* UploadFormViewController.swift */,
 				5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */,
 				5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */,
 				5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */,
 				5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */,
 				5E49D4EA20D837E0002C8469 /* Globals.swift */,
-				5E49D4E820D836DB002C8469 /* Utility.swift */,
 				18F57B891E992E0A0013221F /* Main.storyboard */,
+				18F57B851E992E0A0013221F /* AppDelegate.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -322,7 +322,6 @@
 					};
 					18F57B951E992E0A0013221F = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 5L5HNZENM9;
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 18F57B811E992E0A0013221F;
@@ -474,15 +473,15 @@
 			files = (
 				5EF7DD5520E18C9E00EF5F2E /* TableViewCell2.swift in Sources */,
 				5E49D4F120D851EA002C8469 /* ViewController.swift in Sources */,
+				5E29F7C320EFDA2F00549742 /* CellDataClass.swift in Sources */,
 				5E49D4F920D87BCE002C8469 /* CardDisplayViewController.swift in Sources */,
-				5E49D4E920D836DB002C8469 /* Utility.swift in Sources */,
 				5EF7DD4E20E18AB500EF5F2E /* ResultsTableViewController.swift in Sources */,
 				18F57B861E992E0A0013221F /* AppDelegate.swift in Sources */,
 				5E49D4EB20D837E0002C8469 /* Globals.swift in Sources */,
 				5E49D4F720D87713002C8469 /* NorthSouthViewController.swift in Sources */,
+				5E29F7BC20EFD67900549742 /* UploadFormViewController.swift in Sources */,
 				5EF7DD5120E18BEE00EF5F2E /* TableViewCell1.swift in Sources */,
 				5E49D4FD20D8FFCF002C8469 /* TestViewController.swift in Sources */,
-				5E575F1620D6378300B94C16 /* UploadFormViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,11 +694,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 5L5HNZENM9;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Pill Identifier AppTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.phungtech.Pill-Identifier-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pill Identifier App.app/Pill Identifier App";
@@ -712,11 +714,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 5L5HNZENM9;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Pill Identifier AppTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.phungtech.Pill-Identifier-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pill Identifier App.app/Pill Identifier App";

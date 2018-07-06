@@ -6,14 +6,18 @@
 //  Copyright © 2017 Phung Technology. All rights reserved.
 //
 
+
 import XCTest
-@testable import Pill_Identifier_App
+import Pods_Pill_Identifier_App
+//import Pill_Identifier_App
 
 class Pill_Identifier_AppTests: XCTestCase {
-    
+	
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+
+
     }
     
     override func tearDown() {

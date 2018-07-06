@@ -12,9 +12,6 @@ class TestViewController: NorthSouthViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		
-		
 
 		//setBackgroundImage(sender: self, filename: "background.png")
 		
@@ -125,9 +122,9 @@ class TestViewController: NorthSouthViewController {
 		
 
 		north.addSubview(firstBtn)
-		north.addSubview(displayBtn)
+		//north.addSubview(displayBtn)
 		north.addSubview(resultsBtn)
-		north.addSubview(debugBtn)
+		//north.addSubview(debugBtn)
 		north.addSubview(showWikipediaBtn)
 		
 		//south.removeFromSuperview(
