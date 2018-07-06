@@ -80,7 +80,7 @@ class CardDisplayViewController: NorthSouthViewController {
 			// shape label
 			shapeLabel = makeShapeLabel(message: cellData.shape)
 			
-			if shape != "" {
+			if cellData.shape != "" {
 				north.addSubview(shapeLabel)
 			}
 			
