@@ -8,17 +8,14 @@
 
 import UIKit
 
+//let appvar = UIApplication.shared.delegate as! AppDelegate
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 	
-    func application(
-		_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
-		// Sets background to a blank/empty image
-		
-		
+	func applicationDidFinishLaunching(_ application: UIApplication) {
 		// Create a new window with the size of the current window and set it as our main window
 		self.window = UIWindow(frame: UIScreen.main.bounds)
 		
@@ -41,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		// 5. Make our new window visible
 		self.window?.makeKeyAndVisible()
-
+		
 		// set navbar appearance application-wide
 		UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
 		// Sets shadow (line below the bar) to a blank image
@@ -51,8 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Set translucent. (Default value is already true, so this can be removed if desired.)
 		UINavigationBar.appearance().isTranslucent = true
 		
-		return true
-    }
+	}
+	
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -71,10 +71,6 @@ class NorthSouthViewController: UIViewController {
 		setUpContraints()
 		//showDebug()
 
-		let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-		swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-		//self.view.addGestureRecognizer(swipeRight)
-		
 		/*
 		let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
 		swipeDown.direction = UISwipeGestureRecognizer.Direction.down
@@ -259,22 +255,5 @@ extension UIViewController {
 		}
 	}
 	
-	@objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-		if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-			switch swipeGesture.direction {
-			case UISwipeGestureRecognizer.Direction.right:
-				self.dismiss(animated: true, completion: nil)
-				print("Swiped right")
-			case UISwipeGestureRecognizer.Direction.down:
-				print("Swiped down")
-			case UISwipeGestureRecognizer.Direction.left:
-				print("Swiped left")
-			case UISwipeGestureRecognizer.Direction.up:
-				print("Swiped up")
-			default:
-				break
-			}
-		}
-	}
 
 }

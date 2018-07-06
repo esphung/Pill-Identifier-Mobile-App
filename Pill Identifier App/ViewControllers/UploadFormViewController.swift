@@ -131,7 +131,7 @@ UITextFieldDelegate {
 		pickImprintTextField.textAlignment = .center
 		
 		// Set UITextField border style
-		pickImprintTextField.borderStyle = UITextField.BorderStyle.line
+		//pickImprintTextField.borderStyle = UITextField.BorderStyle.line
 		pickImprintTextField.layer.borderWidth = 2.0
 		pickImprintTextField.borderColor = .black
 		
@@ -444,7 +444,10 @@ UITextFieldDelegate {
 		_ picker: UIImagePickerController,
 		didFinishPickingMediaWithInfo info: [
 		UIImagePickerController.InfoKey : Any]) {
+		dismiss(animated: false, completion: nil)
+		self.pickPictureBtn.isEnabled = false
 		
+		/*
 		let image = info[UIImagePickerController.InfoKey.originalImage]
 		self.imageView = makeDisplayImage(image: image as! UIImage)
 		
@@ -470,8 +473,8 @@ UITextFieldDelegate {
 		//imageView.borderColor  = .black
 		//imageView.borderWidth = 1.0
 		
-
-		
+		dismiss(animated: true, completion: nil)
+		*/
 		
 		/*
 		if let pickedImage = info[
@@ -483,8 +486,8 @@ UITextFieldDelegate {
 			pickPictureBtn.setImage(pickedImage, for: .normal)
 			pickPictureBtn.imageView?.contentMode = .scaleAspectFill
 		}
-*/
-		dismiss(animated: true, completion: nil)
+		*/
+		
 	}
 	
 	@objc func imagePickerControllerDidCancel(
@@ -730,7 +733,7 @@ UITextFieldDelegate {
 		nameTextField.placeholder = "Enter Pill Name"
 		nameTextField.textAlignment  = .center
 		//nameTextField.font = UIFont.systemFont(ofSize: 15)
-		nameTextField.borderStyle = UITextField.BorderStyle.roundedRect
+		//nameTextField.borderStyle = UITextField.BorderStyle.roundedRect
 		nameTextField.borderColor  = .black
 		nameTextField.borderWidth  = 2.0
 		nameTextField.autocorrectionType = UITextAutocorrectionType.no
