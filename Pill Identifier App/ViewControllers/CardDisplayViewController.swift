@@ -138,7 +138,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		width: screenWidth * 0.8,
 		height: myDefaultTextFieldHeight))
 		//label.font = UIFont.systemFont(ofSize: 16)
-		dosageLbl.text = "Dosage:\t" + message
+		dosageLbl.text = "Dose:\t" + message
 		dosageLbl.numberOfLines = 1
 		dosageLbl.layer.borderWidth = myBorders
 		dosageLbl.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)

@@ -303,7 +303,7 @@ UITextFieldDelegate {
 				let value = colors[indexes?.first as! Int]
 				self.color = String(value).uppercased()
 				
-				let txt = "Color: " + self.color  + " ✓"
+				let txt = ("Color: " + self.color  + " ✓").capitalized
 				//print(txt)
 				
 				sender.setTitle(txt,for: .normal)
@@ -329,7 +329,7 @@ UITextFieldDelegate {
 				let value = shapes[indexes?.first as! Int]
 				self.shape = String(value).uppercased()
 				
-				let txt = ("Shape: " + self.shape + " ✓")
+				let txt = ("Shape: " + self.shape + " ✓").capitalized
 				//print(txt)
 
 				sender.setTitle(txt,for: .normal)

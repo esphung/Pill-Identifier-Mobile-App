@@ -111,7 +111,7 @@ class NorthSouthViewController: UIViewController {
 		
 		// Create left and right button for navigation item
 		let leftButton =  UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backBtnTapped))
-		let rightButton = UIBarButtonItem(title:  "🔍💊", style: .plain, target: self, action: #selector(rightButtonTapped))
+		let rightButton = UIBarButtonItem(title:  "💊", style: .plain, target: self, action: #selector(rightButtonTapped))
 		
 		// Create two buttons for the navigation item
 		navigationItem.leftBarButtonItem = leftButton
