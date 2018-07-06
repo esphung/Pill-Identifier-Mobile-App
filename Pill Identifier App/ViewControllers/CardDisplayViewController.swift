@@ -55,8 +55,10 @@ class CardDisplayViewController: NorthSouthViewController {
 			name = name.trimmingCharacters(in: .whitespacesAndNewlines)// trim whitespace
 			
 			//nameLabel.textColor = UIColor.red
-			nameLabel = makeNameLabel(message: "Name:\t" + name)
-			
+			if name != "" {
+				nameLabel = makeNameLabel(message: "Name:\t" + name)
+				
+			}
 			// LOAD THE IMAGE
 			url = URL(string: cellData.imageUrl)
 			
@@ -71,11 +73,17 @@ class CardDisplayViewController: NorthSouthViewController {
 			
 			// LOAD COLOR
 			colorLabel = makeColorLabel(message: cellData.color)
-			north.addSubview(colorLabel)
+			if cellData.color != "" {
+				north.addSubview(colorLabel)
+			}
 			
 			// shape label
 			shapeLabel = makeShapeLabel(message: cellData.shape)
-			north.addSubview(shapeLabel)
+			
+			if shape != "" {
+				north.addSubview(shapeLabel)
+			}
+			
 			
 			// imprint label
 			imprintLabel = makeImprintLabel(message: cellData.imprint)
@@ -120,7 +128,10 @@ class CardDisplayViewController: NorthSouthViewController {
 
 			// ============================ SET VIEW OBJECTS
 			north.addSubview(imageView)
-			north.addSubview(nameLabel)
+			
+			if  name != "" {
+				north.addSubview(nameLabel)
+			}
 			
 			north.addSubview(showWikipediaBtn)
 			//north.addSubview(dosageLabel)
