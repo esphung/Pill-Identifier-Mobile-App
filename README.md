@@ -6,6 +6,7 @@ prescription medications
 ***Developed by Eric Phung.***
 
 <h4>NLM RxImages</h4>
+
 - [NLM RxIMAGE API](https://lhncbc.nlm.nih.gov/rximage-api)
 
 - [RzImage API Paramaters](https://rxnav.nlm.nih.gov/RxImageAPIParameters.html)
