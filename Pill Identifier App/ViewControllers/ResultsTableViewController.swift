@@ -33,13 +33,6 @@ class ResultsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		let tableView = UITableView()
-		
-		
-		tableView.separatorStyle = .singleLine
-		//tableView.translatesAutoresizingMaskIntoConstraints =  false
-		tableView.contentInset = UIEdgeInsets(top: screenHeight/24, left: 120, bottom: 120, right: -120);
-
 		if arrayOfCellData.isEmpty {
 			// default results list items and test harness
 			arrayOfCellData = [
@@ -65,20 +58,6 @@ class ResultsTableViewController: UITableViewController {
 		swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
 		//self.view.addGestureRecognizer(swipeLeft)
 		*/
-		
-		
-		/*
-		refreshControl = UIRefreshControl()
-		refreshControl?.attributedTitle = NSAttributedString(
-			string: "Pull Refresh")
-		refreshControl?.addTarget(
-			self,
-			action: #selector(refresh),
-			for: UIControl.Event.valueChanged)
-		
-		tableView.addSubview(self.refreshControl!)
-		*/
-
 
     }// end viewdidload
 	
