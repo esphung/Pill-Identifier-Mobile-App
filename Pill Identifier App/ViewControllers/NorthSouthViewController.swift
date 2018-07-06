@@ -239,6 +239,15 @@ class NorthSouthViewController: UIViewController {
 		return imageView
 	}
 	
+	func isValid(name: String) -> Bool {
+		// check the name is between 4 and ... characters
+		if !(4...20 ~= name.count) {
+			print(name.count)
+			return false
+		}
+		return true
+	}
+
 }
 
 extension UIViewController {

@@ -69,7 +69,7 @@ class CardDisplayViewController: NorthSouthViewController {
 			
 			//  LOAD DOSAGE
 			dosage = getDosage(str: cellData.text!)
-			let dosageLabel = getDosageLabel(message: dosage)
+			//let dosageLabel = getDosageLabel(message: dosage)
 			
 			// LOAD COLOR
 			colorLabel = makeColorLabel(message: cellData.color)
@@ -400,17 +400,6 @@ class CardDisplayViewController: NorthSouthViewController {
 		}
 	}
 	
-	
-	
-	func isValid(name: String) -> Bool {
-		// check the name is between 4 and ... characters
-		if !(4...20 ~= name.count) {
-			print(name.count)
-			return false
-		}
-		return true
-	}
-
 	
 }// end class
 

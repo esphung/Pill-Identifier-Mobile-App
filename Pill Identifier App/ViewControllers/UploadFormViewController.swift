@@ -34,6 +34,9 @@ UITextFieldDelegate {
 	var pickScoreBtn:			UIButton!
 	var isScored = 				false
 	
+	var name: String!
+	var nameTextField: UITextField!
+	
 	
 	override func loadView() {
 		super.loadView()
@@ -222,6 +225,8 @@ UITextFieldDelegate {
 		north.addSubview(pickShapeBtn)
 		north.addSubview(submitButton)
 		
+		north.addSubview(getSampleLabel())
+		
 		
 	}// end view did load
 	
@@ -269,19 +274,29 @@ UITextFieldDelegate {
 	// when user hits return key on keyboard
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		//print(textField.text!)
-		self.imprint = textField.text!
-		//print("Imprint: " + self.imprint!)
 		
-		if pickImprintTextField.text! ==  "" {
-			setIsChecked(bool: true)
-			pickImprintBtn.setTitle("Any Imprint ✓", for: .normal)
-			pickImprintBtn.setTitleColor(.green, for: .normal)
-		} else {
-			setIsChecked(bool: true)
-			pickImprintBtn.setTitle("Imprint ✓", for: .normal)
-			pickImprintBtn.setTitleColor(.green, for: .normal)
+		
+		if  (textField == pickImprintTextField) {
+			self.imprint = textField.text!
+			//print("Imprint: " + self.imprint!)
+			
+			if textField.text! ==  "" {
+				setIsChecked(bool: true)
+				pickImprintBtn.setTitle("Any Imprint ✓", for: .normal)
+				pickImprintBtn.setTitleColor(.green, for: .normal)
+			} else {
+				setIsChecked(bool: true)
+				pickImprintBtn.setTitle("Imprint ✓", for: .normal)
+				pickImprintBtn.setTitleColor(.green, for: .normal)
+			}
 		}
 		
+		if (textField  == nameTextField) {
+			self.name = textField.text!
+			textField.textColor = .green
+		}
+		
+		print(textField.text!)
 		
 		textField.resignFirstResponder()
 		return true
@@ -539,6 +554,15 @@ UITextFieldDelegate {
 			url = url + "&score=" + String(score)
 		}
 		
+		// check name
+		guard let name = self.nameTextField.text else { return }
+		if (name.count >= 3) {
+			// contains score input [1,2,3,4]
+			url = url + "&name=" + String(name)
+		}
+		
+		
+		// final url to be sent off
 		print(url)
 		
 		// get http request
@@ -659,6 +683,67 @@ UITextFieldDelegate {
 	
 	@objc func dismissKeyboard() {
 		view.endEditing(true)
+	}
+	
+	func textFieldDidBeginEditing(_ textField: UITextField) {
+		textField.autocapitalizationType = UITextAutocapitalizationType.none
+	}
+	
+	let ACCEPTABLE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_"
+	
+	func checkCount(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+		// only works for imprint field
+		guard let text = textField.text else { return true }
+		let newLength = text.count + string.count - range.length
+		return newLength >= 10 // Bool
+	}
+	
+	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+		
+		let isMaxLength = checkCount(textField, shouldChangeCharactersIn: range, replacementString: string)
+		if isMaxLength == true {
+			// cut off user input
+			textField.isUserInteractionEnabled = false
+		}
+		/*
+		guard let text = textField.text else { return true }
+		let newLength = text.count + string.count - range.length
+		return newLength <= 10 // Bool
+		*/
+		
+		let cs = NSCharacterSet(charactersIn: ACCEPTABLE_CHARACTERS).inverted
+		let filtered = string.components(separatedBy: cs).joined(separator: "")
+		
+		// let user edit again
+		textField.isUserInteractionEnabled = true
+		return (string == filtered)
+	}
+	
+
+	func getSampleLabel() -> UITextField {
+		
+		nameTextField = UITextField(frame: CGRect(
+			x: myListIndent,
+			y: screenHeight * 0.525,
+			width: screenWidth * 0.8,
+			height: myDefaultTextFieldHeight))
+		nameTextField.placeholder = "Enter Pill Name"
+		nameTextField.textAlignment  = .center
+		//nameTextField.font = UIFont.systemFont(ofSize: 15)
+		nameTextField.borderStyle = UITextField.BorderStyle.roundedRect
+		nameTextField.borderColor  = .black
+		nameTextField.borderWidth  = 2.0
+		nameTextField.autocorrectionType = UITextAutocorrectionType.no
+		//nameTextField.keyboardType = UIKeyboardType.default
+		nameTextField.returnKeyType = UIReturnKeyType.done
+		nameTextField.clearButtonMode = UITextField.ViewMode.whileEditing;
+		nameTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+		
+		
+		nameTextField.delegate = self// when return key pressed, do sumthing
+		
+		return nameTextField
+		// needs input validated
 	}
 
 }// end view controller class definition
