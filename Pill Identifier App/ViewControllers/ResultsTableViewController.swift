@@ -129,6 +129,58 @@ class ResultsTableViewController: UITableViewController {
 		return 85
 
 	}
+
+		func matches(for regex: String, in text: String) -> [String] {
+		
+		do {
+			let regex = try NSRegularExpression(pattern: regex)
+			let results = regex.matches(in: text,
+										range: NSRange(text.startIndex..., in: text))
+			return results.map {
+				String(text[Range($0.range, in: text)!])
+			}
+		} catch let error {
+			print("invalid regex: \(error.localizedDescription)")
+			return []
+		}
+	}
+
+	func getName(str: String) -> String {
+		var fullName = ""
+		
+
+		// FIND BASIC NAME
+		let matched = matches(for: "([^\\s]+)", in: str)
+		
+		
+		//print(splitDeck.left) // ["J", "Q"]
+		//print(splitDeck.right) // ["K", "A"]
+
+		let deck = matched
+		
+		
+		for (index, element) in deck.enumerated() {
+			// if a number split aray in half -> name, dosage
+			//print("Item \(index): \(element)")
+			
+			let num = Int(element)
+			if num != nil {
+				//print("Valid Integer", index)
+				
+				let splitDeck = deck.split(pos: index)
+				
+				for (item) in splitDeck.left {
+					fullName = (fullName + " " + item)
+				}
+				
+				//print(fullName)
+				return fullName
+	
+			}
+		}
+		
+		return fullName
+	}
 	
 	func displayCardDisplayPage(data: CellDataClass) {
 		let cardDisplayViewController: CardDisplayViewController = storyboard?.instantiateViewController(withIdentifier: "cardDisplayViewController") as! CardDisplayViewController
@@ -138,7 +190,9 @@ class ResultsTableViewController: UITableViewController {
 		self.present(
 			cardDisplayViewController,
 			animated: false,
-			completion: nil)
+			completion: {
+				cardDisplayViewController.setNavigationBar(title: self.getName(str: data.getName()))
+		})
 	}
 }
 

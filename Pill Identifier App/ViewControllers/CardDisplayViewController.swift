@@ -37,7 +37,7 @@ class CardDisplayViewController: NorthSouthViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		// begin set up here
-		setNavigationBar(title: "Pill Description")
+		//setNavigationBar(title: "Pill Description")
     }
 
     override func viewDidLayoutSubviews() {
@@ -54,7 +54,7 @@ class CardDisplayViewController: NorthSouthViewController {
 
 			// NAME
 			let nameLabel = UILabel(frame: CGRect(x: 20, y: (((north.frame.height)/2 )) + (125)/2, width: screenWidth * 0.8, height: 21))
-			nameLabel.text = "Name:\t\t" + cellData.getName().capitalized
+			nameLabel.text = "Name:\t\t" + (getName(str: cellData.getName())).capitalized
 			nameLabel.numberOfLines = 1
 			north.addSubview(nameLabel)
 
@@ -83,14 +83,14 @@ class CardDisplayViewController: NorthSouthViewController {
 			*/
 
 			// IMPRINT
-			let imprintLabel = UILabel(frame: CGRect(x: 20, y: nameLabel.frame.minY + 20, width: screenWidth * 0.8, height: 21))
-			imprintLabel.text = "Imprint:\t" + String(cellData.getImprint())
-			imprintLabel.numberOfLines = 1
+			let dosageLabel = UILabel(frame: CGRect(x: 20, y: nameLabel.frame.minY + 20, width: screenWidth * 0.8, height: 21))
+			dosageLabel.text = "Dosage:\t" + String(getDosage(str: (cellData.getName())))
+			dosageLabel.numberOfLines = 1
 			
-			north.addSubview(imprintLabel)
+			north.addSubview(dosageLabel)
 
 			// COLOR
-			let colorLabel = UILabel(frame: CGRect(x: 20, y: imprintLabel.frame.minY + 20, width: screenWidth * 0.8, height: 21))
+			let colorLabel = UILabel(frame: CGRect(x: 20, y: dosageLabel.frame.minY + 20, width: screenWidth * 0.8, height: 21))
 			colorLabel.text = "Color:\t\t" + String(cellData.getColor()).capitalized
 			colorLabel.numberOfLines = 1
 			
@@ -159,8 +159,8 @@ class CardDisplayViewController: NorthSouthViewController {
 				self,
 				action: #selector(middleBoxBtnTapped),
 				for: .touchUpInside)
-			middleBoxBtn.setTitle("Middle Button", for: .normal)
-			middleBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
+			middleBoxBtn.setTitle("Wikipedia", for: .normal)
+			//middleBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
 
 			north.addSubview(middleBoxBtn)
 
@@ -196,7 +196,8 @@ class CardDisplayViewController: NorthSouthViewController {
 	}
 	
 	@objc func middleBoxBtnTapped() {
-		//displayHomePage()
+		let baseUrl = URL(string: "http://en.wikipedia.org/wiki/")
+		displayWikipediaPage(base: baseUrl!, str: cellData.getName())
 	}
 	@objc func rightBoxBtnTapped() {
 		//displaySearchFormPage()
@@ -276,8 +277,6 @@ class CardDisplayViewController: NorthSouthViewController {
 			
 			return
 		}
-		
-		
 
 	}
 
@@ -308,15 +307,19 @@ class CardDisplayViewController: NorthSouthViewController {
 				for (item) in splitDeck.left {
 					fullName = (fullName + " " + item)
 				}
+				fullName.removeFirst()
 				
 				//print(fullName)
 				return fullName
+				
 	
 			}
 		}
 		
 		return fullName
 	}
+
+
 	
 	func getDosage(str:  String) -> String {
 		// return dosage of drug

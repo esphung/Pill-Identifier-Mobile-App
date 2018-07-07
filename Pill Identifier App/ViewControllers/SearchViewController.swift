@@ -402,7 +402,6 @@ UITextFieldDelegate {
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		//print(textField.text!)
 		
-		
 		if  (textField == pickImprintTextField) {
 			self.imprint = textField.text!
 			//print("Imprint: " + self.imprint!)
@@ -711,7 +710,6 @@ UITextFieldDelegate {
 		
 		// final url to be sent off
 		print(url)
-		//middleBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
 
 		
 		// get http request
@@ -834,7 +832,7 @@ UITextFieldDelegate {
 		self.present(
 			resultsTableViewController,
 			animated: false,
-			completion: nil)
+			completion: {})
 	}
 	
 	@objc func dismissKeyboard() {
