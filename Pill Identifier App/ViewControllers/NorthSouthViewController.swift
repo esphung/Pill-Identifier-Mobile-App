@@ -7,6 +7,8 @@
 
 import UIKit.UIViewController
 
+public var placeholder = "250x250placeholder.png"
+
 // Screen width.
 var screenWidth: CGFloat {
 	return UIScreen.main.bounds.width
