@@ -15,7 +15,7 @@ class CardDisplayViewController: NorthSouthViewController {
 	var labelerLabel:	UILabel!
 	
 	//  incoming variables
-	var cellData: CellDataClass!
+	var cellData = CellDataClass()
 	
 	var nameLabel:	UILabel!
 	var colorLabel: UILabel!
@@ -42,7 +42,6 @@ class CardDisplayViewController: NorthSouthViewController {
         super.viewDidLayoutSubviews()
 		
 		// ============ CHECK IF CELLDATA
-		if cellData != nil {
 			
 			// LOAD DRUG NAME
 			name = getName(str: cellData.getName())// pull through input
@@ -52,49 +51,101 @@ class CardDisplayViewController: NorthSouthViewController {
 			name = name.replace(target: "MG", withString: "").capitalized// also lowers
 			name = name.trimmingCharacters(in: .whitespacesAndNewlines)// trim whitespace
 			
-			//nameLabel.textColor = UIColor.red
-			if name != "" {
-				nameLabel = makeNameLabel(message: "Name:\t" + name)
-				
-			}
-			// LOAD THE IMAGE
+			// COPYRIGHT/ FOOTER
+			let copyright = copyrightLabel()
+			myView.addSubview(copyright)
+
+			// NAME
+			let nameLabel = UILabel(frame: CGRect(x: 20, y: screenHeight/2, width: 200, height: 21))
+			nameLabel.text = "Name:\t" + String(name)
+			nameLabel.numberOfLines = 1
+
+			north.addSubview(nameLabel)
+
+			// RXCUI
+			let rxcuiLabel = UILabel(frame: CGRect(x: 20,y: nameLabel.frame.minY + 20, width: 200, height: 21))
+	
+			rxcuiLabel.text = "RXCUI:\t" + String(cellData.rxcui)
+			rxcuiLabel.numberOfLines = 1
+
+			north.addSubview(rxcuiLabel)
+			
+			// SCORE
+			let scoreLabel = UILabel(frame: CGRect(x:  20,y: rxcuiLabel.frame.minY + 20, width: 200, height: 21))
+			scoreLabel.text = "Scores:\t" + String(cellData.score)
+			scoreLabel.numberOfLines = 1
+			
+			north.addSubview(scoreLabel)
+
+			// IMPRINT
+			let imprintLabel = UILabel(frame: CGRect(x: 20,y: scoreLabel.frame.minY + 20, width: 200, height: 21))
+			imprintLabel.text = "Imprint:\t" + String(cellData.imprint)
+			imprintLabel.numberOfLines = 1
+			
+			north.addSubview(imprintLabel)
+
+
+			// COLOR
+			let colorLabel = UILabel(frame: CGRect(x: 20,y: imprintLabel.frame.minY + 20, width: 200, height: 21))
+			colorLabel.text = "Color:\t" + String(cellData.color).capitalized
+			colorLabel.numberOfLines = 1
+			
+			north.addSubview(colorLabel)
+
+			// SHAPE
+			let shapeLabel = UILabel(frame: CGRect(x: 20,y: colorLabel.frame.minY + 20, width: 200, height: 21))
+			shapeLabel.text = "Shape:\t" + String(cellData.shape).capitalized
+			shapeLabel.numberOfLines = 1
+			
+			north.addSubview(shapeLabel)
+
+						// LOAD THE IMAGE
 			url = URL(string: cellData.imageUrl)
 			
 			imageView = makeDisplayImage(image: image!)
 			imageView.kf.setImage(with: url, placeholder: image)
-			imageView.frame.origin = CGPoint(x: 20, y: screenHeight/12)
+			//imageView.frame.origin = CGPoint(x: 20, y: shapeLabel.frame + 20)
+
+			north.addSubview(imageView)
 
 			
+
+			// WIKIPEDIA PAGE BUTTON
+			showWikipediaBtn =  UIButton(frame: CGRect(
+				x: screenWidth * 0.8 * 0.333 - 20,
+				y: screenHeight * 0.725,
+				width: screenWidth * 0.8 * 0.666,
+				height: 44))
+			//submitButton.layer.borderWidth = 0.0
+			showWikipediaBtn.setTitleColor(UIColor.black, for: .normal)
+			showWikipediaBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+			showWikipediaBtn.setTitleColor(UIColor.white, for: .highlighted)
+			showWikipediaBtn.setTitle("Submit", for: .normal)
+			showWikipediaBtn.titleLabel?.font =  UIFont.systemFont(
+				ofSize: 16,
+				weight: .light)
+			
+			showWikipediaBtn.borderWidth = 1.0
+			showWikipediaBtn.borderColor = .lightGray
+			showWikipediaBtn.addTarget(
+				self,
+				action: #selector(showWikipediaBtnTapped),
+				for: .touchUpInside)
+			showWikipediaBtn.setTitle("Wikipedia", for: .normal)
+
+			north.addSubview(showWikipediaBtn)
+
+
+
+			/*
 			//  LOAD DOSAGE
 			dosage = getDosage(str: cellData.getName())
 			//let dosageLabel = getDosageLabel(message: dosage)
 			
-			// LOAD COLOR
-			colorLabel = makeColorLabel(message: cellData.color)
-			if cellData.color != "" {
-				north.addSubview(colorLabel)
-			}
-			
-			// shape label
-			shapeLabel = makeShapeLabel(message: cellData.shape)
-			
-			if cellData.shape != "" {
-				north.addSubview(shapeLabel)
-			}
-			
-			// imprint label
-			imprintLabel = makeImprintLabel(message: cellData.imprint)
-			//north.addSubview(imprintLabel)
-			
 			// ndc11 national drug code number label
 			//ndcLabel = makeNdcLabel(message: test.ndc11)
 			//north.addSubview(ndcLabel)
-			
-			// rxcui label (apis and software doc)
-			//rxcuiLabel = makeRxcuiLabel(
-				//message: String(test.rxcuii))
-			//north.addSubview(rxcuiLabel)
-			
+
 			// labeler rx company
 			//labelerLabel = makeLabelerLabel(
 				//message: String(test.labeler))
@@ -103,7 +154,7 @@ class CardDisplayViewController: NorthSouthViewController {
 			// WIKIPEDIA PAGE BUTTON
 			showWikipediaBtn =  UIButton(frame: CGRect(
 				x: screenWidth * 0.8 * 0.333 - 20,
-				y: screenHeight * 0.8,
+				y: screenHeight * 0.725,
 				width: screenWidth * 0.8 * 0.666,
 				height: 44))
 			//submitButton.layer.borderWidth = 0.0
@@ -124,15 +175,16 @@ class CardDisplayViewController: NorthSouthViewController {
 			showWikipediaBtn.setTitle("Wikipedia", for: .normal)
 
 			// ============================ SET VIEW OBJECTS
-			north.addSubview(imageView)
+			//north.addSubview(imageView)
 			
-			if  name != "" {
-				north.addSubview(nameLabel)
-			}
+			// if  name != "" {
+			// 	north.addSubview(nameLabel)
+			// }
 			
-			north.addSubview(showWikipediaBtn)
+			//north.addSubview(showWikipediaBtn)
 			//north.addSubview(dosageLabel)
-		}
+			*/
+		
     }// end layouts did load
 	
 	// dosage func
@@ -248,16 +300,16 @@ class CardDisplayViewController: NorthSouthViewController {
 		let label = UILabel(
 			frame: CGRect(
 				x: 20,
-				y: screenHeight * 0.175,
+				y: (screenHeight * 0.7),
 				//y: screenHeight * 0.075,
 				width: screenWidth * 0.8,
 				height: 44))
 		label.font = UIFont.systemFont(ofSize: 16)
 		//label.adjustsFontSizeToFitWidth = true
 		
-		label.text = "Rxcuii:\t" + message
+		label.text = "RXCUI:\t" + message
 		label.numberOfLines = 1
-		label.layer.borderWidth = 0.0
+		label.layer.borderWidth = 2.0
 		
 		return label
 	}
@@ -277,6 +329,11 @@ class CardDisplayViewController: NorthSouthViewController {
 		
 		return label
 	}
+
+		
+		
+
+
 	
 	func displayWikipediaPage(base: URL, str: String) {
 		// only does first term right now

@@ -17,18 +17,24 @@ class CellDataClass {
 	var imageUrl: String!
 	var color:	String!
 	var shape:	String!
-	var imprint: String!	
+	var imprint: String!
+	var rxcui: Int!
+	var score: Int!
+	var limit: Int!
 
 	// overload constructor
 	init
 	(
 		cell: Int, 
 		name:  String,
-		image: String!, //UIImage,
+		image: String, //UIImage,
 		imageUrl: String,
 		color: String,
 		shape: String,
-		imprint: String
+		imprint: String,
+		rxcui: Int,
+		score:  Int,
+		limit: Int
 	)
 	{
 		if cell > 0 {
@@ -43,7 +49,9 @@ class CellDataClass {
 		self.color = color
 		self.shape = shape
 		self.imprint = imprint
-		
+		self.rxcui  = rxcui
+		self.score = score
+		self.limit = limit
 	}
 
 	// class methods
@@ -70,7 +78,7 @@ class CellDataClass {
 func getIsTestHarnessSuccess() -> Bool {
 
 	// NULL CELL
-	let test = CellDataClass()
+	//let test = CellDataClass()
 
 	// OVERLOADED CELL
 	let eric = CellDataClass(
@@ -80,10 +88,15 @@ func getIsTestHarnessSuccess() -> Bool {
 		imageUrl: "https://google.com/(*&*%^$$%",
 		color: "Purple",
 		shape: "Penumbra Umbrella",
-		imprint: "ABC")// OVERLOADED
+		imprint: "ABC",
+		rxcui: 237849876,
+		score: 8,
+		limit: 20
+
+	)// OVERLOADED
 
 	// DEBUG PRINT OUT
-	print(test)
+	//print(test)
 	print(eric)
 
 	// assert this new object

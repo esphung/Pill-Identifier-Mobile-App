@@ -23,11 +23,13 @@ class ResultsTableViewController: UITableViewController {
 				CellDataClass(cell: 1, name:  "hello",
 							  image: "250x250placeholder.png",
 							  //image: #imageLiteral(resourceName: "against"),
-							  imageUrl: "", color: "", shape: "", imprint: ""),
+							  imageUrl: "", color: "", shape: "", imprint: "",
+							  rxcui: 0, score: 0, limit: 0),
 				CellDataClass(cell: 2, name:  "world",
 							  image: "test.jpg",
 							  //image: #imageLiteral(resourceName: "test"),
-							  imageUrl: "", color: "", shape: "", imprint: "")
+							  imageUrl: "", color: "", shape: "", imprint: "",
+				 rxcui: 0, score: 0, limit: 0)
 			]
 		}
     }// end viewdidload
@@ -90,10 +92,10 @@ class ResultsTableViewController: UITableViewController {
 		//print(arrayOfCellData[indexPath.row])
 		
 		// check imprint
-		var imprint = ""
-		if arrayOfCellData[indexPath.row].imprint != nil {
+		//var imprint = ""
+		/*if arrayOfCellData[indexPath.row].imprint != nil {
 			imprint = arrayOfCellData[indexPath.row].imprint!
-		}
+		}*/
 		
 		print(arrayOfCellData[indexPath.row].getName())
 		let data = CellDataClass(
@@ -103,7 +105,10 @@ class ResultsTableViewController: UITableViewController {
 			imageUrl: 	arrayOfCellData[indexPath.row].imageUrl!,
 			color: 		arrayOfCellData[indexPath.row].color!,
 			shape: 		arrayOfCellData[indexPath.row].shape!,
-			imprint: 	imprint
+			imprint: 	arrayOfCellData[indexPath.row].imprint!,
+			rxcui:		arrayOfCellData[indexPath.row].rxcui,
+			score: 		arrayOfCellData[indexPath.row].score,
+			limit: 		arrayOfCellData[indexPath.row].limit
 		)
 		displayCardDisplayPage(data: data)
 		

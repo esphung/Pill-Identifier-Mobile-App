@@ -97,7 +97,9 @@ class NorthSouthViewController: UIViewController {
 	}
 	
 	func displaySearchFormPage() {
-		let searchViewController: SearchViewController = storyboard?.instantiateViewController(withIdentifier: "searchViewController") as! SearchViewController
+		let searchViewController: SearchViewController
+		= storyboard?.instantiateViewController(
+			withIdentifier: "searchViewController") as! SearchViewController
 		
 		self.present(
 			searchViewController,

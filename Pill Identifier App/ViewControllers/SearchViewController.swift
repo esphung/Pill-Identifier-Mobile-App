@@ -44,6 +44,7 @@ UITextFieldDelegate {
 	var color: 		String!
 	var shape: 		String!
 	var imprint: 	String!
+	var rxcui: 		Int!
 	var score:		Int!
 	var limit: 		Int!
 
@@ -711,6 +712,7 @@ UITextFieldDelegate {
 		// set new cell data in cell array for results page
 		var i = 0
 		while i < nlmRxImages.count {
+			print(nlmRxImages[i]["rxcui"].int!)
 			resultsTableViewController.arrayOfCellData.append(
 				CellDataClass(
 					cell: i,
@@ -718,9 +720,12 @@ UITextFieldDelegate {
 					image: "250x250placeholder",
 					//image: #imageLiteral(resourceName: "250x250placeholder"),
 					imageUrl: nlmRxImages[i]["imageUrl"].string!,
-					color: color,
-					shape: shape,
-					imprint: imprint
+					color: 		color,
+					shape: 		shape,
+					imprint: 	imprint,
+					rxcui: 		nlmRxImages[i]["rxcui"].int!,
+					score:		0,
+					limit:	 	0
 			))
 			i = i + 1
 		}
