@@ -45,8 +45,6 @@ class BoxButton: UIButton {
 	@objc func boxBtnTapped(sender: BoxButton){
 		sender.setImage(UIImage(named: placeholder), for: .normal)
 	}
-	
-
 
 }// end BOX BUTTON CLASS DEF
 
@@ -91,6 +89,7 @@ UITextFieldDelegate {
 	var score:		Int!
 	var limit: 		Int!
 
+	/*
 	// ui buttons
 	var pickColorBtn:		UIButton!
 	var pickShapeBtn:  		UIButton!
@@ -98,7 +97,7 @@ UITextFieldDelegate {
 	var pickImprintBtn: 	UIButton!
 	var pickScoreBtn:		UIButton!
 	var submitButton: 		UIButton!
-
+	*/
 	
 	// input fields
 	var pickImprintTextField: 	UITextField!
@@ -121,10 +120,9 @@ UITextFieldDelegate {
 	var boxBtn008: BoxButton!
 	var boxBtn009: BoxButton!
 
-	var boxBtn11: BoxButton!
-	var boxBtn12: BoxButton!
-	var boxBtn10: BoxButton!
-
+	var boxBtn011: BoxButton!
+	var boxBtn012: BoxButton!
+	var boxBtn010: BoxButton!
 
 	override func loadView() {
 		super.loadView()
@@ -135,6 +133,7 @@ UITextFieldDelegate {
 			target: self,
 			action: #selector(dismissKeyboard))
 		view.addGestureRecognizer(tap)
+		
 	}// end loadview
 	
 	// GET BOX BUTTON
@@ -164,11 +163,13 @@ UITextFieldDelegate {
 		super.viewDidLoad()
 
 		setNavigationBar(title: "Enter Pill Information")
+
+		//========================================
 		
 		// boxBtn001 (L) //667.0 || % 4.5 = 138-ish || 140 x 4 = 560
 		// x is 1/3 of screenWidth
 		let boxBtn001 = getBoxButton(x: 0, y: 0)// COLOR
-		boxBtn001.setTitle("COLOR", for: .normal)
+		boxBtn001.setTitle("Color", for: .normal)
 		boxBtn001.addTarget(
 			self,
 			action: #selector(pickColorBtnTapped),
@@ -176,8 +177,10 @@ UITextFieldDelegate {
 		north.addSubview(boxBtn001)
 		
 		// boxBtn002 (M)
-		let boxBtn002 = getBoxButton(x: screenWidth * 0.3, y: 0)// SHAPE
-		boxBtn002.setTitle("SHAPE", for: .normal)
+		let boxBtn002 = getBoxButton(
+			x: screenWidth * 0.3,
+			y: 0)// SHAPE
+		boxBtn002.setTitle("Shape", for: .normal)
 		boxBtn002.addTarget(
 			self,
 			action: #selector(pickShapeBtnTapped),
@@ -185,17 +188,23 @@ UITextFieldDelegate {
 		north.addSubview(boxBtn002)
 		
 		// boxBtn003 (R)
-		let boxBtn003 = getBoxButton(x: screenWidth * 0.6, y: 0)// PICTURE
+		let boxBtn003 = getBoxButton(
+			x: screenWidth * 0.6,
+			y: 0)// PICTURE
 		boxBtn003.addTarget(
 			self,
 			action: #selector(pickPictureBtnTapped),
 			for: .touchUpInside)
-		boxBtn003.setTitle("PICTURE", for: .normal)
+		boxBtn003.setTitle("Picture", for: .normal)
 		north.addSubview(boxBtn003)
+
+		//========================================
 		
 		// boxBtn004 (L) || 120 x 4 = 480 || 140 || screenHeight/4 = 167ish
-		let boxBtn004 = getBoxButton(x: 0, y: ((screenHeight/3) * 1))// IMPRINT
-		boxBtn004.setTitle("IMPRINT", for: .normal)
+		let boxBtn004 = getBoxButton(
+			x: 0,
+			y: ((screenHeight/3) - (screenHeight/6)))// IMPRINT
+		boxBtn004.setTitle("Imprint", for: .normal)
 		boxBtn004.addTarget(
 			self,
 			action: #selector(pickImprintBtnTapped),
@@ -203,8 +212,10 @@ UITextFieldDelegate {
 		north.addSubview(boxBtn004)
 		
 		// boxBtn005 (M)
-		let boxBtn005 = getBoxButton(x: screenWidth * 0.3, y: ((screenHeight/3) * 1))
-		boxBtn005.setTitle("SUBMIT", for: .normal)//SUBMIT
+		let boxBtn005 = getBoxButton(
+			x: screenWidth * 0.3,
+			y: ((screenHeight/3) - (screenHeight/6)))
+		boxBtn005.setTitle("Submit", for: .normal)//SUBMIT
 		boxBtn005.addTarget(
 			self,
 			action: #selector(submitButtonTapped),
@@ -212,193 +223,97 @@ UITextFieldDelegate {
 		north.addSubview(boxBtn005)
 		
 		// boxBtn006 (R)
-		let boxBtn006 = getBoxButton(x: screenWidth * 0.6, y: ((screenHeight/3) * 1))
-		boxBtn006.setTitle("SCORE", for: .normal)
+		let boxBtn006 = getBoxButton(
+			x: screenWidth * 0.6,
+			y: ((screenHeight/3) - (screenHeight/6)))
+		boxBtn006.setTitle("Score", for: .normal)
 		boxBtn006.addTarget(
 			self,
 			action: #selector(pickScoreBtnTapped),
 			for: .touchUpInside)
 		north.addSubview(boxBtn006)//SCORE
 		
+		//========================================
 		
+
+				// Create UITextField
+		pickImprintTextField = UITextField(frame: CGRect(
+			x: screenWidth * 0.6,
+			y: ((screenHeight/4) - (screenHeight/4)),
+			width: boxBtn004.frame.width,
+			height: boxBtn004.frame.height))
+		
+		// Set UITextField placeholder text
+		pickImprintTextField.placeholder = "Enter Imprint"
+		pickImprintTextField.clearsOnBeginEditing = true
+		pickImprintTextField.delegate = self
+		
+		// Set text to UItextField
+		//pickImprintTextField.text = "Enter Imprint"
+		pickImprintTextField.textAlignment = .center
+		
+		// Set UITextField border style
+		pickImprintTextField.borderStyle = UITextField.BorderStyle.line
+		pickImprintTextField.layer.borderWidth = 1.0
+		pickImprintTextField.borderColor = .lightGray
+		
+		// Set UITextField background colour
+		//pickImprintTextField.backgroundColor = UIColor.clear
+		pickImprintTextField.backgroundColor = UIColor.white
+		//pickImprintTextField.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+		pickImprintTextField.autocorrectionType  = .no
+		pickImprintTextField.autocapitalizationType = .none
+		pickImprintTextField.spellCheckingType = .no
+		
+		// Set UITextField text color
+		//pickImprintTextField.textColor = UIColor.black
+		
+		north.addSubview(pickImprintTextField)
+		
+		//========================================
+
 		// boxBtn007 (L) //667.0 || 120 + 120 = 240 || 140 + 140 || 166+166 = 332
-		let boxBtn007 = getBoxButton(x: 0, y: ((screenHeight/3) * 2))
+		let boxBtn007 = getBoxButton(x: 0, y: ((screenHeight/3)))
 		north.addSubview(boxBtn007)
 		
 		// boxBtn008 (M)
-		let boxBtn008 = getBoxButton(x: screenWidth * 0.3, y: ((screenHeight/3) * 2))
+		let boxBtn008 = getBoxButton(x: screenWidth * 0.3, y: ((screenHeight/3)))
 		north.addSubview(boxBtn008)
 		
 		// boxBtn009 (R)
-		let boxBtn009 = getBoxButton(x: screenWidth * 0.6, y: ((screenHeight/3) * 2))
+		let boxBtn009 = getBoxButton(x: screenWidth * 0.6, y: ((screenHeight/3)))
 		north.addSubview(boxBtn009)
 		
-		/*
-		// boxBtn010 (L) //667.0 || 240 + 120 = 360 || 280 + 140 = 420 || 332 +166 = 498
-		let boxBtn010 = getBoxButton(x: 0, y: ((screenHeight/4) * 3))
+		//========================================
+		
+		// boxBtn010 (L) //667.0 || 120 + 120 = 240 || 140 + 140 || 166+166 = 332
+		let boxBtn010 = getBoxButton(x: 0, y: ((screenHeight/3) * 1.5))
 		north.addSubview(boxBtn010)
 		
 		// boxBtn011 (M)
-		let boxBtn011 = getBoxButton(x: screenWidth * 0.3, y: ((screenHeight/4) * 3))
+		let boxBtn011 = getBoxButton(x: screenWidth * 0.3, y: ((screenHeight/3) * 1.5))
 		north.addSubview(boxBtn011)
 		
 		// boxBtn012 (R)
-		let boxBtn012 = getBoxButton(x: screenWidth * 0.6, y: ((screenHeight/4) * 3))
+		let boxBtn012 = getBoxButton(x: screenWidth * 0.6, y: ((screenHeight/3) * 1.5))
 		north.addSubview(boxBtn012)
-		*/
 		
-		
-		/*
-		// ====  PICK PICTURE BUTTON
-		pickPictureBtn = UIButton(frame: CGRect(
-			x: 20,
-			y: screenHeight * 0.025,
-			width: screenWidth * 0.8,
-			height: 44))
-		pickPictureBtn.layer.borderWidth = 2.0
-		pickPictureBtn.setTitleColor(UIColor.black, for: .normal)
-		pickPictureBtn.setTitleColor(UIColor.lightGray, for: .disabled)
-		pickPictureBtn.setTitleColor(UIColor.white, for: .highlighted)
-		pickPictureBtn.setTitle("Pick Picture", for: .normal)
-		pickPictureBtn.titleLabel?.font =  UIFont.systemFont(
-			ofSize: 16,
-			weight: .light)
-		pickPictureBtn.addTarget(
-			self,
-			action: #selector(pickPictureBtnTapped),
-			for: .touchUpInside)
-		pickPictureBtn.isEnabled = false
+		//========================================
 
-
-		// ================================  Set Up PICK COLOR Button
-		pickColorBtn = UIButton(frame: CGRect(
-			x: 20,
-			y: screenHeight * 0.125,
-			width: screenWidth * 0.8,
-			height: 44))
-		pickColorBtn.layer.borderWidth = 2.0
-		pickColorBtn.borderColor =  .black
-		pickColorBtn.setTitleColor(UIColor.black, for: .normal)
-		pickColorBtn.setTitleColor(UIColor.lightGray, for: .disabled)
-		pickColorBtn.setTitleColor(UIColor.white, for: .highlighted)
-		pickColorBtn.setTitle("Pick Color", for: .normal)
-		pickColorBtn.titleLabel?.font =  UIFont.systemFont(
-			ofSize: 16,
-			weight: .light)
-		pickColorBtn.addTarget(
-			self,
-			action: #selector(pickColorBtnTapped),
-			for: .touchUpInside)
-
-		// ================================  Set Up PICK SHAPE Button
-		pickShapeBtn = UIButton(frame: CGRect(
-			x: 20,
-			y: screenHeight * 0.225,
-			width: screenWidth * 0.8,
-			height: 44))
-		pickShapeBtn.layer.borderWidth = 2.0
-		pickShapeBtn.borderColor = .black
-		pickShapeBtn.setTitleColor(UIColor.black, for: .normal)
-		pickShapeBtn.setTitleColor(UIColor.lightGray, for: .disabled)
-		pickShapeBtn.setTitleColor(UIColor.white, for: .highlighted)
-		pickShapeBtn.setTitle("Pick Shape", for: .normal)
-		pickShapeBtn.titleLabel?.font =  UIFont.systemFont(
-			ofSize: 16,
-			weight: .light)
-		pickShapeBtn.addTarget(
-			self,
-			action: #selector(pickShapeBtnTapped),
-			for: .touchUpInside)
+		// boxBtn013 (L) //667.0 || 120 + 120 = 240 || 140 + 140 || 166+166 = 332
+		let boxBtn013 = getBoxButton(x: 0, y: ((screenHeight/3) * 2))
+		north.addSubview(boxBtn013)
 		
+		// boxBtn014 (M)
+		let boxBtn014 = getBoxButton(x: screenWidth * 0.3, y: ((screenHeight/3) * 2))
+		north.addSubview(boxBtn014)
 		
-
-		// ==================================== PICK IMPRINT BUTTON
-		pickImprintBtn = UIButton(frame: CGRect(
-			x: 20,
-			y: screenHeight * 0.325,
-			width: screenWidth * 0.8/2,
-			height: 44))
-		pickImprintBtn.layer.borderWidth = 2.0
-		pickImprintBtn.borderColor = .black
-		pickImprintBtn.setTitleColor(UIColor.black, for: .normal)
-		pickImprintBtn.setTitleColor(UIColor.lightGray, for: .disabled)
-		pickImprintBtn.setTitleColor(UIColor.white, for: .highlighted)
-		pickImprintBtn.setTitle("Any Imprint ✓", for: .normal)
-		pickImprintBtn.setTitleColor(.green, for: .normal)
-		pickImprintBtn.titleLabel?.font =  UIFont.systemFont(
-			ofSize: 16,
-			weight: .light)
-		pickImprintBtn.addTarget(
-			self,
-			action: #selector(pickImprintBtnTapped),
-			for: .touchUpInside)
+		// boxBtn015 (R)
+		let boxBtn015 = getBoxButton(x: screenWidth * 0.6, y: ((screenHeight/3) * 2))
+		north.addSubview(boxBtn015)
 		
-		// PICK SCORE BUTTON
-		pickScoreBtn = UIButton(frame: CGRect(
-			x: 20,
-			y: screenHeight * 0.425,
-			width: screenWidth * 0.8,
-			height: 44))
-		pickScoreBtn.layer.borderWidth = 1.0
-		pickScoreBtn.setTitleColor(UIColor.black, for: .normal)
-		pickScoreBtn.setTitleColor(UIColor.lightGray, for: .disabled)
-		pickScoreBtn.setTitleColor(UIColor.white, for: .highlighted)
-		pickScoreBtn.setTitle("Pick Scores (Max)", for: .normal)
-		pickScoreBtn.titleLabel?.font =  UIFont.systemFont(
-			ofSize: 16,
-			weight: .light)
-		pickScoreBtn.addTarget(
-			self,
-			action: #selector(pickScoreBtnTapped),
-			for: .touchUpInside)
+		//========================================
 		
-
-		// SUBMIT BUTTON
-		submitButton = UIButton(frame: CGRect(
-			x: screenWidth * 0.8 * 0.333 - 20,
-			y: screenHeight * 0.725,
-			width: screenWidth * 0.8 * 0.666,
-			height: 44))
-		submitButton.setTitleColor(UIColor.black, for: .normal)
-		submitButton.setTitleColor(UIColor.lightGray, for: .disabled)
-		submitButton.setTitleColor(UIColor.white, for: .highlighted)
-		submitButton.setTitle("Search Pills", for: .normal)
-		submitButton.titleLabel?.font =  UIFont.systemFont(
-			ofSize: 16,
-			weight: .light)
-		
-		submitButton.borderWidth = 1.0
-		submitButton.borderColor = .lightGray
-		submitButton.addTarget(
-			self,
-			action: #selector(submitButtonTapped),
-			for: .touchUpInside)
-		
-		
-		// NORTH VIEW SET
-		north.addSubview(pickPictureBtn)
-		pickPictureBtn.isEnabled = false
-		
-		north.addSubview(pickImprintBtn)
-		
-		
-		//north.addSubview(pickScoreBtn)
-		//pickScoreBtn.isEnabled = false
-		
-		north.addSubview(pickColorBtn)
-		north.addSubview(pickShapeBtn)
-		
-		//north.addSubview(submitButton)
-		
-		north.addSubview(getSampleLabel())
-		
-		//let msgLbl = headerMsg(
-		//	msg: "Images provided by National Library Medicine")
-		//north.addSubview(msgLbl)
-		
-		let copyright = copyrightLabel()
-		myView.addSubview(copyright)
-*/
 		pickNameTextField = UITextField(frame: CGRect(
 			x: 0,
 			y: ((screenHeight/4) * 2) + (screenHeight/4),
@@ -422,142 +337,21 @@ UITextFieldDelegate {
 		//north.addSubview(pickNameTextField)
 		
 		
-		
-		// Create UITextField
-		pickImprintTextField = UITextField(frame: CGRect(
-			x: 0, y: ((screenHeight/4) * 2),
-			width: screenWidth * 0.90,
-			height: boxBtn004.frame.height))
-		
-		// Set UITextField placeholder text
-		pickImprintTextField.placeholder = "Or Leave Blank"
-		pickImprintTextField.clearsOnBeginEditing = true
-		pickImprintTextField.delegate = self
-		
-		// Set text to UItextField
-		//pickImprintTextField.text = "Enter Imprint"
-		pickImprintTextField.textAlignment = .center
-		
-		// Set UITextField border style
-		//pickImprintTextField.borderStyle = UITextField.BorderStyle.line
-		pickImprintTextField.layer.borderWidth = 1.0
-		//pickImprintTextField.borderColor = .black
-		
-		// Set UITextField background colour
-		//pickImprintTextField.backgroundColor = UIColor.clear
-		pickImprintTextField.backgroundColor = UIColor.white
-		//pickImprintTextField.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
-		pickImprintTextField.autocorrectionType  = .no
-		pickImprintTextField.autocapitalizationType = .none
-		pickImprintTextField.spellCheckingType = .no
-		
-		// Set UITextField text color
-		//pickImprintTextField.textColor = UIColor.black
-		
-		north.addSubview(pickImprintTextField)
-		//pickImprintTextField.isHidden =  true
-		
-		
 	}// end view did load
 
-
-	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		
 		//south.frame = self.southFrame
 		north.frame = self.northFrame
 		
-		/*
-
-		// LEFT BOX BUTTON  (LEFT)
-		boxBtn10 =  UIButton(frame: CGRect(
-			x: (screenWidth * 0),
-			y: screenHeight * 0.65,
-			width: 110,
-			height: 110))
-		//submitButton.layer.borderWidth = 0.0
-		boxBtn10.setTitleColor(UIColor.black, for: .normal)
-		boxBtn10.setTitleColor(UIColor.lightGray, for: .disabled)
-		boxBtn10.setTitleColor(UIColor.white, for: .highlighted)
-		boxBtn10.titleLabel?.font =  UIFont.systemFont(
-			ofSize: 16,
-			weight: .light)
-		
-		boxBtn10.borderWidth = 1.0
-		boxBtn10.borderColor = .lightGray
-		boxBtn10.addTarget(
-			self,
-			action: #selector(boxBtn10Tapped),
-			for: .touchUpInside)
-		boxBtn10.setTitle("Shape", for: .normal)
-		//boxBtn10.setImage(UIImage(named: placeholder), for: .normal)
-		
-		north.addSubview(boxBtn10)
-		
-		
-		// MIDDLE PAGE BUTTON  (MIDDLE)
-		boxBtn11 =  UIButton(frame: CGRect(
-			x: (screenWidth) * 0.3,
-			y: screenHeight * 0.65,
-			width: 110,
-			height: 110))
-		boxBtn11.setTitleColor(UIColor.black, for: .normal)
-		boxBtn11.setTitleColor(UIColor.lightGray, for: .disabled)
-		boxBtn11.setTitleColor(UIColor.white, for: .highlighted)
-		
-		boxBtn11.titleLabel?.font =  UIFont.systemFont(
-			ofSize: 16,
-			weight: .light)
-		
-		boxBtn11.borderWidth = 1.0
-		boxBtn11.borderColor = .lightGray
-		boxBtn11.addTarget(
-			self,
-			action: #selector(boxBtn11Tapped),
-			for: .touchUpInside)
-		boxBtn11.setTitle("Submit", for: .normal)
-		//boxBtn11.setImage(UIImage(named: placeholder), for: .normal)
-		
-		north.addSubview(boxBtn11)
-		
-		// RIGHT BOX BUTTON  (RIGHT)
-		boxBtn12 =  UIButton(frame: CGRect(
-			x: screenWidth * 0.6,
-			y: screenHeight * 0.65,
-			width: 110,
-			height: 110))
-		boxBtn12.setTitleColor(UIColor.black, for: .normal)
-		boxBtn12.setTitleColor(UIColor.lightGray, for: .disabled)
-		boxBtn12.setTitleColor(UIColor.white, for: .highlighted)
-		boxBtn12.titleLabel?.font =  UIFont.systemFont(
-			ofSize: 16,
-			weight: .light)
-		
-		boxBtn12.borderWidth = 1.0
-		boxBtn12.borderColor = .lightGray
-		boxBtn12.addTarget(
-			self,
-			action: #selector(boxBtn12Tapped),
-			for: .touchUpInside)
-		boxBtn12.setTitle("Color", for: .normal)
-		//boxBtn12.setImage(UIImage(named: placeholder), for: .normal)
-		
-		north.addSubview(boxBtn12)
-		*/
-		
 	}// end layouts did load
 	
-	@objc func boxBtn10Tapped(){
-		pickShapeBtnTapped(sender: pickShapeBtn)
-	}
+	@objc func boxBtn10Tapped(){}
 	
-	@objc func boxBtn11Tapped() {
-		submitButtonTapped()
-	}
+	@objc func boxBtn11Tapped() {}
 
-	@objc func boxBtn12Tapped() {
-	}
+	@objc func boxBtn12Tapped() {}
 	
 	func setIsChecked(bool: Bool){
 		if bool {
@@ -575,45 +369,43 @@ UITextFieldDelegate {
 		}
 	}
 	
-	func toggleImprintField(){
-		
+	func toggleImprintField(sender: BoxButton){
 		if pickImprintTextField.isEnabled {
 			pickImprintTextField.isEnabled = false
 			pickImprintTextField.text = ""
 			self.imprint = pickImprintTextField.text!
-			
-			
+
 		}  else {
 			pickImprintTextField.isEnabled = true
 			pickImprintTextField.text = ""
 			self.imprint = pickImprintTextField.text!
-			
 		}
-		
-		
-	}
-	
 
+
+		sender.setImage(nil, for: .normal)
+		//sender.setTitle("Hello", for: .normal)
+		
+	}// end toggle imprint field
+	
 	// when user hits return key on keyboard
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-		//print(textField.text!)
-		
 		if  (textField == pickImprintTextField) {
 			self.imprint = textField.text!
-			//print("Imprint: " + self.imprint!)
 			
 			if textField.text! ==  "" {
-				setIsChecked(bool: true)
+				setIsChecked(bool: false)
 				//textField.isHidden = true
 				//boxBtn004.setTitle(str: "Any Imprint ✓")
 				//boxBtn004.setTitleColor(.green, for: .normal)
 			} else {
 				setIsChecked(bool: true)
 				//textField.isHidden = false
-				//self.boxBtn004.setTitle(str: "Imprint ✓")
+				//boxBtn004.setTitle("Imprint ✓", for: .normal)
 				//boxBtn004.setTitleColor(.green, for: .normal)
+				textField.isEnabled = false
+				textField.textColor = .lightGray
 				print(textField.text!)
-				print(boxBtn004)
+				//print(boxBtn004)
 				//print(boxBtn004.getTitle())
 			}
 		}
@@ -625,7 +417,6 @@ UITextFieldDelegate {
 		
 		print(textField.text!)
 
-		
 		textField.resignFirstResponder()
 		return true
 	}
@@ -688,11 +479,8 @@ UITextFieldDelegate {
 			initialSelection: [0],
 			doneBlock: {
 				picker, indexes, values in
-				//print("shape = \(values!)")
-				//print("indexes = \(indexes!)")
 				let value = scores[indexes?.first as! Int]
 				self.score = value
-				
 				
 				let num = self.score
 
@@ -708,10 +496,8 @@ UITextFieldDelegate {
 				if num == 4 {
 					sender.setTitle("IIII",for: .normal)
 				}
-				
-				//sender.setTitle(txt,for: .normal)
+
 				sender.setImage(nil, for: .normal)
-				
 				return
 		},
 			cancel: {ActionMultipleStringCancelBlock in return },
@@ -719,8 +505,9 @@ UITextFieldDelegate {
 	}// end pick shape
 
 
-	@objc func submitButtonTapped(){
+	@objc func submitButtonTapped(sender: UIButton){
 		submit()
+		sender.setImage(nil, for: .normal)
 	}// end submit btn tapped
 	
 	@objc func imageButtonTapped(_ sender: Any) {
@@ -728,32 +515,6 @@ UITextFieldDelegate {
 		importImage()
 	}// end upload pickImprintBtn action
 	
-	func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
-		let size = image.size
-		
-		let widthRatio  = targetSize.width  / size.width
-		let heightRatio = targetSize.height / size.height
-		
-		// Figure out what our orientation is, and use that to form the rectangle
-		var newSize: CGSize
-		if(widthRatio > heightRatio) {
-			newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
-		} else {
-			newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
-		}
-		
-		// This is the rect that we've calculated out and this is what is actually used below
-		let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-		
-		// Actually do the resizing to the rect using the ImageContext stuff
-		UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-		image.draw(in: rect)
-		let newImage = UIGraphicsGetImageFromCurrentImageContext()
-		UIGraphicsEndImageContext()
-		
-		return newImage!
-		
-	}
 	
 	// MARK: - ImagePicker Delegate
 	@objc func imagePickerController(
@@ -772,7 +533,6 @@ UITextFieldDelegate {
 			//boxBtn003.setImage(pickedImage, for: .normal)
 			print(pickedImage)
 			
-			
 		}
 		
 	}
@@ -782,40 +542,40 @@ UITextFieldDelegate {
 		dismiss(animated: false, completion: nil)
 	}// end imagepicker cancel
 	
-	@objc func pickImprintBtnTapped(_ sender: UIButton) {
+	@objc func pickImprintBtnTapped(_ sender: BoxButton) {
 		toggleIsChecked()
-		toggleImprintField()
+		toggleImprintField(sender: sender)
 		if hasImprint(sender: sender) {
 			self.imprint = ""
-			//print("Imprint: " + self.imprint!)
 		} else {
 			self.imprint = "no-imprint"
-			//print("Imprint: " + self.imprint!)
 		}
 	}
 	
 	func hasImprint(sender: UIButton) -> Bool {
 		if isChecked {
-			sender.setTitle("Any Imprint ✓", for: .normal)
-			sender.setTitleColor(.green, for: .normal)
+			// decideed to  have some form of imprint
+			sender.setTitle("Imprint", for: .normal)
+			//sender.setTitleColor(.green, for: .normal)
 			pickImprintTextField.placeholder = "Enter Imprint"
+			pickImprintTextField.unmarkText()
+			pickImprintTextField.isEnabled  = true
 			pickImprintTextField.isHidden = false
 			imprint = ""
-			pickImprintTextField.isHidden = false
+
 			return true
 		} else {
-			sender.setTitle("No Imprint X", for: .normal)
-			sender.setTitleColor(.red, for: .normal)
-			pickImprintTextField.placeholder = ""
+			// doesnt want imprint at all
+			sender.setTitle("Never Imprint", for: .normal)
+			//sender.setTitleColor(.red, for: .normal)
+			pickImprintTextField.placeholder = "No Imprint"
 			pickImprintTextField.isHidden  = true
-			pickImprintTextField.isHidden = true
+			pickImprintTextField.isEnabled  = false
 			imprint = "no-imprint"
 			
 			return false
 		}
 	}
-
-
 	
 	func submit() {
 		var url = baseUrl
@@ -861,10 +621,7 @@ UITextFieldDelegate {
 			url = url + getSearchUrlString(find: colorParam, str: color) // "&rLimit="
 		}
 
-
-
 		//print(getSearchUrlString(find: rxcuiParam, str: "198429"))// rxcuiParam
-		
 		
 		// final url to be sent off
 		print(url)
@@ -1030,33 +787,6 @@ UITextFieldDelegate {
 		textField.isUserInteractionEnabled = true
 		return (string == filtered)
 	}
-	
-
-	func getSampleLabel() -> UITextField {
-		
-		pickNameTextField = UITextField(frame: CGRect(
-			x: 20,
-			y: screenHeight * 0.425,
-			width: screenWidth * 0.8,
-			height: 44))
-		pickNameTextField.placeholder = "Enter Pill Name"
-		pickNameTextField.textAlignment  = .center
-		//pickNameTextField.font = UIFont.systemFont(ofSize: 15)
-		//pickNameTextField.borderStyle = UITextField.BorderStyle.roundedRect
-		pickNameTextField.borderColor  = .lightGray
-		pickNameTextField.borderWidth  = 2.0
-		pickNameTextField.autocorrectionType = UITextAutocorrectionType.no
-		//pickNameTextField.keyboardType = UIKeyboardType.default
-		pickNameTextField.returnKeyType = UIReturnKeyType.done
-		pickNameTextField.clearButtonMode = UITextField.ViewMode.whileEditing;
-		pickNameTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-		
-		
-		pickNameTextField.delegate = self// when return key pressed, do sumthing
-		
-		return pickNameTextField
-		// needs input validated
-	}
 
 
 	func getSearchUrlString(find: Search, str: String) -> String {
@@ -1088,7 +818,6 @@ UITextFieldDelegate {
 
 		return url
 	}
-
 
 }// end view controller class definition
 
@@ -1122,3 +851,4 @@ extension UIView {
 		}
 	}
 }
+

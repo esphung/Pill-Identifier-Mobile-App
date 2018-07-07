@@ -159,7 +159,7 @@ class CardDisplayViewController: NorthSouthViewController {
 				self,
 				action: #selector(middleBoxBtnTapped),
 				for: .touchUpInside)
-			middleBoxBtn.setTitle("Wikipedia", for: .normal)
+			middleBoxBtn.setTitle("More Information", for: .normal)
 			//middleBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
 
 			north.addSubview(middleBoxBtn)
