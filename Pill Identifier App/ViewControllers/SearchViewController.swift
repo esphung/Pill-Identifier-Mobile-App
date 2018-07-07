@@ -9,12 +9,13 @@ import Alamofire
 
 class BoxButton: UIButton {
 	
-    private var title: String!
+
 	
 	override init(frame: CGRect) {
         // set myValue before super.init is called
 		
         super.init(frame: frame)
+		
 
         // set other operations after super.init, if required
         //backgroundColor = .red
@@ -22,9 +23,7 @@ class BoxButton: UIButton {
 		self.setTitleColor(UIColor.black, for: .normal)
 		self.setTitleColor(UIColor.lightGray, for: .disabled)
 		self.setTitleColor(UIColor.white, for: .highlighted)
-		self.titleLabel?.font =  UIFont.systemFont(
-			ofSize: 16,
-			weight: .light)
+		//self.titleLabel?.font =  UIFont.systemFont(ofSize: 16,weight: .light)
 		
 		self.borderWidth = 1.0
 		self.borderColor = .lightGray
@@ -45,32 +44,10 @@ class BoxButton: UIButton {
 	// BUTTON HANDLER
 	@objc func boxBtnTapped(sender: BoxButton){
 		sender.setImage(UIImage(named: placeholder), for: .normal)
-		print(sender.getTitle())
-		sender.toggleMyImage(sender: sender)
 	}
 	
-	func toggleMyImage(sender: BoxButton){
-		if (sender.currentImage?.isEqual(UIImage(named: placeholder)))! {
-			// image is on,  turn it off
-			sender.setImage(nil, for: .normal)
-			//self.setTitle("Done", for: .normal)
-			print("On")
-		}
-	}
 
-	// SETTERS AND GETTERS
-	func setTitle(str: String){
-		self.title = str
-	}// end set title
-	
-	func getTitle() -> String {
-		if self.title == nil {
-			return ""
-		} else {
-			return self.title
-		}
-	}// end get title
-	
+
 }// end BOX BUTTON CLASS DEF
 
 class SearchViewController:
@@ -158,7 +135,6 @@ UITextFieldDelegate {
 			target: self,
 			action: #selector(dismissKeyboard))
 		view.addGestureRecognizer(tap)
-
 	}// end loadview
 	
 	// GET BOX BUTTON
@@ -190,6 +166,7 @@ UITextFieldDelegate {
 		setNavigationBar(title: "Enter Pill Information")
 		
 		// boxBtn001 (L) //667.0 || % 4.5 = 138-ish || 140 x 4 = 560
+		// x is 1/3 of screenWidth
 		let boxBtn001 = getBoxButton(x: 0, y: 0)// COLOR
 		boxBtn001.setTitle("COLOR", for: .normal)
 		boxBtn001.addTarget(
@@ -217,7 +194,7 @@ UITextFieldDelegate {
 		north.addSubview(boxBtn003)
 		
 		// boxBtn004 (L) || 120 x 4 = 480 || 140 || screenHeight/4 = 167ish
-		let boxBtn004 = getBoxButton(x: 0, y: ((screenHeight/4) * 1))// IMPRINT
+		let boxBtn004 = getBoxButton(x: 0, y: ((screenHeight/3) * 1))// IMPRINT
 		boxBtn004.setTitle("IMPRINT", for: .normal)
 		boxBtn004.addTarget(
 			self,
@@ -226,7 +203,7 @@ UITextFieldDelegate {
 		north.addSubview(boxBtn004)
 		
 		// boxBtn005 (M)
-		let boxBtn005 = getBoxButton(x: screenWidth * 0.3, y: ((screenHeight/4) * 1))
+		let boxBtn005 = getBoxButton(x: screenWidth * 0.3, y: ((screenHeight/3) * 1))
 		boxBtn005.setTitle("SUBMIT", for: .normal)//SUBMIT
 		boxBtn005.addTarget(
 			self,
@@ -235,7 +212,7 @@ UITextFieldDelegate {
 		north.addSubview(boxBtn005)
 		
 		// boxBtn006 (R)
-		let boxBtn006 = getBoxButton(x: screenWidth * 0.6, y: ((screenHeight/4) * 1))
+		let boxBtn006 = getBoxButton(x: screenWidth * 0.6, y: ((screenHeight/3) * 1))
 		boxBtn006.setTitle("SCORE", for: .normal)
 		boxBtn006.addTarget(
 			self,
@@ -243,20 +220,20 @@ UITextFieldDelegate {
 			for: .touchUpInside)
 		north.addSubview(boxBtn006)//SCORE
 		
-		/*
+		
 		// boxBtn007 (L) //667.0 || 120 + 120 = 240 || 140 + 140 || 166+166 = 332
-		let boxBtn007 = getBoxButton(x: 0, y: ((screenHeight/4) * 2))
+		let boxBtn007 = getBoxButton(x: 0, y: ((screenHeight/3) * 2))
 		north.addSubview(boxBtn007)
 		
 		// boxBtn008 (M)
-		let boxBtn008 = getBoxButton(x: screenWidth * 0.3, y: ((screenHeight/4) * 2))
+		let boxBtn008 = getBoxButton(x: screenWidth * 0.3, y: ((screenHeight/3) * 2))
 		north.addSubview(boxBtn008)
 		
 		// boxBtn009 (R)
-		let boxBtn009 = getBoxButton(x: screenWidth * 0.6, y: ((screenHeight/4) * 2))
+		let boxBtn009 = getBoxButton(x: screenWidth * 0.6, y: ((screenHeight/3) * 2))
 		north.addSubview(boxBtn009)
 		
-		
+		/*
 		// boxBtn010 (L) //667.0 || 240 + 120 = 360 || 280 + 140 = 420 || 332 +166 = 498
 		let boxBtn010 = getBoxButton(x: 0, y: ((screenHeight/4) * 3))
 		north.addSubview(boxBtn010)
@@ -270,7 +247,8 @@ UITextFieldDelegate {
 		north.addSubview(boxBtn012)
 		*/
 		
-		/*m,kn
+		
+		/*
 		// ====  PICK PICTURE BUTTON
 		pickPictureBtn = UIButton(frame: CGRect(
 			x: 20,
@@ -440,7 +418,8 @@ UITextFieldDelegate {
 		
 		
 		pickNameTextField.delegate = self// when return key pressed, do sumthing
-		north.addSubview(pickNameTextField)
+		
+		//north.addSubview(pickNameTextField)
 		
 		
 		
@@ -578,7 +557,6 @@ UITextFieldDelegate {
 	}
 
 	@objc func boxBtn12Tapped() {
-		pickColorBtnTapped(sender: pickColorBtn)
 	}
 	
 	func setIsChecked(bool: Bool){
@@ -635,7 +613,7 @@ UITextFieldDelegate {
 				//self.boxBtn004.setTitle(str: "Imprint ✓")
 				//boxBtn004.setTitleColor(.green, for: .normal)
 				print(textField.text!)
-				print(boxBtn001)
+				print(boxBtn004)
 				//print(boxBtn004.getTitle())
 			}
 		}
@@ -656,7 +634,7 @@ UITextFieldDelegate {
 		showImageActionSheet()
 	}
 	
-	@objc func pickColorBtnTapped(sender: UIButton){
+	@objc func pickColorBtnTapped(sender: BoxButton){
 		ActionSheetMultipleStringPicker.show(
 			withTitle: "Pick Color",
 			rows: [
@@ -665,18 +643,12 @@ UITextFieldDelegate {
 			initialSelection: [0],
 			doneBlock: {
 				picker, indexes, values in
-				//print("color = \(values!)")
-				//print("indexes = \(indexes!)")
 				let value = colors[indexes?.first as! Int]
 				self.color = String(value).uppercased()
-				
 				let txt = (self.color).capitalized
-				sender.setImage(UIImage(named: placeholder), for: .normal)
-				//print(txt)
-				
+
 				sender.setTitle(txt,for: .normal)
-				sender.setTitleColor(.green, for: .normal)
-				//sender.isEnabled = false
+				sender.setImage(nil, for: .normal)
 				
 				return
 		},
@@ -693,18 +665,12 @@ UITextFieldDelegate {
 			initialSelection: [0],
 			doneBlock: {
 				picker, indexes, values in
-				//print("shape = \(values!)")
-				//print("indexes = \(indexes!)")
 				let value = shapes[indexes?.first as! Int]
 				self.shape = String(value).uppercased()
-				
-				let txt = ("Shape: " + self.shape + " ✓").capitalized
-				sender.setImage(UIImage(named: placeholder), for: .normal)
-				//print(txt)
+				let txt = (self.shape).capitalized
 				
 				sender.setTitle(txt,for: .normal)
-				sender.setTitleColor(.green, for: .normal)
-				//sender.isEnabled = false
+				sender.setImage(nil, for: .normal)
 				
 				return
 		},
@@ -727,9 +693,9 @@ UITextFieldDelegate {
 				let value = scores[indexes?.first as! Int]
 				self.score = value
 				
-				let num = (self.score)
-				//print(txt)
 				
+				let num = self.score
+
 				if num == 1 {
 					sender.setTitle("I",for: .normal)
 				}
@@ -743,8 +709,8 @@ UITextFieldDelegate {
 					sender.setTitle("IIII",for: .normal)
 				}
 				
-				sender.borderColor = .lightGray
-				sender.setTitleColor(.green, for: .normal)
+				//sender.setTitle(txt,for: .normal)
+				sender.setImage(nil, for: .normal)
 				
 				return
 		},
@@ -752,18 +718,14 @@ UITextFieldDelegate {
 			origin: sender)
 	}// end pick shape
 
-	@objc func exitButtonTapped(){
-		exit(0)
-	}// end submit btn tapped
-	
+
 	@objc func submitButtonTapped(){
 		submit()
-
 	}// end submit btn tapped
 	
 	@objc func imageButtonTapped(_ sender: Any) {
 		showImageActionSheet()
-		//importImage()
+		importImage()
 	}// end upload pickImprintBtn action
 	
 	func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
@@ -798,51 +760,20 @@ UITextFieldDelegate {
 		_ picker: UIImagePickerController,
 		didFinishPickingMediaWithInfo info: [
 		UIImagePickerController.InfoKey : Any]) {
-		dismiss(animated: false, completion: nil)
+		
+		//dismiss(animated: false, completion: nil)
 		//self.pickPictureBtn.isEnabled = false
+		
 		
 		//  COMPLETELY BROKEN
 		
-		/*
-		let image = info[UIImagePickerController.InfoKey.originalImage]
-		self.imageView = makeDisplayImage(image: image as! UIImage)
-		
-		pickPictureBtn.setTitle(("Picture: Selected").uppercased(), for: .normal)
-		pickPictureBtn.setImage(image as? UIImage, for: .normal)
-		pickPictureBtn.removeFromSuperview()
-		
-		pickShapeBtn.removeFromSuperview()
-		pickColorBtn.removeFromSuperview()
-		pickScoreBtn.removeFromSuperview()
-		pickImprintBtn.removeFromSuperview()
-		pickImprintTextField.removeFromSuperview()
-		
-		self.north.addSubview(imageView)
-		self.navigationItem.leftBarButtonItem?.isEnabled = false
-
-		self.submitButton.setTitle("Feature Coming Soon", for: .normal)
-		self.submitButton.addTarget(
-			self,
-			action: #selector(rightButtonTapped),
-			for: .touchUpInside)
-		
-		//imageView.borderColor  = .black
-		//imageView.borderWidth = 1.0
-		
-		dismiss(animated: false, completion: nil)
-		*/
-		
-		/*
 		if let pickedImage = info[
 			UIImagePickerController.InfoKey.originalImage] as? UIImage {
-			imageView.image  = pickedImage
-			//submitButton.isEnabled = true
-			pickPictureBtn.setTitle(
-				("Picture: Selected").uppercased(), for: .normal)
-			pickPictureBtn.setImage(pickedImage, for: .normal)
-			pickPictureBtn.imageView?.contentMode = .scaleAspectFill
+			//boxBtn003.setImage(pickedImage, for: .normal)
+			print(pickedImage)
+			
+			
 		}
-		*/
 		
 	}
 	
@@ -870,14 +801,14 @@ UITextFieldDelegate {
 			pickImprintTextField.placeholder = "Enter Imprint"
 			pickImprintTextField.isHidden = false
 			imprint = ""
-			//pickImprintTextField.isHidden = false
+			pickImprintTextField.isHidden = false
 			return true
 		} else {
 			sender.setTitle("No Imprint X", for: .normal)
 			sender.setTitleColor(.red, for: .normal)
 			pickImprintTextField.placeholder = ""
 			pickImprintTextField.isHidden  = true
-			//pickImprintTextField.isHidden = true
+			pickImprintTextField.isHidden = true
 			imprint = "no-imprint"
 			
 			return false

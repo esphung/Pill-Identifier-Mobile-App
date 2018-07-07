@@ -61,6 +61,8 @@ class NorthSouthViewController: UIViewController {
 
 		setUpContraints()
 
+		
+
 	}
 	
 	override func viewDidLayoutSubviews() {
