@@ -204,7 +204,7 @@ UITextFieldDelegate {
 		let boxBtn004 = getBoxButton(
 			x: 0,
 			y: ((screenHeight/3) - (screenHeight/6)))// IMPRINT
-		boxBtn004.setTitle("Imprint", for: .normal)
+		boxBtn004.setTitle("Imprint On", for: .normal)
 		boxBtn004.addTarget(
 			self,
 			action: #selector(pickImprintBtnTapped),
@@ -226,7 +226,7 @@ UITextFieldDelegate {
 		let boxBtn006 = getBoxButton(
 			x: screenWidth * 0.6,
 			y: ((screenHeight/3) - (screenHeight/6)))
-		boxBtn006.setTitle("Score", for: .normal)
+		boxBtn006.setTitle("Scores", for: .normal)
 		boxBtn006.addTarget(
 			self,
 			action: #selector(pickScoreBtnTapped),
@@ -472,7 +472,7 @@ UITextFieldDelegate {
 	
 	@objc func pickScoreBtnTapped(sender: UIButton){
 		ActionSheetMultipleStringPicker.show(
-			withTitle: "Pick Score",
+			withTitle: "Pick Scores",
 			rows: [
 				scores
 			],
@@ -483,7 +483,9 @@ UITextFieldDelegate {
 				self.score = value
 				
 				let num = self.score
-
+				if num == 0 {
+					sender.setTitle("Scores",for: .normal)
+				}
 				if num == 1 {
 					sender.setTitle("I",for: .normal)
 				}
@@ -555,7 +557,7 @@ UITextFieldDelegate {
 	func hasImprint(sender: UIButton) -> Bool {
 		if isChecked {
 			// decideed to  have some form of imprint
-			sender.setTitle("Imprint", for: .normal)
+			sender.setTitle("Imprint On", for: .normal)
 			//sender.setTitleColor(.green, for: .normal)
 			pickImprintTextField.placeholder = "Enter Imprint"
 			pickImprintTextField.unmarkText()
@@ -566,7 +568,7 @@ UITextFieldDelegate {
 			return true
 		} else {
 			// doesnt want imprint at all
-			sender.setTitle("Never Imprint", for: .normal)
+			sender.setTitle("Imprint Off", for: .normal)
 			//sender.setTitleColor(.red, for: .normal)
 			pickImprintTextField.placeholder = "No Imprint"
 			pickImprintTextField.isHidden  = true
