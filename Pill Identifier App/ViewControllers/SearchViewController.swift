@@ -1,9 +1,8 @@
-// 88   88 88""Yb 88      dP"Yb     db    8888b.
-// 88   88 88__dP 88     dP   Yb   dPYb    8I  Yb
-// Y8   8P 88"""  88  .o Yb   dP  dP__Yb   8I  dY
-// `YbodP' 88     88ood8  YbodP  dP""""Yb 8888Y"
+// .dP"Y8 888888    db    88""Yb  dP""b8 88  88 Yb    dP 88 888888 Yb        dP
+// `Ybo." 88__     dPYb   88__dP dP   `" 88  88  Yb  dP  88 88__    Yb  db  dP
+// o.`Y8b 88""    dP__Yb  88"Yb  Yb      888888   YbdP   88 88""     YbdPYbdP
+// 8bodP' 888888 dP""""Yb 88  Yb  YboodP 88  88    YP    88 888888    YP  YP
 
-//import UIKit.UIViewController
 import ActionSheetPicker_3_0
 import SwiftyJSON
 import Alamofire
@@ -13,74 +12,103 @@ NorthSouthViewController,
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,
 UITextFieldDelegate {
-	
-	var url: URL!
-	var limit: Int!
 
+	// cases to search for
+	enum Search {
+		case nameParam
+		case shapeParam
+		case colorParam
+		case rxcuiParam
+		case imprintParam
+		case scoreParam
+		case limitParam
+	}
+
+	// view vars
+	var baseUrl = "http://rximage.nlm.nih.gov/api/rximage/1/rxnav?"
+
+	// search types
+	var nameParam = Search.nameParam
+	var rxcuiParam = Search.rxcuiParam
+	var colorParam = Search.colorParam
+	var shapeParam = Search.shapeParam
+	var imprintParam = Search.imprintParam
+	var scoreParam = Search.scoreParam
+	var limitParam  = Search.limitParam
+	
+	// handling
+	var url: 		URL!
+
+	// search params
+	var name: 		String!
 	var color: 		String!
 	var shape: 		String!
 	var imprint: 	String!
 	var score:		Int!
+	var limit: 		Int!
 
+	// ui buttons
 	var pickColorBtn:		UIButton!
 	var pickShapeBtn:  		UIButton!
 	var pickPictureBtn:		UIButton!
+	var pickImprintBtn: 	UIButton!
+	var pickScoreBtn:		UIButton!
 	var submitButton: 		UIButton!
 
-	var isChecked = 			true
-	var pickImprintBtn: 		UIButton!
+	
+	// input fields
 	var pickImprintTextField: 	UITextField!
-	
-	var pickScoreBtn:			UIButton!
+	var nameTextField: 	UITextField!
+
+	// check vars
+	var isChecked = 			true
 	var isScored = 				false
-	
-	var name: String!
-	var nameTextField: UITextField!
-	
+
+
 	override func loadView() {
 		super.loadView()
-		//Looks for single or multiple taps.
-		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SearchViewController.dismissKeyboard))
+
+		//Looks for single or multiple taps to dismiss keyboard
+		let tap: UITapGestureRecognizer
+		= UITapGestureRecognizer(
+			target: self,
+			action: #selector(dismissKeyboard))
 		view.addGestureRecognizer(tap)
-		
-		
-		
-		
-		
+
 	}// end loadview
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
 		setNavigationBar(title: "Enter Pill Information")
-			// ====================================  pick pill picture button
+		
+		// ====  PICK PICTURE BUTTON
 		pickPictureBtn = UIButton(frame: CGRect(
-			x: myListIndent,
+			x: 20,
 			y: screenHeight * 0.025,
 			width: screenWidth * 0.8,
-			height: myDefaultTextFieldHeight))
+			height: 44))
 		pickPictureBtn.layer.borderWidth = 2.0
 		pickPictureBtn.setTitleColor(UIColor.black, for: .normal)
 		pickPictureBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 		pickPictureBtn.setTitleColor(UIColor.white, for: .highlighted)
-		pickPictureBtn.setTitle("Upload Picture", for: .normal)
+		pickPictureBtn.setTitle("Pick Picture", for: .normal)
 		pickPictureBtn.titleLabel?.font =  UIFont.systemFont(
-			ofSize: myDefaultTextFontSize,
+			ofSize: 16,
 			weight: .light)
 		pickPictureBtn.addTarget(
 			self,
 			action: #selector(pickPictureBtnTapped),
 			for: .touchUpInside)
-		
-		
 		pickPictureBtn.isEnabled = false
 
 
 		// ================================  Set Up PICK COLOR Button
 		pickColorBtn = UIButton(frame: CGRect(
-			x: myListIndent,
+			x: 20,
 			y: screenHeight * 0.125,
 			width: screenWidth * 0.8,
-			height: myDefaultTextFieldHeight))
+			height: 44))
 		pickColorBtn.layer.borderWidth = 2.0
 		pickColorBtn.borderColor =  .black
 		pickColorBtn.setTitleColor(UIColor.black, for: .normal)
@@ -88,7 +116,7 @@ UITextFieldDelegate {
 		pickColorBtn.setTitleColor(UIColor.white, for: .highlighted)
 		pickColorBtn.setTitle("Pick Color", for: .normal)
 		pickColorBtn.titleLabel?.font =  UIFont.systemFont(
-			ofSize: myDefaultTextFontSize,
+			ofSize: 16,
 			weight: .light)
 		pickColorBtn.addTarget(
 			self,
@@ -97,10 +125,10 @@ UITextFieldDelegate {
 
 		// ================================  Set Up PICK SHAPE Button
 		pickShapeBtn = UIButton(frame: CGRect(
-			x: myListIndent,
+			x: 20,
 			y: screenHeight * 0.225,
 			width: screenWidth * 0.8,
-			height: myDefaultTextFieldHeight))
+			height: 44))
 		pickShapeBtn.layer.borderWidth = 2.0
 		pickShapeBtn.borderColor = .black
 		pickShapeBtn.setTitleColor(UIColor.black, for: .normal)
@@ -108,7 +136,7 @@ UITextFieldDelegate {
 		pickShapeBtn.setTitleColor(UIColor.white, for: .highlighted)
 		pickShapeBtn.setTitle("Pick Shape", for: .normal)
 		pickShapeBtn.titleLabel?.font =  UIFont.systemFont(
-			ofSize: myDefaultTextFontSize,
+			ofSize: 16,
 			weight: .light)
 		pickShapeBtn.addTarget(
 			self,
@@ -118,13 +146,13 @@ UITextFieldDelegate {
 		
 		// ==================================== Create UITextField
 		pickImprintTextField = UITextField(frame: CGRect(
-			x: (screenWidth/2) - myListIndent,
+			x: (screenWidth/2) - 20,
 			y: screenHeight * 0.325,
 			width: screenWidth * 0.8/2,
-			height: myDefaultTextFieldHeight))
+			height: 44))
 		
 		// Set UITextField placeholder text
-		pickImprintTextField.placeholder = "Enter Imprint"
+		pickImprintTextField.placeholder = "Or Leave Blank"
 		pickImprintTextField.clearsOnBeginEditing = true
 		pickImprintTextField.delegate = self
 		
@@ -150,10 +178,10 @@ UITextFieldDelegate {
 		
 		// ==================================== PICK IMPRINT BUTTON
 		pickImprintBtn = UIButton(frame: CGRect(
-			x: myListIndent,
+			x: 20,
 			y: screenHeight * 0.325,
 			width: screenWidth * 0.8/2,
-			height: myDefaultTextFieldHeight))
+			height: 44))
 		pickImprintBtn.layer.borderWidth = 2.0
 		pickImprintBtn.borderColor = .black
 		pickImprintBtn.setTitleColor(UIColor.black, for: .normal)
@@ -162,26 +190,26 @@ UITextFieldDelegate {
 		pickImprintBtn.setTitle("Any Imprint ✓", for: .normal)
 		pickImprintBtn.setTitleColor(.green, for: .normal)
 		pickImprintBtn.titleLabel?.font =  UIFont.systemFont(
-			ofSize: myDefaultTextFontSize,
+			ofSize: 16,
 			weight: .light)
 		pickImprintBtn.addTarget(
 			self,
 			action: #selector(pickImprintBtnTapped),
 			for: .touchUpInside)
 		
-		// ====================================  PICK SCORE BUTTON
+		// PICK SCORE BUTTON
 		pickScoreBtn = UIButton(frame: CGRect(
-			x: myListIndent,
+			x: 20,
 			y: screenHeight * 0.425,
 			width: screenWidth * 0.8,
-			height: myDefaultTextFieldHeight))
+			height: 44))
 		pickScoreBtn.layer.borderWidth = 2.0
 		pickScoreBtn.setTitleColor(UIColor.black, for: .normal)
 		pickScoreBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 		pickScoreBtn.setTitleColor(UIColor.white, for: .highlighted)
-		pickScoreBtn.setTitle("Pick Score", for: .normal)
+		pickScoreBtn.setTitle("Pick Scores (Max)", for: .normal)
 		pickScoreBtn.titleLabel?.font =  UIFont.systemFont(
-			ofSize: myDefaultTextFontSize,
+			ofSize: 16,
 			weight: .light)
 		pickScoreBtn.addTarget(
 			self,
@@ -189,19 +217,18 @@ UITextFieldDelegate {
 			for: .touchUpInside)
 		
 
-		// ====================================  Set Up Submit Button
+		// SUBMIT BUTTON
 		submitButton = UIButton(frame: CGRect(
-			x: screenWidth * 0.8 * 0.333 - myListIndent,
-			y: screenHeight * 0.8,
+			x: screenWidth * 0.8 * 0.333 - 20,
+			y: screenHeight * 0.725,
 			width: screenWidth * 0.8 * 0.666,
-			height: myDefaultTextFieldHeight))
-		//submitButton.layer.borderWidth = 2.0
+			height: 44))
 		submitButton.setTitleColor(UIColor.black, for: .normal)
 		submitButton.setTitleColor(UIColor.lightGray, for: .disabled)
 		submitButton.setTitleColor(UIColor.white, for: .highlighted)
-		submitButton.setTitle("Submit", for: .normal)
+		submitButton.setTitle("Search Pills", for: .normal)
 		submitButton.titleLabel?.font =  UIFont.systemFont(
-			ofSize: myDefaultTextFontSize,
+			ofSize: 16,
 			weight: .light)
 		
 		submitButton.borderWidth = 1.0
@@ -210,8 +237,6 @@ UITextFieldDelegate {
 			self,
 			action: #selector(submitButtonTapped),
 			for: .touchUpInside)
-		//submitButton.backgroundColor = UIColor.red
-		
 		
 		// NORTH VIEW SET
 		//north.addSubview(pickPictureBtn)
@@ -228,6 +253,13 @@ UITextFieldDelegate {
 		north.addSubview(submitButton)
 		
 		north.addSubview(getSampleLabel())
+
+		let msgLbl = headerMsg(
+			msg: "Images provided by National Library Medicine")
+		north.addSubview(msgLbl)
+
+		let copyright = copyrightLabel()
+		myView.addSubview(copyright)
 		
 		
 	}// end view did load
@@ -239,8 +271,6 @@ UITextFieldDelegate {
 		north.frame = self.northFrame
 
 	}// end viewdidlayoutsubviews
-	
-
 	
 	func setIsChecked(bool: Bool){
 		if bool {
@@ -449,6 +479,8 @@ UITextFieldDelegate {
 		dismiss(animated: false, completion: nil)
 		self.pickPictureBtn.isEnabled = false
 		
+		//  COMPLETELY BROKEN
+		
 		/*
 		let image = info[UIImagePickerController.InfoKey.originalImage]
 		self.imageView = makeDisplayImage(image: image as! UIImage)
@@ -475,7 +507,7 @@ UITextFieldDelegate {
 		//imageView.borderColor  = .black
 		//imageView.borderWidth = 1.0
 		
-		dismiss(animated: true, completion: nil)
+		dismiss(animated: false, completion: nil)
 		*/
 		
 		/*
@@ -494,7 +526,7 @@ UITextFieldDelegate {
 	
 	@objc func imagePickerControllerDidCancel(
 		_ picker: UIImagePickerController) {
-		dismiss(animated: true, completion: nil)
+		dismiss(animated: false, completion: nil)
 	}// end imagepicker cancel
 	
 	@objc func pickImprintBtnTapped(_ sender: UIButton) {
@@ -527,32 +559,29 @@ UITextFieldDelegate {
 			return false
 		}
 	}
+
+
 	
 	func submit() {
-		
-		// make http request string
-		// http://rximage.nlm.nih.gov/api/{apiName}/{apiVersion}/{resourcePath}?{parameters}
-		// http://rximage.nlm.nih.gov/api/rximage/1/rxnav?color=blue&size=17&sizeT=0
-		
-		var url = "http://rximage.nlm.nih.gov/api/" + "rximage/" + "1/" + "rxnav?"
+		var url = baseUrl
 		
 		// check color
 		if (color != nil) && (color.isEmpty == false) {
-			url = url + "&color=" + color
+			url = url + getSearchUrlString(find: colorParam, str: color)
 		} else {
 			color = ""
 		}
 		
 		// check shape
 		if (shape != nil) && (shape.isEmpty == false) {
-			url = url + "&shape=" + shape
+			url = url + getSearchUrlString(find: shapeParam, str: shape)
 		} else {
 			shape = ""
 		}
 		
 		// check imprint
 		if (imprint != nil) && (imprint.isEmpty == false) {
-			url = url + "&imprint=" + imprint
+			url = url + getSearchUrlString(find: imprintParam, str: String(imprint))
 		} else {
 			imprint  = ""
 		}
@@ -560,22 +589,26 @@ UITextFieldDelegate {
 		// check score
 		if (score != nil) && (score > 0 && score <= 4) {
 			// contains score input [1,2,3,4]
-			url = url + "&score=" + String(score)
+			url = url + getSearchUrlString(find: scoreParam, str: String(score))
 		}
 		
 		// check name
 		//guard let name = self.nameTextField.text else { return }
 		if (name != nil) && (name.isEmpty == false) {
 			// contains score input [1,2,3,4]
-			url = url + "&name=" + String(name)
+			url = url + getSearchUrlString(find: nameParam, str: name)
 		} else {
 			name = ""
 		}
 		
 		// check limit
 		if (limit != nil) {
-			url = url + "&rLimit=" + String(limit)
+			url = url + getSearchUrlString(find: colorParam, str: color) // "&rLimit="
 		}
+
+
+
+		//print(getSearchUrlString(find: rxcuiParam, str: "198429"))// rxcuiParam
 		
 		
 		// final url to be sent off
@@ -613,7 +646,7 @@ UITextFieldDelegate {
 			myPickerController.sourceType = .camera
 			self.present(
 				myPickerController,
-				animated: true,
+				animated: false,
 				completion: {
 				print("Accessing Camera...")
 			})
@@ -626,7 +659,7 @@ UITextFieldDelegate {
 			let myPickerController = UIImagePickerController()
 			myPickerController.delegate = self;
 			myPickerController.sourceType = .photoLibrary
-			self.present(myPickerController, animated: true, completion: {
+			self.present(myPickerController, animated: false, completion: {
 				print("Acessing Photo Library...")
 			})
 		}
@@ -637,7 +670,7 @@ UITextFieldDelegate {
 		imagePicker.delegate = self
 		imagePicker.allowsEditing = false
 		imagePicker.sourceType = .photoLibrary
-		present(imagePicker, animated: true, completion: nil)
+		present(imagePicker, animated: false, completion: nil)
 	}
 	
 	func showImageActionSheet() {
@@ -665,7 +698,7 @@ UITextFieldDelegate {
 			style: .cancel,
 			handler: nil))
 		
-		self.present(actionSheet, animated: true, completion: nil)
+		self.present(actionSheet, animated: false, completion: nil)
 	}// end show actionsheet
 	
 	func displayResultsPage(json: JSON) {
@@ -682,7 +715,8 @@ UITextFieldDelegate {
 				CellDataClass(
 					cell: i,
 					name: nlmRxImages[i]["name"].string!,
-					image: #imageLiteral(resourceName: "250x250placeholder"),
+					image: "250x250placeholder",
+					//image: #imageLiteral(resourceName: "250x250placeholder"),
 					imageUrl: nlmRxImages[i]["imageUrl"].string!,
 					color: color,
 					shape: shape,
@@ -693,7 +727,7 @@ UITextFieldDelegate {
 		
 		self.present(
 			resultsTableViewController,
-			animated: true,
+			animated: false,
 			completion: nil)
 	}
 	
@@ -739,10 +773,10 @@ UITextFieldDelegate {
 	func getSampleLabel() -> UITextField {
 		
 		nameTextField = UITextField(frame: CGRect(
-			x: myListIndent,
+			x: 20,
 			y: screenHeight * 0.525,
 			width: screenWidth * 0.8,
-			height: myDefaultTextFieldHeight))
+			height: 44))
 		nameTextField.placeholder = "Enter Pill Name"
 		nameTextField.textAlignment  = .center
 		//nameTextField.font = UIFont.systemFont(ofSize: 15)
@@ -761,6 +795,38 @@ UITextFieldDelegate {
 		return nameTextField
 		// needs input validated
 	}
+
+
+	func getSearchUrlString(find: Search, str: String) -> String {
+		var url = ""
+
+		// tell me what to do in each case
+		switch find {
+			case .nameParam:
+			url = "&name=" + str.lowercased()
+
+			case .shapeParam:
+			url = "&shape=" + str.lowercased()
+
+			case .colorParam:
+			url = "&color=" + str.lowercased()
+
+			case .rxcuiParam:
+			url = "&rxcui=" + str
+
+			case .imprintParam:
+			url = "&imprint=" + str.lowercased()
+
+			case .scoreParam:
+			url = "&score=" + str
+
+			case .limitParam:
+			url = "&limit=" + str
+		}
+
+		return url
+	}
+
 
 }// end view controller class definition
 

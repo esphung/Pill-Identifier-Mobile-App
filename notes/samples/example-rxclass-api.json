@@ -1,0 +1,389 @@
+{
+  "rxclassDrugInfoList": {
+    "rxclassDrugInfo": [
+      {
+        "minConcept": {
+          "name": "lamotrigine 200 MG Oral Tablet [Lamictal]",
+          "rxcui": "108782",
+          "tty": "SBD"
+        },
+        "rela": "has_VAClass",
+        "relaSource": "VA",
+        "rxclassMinConceptItem": {
+          "classId": "N0000029145",
+          "className": "ANTICONVULSANTS",
+          "classType": "VA"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine 200 MG Oral Tablet",
+          "rxcui": "198429",
+          "tty": "SCD"
+        },
+        "rela": "has_VAClass",
+        "relaSource": "VA",
+        "rxclassMinConceptItem": {
+          "classId": "N0000029145",
+          "className": "ANTICONVULSANTS",
+          "classType": "VA"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine 200 MG Oral Tablet [Subvenite]",
+          "rxcui": "2003801",
+          "tty": "SBD"
+        },
+        "rela": "has_VAClass_extended",
+        "relaSource": "VA",
+        "rxclassMinConceptItem": {
+          "classId": "N0000029145",
+          "className": "ANTICONVULSANTS",
+          "classType": "VA"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": null,
+        "relaSource": "MESH",
+        "rxclassMinConceptItem": {
+          "classId": "D000927",
+          "className": "Anticonvulsants",
+          "classType": "MESHPA"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": null,
+        "relaSource": "MESH",
+        "rxclassMinConceptItem": {
+          "classId": "D002121",
+          "className": "Calcium Channel Blockers",
+          "classType": "MESHPA"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": null,
+        "relaSource": "MESH",
+        "rxclassMinConceptItem": {
+          "classId": "D018691",
+          "className": "Excitatory Amino Acid Antagonists",
+          "classType": "MESHPA"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": null,
+        "relaSource": "MESH",
+        "rxclassMinConceptItem": {
+          "classId": "D061567",
+          "className": "Voltage-Gated Sodium Channel Blockers",
+          "classType": "MESHPA"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": null,
+        "relaSource": "ATC",
+        "rxclassMinConceptItem": {
+          "classId": "N03AX",
+          "className": "Other antiepileptics",
+          "classType": "ATC1-4"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "ci_with",
+        "relaSource": "MEDRT",
+        "rxclassMinConceptItem": {
+          "classId": "D004342",
+          "className": "Drug Hypersensitivity",
+          "classType": "DISEASE"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "may_treat",
+        "relaSource": "MEDRT",
+        "rxclassMinConceptItem": {
+          "classId": "D001714",
+          "className": "Bipolar Disorder",
+          "classType": "DISEASE"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "may_treat",
+        "relaSource": "MEDRT",
+        "rxclassMinConceptItem": {
+          "classId": "D004828",
+          "className": "Epilepsies, Partial",
+          "classType": "DISEASE"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "may_treat",
+        "relaSource": "MEDRT",
+        "rxclassMinConceptItem": {
+          "classId": "D012640",
+          "className": "Seizures",
+          "classType": "DISEASE"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "may_treat",
+        "relaSource": "MEDRT",
+        "rxclassMinConceptItem": {
+          "classId": "D065768",
+          "className": "Lennox Gastaut Syndrome",
+          "classType": "DISEASE"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "has_epc",
+        "relaSource": "FDASPL",
+        "rxclassMinConceptItem": {
+          "classId": "N0000175751",
+          "className": "Mood Stabilizer",
+          "classType": "EPC"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "has_epc",
+        "relaSource": "FDASPL",
+        "rxclassMinConceptItem": {
+          "classId": "N0000175753",
+          "className": "Anti-epileptic Agent",
+          "classType": "EPC"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "has_EPC",
+        "relaSource": "DAILYMED",
+        "rxclassMinConceptItem": {
+          "classId": "N0000175751",
+          "className": "Mood Stabilizer",
+          "classType": "EPC"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "has_EPC",
+        "relaSource": "DAILYMED",
+        "rxclassMinConceptItem": {
+          "classId": "N0000175753",
+          "className": "Anti-epileptic Agent",
+          "classType": "EPC"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "has_ingredient",
+        "relaSource": "MEDRT",
+        "rxclassMinConceptItem": {
+          "classId": "D014227",
+          "className": "Triazines",
+          "classType": "CHEM"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "has_moa",
+        "relaSource": "MEDRT",
+        "rxclassMinConceptItem": {
+          "classId": "N0000000191",
+          "className": "Dihydrofolate Reductase Inhibitors",
+          "classType": "MOA"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "has_moa",
+        "relaSource": "MEDRT",
+        "rxclassMinConceptItem": {
+          "classId": "N0000181004",
+          "className": "Sodium Channel Antagonists",
+          "classType": "MOA"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "has_pe",
+        "relaSource": "MEDRT",
+        "rxclassMinConceptItem": {
+          "classId": "N0000008486",
+          "className": "Decreased Central Nervous System Disorganized Electrical Activity",
+          "classType": "PE"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "has_pe",
+        "relaSource": "MEDRT",
+        "rxclassMinConceptItem": {
+          "classId": "N0000008648",
+          "className": "Decreased Glutamate Activity",
+          "classType": "PE"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "has_pe",
+        "relaSource": "FDASPL",
+        "rxclassMinConceptItem": {
+          "classId": "N0000008486",
+          "className": "Decreased Central Nervous System Disorganized Electrical Activity",
+          "classType": "PE"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "has_PE",
+        "relaSource": "DAILYMED",
+        "rxclassMinConceptItem": {
+          "classId": "N0000008486",
+          "className": "Decreased Central Nervous System Disorganized Electrical Activity",
+          "classType": "PE"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "has_tc",
+        "relaSource": "FMTSME",
+        "rxclassMinConceptItem": {
+          "classId": "N0000178313",
+          "className": "Anti-epileptic Agent",
+          "classType": "TC"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "has_tc",
+        "relaSource": "FMTSME",
+        "rxclassMinConceptItem": {
+          "classId": "N0000178314",
+          "className": "Antidepressive Agent",
+          "classType": "TC"
+        }
+      },
+      {
+        "minConcept": {
+          "name": "lamotrigine",
+          "rxcui": "28439",
+          "tty": "IN"
+        },
+        "rela": "has_tc",
+        "relaSource": "FMTSME",
+        "rxclassMinConceptItem": {
+          "classId": "N0000178315",
+          "className": "Antimanic Agent",
+          "classType": "TC"
+        }
+      }
+    ]
+  },
+  "userInput": {
+    "relaSource": "ALL",
+    "relas": "ALL",
+    "rxcui": "198429"
+  }
+}

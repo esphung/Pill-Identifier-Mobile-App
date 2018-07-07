@@ -3,31 +3,13 @@
 // Yb  "88 88  .o Yb   dP 88""Yb  dP__Yb  88  .o o.`Y8b
 //  YboodP 88ood8  YbodP  88oodP dP""""Yb 88ood8 8bodP'
 
-public var debug = false
+public var debug = false // does nOTHING
 
-//import Foundation
-import UIKit.UIViewController
+import UIKit.UIViewController// for  CGRECTs module
+let footerRect = CGRect(x:0, y: 0, width: 200,height: 21)
+let headerRect = CGRect(x:0, y: 0, width: 300,height: 21)
 
-// Screen width.
-public var screenWidth: CGFloat {
-	return UIScreen.main.bounds.width
-}
-// Screen height.
-public var screenHeight: CGFloat {
-	return UIScreen.main.bounds.height
-}
-
-
-public let myDefaultTextFieldHeight = CGFloat(44.0)
-
-public let myDefaultTextFontSize = CGFloat(16.0)
-
-public let myListIndent = CGFloat(20.0)
-
-public let myListPadTop = CGFloat(20.0)
-
-public var myBorders = CGFloat(0.0)
-
+// picker options for searching pill paramaters
 public let shapes = [
 	"BULLET",
 	"CAPSULE",
@@ -65,4 +47,4 @@ public let colors =  [
 	"Yellow"
 ]
 
-public let scores  = [1,2,3,4]
+public let scores  = [0,1,2,3,4]

@@ -25,8 +25,6 @@ class CardDisplayViewController: NorthSouthViewController {
 	var myPillView: UIView!
 	var showWikipediaBtn = UIButton()
 	
-	// regexp
-	
 	@objc var name: String!
 	var dosage: String!
 
@@ -47,7 +45,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		if cellData != nil {
 			
 			// LOAD DRUG NAME
-			name = getName(str: cellData.name!)// pull through input
+			name = getName(str: cellData.getName())// pull through input
 			
 			name = getStringRemovedFromSpecialChars(text: name)// sanitize
 			name = name.replace(target: "HR", withString: "")
@@ -64,11 +62,11 @@ class CardDisplayViewController: NorthSouthViewController {
 			
 			imageView = makeDisplayImage(image: image!)
 			imageView.kf.setImage(with: url, placeholder: image)
-			imageView.frame.origin = CGPoint(x: myListIndent, y: screenHeight/12)
+			imageView.frame.origin = CGPoint(x: 20, y: screenHeight/12)
 
 			
 			//  LOAD DOSAGE
-			dosage = getDosage(str: cellData.name!)
+			dosage = getDosage(str: cellData.getName())
 			//let dosageLabel = getDosageLabel(message: dosage)
 			
 			// LOAD COLOR
@@ -104,17 +102,17 @@ class CardDisplayViewController: NorthSouthViewController {
 			
 			// WIKIPEDIA PAGE BUTTON
 			showWikipediaBtn =  UIButton(frame: CGRect(
-				x: screenWidth * 0.8 * 0.333 - myListIndent,
+				x: screenWidth * 0.8 * 0.333 - 20,
 				y: screenHeight * 0.8,
 				width: screenWidth * 0.8 * 0.666,
-				height: myDefaultTextFieldHeight))
-			//submitButton.layer.borderWidth = 2.0
+				height: 44))
+			//submitButton.layer.borderWidth = 0.0
 			showWikipediaBtn.setTitleColor(UIColor.black, for: .normal)
 			showWikipediaBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 			showWikipediaBtn.setTitleColor(UIColor.white, for: .highlighted)
 			showWikipediaBtn.setTitle("Submit", for: .normal)
 			showWikipediaBtn.titleLabel?.font =  UIFont.systemFont(
-				ofSize: myDefaultTextFontSize,
+				ofSize: 16,
 				weight: .light)
 			
 			showWikipediaBtn.borderWidth = 1.0
@@ -141,15 +139,15 @@ class CardDisplayViewController: NorthSouthViewController {
 	func getDosageLabel(message: String) -> UILabel {
 		let dosageLbl = UILabel(
 		frame: CGRect(
-		x: myListIndent,
+		x: 20,
 		y: screenHeight * (0.1),
 		width: screenWidth * 0.8,
-		height: myDefaultTextFieldHeight))
+		height: 44))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		dosageLbl.text = "Dose:\t" + message
 		dosageLbl.numberOfLines = 1
-		dosageLbl.layer.borderWidth = myBorders
-		dosageLbl.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
+		dosageLbl.layer.borderWidth = 0.0
+		dosageLbl.font = UIFont.systemFont(ofSize: 16)
 		return dosageLbl
 	}
 	
@@ -158,15 +156,15 @@ class CardDisplayViewController: NorthSouthViewController {
 	func makeNameLabel(message: String) -> UILabel {
 		let label = UILabel(
 			frame: CGRect(
-				x: myListIndent,
+				x: 20,
 				y: screenHeight * 0,
 				width: screenWidth * 0.8,
-				height: myDefaultTextFieldHeight))
+				height: 44))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = message
 		label.numberOfLines = 1
-		label.layer.borderWidth = myBorders
-		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
+		label.layer.borderWidth = 0.0
+		label.font = UIFont.systemFont(ofSize: 16)
 		
 		return label
 	}
@@ -175,15 +173,15 @@ class CardDisplayViewController: NorthSouthViewController {
 	func makeColorLabel(message: String) -> UILabel {
 		let label = UILabel(
 			frame: CGRect(
-				x: myListIndent,
+				x: 20,
 				y: screenHeight * (0.025),
 				width: screenWidth * 0.8,
-				height: myDefaultTextFieldHeight))
+				height: 44))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = "Color:\t"  + message.capitalized
 		label.numberOfLines = 1
-		label.layer.borderWidth = myBorders
-		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
+		label.layer.borderWidth = 0.0
+		label.font = UIFont.systemFont(ofSize: 16)
 		
 		return label
 	}
@@ -192,15 +190,15 @@ class CardDisplayViewController: NorthSouthViewController {
 	func makeShapeLabel(message: String) -> UILabel {
 		let label = UILabel(
 			frame: CGRect(
-				x: myListIndent,
+				x: 20,
 				y: screenHeight * 0.05,
 				width: screenWidth * 0.8,
-				height: myDefaultTextFieldHeight))
+				height: 44))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = "Shape:\t" + message.capitalized
 		label.numberOfLines = 1
-		label.layer.borderWidth = myBorders
-		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
+		label.layer.borderWidth = 0.0
+		label.font = UIFont.systemFont(ofSize: 16)
 		
 		return label
 	}
@@ -209,10 +207,10 @@ class CardDisplayViewController: NorthSouthViewController {
 	func makeImprintLabel(message: String) -> UILabel {
 		let label = UILabel(
 			frame: CGRect(
-				x: myListIndent,
+				x: 20,
 				y: screenHeight * 0.15,
 				width: screenWidth * 0.8,
-				height: myDefaultTextFieldHeight))
+				height: 44))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		if message.isEmpty {
 			label.text = "Imprint:\t"
@@ -222,8 +220,8 @@ class CardDisplayViewController: NorthSouthViewController {
 			label.text = "Imprint:\t" + message
 		}
 		label.numberOfLines = 1
-		label.layer.borderWidth = myBorders
-		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
+		label.layer.borderWidth = 0.0
+		label.font = UIFont.systemFont(ofSize: 16)
 		
 		return label
 	}
@@ -232,15 +230,15 @@ class CardDisplayViewController: NorthSouthViewController {
 	func makeNdcLabel(message: String) -> UILabel {
 		let label = UILabel(
 			frame: CGRect(
-				x: myListIndent,
+				x: 20,
 				y: screenHeight * 0.125,
 				width: screenWidth * 0.8,
-				height: myDefaultTextFieldHeight))
+				height: 44))
 		//label.font = UIFont.systemFont(ofSize: 16)
 		label.text = "NDC:\t" + message
 		label.numberOfLines = 1
-		label.layer.borderWidth = myBorders
-		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
+		label.layer.borderWidth = 0.0
+		label.font = UIFont.systemFont(ofSize: 16)
 		
 		return label
 	}
@@ -249,17 +247,17 @@ class CardDisplayViewController: NorthSouthViewController {
 	func makeRxcuiLabel(message: String) -> UILabel {
 		let label = UILabel(
 			frame: CGRect(
-				x: myListIndent,
+				x: 20,
 				y: screenHeight * 0.175,
 				//y: screenHeight * 0.075,
 				width: screenWidth * 0.8,
-				height: myDefaultTextFieldHeight))
-		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
+				height: 44))
+		label.font = UIFont.systemFont(ofSize: 16)
 		//label.adjustsFontSizeToFitWidth = true
 		
 		label.text = "Rxcuii:\t" + message
 		label.numberOfLines = 1
-		label.layer.borderWidth = myBorders
+		label.layer.borderWidth = 0.0
 		
 		return label
 	}
@@ -267,15 +265,15 @@ class CardDisplayViewController: NorthSouthViewController {
 	// labeler label
 	func makeLabelerLabel(message: String) -> UILabel {
 		let label = UILabel(frame: CGRect(
-			x: myListIndent,
+			x: 20,
 			y: screenHeight * 0.075,
 			
 			width: screenWidth * 0.8,
-			height: myDefaultTextFieldHeight))
+			height: 44))
 		label.text = "Label:\t" + message
 		label.numberOfLines = 1
-		label.layer.borderWidth = myBorders
-		label.font = UIFont.systemFont(ofSize: myDefaultTextFontSize)
+		label.layer.borderWidth = 0.0
+		label.font = UIFont.systemFont(ofSize: 16)
 		
 		return label
 	}

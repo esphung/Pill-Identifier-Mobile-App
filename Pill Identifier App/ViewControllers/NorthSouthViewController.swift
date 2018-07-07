@@ -4,31 +4,40 @@
 //
 //  Created by Eric Phung on 6/18/18.
 //  Copyright © 2018 Phung Technology. All rights reserved.
-//
 
 import UIKit.UIViewController
 
+// Screen width.
+var screenWidth: CGFloat {
+	return UIScreen.main.bounds.width
+}
+// Screen height.
+var screenHeight: CGFloat {
+	return UIScreen.main.bounds.height
+}
+
 class NorthSouthViewController: UIViewController {
+
 	// set up view layout
 	var myView : UIView!
 	var north:  UIView!
 
-	
 	var imageName: 	String!
 	var image:		UIImage!
 	var imageView: 	UIImageView!
+
+	var msgLbl:		String!
 	
 	var northFrame: CGRect {
 		return CGRect(
 			x: (myView.frame.width * 0.05),
 			y: (myView.frame.height * 0.1),
 			width: (myView.frame.width * 0.95),
-			height: ((myView.frame.height) - (myView.frame.height) * 0.05 ) )
+			height: ((myView.frame.height) - (myView.frame.height) * 0.05))
 	}
 	
-
-
 	override func viewDidLoad() {
+		
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
 
@@ -39,29 +48,18 @@ class NorthSouthViewController: UIViewController {
 		let north = UIView()
 		self.view.addSubview(north)
 		self.north = north
-
-		/*
-		let imageView = UIImageView(frame: CGRect(
-			x: 0,
-			y: 0,
-			width: north.frame.width * 0.9,
-			height: north.frame.height * 0.9))
-		*/
 		
 		imageName = "250x250placeholder.jpg"
 		image = UIImage(named: imageName)
 
 		let imageView = UIImageView()
-		//imageView.layer.borderWidth = myBorders
-		//imageView.contentMode = UIView.ContentMode.scaleAspectFill
+
 
 		north.addSubview(imageView)
 
 		setUpContraints()
-		//showDebug()
 
 	}
-	
 	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
@@ -78,8 +76,8 @@ class NorthSouthViewController: UIViewController {
 		navigationItem.title = title
 		
 		// Create left and right button for navigation item
-		let leftButton =  UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backBtnTapped))
-		let rightButton = UIBarButtonItem(title:  "💊", style: .plain, target: self, action: #selector(rightButtonTapped))
+		let leftButton =  UIBarButtonItem(title: "🔙Back", style: .plain, target: self, action: #selector(backBtnTapped))
+		let rightButton = UIBarButtonItem(title:  "Search💊", style: .plain, target: self, action: #selector(rightButtonTapped))
 		
 		// Create two buttons for the navigation item
 		navigationItem.leftBarButtonItem = leftButton
@@ -90,11 +88,6 @@ class NorthSouthViewController: UIViewController {
 		
 		// Make the navigation bar a subview of the current view controller
 		self.view.addSubview(navigationBar)
-	}
-	
-	@objc func debugButtonTapped(sender: UIButton) {
-		toggleDebug()
-		print("Debug Button Tapped")
 	}
 	
 	@objc func rightButtonTapped() {
@@ -108,38 +101,29 @@ class NorthSouthViewController: UIViewController {
 		
 		self.present(
 			searchViewController,
-			animated: true,
+			animated: false,
 			completion: {
 		})
 	}
 	
 	@objc func backBtnTapped() {
 		performSegueToReturnBack()
-		print("Back Button Tapped")
 	}
 	
 	func setUpContraints(){
-		
-		myView.translatesAutoresizingMaskIntoConstraints = false//<- never forget this line
-		
-		// myView Contraints
-		myView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-		myView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-		myView.widthAnchor.constraint(equalToConstant: screenWidth * 0.95).isActive = true
-		myView.heightAnchor.constraint(equalToConstant: screenHeight *  0.9).isActive = true
 
-	}
-
-	func toggleDebug() {
-		if debug {
-			debug =  false
-			hideDebug()
-		}
-		else {
-			debug = true
-			showDebug()
-			//sender.setTitle("Debug On", for: .normal)
-		}
+		// never forget this line
+		myView.translatesAutoresizingMaskIntoConstraints = false
+		
+		// setting contraints
+		myView.centerXAnchor.constraint(
+			equalTo: view.centerXAnchor).isActive = true
+		myView.centerYAnchor.constraint(
+			equalTo: view.centerYAnchor).isActive = true
+		myView.widthAnchor.constraint(
+			equalToConstant: screenWidth * 0.95).isActive = true
+		myView.heightAnchor.constraint(
+			equalToConstant: screenHeight *  0.9).isActive = true
 	}
 	
 	func showFrames() {
@@ -154,16 +138,9 @@ class NorthSouthViewController: UIViewController {
 		north.layer.borderWidth = 2.0
 		//north.backgroundColor = .green
 		
-		/*
-		south.backgroundColor = UIColor(white: 1, alpha: 0.5)
-		south.layer.borderColor = UIColor.black.cgColor
-		south.layer.borderWidth = 2.0
-		south.backgroundColor = .yellow
-		*/
-		
-		myBorders = 2.0
-		
+
 	}
+	
 	func hideFrames() {
 		// show debug view canvases
 		//myView.backgroundColor = UIColor(white: 0.25, alpha: 0.5)
@@ -176,28 +153,13 @@ class NorthSouthViewController: UIViewController {
 		north.layer.borderWidth = 0.0
 		//north.backgroundColor = .green
 		
-		myBorders = 0.0
-		
+	}
 
-		
-	}
-	
-	func setBorders(float: CGFloat){
-		myBorders = float
-	}
-	
-	func hideDebug(){
-		hideFrames()
-	}
-	
-	@objc func showDebug() {
-			showFrames()
-	}
-	
+
 	// image view photo display
 	func makeDisplayImage(image:  UIImage) -> UIImageView {
 		imageView = UIImageView(frame: CGRect(
-			x: myListIndent,
+			x: 20,
 			y: 0,
 			width: screenWidth * 0.8,
 			height: screenHeight/2))
@@ -216,16 +178,37 @@ class NorthSouthViewController: UIViewController {
 		return true
 	}
 
-}
+	func copyrightLabel() -> UILabel {
+		let label = UILabel(frame: footerRect)//rects ->globals file
+		label.center = CGPoint(
+			x: screenWidth * 0.5, y: screenHeight * 0.9)
+		label.textAlignment = .center
+		label.text = "Eric Phung 2018"
+		return label
+	}// end copyright
+
+	func headerMsg(msg: String)  -> UILabel {
+		// show user hints and info
+		let label = UILabel(frame: headerRect)
+		label.center = CGPoint(
+			x: (screenWidth * 0.5), y: (screenHeight * 0.05))
+		label.textAlignment = .center
+		label.text = msg
+		label.numberOfLines = 2
+		label.textAlignment = .center
+		label.adjustsFontSizeToFitWidth = true
+		return label
+	}
+
+}// end class def
 
 extension UIViewController {
 	func performSegueToReturnBack()  {
 		if let nav = self.navigationController {
 			nav.popViewController(animated: true)
 		} else {
-			self.dismiss(animated: true, completion: nil)
+			self.dismiss(animated: false, completion: nil)
 		}
 	}
-	
 
 }

@@ -1,10 +1,7 @@
-//
-//  AppDelegate.swift>
-//  Pill Identifier App
-//
-//  Created by John Doe on 4/8/17.
-//  Copyright © 2017 Phung Technology. All rights reserved.
-//
+//   db    88""Yb 88""Yb 8888b.  888888 88     888888  dP""b8    db    888888 888888
+//  dPYb   88__dP 88__dP  8I  Yb 88__   88     88__   dP   `"   dPYb     88   88__
+// dP__Yb  88"""  88"""   8I  dY 88""   88  .o 88""   Yb  "88  dP__Yb    88   88""
+//dP""""Yb 88     88     8888Y"  888888 88ood8 888888  YboodP dP""""Yb   88   888888
 
 import UIKit
 
@@ -14,26 +11,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 	
 	func applicationDidFinishLaunching(_ application: UIApplication) {
-		// Create a new window with the size of the current window and set it as our main window
+		// Create a new window with the size
+		// of the current window and set it as our main window
 		self.window = UIWindow(frame: UIScreen.main.bounds)
 		
-		// 2. Instantiate a storyboard that we can use to create our new initial view controller
-		let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+		// 2. Instantiate a storyboard that we can use
+		// to create our new initial view controller
+		let mainStoryboard: UIStoryboard = UIStoryboard(
+			name: "Main", bundle: nil)
 		
 		
-		// 3. Instantiate our new initial view controller based on it's Storyboard ID
-		let testViewController: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "testViewController")
+		// 3. Instantiate our new initial view controller 
+		// based on it's Storyboard ID
+		let testViewController: UIViewController 
+		= mainStoryboard.instantiateViewController(
+			withIdentifier: "testViewController")
 		
-		// 4. Set our new window's root view controller as our the new controller we just initiated
+		// 4. Set our new window's root view controller 
+		// as our the new controller we just initiated
 		self.window?.rootViewController = testViewController
 
 		/*
-		// 3. Instantiate our new initial view controller based on it's Storyboard ID
-		let uploadFormViewController: UploadFormViewController = mainStoryboard.instantiateViewController(withIdentifier: "uploadFormViewController") as! UploadFormViewController
+		// 3. Instantiate our new initial view controller based on 
+		// it's Storyboard ID
+		let uploadFormViewController: UploadFormViewController 
+		= mainStoryboard.instantiateViewController(
+		withIdentifier: "uploadFormViewController"
+		) as! UploadFormViewController
 		
-		// 4. Set our new window's root view controller as our the new controller we just initiated
+		// 4. Set our new window's root view controller as 
+		// our the new controller we just initiated
 		self.window?.rootViewController = uploadFormViewController
-		r*/
+		*/
 		
 		// 5. Make our new window visible
 		self.window?.makeKeyAndVisible()

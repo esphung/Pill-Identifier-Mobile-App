@@ -20,8 +20,14 @@ class ResultsTableViewController: UITableViewController {
 		if arrayOfCellData.isEmpty {
 			// default results list items and test harness
 			arrayOfCellData = [
-				CellDataClass(cell: 1, name:  "hello", image: #imageLiteral(resourceName: "against"), imageUrl: "", color: "", shape: "", imprint: ""),
-				CellDataClass(cell: 2, name:  "world", image: #imageLiteral(resourceName: "test"),  imageUrl: "", color: "", shape: "", imprint: "")
+				CellDataClass(cell: 1, name:  "hello",
+							  image: "250x250placeholder.png",
+							  //image: #imageLiteral(resourceName: "against"),
+							  imageUrl: "", color: "", shape: "", imprint: ""),
+				CellDataClass(cell: 2, name:  "world",
+							  image: "test.jpg",
+							  //image: #imageLiteral(resourceName: "test"),
+							  imageUrl: "", color: "", shape: "", imprint: "")
 			]
 		}
     }// end viewdidload
@@ -45,7 +51,7 @@ class ResultsTableViewController: UITableViewController {
 		let url = URL(string: arrayOfCellData[indexPath.row].imageUrl)
 		cell.mainImageView.kf.setImage(with: url, placeholder: image)
 		
-		cell.mainLabel.text = arrayOfCellData[indexPath.row].name
+		cell.mainLabel.text = arrayOfCellData[indexPath.row].getName()
 		
 		return cell
 
@@ -89,10 +95,10 @@ class ResultsTableViewController: UITableViewController {
 			imprint = arrayOfCellData[indexPath.row].imprint!
 		}
 		
-		print(arrayOfCellData[indexPath.row].name!)
+		print(arrayOfCellData[indexPath.row].getName())
 		let data = CellDataClass(
-			cell:  		arrayOfCellData[indexPath.row].cell!,
-			name: 		arrayOfCellData[indexPath.row].name!,
+			cell:  		arrayOfCellData[indexPath.row].getCell(),
+			name: 		arrayOfCellData[indexPath.row].getName(),
 			image: 		arrayOfCellData[indexPath.row].image!,
 			imageUrl: 	arrayOfCellData[indexPath.row].imageUrl!,
 			color: 		arrayOfCellData[indexPath.row].color!,

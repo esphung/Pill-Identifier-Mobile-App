@@ -1,32 +1,41 @@
-//import  Foundation
-import  UIKit
+//  dP""b8 888888 88     88     8888b.     db    888888    db
+// dP   `" 88__   88     88      8I  Yb   dPYb     88     dPYb
+// Yb      88""   88  .o 88  .o  8I  dY  dP__Yb    88    dP__Yb
+//  YboodP 888888 88ood8 88ood8 8888Y"  dP""""Yb   88   dP""""Yb
 
+// contains class def and test harness
 class CellDataClass {
-	// class for table results view
+	// custom table cell class
+	init() {
+		
+	}
 	
-	var cell:  	Int!
-	var name: 	String!
-	var image: 	UIImage!
+	// vars
+	private var cell:  	Int!
+	private var name: 	String!
+	var image:  String! //UIImage!
 	var imageUrl: String!
 	var color:	String!
 	var shape:	String!
 	var imprint: String!	
 
-	init(
+	// overload constructor
+	init
+	(
 		cell: Int, 
 		name:  String,
-		image: UIImage,
+		image: String!, //UIImage,
 		imageUrl: String,
 		color: String,
 		shape: String,
 		imprint: String
-		)
+	)
 	{
 		if cell > 0 {
 			self.cell = cell
 		} else {
 			self.cell = 0
-		}
+	}
 		
 		self.name = name
 		self.image =  image
@@ -34,43 +43,59 @@ class CellDataClass {
 		self.color = color
 		self.shape = shape
 		self.imprint = imprint
+		
 	}
 
-	
-	//methods
+	// class methods
 	func setCell(num: Int) {
 		self.cell = num
-	}// set
+	}// set cell index
 	
 	func getCell() -> Int {
 		return self.cell
-	}// get
+	}// get cell index
 
 	func setName(str: String) {
 		self.name = str
-	}// set
+	}// set name
 	
 	func getName() -> String {
 		return self.name
-	}// get
+	}// get name
+
+}// end class def
 
 
-}
+// TEST HARNESS
+func getIsTestHarnessSuccess() -> Bool {
 
-/*
-let eric = CellDataClass(cell: 2,
-	name: "eric",
-	image: "example.jpg",
-	imageUrl: "https://google.com/",
-	color: "Purple",
-	shape: "Penumbra Circle",
-	imprint: "ABC"
-)
+	// NULL CELL
+	let test = CellDataClass()
 
-eric.setName(str: "Chomsky Gnome")
+	// OVERLOADED CELL
+	let eric = CellDataClass(
+		cell: 2,
+		name: "eric",
+		image: "example.jpg .. why though1234",
+		imageUrl: "https://google.com/(*&*%^$$%",
+		color: "Purple",
+		shape: "Penumbra Umbrella",
+		imprint: "ABC")// OVERLOADED
 
-print(eric.getName())
-print(eric.getCell())
+	// DEBUG PRINT OUT
+	print(test)
+	print(eric)
 
-print(eric)
-*/
+	// assert this new object
+	if eric.getName() == "eric" {
+		return true
+	} else {
+		return false
+	}
+
+}// end test harness def
+
+
+//_ = getIsTestHarnessSuccess()
+
+

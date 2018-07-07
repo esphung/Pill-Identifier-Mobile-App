@@ -1,12 +1,10 @@
-//
-//  TestViewController.swift
-//  Pill Identifier App
-//
-//  Created by Eric Phung on 6/19/18.
-//  Copyright © 2018 Phung Technology. All rights reserved.
-//
+// 888888 888888 .dP"Y8 888888 Yb    dP 88 888888 Yb        dP
+//   88   88__   `Ybo."   88    Yb  dP  88 88__    Yb  db  dP
+//   88   88""   o.`Y8b   88     YbdP   88 88""     YbdPYbdP
+//   88   888888 8bodP'   88      YP    88 888888    YP  YP
 
 import UIKit.UIViewController
+
 
 class TestViewController: NorthSouthViewController {
 
@@ -17,20 +15,19 @@ class TestViewController: NorthSouthViewController {
 		backgroundImage.image = UIImage(named: "background.jpg")
 		self.view.insertSubview(backgroundImage, at: 0)
 
-		var firstBtn = UIButton()
-		var debugBtn: 		UIButton!
+		var searchPageBtn = UIButton()
 		var resultsBtn = 	UIButton()
 		var displayBtn = UIButton()
 		var showWikipediaBtn = UIButton()
 
-				// set up firstBtn
+				// set up searchPageBtn
 		showWikipediaBtn =  UIButton(frame: CGRect(
-			x: myListIndent,
+			x:20,
 			y: screenHeight * 0.525,
 			width: screenWidth * 0.8,
-			height: myDefaultTextFieldHeight))
+			height: 44))
 		showWikipediaBtn.layer.borderWidth = 2.0;
-		showWikipediaBtn.backgroundColor = UIColor.red
+		showWikipediaBtn.backgroundColor = UIColor.gray
 		showWikipediaBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
 		
 		showWikipediaBtn.titleLabel?.font =  UIFont.systemFont(
@@ -43,31 +40,31 @@ class TestViewController: NorthSouthViewController {
 		showWikipediaBtn.setTitle("Show Wikipedia", for: .normal)
 
 
-		// set up firstBtn
-		firstBtn =  UIButton(frame: CGRect(
-			x: myListIndent,
+		// set up searchPageBtn
+		searchPageBtn =  UIButton(frame: CGRect(
+			x: 20,
 			y: screenHeight * 0.225,
 			width: screenWidth * 0.8,
-			height: myDefaultTextFieldHeight))
-		firstBtn.layer.borderWidth = 2.0;
-		firstBtn.backgroundColor = UIColor.red
-		//firstBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+			height: 44))
+		searchPageBtn.layer.borderWidth = 2.0;
+		searchPageBtn.backgroundColor = UIColor.red
+		//searchPageBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
 		
-		firstBtn.titleLabel?.font =  UIFont.systemFont(
+		searchPageBtn.titleLabel?.font =  UIFont.systemFont(
 			ofSize: 32, weight: .light)
-		firstBtn.addTarget(
+		searchPageBtn.addTarget(
 			self,
-			action: #selector(firstBtnTapped),
+			action: #selector(searchPageBtnTapped),
 			for: .touchUpInside)
 		
-		firstBtn.setTitle("Find Information 💊", for: .normal)
+		searchPageBtn.setTitle("Find Information 💊", for: .normal)
 
 		// set up displayBtn
 		displayBtn =  UIButton(frame: CGRect(
-			x: myListIndent,
+			x: 20,
 			y: screenHeight * 0.125,
 			width: screenWidth * 0.8,
-			height: myDefaultTextFieldHeight))
+			height: 44))
 		displayBtn.layer.borderWidth = 2.0;
 		displayBtn.backgroundColor = UIColor.red
 		displayBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
@@ -83,10 +80,10 @@ class TestViewController: NorthSouthViewController {
 		
 		// set up resultsBtn
 		resultsBtn =  UIButton(frame: CGRect(
-			x: myListIndent,
+			x: 20,
 			y: screenHeight * 0.325,
 			width: screenWidth * 0.8,
-			height: myDefaultTextFieldHeight))
+			height: 44))
 		resultsBtn.layer.borderWidth = 2.0;
 		resultsBtn.backgroundColor = UIColor.red
 		resultsBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
@@ -99,36 +96,16 @@ class TestViewController: NorthSouthViewController {
 			action: #selector(resultsBtnTapped),
 			for: .touchUpInside)
 		
-		// set up debugBtn
-		debugBtn =  UIButton(frame: CGRect(
-			x: myListIndent,
-			y: screenHeight * 0.425,
-			width: screenWidth * 0.8,
-			height: myDefaultTextFieldHeight))
-		debugBtn.layer.borderWidth = 2.0;
-		debugBtn.backgroundColor = UIColor.red
-		debugBtn.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
-		
-		if debug == true {
-			debugBtn.setTitle("Debug On", for: .normal)
-		} else {
-			debugBtn.setTitle("Debug Off", for: .normal)
-		}
-		debugBtn.titleLabel?.font =  UIFont.systemFont(
-			ofSize: 32, weight: .light)
-		debugBtn.addTarget(
-			self,
-			action: #selector(debugButtonTapped),
-			for: .touchUpInside)
+
+		let copyright = copyrightLabel()
+		myView.addSubview(copyright)
 		
 
-		north.addSubview(firstBtn)
+		north.addSubview(searchPageBtn)
 		//north.addSubview(displayBtn)
 		//north.addSubview(resultsBtn)
-		//north.addSubview(debugBtn)
+
 		//north.addSubview(showWikipediaBtn)
-		
-		//south.removeFromSuperview(
 		
 
 		
@@ -177,7 +154,7 @@ class TestViewController: NorthSouthViewController {
 		displayCardDisplayPage()
 	}
 
-	@objc func firstBtnTapped() {
+	@objc func searchPageBtnTapped() {
 		displaySearchFormPage()
 	}
 

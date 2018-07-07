@@ -1,0 +1,30 @@
+{
+  "data": [
+    {
+      "ndc": "65293-416-25"
+    },
+    {
+      "ndc": "65293-411-25"
+    },
+    {
+      "ndc": "0186-0260-02"
+    },
+    {
+      "ndc": "57315-012-01"
+    },
+    {
+      "ndc": "55567-109-25"
+    }
+  ],
+  "metadata": {
+    "current_page": "2",
+    "current_url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/ndcs.json?pagesize=5&page=2",
+    "elements_per_page": "5",
+    "next_page": "3",
+    "next_page_url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/ndcs.json?pagesize=5&page=3",
+    "previous_page": "1",
+    "previous_page_url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/ndcs.json?pagesize=5&page=1",
+    "total_elements": "165098",
+    "total_pages": "33020"
+  }
+}
