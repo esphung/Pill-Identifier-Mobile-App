@@ -107,6 +107,18 @@ class NorthSouthViewController: UIViewController {
 			completion: {
 		})
 	}
+
+	func displayHomePage() {
+		let testViewController: UIViewController
+			= (storyboard?.instantiateViewController(
+				withIdentifier: "testViewController"))!
+		
+		self.present(
+			testViewController,
+			animated: false,
+			completion: {
+		})
+	}
 	
 	@objc func backBtnTapped() {
 		performSegueToReturnBack()
@@ -164,7 +176,7 @@ class NorthSouthViewController: UIViewController {
 			x: 20,
 			y: 0,
 			width: screenWidth * 0.8,
-			height: screenHeight/2))
+			height: (screenHeight/2) - 6))
 		imageView.image = image
 		imageView.contentMode = UIView.ContentMode.scaleAspectFit
 		

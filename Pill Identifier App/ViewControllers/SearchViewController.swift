@@ -64,10 +64,16 @@ UITextFieldDelegate {
 	// check vars
 	var isChecked = 			true
 	var isScored = 				false
+	
+	var middleBoxBtn = UIButton()
+	var rightBoxBtn = UIButton()
+	var leftBoxBtn = UIButton()
 
 
 	override func loadView() {
 		super.loadView()
+		
+		
 
 		//Looks for single or multiple taps to dismiss keyboard
 		let tap: UITapGestureRecognizer
@@ -240,28 +246,28 @@ UITextFieldDelegate {
 			for: .touchUpInside)
 		
 		// NORTH VIEW SET
-		//north.addSubview(pickPictureBtn)
-		//pickPictureBtn.isEnabled = false
+		north.addSubview(pickPictureBtn)
+		pickPictureBtn.isEnabled = false
 
 		north.addSubview(pickImprintBtn)
 		north.addSubview(pickImprintTextField)
 		
-		north.addSubview(pickScoreBtn)
+		//north.addSubview(pickScoreBtn)
 		//pickScoreBtn.isEnabled = false
 		
 		north.addSubview(pickColorBtn)
 		north.addSubview(pickShapeBtn)
-		north.addSubview(submitButton)
+		
+		//north.addSubview(submitButton)
 		
 		north.addSubview(getSampleLabel())
 
-		let msgLbl = headerMsg(
-			msg: "Images provided by National Library Medicine")
-		north.addSubview(msgLbl)
+		//let msgLbl = headerMsg(
+		//	msg: "Images provided by National Library Medicine")
+		//north.addSubview(msgLbl)
 
 		let copyright = copyrightLabel()
 		myView.addSubview(copyright)
-		
 		
 	}// end view did load
 	
@@ -271,7 +277,94 @@ UITextFieldDelegate {
 		//south.frame = self.southFrame
 		north.frame = self.northFrame
 
-	}// end viewdidlayoutsubviews
+		// LEFT BOX BUTTON  (LEFT)
+		leftBoxBtn =  UIButton(frame: CGRect(
+			x: (screenWidth * 0),
+			y: screenHeight * 0.65,
+			width: 110,
+			height: 110))
+		//submitButton.layer.borderWidth = 0.0
+		leftBoxBtn.setTitleColor(UIColor.black, for: .normal)
+		leftBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+		leftBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
+		leftBoxBtn.titleLabel?.font =  UIFont.systemFont(
+			ofSize: 16,
+			weight: .light)
+		
+		leftBoxBtn.borderWidth = 1.0
+		leftBoxBtn.borderColor = .lightGray
+		leftBoxBtn.addTarget(
+			self,
+			action: #selector(leftBoxBtnTapped),
+			for: .touchUpInside)
+		leftBoxBtn.setTitle("Shape", for: .normal)
+		//leftBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
+		
+		north.addSubview(leftBoxBtn)
+		
+		
+		// WIKIPEDIA PAGE BUTTON  (MIDDLE)
+		middleBoxBtn =  UIButton(frame: CGRect(
+			x: (screenWidth) * 0.3,
+			y: screenHeight * 0.65,
+			width: 110,
+			height: 110))
+		middleBoxBtn.setTitleColor(UIColor.black, for: .normal)
+		middleBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+		middleBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
+		
+		middleBoxBtn.titleLabel?.font =  UIFont.systemFont(
+			ofSize: 16,
+			weight: .light)
+		
+		middleBoxBtn.borderWidth = 1.0
+		middleBoxBtn.borderColor = .lightGray
+		middleBoxBtn.addTarget(
+			self,
+			action: #selector(middleBoxBtnTapped),
+			for: .touchUpInside)
+		middleBoxBtn.setTitle("Submit", for: .normal)
+		//middleBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
+		
+		north.addSubview(middleBoxBtn)
+		
+		// RIGHT BOX BUTTON  (RIGHT)
+		rightBoxBtn =  UIButton(frame: CGRect(
+			x: screenWidth * 0.6,
+			y: screenHeight * 0.65,
+			width: 110,
+			height: 110))
+		rightBoxBtn.setTitleColor(UIColor.black, for: .normal)
+		rightBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+		rightBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
+		rightBoxBtn.titleLabel?.font =  UIFont.systemFont(
+			ofSize: 16,
+			weight: .light)
+		
+		rightBoxBtn.borderWidth = 1.0
+		rightBoxBtn.borderColor = .lightGray
+		rightBoxBtn.addTarget(
+			self,
+			action: #selector(rightBoxBtnTapped),
+			for: .touchUpInside)
+		rightBoxBtn.setTitle("Color", for: .normal)
+		//rightBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
+		
+		north.addSubview(rightBoxBtn)
+		
+	}// end layouts did load
+	
+	@objc func leftBoxBtnTapped(){
+		pickShapeBtnTapped(sender: pickShapeBtn)
+	}
+	
+	@objc func middleBoxBtnTapped() {
+		submitButtonTapped()
+	}
+
+	@objc func rightBoxBtnTapped() {
+		pickColorBtnTapped(sender: pickColorBtn)
+	}
 	
 	func setIsChecked(bool: Bool){
 		if bool {
@@ -303,6 +396,7 @@ UITextFieldDelegate {
 			
 		}
 	}
+	
 
 	// when user hits return key on keyboard
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -354,6 +448,7 @@ UITextFieldDelegate {
 				self.color = String(value).uppercased()
 				
 				let txt = ("Color: " + self.color  + " ✓").capitalized
+				self.rightBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
 				//print(txt)
 				
 				sender.setTitle(txt,for: .normal)
@@ -381,6 +476,7 @@ UITextFieldDelegate {
 				self.shape = String(value).uppercased()
 				
 				let txt = ("Shape: " + self.shape + " ✓").capitalized
+				self.leftBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
 				//print(txt)
 				
 				sender.setTitle(txt,for: .normal)
@@ -439,6 +535,7 @@ UITextFieldDelegate {
 	
 	@objc func submitButtonTapped(){
 		submit()
+
 	}// end submit btn tapped
 	
 	@objc func imageButtonTapped(_ sender: Any) {
@@ -614,6 +711,8 @@ UITextFieldDelegate {
 		
 		// final url to be sent off
 		print(url)
+		//middleBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
+
 		
 		// get http request
 		Alamofire.request(url).responseJSON { response in
@@ -629,7 +728,9 @@ UITextFieldDelegate {
 				// one or more pill found
 				if swiftyJsonVar["replyStatus"]["totalImageCount"]  > 0 {
 					// send pill array to results page here
+					self.middleBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
 					self.displayResultsPage(json: swiftyJsonVar)
+
 				} else {
 					// no results found
 				}
@@ -779,7 +880,7 @@ UITextFieldDelegate {
 		
 		nameTextField = UITextField(frame: CGRect(
 			x: 20,
-			y: screenHeight * 0.525,
+			y: screenHeight * 0.425,
 			width: screenWidth * 0.8,
 			height: 44))
 		nameTextField.placeholder = "Enter Pill Name"

@@ -5,7 +5,6 @@
 
 import UIKit.UIViewController
 
-
 class TestViewController: NorthSouthViewController {
 
 	override func viewDidLoad() {
@@ -39,7 +38,6 @@ class TestViewController: NorthSouthViewController {
 		
 		showWikipediaBtn.setTitle("Show Wikipedia", for: .normal)
 
-
 		// set up searchPageBtn
 		searchPageBtn =  UIButton(frame: CGRect(
 			x: 20,
@@ -62,7 +60,7 @@ class TestViewController: NorthSouthViewController {
 		// set up displayBtn
 		displayBtn =  UIButton(frame: CGRect(
 			x: 20,
-			y: screenHeight * 0.125,
+			y: screenHeight * 0.425,
 			width: screenWidth * 0.8,
 			height: 44))
 		displayBtn.layer.borderWidth = 2.0;
@@ -103,6 +101,8 @@ class TestViewController: NorthSouthViewController {
 
 		north.addSubview(searchPageBtn)
 		//north.addSubview(displayBtn)
+
+		//resultsBtn.isEnabled = false
 		//north.addSubview(resultsBtn)
 
 		//north.addSubview(showWikipediaBtn)
@@ -162,7 +162,7 @@ class TestViewController: NorthSouthViewController {
 		let cardDisplayViewController: CardDisplayViewController = storyboard?.instantiateViewController(withIdentifier: "cardDisplayViewController") as! CardDisplayViewController
 		self.present(
 			cardDisplayViewController,
-			animated: true,
+			animated: false,
 			completion: nil)
 	}
 	
@@ -170,7 +170,7 @@ class TestViewController: NorthSouthViewController {
 		let resultsTableViewController: ResultsTableViewController = storyboard?.instantiateViewController(withIdentifier: "resultsTableViewController") as! ResultsTableViewController
 		self.present(
 			resultsTableViewController,
-			animated: true,
+			animated: false,
 			completion: nil)
 	}
 	

@@ -24,12 +24,12 @@ class ResultsTableViewController: UITableViewController {
 							  image: "250x250placeholder.png",
 							  //image: #imageLiteral(resourceName: "against"),
 							  imageUrl: "", color: "", shape: "", imprint: "",
-							  rxcui: 0, score: 0, limit: 0),
+							  rxcui: 30303, score: 0, limit: 0),
 				CellDataClass(cell: 2, name:  "world",
 							  image: "test.jpg",
 							  //image: #imageLiteral(resourceName: "test"),
 							  imageUrl: "", color: "", shape: "", imprint: "",
-				 rxcui: 0, score: 0, limit: 0)
+				 rxcui: 13218, score: 0, limit: 0)
 			]
 		}
     }// end viewdidload
@@ -50,7 +50,7 @@ class ResultsTableViewController: UITableViewController {
 		
 		//cell.mainImageView.image = arrayOfCellData[indexPath.row].image
 		let image = UIImage(named: "250x250placeholder.png")
-		let url = URL(string: arrayOfCellData[indexPath.row].imageUrl)
+		let url = URL(string: arrayOfCellData[indexPath.row].getImageUrl())
 		cell.mainImageView.kf.setImage(with: url, placeholder: image)
 		
 		cell.mainLabel.text = arrayOfCellData[indexPath.row].getName()
@@ -102,12 +102,12 @@ class ResultsTableViewController: UITableViewController {
 			cell:  		arrayOfCellData[indexPath.row].getCell(),
 			name: 		arrayOfCellData[indexPath.row].getName(),
 			image: 		arrayOfCellData[indexPath.row].image!,
-			imageUrl: 	arrayOfCellData[indexPath.row].imageUrl!,
-			color: 		arrayOfCellData[indexPath.row].color!,
-			shape: 		arrayOfCellData[indexPath.row].shape!,
-			imprint: 	arrayOfCellData[indexPath.row].imprint!,
-			rxcui:		arrayOfCellData[indexPath.row].rxcui,
-			score: 		arrayOfCellData[indexPath.row].score,
+			imageUrl: 	arrayOfCellData[indexPath.row].getImageUrl(),
+			color: 		arrayOfCellData[indexPath.row].getColor(),
+			shape: 		arrayOfCellData[indexPath.row].getShape(),
+			imprint: 	arrayOfCellData[indexPath.row].getImprint(),
+			rxcui:		arrayOfCellData[indexPath.row].getRxcui(),
+			score: 		arrayOfCellData[indexPath.row].getScore(),
 			limit: 		arrayOfCellData[indexPath.row].limit
 		)
 		displayCardDisplayPage(data: data)
@@ -120,13 +120,13 @@ class ResultsTableViewController: UITableViewController {
 		// Configure the cell...
 		if arrayOfCellData[indexPath.row].cell == 1 {
 			return 200
-		} else if arrayOfCellData[indexPath.row].cell == 2 {
+		} else if arrayOfCellDrata[indexPath.row].cell == 2 {
 			return 100
 		}  else {
 			return 200
 		}*/
 		
-		return 100
+		return 85
 
 	}
 	
@@ -137,7 +137,7 @@ class ResultsTableViewController: UITableViewController {
 		
 		self.present(
 			cardDisplayViewController,
-			animated: true,
+			animated: false,
 			completion: nil)
 	}
 }

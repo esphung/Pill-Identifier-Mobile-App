@@ -14,12 +14,12 @@ class CellDataClass {
 	private var cell:  	Int!
 	private var name: 	String!
 	var image:  String! //UIImage!
-	var imageUrl: String!
-	var color:	String!
-	var shape:	String!
-	var imprint: String!
-	var rxcui: Int!
-	var score: Int!
+	private var imageUrl: String!
+	private var color:	String!
+	private var shape:	String!
+	private var imprint: String!
+	private var rxcui: Int!
+	private var score: Int!
 	var limit: Int!
 
 	// overload constructor
@@ -41,7 +41,7 @@ class CellDataClass {
 			self.cell = cell
 		} else {
 			self.cell = 0
-	}
+		}
 		
 		self.name = name
 		self.image =  image
@@ -49,7 +49,7 @@ class CellDataClass {
 		self.color = color
 		self.shape = shape
 		self.imprint = imprint
-		self.rxcui  = rxcui
+		self.rxcui = rxcui
 		self.score = score
 		self.limit = limit
 	}
@@ -68,9 +68,64 @@ class CellDataClass {
 	}// set name
 	
 	func getName() -> String {
-		return self.name
+		if self.name != nil  {
+			return self.name
+		} else {
+			return ""
+		}
 	}// get name
 
+	func setRxcui(num: Int) {
+		self.rxcui = num
+	}// set name
+	
+	func getRxcui() -> Int {
+		if self.rxcui != nil {
+			return self.rxcui
+		} else {
+			return 0
+		}
+	}// get rxcui
+
+	func getScore() -> Int {
+		if self.score != nil {
+			return self.score
+			} else {
+				return 0
+			}
+	}
+
+	func getImprint() -> String {
+		if self.imprint != nil {
+			return self.imprint
+		} else {
+			return ""
+		}
+	}
+	
+	func getColor() -> String {
+		if self.color != nil {
+			return self.color
+		} else {
+			return ""
+		}
+	}
+	func getShape() -> String {
+		if self.shape != nil {
+			return  self.shape
+		} else {
+			return  ""
+		}
+	}
+
+	func getImageUrl() -> String {
+		if self.imageUrl != nil {
+			return self.imageUrl
+		} else {
+			return "250x250placeholder.jpg"
+		}
+	}
+	
 }// end class def
 
 
@@ -89,9 +144,9 @@ func getIsTestHarnessSuccess() -> Bool {
 		color: "Purple",
 		shape: "Penumbra Umbrella",
 		imprint: "ABC",
-		rxcui: 237849876,
-		score: 8,
-		limit: 20
+		rxcui: 0,
+		score: 0,
+		limit: 0
 
 	)// OVERLOADED
 

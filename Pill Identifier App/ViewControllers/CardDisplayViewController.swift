@@ -23,7 +23,9 @@ class CardDisplayViewController: NorthSouthViewController {
 	var imprintLabel: UILabel!
 	
 	var myPillView: UIView!
-	var showWikipediaBtn = UIButton()
+	var middleBoxBtn = UIButton()
+	var rightBoxBtn = UIButton()
+	var leftBoxBtn = UIButton()
 	
 	@objc var name: String!
 	var dosage: String!
@@ -40,152 +42,165 @@ class CardDisplayViewController: NorthSouthViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+
+        print(screenWidth)// 375
+        print(screenHeight)// 812
 		
 		// ============ CHECK IF CELLDATA
-			
-			// LOAD DRUG NAME
-			name = getName(str: cellData.getName())// pull through input
-			
-			name = getStringRemovedFromSpecialChars(text: name)// sanitize
-			name = name.replace(target: "HR", withString: "")
-			name = name.replace(target: "MG", withString: "").capitalized// also lowers
-			name = name.trimmingCharacters(in: .whitespacesAndNewlines)// trim whitespace
 			
 			// COPYRIGHT/ FOOTER
 			let copyright = copyrightLabel()
 			myView.addSubview(copyright)
 
 			// NAME
-			let nameLabel = UILabel(frame: CGRect(x: 20, y: screenHeight/2, width: 200, height: 21))
-			nameLabel.text = "Name:\t" + String(name)
+			let nameLabel = UILabel(frame: CGRect(x: 20, y: (((north.frame.height)/2 )) + (125)/2, width: screenWidth * 0.8, height: 21))
+			nameLabel.text = "Name:\t\t" + cellData.getName().capitalized
 			nameLabel.numberOfLines = 1
-
 			north.addSubview(nameLabel)
 
+			/*
 			// RXCUI
-			let rxcuiLabel = UILabel(frame: CGRect(x: 20,y: nameLabel.frame.minY + 20, width: 200, height: 21))
-	
-			rxcuiLabel.text = "RXCUI:\t" + String(cellData.rxcui)
+			let rxcuiLabel = UILabel(frame: CGRect(x: 20,y: nameLabel.frame.minY + 20, width: screenWidth * 0.8, height: 21))
+			if cellData.getScore() <= 0 {
+				rxcuiLabel.text = ""
+			} else {
+				rxcuiLabel.text = "RXCUI:\t\t" + String(cellData.getRxcui()).capitalized
+			}
 			rxcuiLabel.numberOfLines = 1
 
 			north.addSubview(rxcuiLabel)
 			
 			// SCORE
-			let scoreLabel = UILabel(frame: CGRect(x:  20,y: rxcuiLabel.frame.minY + 20, width: 200, height: 21))
-			scoreLabel.text = "Scores:\t" + String(cellData.score)
+			let scoreLabel = UILabel(frame: CGRect(x: 20,y: rxcuiLabel.frame.minY + 20, width: screenWidth * 0.8, height: 21))
+			if cellData.getScore() <= 0 {
+				scoreLabel.text = ""
+			} else {
+				scoreLabel.text = "Scores:\t" + String(cellData.getScore())
+			}
 			scoreLabel.numberOfLines = 1
 			
 			north.addSubview(scoreLabel)
+			*/
 
 			// IMPRINT
-			let imprintLabel = UILabel(frame: CGRect(x: 20,y: scoreLabel.frame.minY + 20, width: 200, height: 21))
-			imprintLabel.text = "Imprint:\t" + String(cellData.imprint)
+			let imprintLabel = UILabel(frame: CGRect(x: 20, y: nameLabel.frame.minY + 20, width: screenWidth * 0.8, height: 21))
+			imprintLabel.text = "Imprint:\t" + String(cellData.getImprint())
 			imprintLabel.numberOfLines = 1
 			
 			north.addSubview(imprintLabel)
 
-
 			// COLOR
-			let colorLabel = UILabel(frame: CGRect(x: 20,y: imprintLabel.frame.minY + 20, width: 200, height: 21))
-			colorLabel.text = "Color:\t" + String(cellData.color).capitalized
+			let colorLabel = UILabel(frame: CGRect(x: 20, y: imprintLabel.frame.minY + 20, width: screenWidth * 0.8, height: 21))
+			colorLabel.text = "Color:\t\t" + String(cellData.getColor()).capitalized
 			colorLabel.numberOfLines = 1
 			
 			north.addSubview(colorLabel)
 
 			// SHAPE
-			let shapeLabel = UILabel(frame: CGRect(x: 20,y: colorLabel.frame.minY + 20, width: 200, height: 21))
-			shapeLabel.text = "Shape:\t" + String(cellData.shape).capitalized
+			let shapeLabel = UILabel(frame: CGRect(x: 20, y: colorLabel.frame.minY + 20, width: screenWidth * 0.8, height: 21))
+			shapeLabel.text = "Shape:\t\t" + String(cellData.getShape()).capitalized
 			shapeLabel.numberOfLines = 1
 			
 			north.addSubview(shapeLabel)
 
-						// LOAD THE IMAGE
-			url = URL(string: cellData.imageUrl)
+			// LOAD THE IMAGE
+			url = URL(string: cellData.getImageUrl())
 			
 			imageView = makeDisplayImage(image: image!)
 			imageView.kf.setImage(with: url, placeholder: image)
-			//imageView.frame.origin = CGPoint(x: 20, y: shapeLabel.frame + 20)
+			//imageView.borderColor = .lightGray
+			//imageView.borderWidth =  1.0
+			print(imageView.frame.height)// 406
 
 			north.addSubview(imageView)
 
-			
-
-			// WIKIPEDIA PAGE BUTTON
-			showWikipediaBtn =  UIButton(frame: CGRect(
-				x: screenWidth * 0.8 * 0.333 - 20,
-				y: screenHeight * 0.725,
-				width: screenWidth * 0.8 * 0.666,
-				height: 44))
+			// LEFT BOX BUTTON  (LEFT)
+			leftBoxBtn =  UIButton(frame: CGRect(
+				x: (screenWidth * 0),
+				y: screenHeight * 0.65,
+				width: 110,
+				height: 110))
 			//submitButton.layer.borderWidth = 0.0
-			showWikipediaBtn.setTitleColor(UIColor.black, for: .normal)
-			showWikipediaBtn.setTitleColor(UIColor.lightGray, for: .disabled)
-			showWikipediaBtn.setTitleColor(UIColor.white, for: .highlighted)
-			showWikipediaBtn.setTitle("Submit", for: .normal)
-			showWikipediaBtn.titleLabel?.font =  UIFont.systemFont(
+			leftBoxBtn.setTitleColor(UIColor.black, for: .normal)
+			leftBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+			leftBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
+			leftBoxBtn.titleLabel?.font =  UIFont.systemFont(
 				ofSize: 16,
 				weight: .light)
 			
-			showWikipediaBtn.borderWidth = 1.0
-			showWikipediaBtn.borderColor = .lightGray
-			showWikipediaBtn.addTarget(
+			leftBoxBtn.borderWidth = 1.0
+			leftBoxBtn.borderColor = .lightGray
+			leftBoxBtn.addTarget(
 				self,
-				action: #selector(showWikipediaBtnTapped),
+				action: #selector(leftBoxBtnTapped),
 				for: .touchUpInside)
-			showWikipediaBtn.setTitle("Wikipedia", for: .normal)
-
-			north.addSubview(showWikipediaBtn)
-
-
-
-			/*
-			//  LOAD DOSAGE
-			dosage = getDosage(str: cellData.getName())
-			//let dosageLabel = getDosageLabel(message: dosage)
+			leftBoxBtn.setTitle("Left Button", for: .normal)
+			leftBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
+			north.addSubview(leftBoxBtn)
 			
-			// ndc11 national drug code number label
-			//ndcLabel = makeNdcLabel(message: test.ndc11)
-			//north.addSubview(ndcLabel)
+ 
+			// WIKIPEDIA PAGE BUTTON  (MIDDLE)
+			middleBoxBtn =  UIButton(frame: CGRect(
+				x: (screenWidth) * 0.3,
+				y: screenHeight * 0.65,
+				width: 110,
+				height: 110))
+			middleBoxBtn.setTitleColor(UIColor.black, for: .normal)
+			middleBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+			middleBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
 
-			// labeler rx company
-			//labelerLabel = makeLabelerLabel(
-				//message: String(test.labeler))
-			//self.north.addSubview(labelerLabel)
-			
-			// WIKIPEDIA PAGE BUTTON
-			showWikipediaBtn =  UIButton(frame: CGRect(
-				x: screenWidth * 0.8 * 0.333 - 20,
-				y: screenHeight * 0.725,
-				width: screenWidth * 0.8 * 0.666,
-				height: 44))
-			//submitButton.layer.borderWidth = 0.0
-			showWikipediaBtn.setTitleColor(UIColor.black, for: .normal)
-			showWikipediaBtn.setTitleColor(UIColor.lightGray, for: .disabled)
-			showWikipediaBtn.setTitleColor(UIColor.white, for: .highlighted)
-			showWikipediaBtn.setTitle("Submit", for: .normal)
-			showWikipediaBtn.titleLabel?.font =  UIFont.systemFont(
+			middleBoxBtn.titleLabel?.font =  UIFont.systemFont(
 				ofSize: 16,
 				weight: .light)
 			
-			showWikipediaBtn.borderWidth = 1.0
-			showWikipediaBtn.borderColor = .lightGray
-			showWikipediaBtn.addTarget(
+			middleBoxBtn.borderWidth = 1.0
+			middleBoxBtn.borderColor = .lightGray
+			middleBoxBtn.addTarget(
 				self,
-				action: #selector(showWikipediaBtnTapped),
+				action: #selector(middleBoxBtnTapped),
 				for: .touchUpInside)
-			showWikipediaBtn.setTitle("Wikipedia", for: .normal)
+			middleBoxBtn.setTitle("Middle Button", for: .normal)
+			middleBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
 
-			// ============================ SET VIEW OBJECTS
-			//north.addSubview(imageView)
+			north.addSubview(middleBoxBtn)
+
+			// RIGHT BOX BUTTON  (RIGHT)
+			rightBoxBtn =  UIButton(frame: CGRect(
+				x: screenWidth * 0.6,
+				y: screenHeight * 0.65,
+				width: 110,
+				height: 110))
+			rightBoxBtn.setTitleColor(UIColor.black, for: .normal)
+			rightBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+			rightBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
+			rightBoxBtn.titleLabel?.font =  UIFont.systemFont(
+				ofSize: 16,
+				weight: .light)
 			
-			// if  name != "" {
-			// 	north.addSubview(nameLabel)
-			// }
-			
-			//north.addSubview(showWikipediaBtn)
-			//north.addSubview(dosageLabel)
-			*/
-		
+			rightBoxBtn.borderWidth = 1.0
+			rightBoxBtn.borderColor = .lightGray
+			rightBoxBtn.addTarget(
+				self,
+				action: #selector(rightBoxBtnTapped),
+				for: .touchUpInside)
+			rightBoxBtn.setTitle("Right Button", for: .normal)
+			rightBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
+
+			north.addSubview(rightBoxBtn)
+
     }// end layouts did load
+	
+	@objc func leftBoxBtnTapped(){
+		//let baseUrl = URL(string: "http://en.wikipedia.org/wiki/")
+		//displayWikipediaPage(base: baseUrl!, str: cellData.getName())
+	}
+	
+	@objc func middleBoxBtnTapped() {
+		//displayHomePage()
+	}
+	@objc func rightBoxBtnTapped() {
+		//displaySearchFormPage()
+	}
 	
 	// dosage func
 	func getDosageLabel(message: String) -> UILabel {
@@ -203,138 +218,23 @@ class CardDisplayViewController: NorthSouthViewController {
 		return dosageLbl
 	}
 	
-
-	// name label
-	func makeNameLabel(message: String) -> UILabel {
-		let label = UILabel(
-			frame: CGRect(
-				x: 20,
-				y: screenHeight * 0,
-				width: screenWidth * 0.8,
-				height: 44))
-		//label.font = UIFont.systemFont(ofSize: 16)
-		label.text = message
-		label.numberOfLines = 1
-		label.layer.borderWidth = 0.0
-		label.font = UIFont.systemFont(ofSize: 16)
-		
-		return label
-	}
-
-	// color label
-	func makeColorLabel(message: String) -> UILabel {
-		let label = UILabel(
-			frame: CGRect(
-				x: 20,
-				y: screenHeight * (0.025),
-				width: screenWidth * 0.8,
-				height: 44))
-		//label.font = UIFont.systemFont(ofSize: 16)
-		label.text = "Color:\t"  + message.capitalized
-		label.numberOfLines = 1
-		label.layer.borderWidth = 0.0
-		label.font = UIFont.systemFont(ofSize: 16)
-		
-		return label
-	}
-	
-	// shape label
-	func makeShapeLabel(message: String) -> UILabel {
-		let label = UILabel(
-			frame: CGRect(
-				x: 20,
-				y: screenHeight * 0.05,
-				width: screenWidth * 0.8,
-				height: 44))
-		//label.font = UIFont.systemFont(ofSize: 16)
-		label.text = "Shape:\t" + message.capitalized
-		label.numberOfLines = 1
-		label.layer.borderWidth = 0.0
-		label.font = UIFont.systemFont(ofSize: 16)
-		
-		return label
-	}
-	
-	// imprint label
-	func makeImprintLabel(message: String) -> UILabel {
-		let label = UILabel(
-			frame: CGRect(
-				x: 20,
-				y: screenHeight * 0.15,
-				width: screenWidth * 0.8,
-				height: 44))
-		//label.font = UIFont.systemFont(ofSize: 16)
-		if message.isEmpty {
-			label.text = "Imprint:\t"
-		} else if message == "no-imprint" {
-			label.text = "Imprint:\tNO IMPRINT"
-		} else {
-			label.text = "Imprint:\t" + message
-		}
-		label.numberOfLines = 1
-		label.layer.borderWidth = 0.0
-		label.font = UIFont.systemFont(ofSize: 16)
-		
-		return label
-	}
-	
-	// ndc11 label
-	func makeNdcLabel(message: String) -> UILabel {
-		let label = UILabel(
-			frame: CGRect(
-				x: 20,
-				y: screenHeight * 0.125,
-				width: screenWidth * 0.8,
-				height: 44))
-		//label.font = UIFont.systemFont(ofSize: 16)
-		label.text = "NDC:\t" + message
-		label.numberOfLines = 1
-		label.layer.borderWidth = 0.0
-		label.font = UIFont.systemFont(ofSize: 16)
-		
-		return label
-	}
-	
-	// rxcui label
-	func makeRxcuiLabel(message: String) -> UILabel {
-		let label = UILabel(
-			frame: CGRect(
-				x: 20,
-				y: (screenHeight * 0.7),
-				//y: screenHeight * 0.075,
-				width: screenWidth * 0.8,
-				height: 44))
-		label.font = UIFont.systemFont(ofSize: 16)
-		//label.adjustsFontSizeToFitWidth = true
-		
-		label.text = "RXCUI:\t" + message
-		label.numberOfLines = 1
-		label.layer.borderWidth = 2.0
-		
-		return label
-	}
-
-	// labeler label
-	func makeLabelerLabel(message: String) -> UILabel {
-		let label = UILabel(frame: CGRect(
-			x: 20,
-			y: screenHeight * 0.075,
+	func displayWebPage(address: String) {
+			// base url
+			let urlString = URL(string: address)
 			
-			width: screenWidth * 0.8,
-			height: 44))
-		label.text = "Label:\t" + message
-		label.numberOfLines = 1
-		label.layer.borderWidth = 0.0
-		label.font = UIFont.systemFont(ofSize: 16)
+			if let url = urlString {
+				if #available(iOS 10.0, *) {
+					UIApplication.shared.open(url, options: [:], completionHandler: nil)
+				} else {
+					UIApplication.shared.openURL(url)
+				}
+			} else {
+				print("could not open url, it was nil")
+			}
+
 		
-		return label
 	}
 
-		
-		
-
-
-	
 	func displayWikipediaPage(base: URL, str: String) {
 		// only does first term right now
 		let matched = matches(for: "([^\\s]+)", in: str)
@@ -380,17 +280,6 @@ class CardDisplayViewController: NorthSouthViewController {
 		
 
 	}
-	
-	@objc func showWikipediaBtnTapped() {
-		let baseUrl = URL(string: "http://en.wikipedia.org/wiki/")
-		//let baseName = "acetaminophen"
-		
-		// search wikipedia by pill's name
-		displayWikipediaPage(base: baseUrl!, str: name)
-		
-	}
-	
-	
 
 	func getName(str: String) -> String {
 		var fullName = ""
