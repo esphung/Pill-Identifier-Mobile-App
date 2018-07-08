@@ -7,46 +7,8 @@ import ActionSheetPicker_3_0
 import SwiftyJSON
 import Alamofire
 
-class BoxButton: UIButton {
-	
+// make pill  array
 
-	
-	override init(frame: CGRect) {
-        // set myValue before super.init is called
-		
-        super.init(frame: frame)
-		
-
-        // set other operations after super.init, if required
-        //backgroundColor = .red
-		//submitButton.layer.borderWidth = 0.0
-		self.setTitleColor(UIColor.black, for: .normal)
-		self.setTitleColor(UIColor.lightGray, for: .disabled)
-		self.setTitleColor(UIColor.white, for: .highlighted)
-		//self.titleLabel?.font =  UIFont.systemFont(ofSize: 16,weight: .light)
-		
-		self.borderWidth = 1.0
-		self.borderColor = .lightGray
-
-		self.addTarget(
-			self,
-			action: #selector(boxBtnTapped),
-			for: .touchUpInside)
-		//self.setTitle("Hello Eric", for: .normal)
-		//self.setImage(UIImage(named: placeholder), for: .normal)
-		
-    }// end override init
-	
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-	
-	// BUTTON HANDLER
-	@objc func boxBtnTapped(sender: BoxButton){
-		sender.setImage(UIImage(named: placeholder), for: .normal)
-	}
-
-}// end BOX BUTTON CLASS DEF
 
 class SearchViewController:
 NorthSouthViewController,
@@ -89,16 +51,6 @@ UITextFieldDelegate {
 	var score:		Int!
 	var limit: 		Int!
 
-	/*
-	// ui buttons
-	var pickColorBtn:		UIButton!
-	var pickShapeBtn:  		UIButton!
-	var pickPictureBtn:		UIButton!
-	var pickImprintBtn: 	UIButton!
-	var pickScoreBtn:		UIButton!
-	var submitButton: 		UIButton!
-	*/
-	
 	// input fields
 	var pickImprintTextField: 	UITextField!
 	var pickNameTextField:		UITextField!
@@ -116,13 +68,20 @@ UITextFieldDelegate {
 	var boxBtn005: BoxButton!
 	var boxBtn006: BoxButton!
 
-	var boxBtn007: BoxButton!
-	var boxBtn008: BoxButton!
-	var boxBtn009: BoxButton!
+	// my tile buttons
+	var tileBtn001: TileButton!
+	var tileBtn002: TileButton!
+	var tileBtn003: TileButton!
 
-	var boxBtn011: BoxButton!
-	var boxBtn012: BoxButton!
-	var boxBtn010: BoxButton!
+	var tileBtn004: TileButton!
+	var tileBtn005: TileButton!
+	var tileBtn006: TileButton!
+
+	var tileBtn007: TileButton!
+	var tileBtn008: TileButton!
+	var tileBtn009: TileButton!
+	
+	var arrayOfCellData = [CellDataClass]()
 
 	override func loadView() {
 		super.loadView()
@@ -134,6 +93,9 @@ UITextFieldDelegate {
 			action: #selector(dismissKeyboard))
 		view.addGestureRecognizer(tap)
 		
+		
+		
+		
 	}// end loadview
 	
 	// GET BOX BUTTON
@@ -143,18 +105,6 @@ UITextFieldDelegate {
 			y: y,
 			width: 110,
 			height: 110))
-		
-		//submitButton.layer.borderWidth = 0.0
-		button.setTitleColor(UIColor.black, for: .normal)
-		button.setTitleColor(UIColor.lightGray, for: .disabled)
-		button.setTitleColor(UIColor.white, for: .highlighted)
-		button.titleLabel?.font =  UIFont.systemFont(
-			ofSize: 16,
-			weight: .light)
-		//button.setImage(UIImage(named: placeholder), for: .normal)
-		
-		button.borderWidth = 1.0
-		button.borderColor = .lightGray
 		
 		return button
 	}
@@ -167,7 +117,6 @@ UITextFieldDelegate {
 		//========================================
 		
 		// boxBtn001 (L) //667.0 || % 4.5 = 138-ish || 140 x 4 = 560
-		// x is 1/3 of screenWidth
 		let boxBtn001 = getBoxButton(x: 0, y: 0)// COLOR
 		boxBtn001.setTitle("Color", for: .normal)
 		boxBtn001.addTarget(
@@ -202,9 +151,13 @@ UITextFieldDelegate {
 		
 		// boxBtn004 (L) || 120 x 4 = 480 || 140 || screenHeight/4 = 167ish
 		let boxBtn004 = getBoxButton(
-			x: 0,
-			y: ((screenHeight/3) - (screenHeight/6)))// IMPRINT
-		boxBtn004.setTitle("Imprint On", for: .normal)
+			x: screenWidth * 0.6,
+			y: ((screenHeight/3) - (screenHeight/6)))
+
+
+
+		
+		boxBtn004.setTitle("Imprint: On", for: .normal)
 		boxBtn004.addTarget(
 			self,
 			action: #selector(pickImprintBtnTapped),
@@ -224,8 +177,8 @@ UITextFieldDelegate {
 		
 		// boxBtn006 (R)
 		let boxBtn006 = getBoxButton(
-			x: screenWidth * 0.6,
-			y: ((screenHeight/3) - (screenHeight/6)))
+			x: 0,
+			y: ((screenHeight/3) - (screenHeight/6)))// IMPRINT
 		boxBtn006.setTitle("Scores", for: .normal)
 		boxBtn006.addTarget(
 			self,
@@ -236,12 +189,26 @@ UITextFieldDelegate {
 		//========================================
 		
 
-				// Create UITextField
+		// Create UITextField
 		pickImprintTextField = UITextField(frame: CGRect(
 			x: screenWidth * 0.6,
 			y: ((screenHeight/4) - (screenHeight/4)),
 			width: boxBtn004.frame.width,
 			height: boxBtn004.frame.height))
+		pickImprintTextField.isOpaque = true
+		
+		//====
+		/*
+		let myImage = UIImage(named: placeholder)
+		let myImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: boxBtn001.frame.width , height: boxBtn001.frame.height))
+		myImageView.backgroundColor = .red
+		myImageView.contentMode = .scaleAspectFill
+		myImageView.clipsToBounds = true
+		myImageView.image = myImage
+		
+		north.addSubview(myImageView)
+		*/
+		//====
 		
 		// Set UITextField placeholder text
 		pickImprintTextField.placeholder = "Enter Imprint"
@@ -253,7 +220,7 @@ UITextFieldDelegate {
 		pickImprintTextField.textAlignment = .center
 		
 		// Set UITextField border style
-		pickImprintTextField.borderStyle = UITextField.BorderStyle.line
+		//pickImprintTextField.borderStyle = UITextField.BorderStyle.line
 		pickImprintTextField.layer.borderWidth = 1.0
 		pickImprintTextField.borderColor = .lightGray
 		
@@ -272,45 +239,47 @@ UITextFieldDelegate {
 		
 		//========================================
 
-		// boxBtn007 (L) //667.0 || 120 + 120 = 240 || 140 + 140 || 166+166 = 332
-		let boxBtn007 = getBoxButton(x: 0, y: ((screenHeight/3)))
-		north.addSubview(boxBtn007)
+		// tileBtn001 (L) //667.0 || 120 + 120 = 240 || 140 + 140 || 166+166 = 332
+		let tileBtn001 = TileButton(frame: CGRect(x: 0.0, y: ((screenHeight/3)), width: 110, height: 110))
+		north.addSubview(tileBtn001)
 		
-		// boxBtn008 (M)
-		let boxBtn008 = getBoxButton(x: screenWidth * 0.3, y: ((screenHeight/3)))
-		north.addSubview(boxBtn008)
+		// tileBtn002 (M)
+		let tileBtn002 = TileButton(frame: CGRect(x: screenWidth * 0.3, y: ((screenHeight/3)), width: 110, height: 110))
+		north.addSubview(tileBtn002)
 		
-		// boxBtn009 (R)
-		let boxBtn009 = getBoxButton(x: screenWidth * 0.6, y: ((screenHeight/3)))
-		north.addSubview(boxBtn009)
+		// tileBtn003 (R)
+		let tileBtn003 = TileButton(frame: CGRect(x: screenWidth * 0.6, y: ((screenHeight/3)), width: 110, height: 110))
+		north.addSubview(tileBtn003)
 		
 		//========================================
 		
-		// boxBtn010 (L) //667.0 || 120 + 120 = 240 || 140 + 140 || 166+166 = 332
-		let boxBtn010 = getBoxButton(x: 0, y: ((screenHeight/3) * 1.5))
-		north.addSubview(boxBtn010)
+		// tileBtn004 (L) //667.0 || 120 + 120 = 240 || 140 + 140 || 166+166 = 332
+		let tileBtn004 = TileButton(frame: CGRect(x: tileBtn001.frame.minX, y: ((screenHeight/3) * 1.5), width: 110, height: 110))
+		north.addSubview(tileBtn004)
 		
-		// boxBtn011 (M)
-		let boxBtn011 = getBoxButton(x: screenWidth * 0.3, y: ((screenHeight/3) * 1.5))
-		north.addSubview(boxBtn011)
+		// tileBtn005 (M)
+		let tileBtn005 = TileButton(frame: CGRect(x: tileBtn002.frame.minX, y: ((screenHeight/3) * 1.5), width: 110, height: 110))
+		north.addSubview(tileBtn005)
 		
-		// boxBtn012 (R)
-		let boxBtn012 = getBoxButton(x: screenWidth * 0.6, y: ((screenHeight/3) * 1.5))
-		north.addSubview(boxBtn012)
+		// tileBtn006 (R)
+		let tileBtn006 = TileButton(frame: CGRect(x: tileBtn003.frame.minX, y: ((screenHeight/3) * 1.5), width: 110, height: 110))
+		north.addSubview(tileBtn006)
 		
 		//========================================
 
-		// boxBtn013 (L) //667.0 || 120 + 120 = 240 || 140 + 140 || 166+166 = 332
-		let boxBtn013 = getBoxButton(x: 0, y: ((screenHeight/3) * 2))
-		north.addSubview(boxBtn013)
+		// tileBtn007 (R)
+		let tileBtn007 = TileButton(frame: CGRect(x: tileBtn001.frame.minX, y: ((screenHeight/3) * 2), width: 110, height: 110))
+		north.addSubview(tileBtn007)
+
+		// tileBtn008 (L) //667.0 || 120 + 120 = 240 || 140 + 140 || 166+166 = 332
+		let tileBtn008 = TileButton(frame: CGRect(x: tileBtn002.frame.minX, y: ((screenHeight/3) * 2), width: 110, height: 110))
+		north.addSubview(tileBtn008)
 		
-		// boxBtn014 (M)
-		let boxBtn014 = getBoxButton(x: screenWidth * 0.3, y: ((screenHeight/3) * 2))
-		north.addSubview(boxBtn014)
+		// tilBtn009 (M)
+		let tilBtn009 = TileButton(frame: CGRect(x: tileBtn003.frame.minX, y: (screenHeight/3) * 2, width: 110, height: 110))
+	
+		north.addSubview(tilBtn009)
 		
-		// boxBtn015 (R)
-		let boxBtn015 = getBoxButton(x: screenWidth * 0.6, y: ((screenHeight/3) * 2))
-		north.addSubview(boxBtn015)
 		
 		//========================================
 		
@@ -330,7 +299,6 @@ UITextFieldDelegate {
 		pickNameTextField.returnKeyType = UIReturnKeyType.done
 		pickNameTextField.clearButtonMode = UITextField.ViewMode.whileEditing;
 		pickNameTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-		
 		
 		pickNameTextField.delegate = self// when return key pressed, do sumthing
 		
@@ -426,6 +394,7 @@ UITextFieldDelegate {
 	}
 	
 	@objc func pickColorBtnTapped(sender: BoxButton){
+		print(sender)
 		ActionSheetMultipleStringPicker.show(
 			withTitle: "Pick Color",
 			rows: [
@@ -447,7 +416,7 @@ UITextFieldDelegate {
 			origin: sender)
 	}// end pick color
 
-	@objc func pickShapeBtnTapped(sender: UIButton){
+	@objc func pickShapeBtnTapped(sender: BoxButton){
 		ActionSheetMultipleStringPicker.show(
 			withTitle: "Pick Shape",
 			rows: [
@@ -470,7 +439,7 @@ UITextFieldDelegate {
 	}// end pick shape
 	
 	
-	@objc func pickScoreBtnTapped(sender: UIButton){
+	@objc func pickScoreBtnTapped(sender: BoxButton){
 		ActionSheetMultipleStringPicker.show(
 			withTitle: "Pick Scores",
 			rows: [
@@ -508,13 +477,12 @@ UITextFieldDelegate {
 
 
 	@objc func submitButtonTapped(sender: UIButton){
-		submit()
-		sender.setImage(nil, for: .normal)
+		submit(sender: sender)
 	}// end submit btn tapped
 	
 	@objc func imageButtonTapped(_ sender: Any) {
 		showImageActionSheet()
-		importImage()
+		//importImage()
 	}// end upload pickImprintBtn action
 	
 	
@@ -554,10 +522,10 @@ UITextFieldDelegate {
 		}
 	}
 	
-	func hasImprint(sender: UIButton) -> Bool {
+	func hasImprint(sender: BoxButton) -> Bool {
 		if isChecked {
 			// decideed to  have some form of imprint
-			sender.setTitle("Imprint On", for: .normal)
+			sender.setTitle("Imprint: On", for: .normal)
 			//sender.setTitleColor(.green, for: .normal)
 			pickImprintTextField.placeholder = "Enter Imprint"
 			pickImprintTextField.unmarkText()
@@ -568,7 +536,7 @@ UITextFieldDelegate {
 			return true
 		} else {
 			// doesnt want imprint at all
-			sender.setTitle("Imprint Off", for: .normal)
+			sender.setTitle("Imprint: Off", for: .normal)
 			//sender.setTitleColor(.red, for: .normal)
 			pickImprintTextField.placeholder = "No Imprint"
 			pickImprintTextField.isHidden  = true
@@ -579,7 +547,7 @@ UITextFieldDelegate {
 		}
 	}
 	
-	func submit() {
+	func submit(sender: UIButton) {
 		var url = baseUrl
 		
 		// check color
@@ -602,7 +570,7 @@ UITextFieldDelegate {
 		} else {
 			imprint  = ""
 		}
-
+		
 		// check score
 		if (score != nil) && (score > 0 && score <= 4) {
 			// contains score input [1,2,3,4]
@@ -622,40 +590,48 @@ UITextFieldDelegate {
 		if (limit != nil) {
 			url = url + getSearchUrlString(find: colorParam, str: color) // "&rLimit="
 		}
-
+		
 		//print(getSearchUrlString(find: rxcuiParam, str: "198429"))// rxcuiParam
 		
 		// final url to be sent off
-		print(url)
-
+		if url.count <= baseUrl.count {
+			print(url)
+			return
+		} else {
+			print(url)
+			
+			
+			
+			// get http request
+			Alamofire.request(url).responseJSON { response in
+				print("Request: \(String(describing: response.request))")   // original url request
+				if let json = response.result.value {
+					print("JSON: \(json)") // serialized json response
+					let json = JSON("nlmRxImages")
+					//  conert json response to swiftyJSON
+					
+					
+					// Int
+					if json["user"]["id"].int != nil {
+						// Do something you want
+						print(json[0])
+					} else {
+						// Print the error
+						print(json["user"]["id"].error!)
+					}
+				
+					
 		
-		// get http request
-		Alamofire.request(url).responseJSON { response in
-			//print("Request: \(String(describing: response.request))")   // original url request
-			if let json = response.result.value {
-				//print("JSON: \(json)") // serialized json response
-				let swiftyJsonVar = JSON(json)//  conert json response to swiftyJSON
-				print(swiftyJsonVar["replyStatus"])
+				}// end if json
 				
-				// get results as pill array
-				//print(swiftyJsonVar["nlmRxImages"])// list of pills
-				
-				// one or more pill found
-				if swiftyJsonVar["replyStatus"]["totalImageCount"]  > 0 {
-					// send pill array to results page here
-					//self.boxBtn11.setImage(UIImage(named: placeholder), for: .normal)
-					self.displayResultsPage(json: swiftyJsonVar)
-
-				} else {
-					// no results found
-				}
-				
-			}
-		}
+			}// end alamo call
+			
+		}// end else
 		
 		
 	}// end submit
 	
+
 	func camera() {
 		if UIImagePickerController.isSourceTypeAvailable(.camera){
 			let myPickerController = UIImagePickerController()
@@ -750,7 +726,8 @@ UITextFieldDelegate {
 			resultsTableViewController,
 			animated: false,
 			completion: {})
-	}
+	}// end card disp
+
 	
 	@objc func dismissKeyboard() {
 		view.endEditing(true)

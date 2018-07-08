@@ -1,0 +1,451 @@
+[{
+  "ndc11" : "53489-0552-01",
+  "part" : 1,
+  "name" : "Propafenone Hydrochloride 225 MG Oral Tablet",
+  "id" : 185696680,
+  "splRootId" : "5dc25025-fa98-45a5-ac68-94049478b62b",
+  "splVersion" : 3,
+  "imageSize" : 496992,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/53489-0552-01_RXNAVIMAGE10_B6475B3A.jpg",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "54868-5950"
+      ],
+      "@sourceNdc9" : "53489-0552"
+    }
+  ],
+  "splSetId" : "578d747f-c023-4d5a-9e9a-d4a970d8f69f",
+  "rxcui" : 861427,
+  "labeler" : "Mutual Pharmaceutical Company, Inc.",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "ndc11" : "29300-0112-10",
+  "part" : 1,
+  "name" : "lamotrigine 100 MG Oral Tablet",
+  "id" : 185683868,
+  "splRootId" : "1515ef5b-c2d9-4416-abee-e7ae89dc11c0",
+  "splVersion" : 7,
+  "imageSize" : 514807,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/29300-0112-10_RXNAVIMAGE10_433E21F1.jpg",
+  "acqDate" : "01-02-2015",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "33261-0648",
+        "61786-0220",
+        "61919-0802",
+        "64725-0112",
+        "50090-2130"
+      ],
+      "@sourceNdc9" : "29300-0112"
+    }
+  ],
+  "splSetId" : "4b72ea7a-a0b0-4980-84ad-84f64e2e6368",
+  "rxcui" : 198427,
+  "labeler" : "Unichem Pharmaceuticals (USA), Inc.",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "part" : 1,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/00536-1017-01_RXNAVIMAGE10_E13DF0DF.jpg",
+  "imageSize" : 528716,
+  "labeler" : "Rugby Laboratories, Inc.",
+  "id" : 185683594,
+  "ndc11" : "00536-1017-01",
+  "rxcui" : 995624,
+  "acqDate" : "01-02-2015",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "61786-0099"
+      ],
+      "@sourceNdc9" : "00536-1017"
+    }
+  ],
+  "name" : "Meclizine Hydrochloride 12.5 MG Oral Tablet",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "ndc11" : "00378-0162-01",
+  "part" : 1,
+  "name" : "Chlorothiazide 500 MG Oral Tablet",
+  "id" : 185683479,
+  "splRootId" : "41f85c2b-59e8-4afd-9e0c-e14692d5c727",
+  "splVersion" : 6,
+  "imageSize" : 468479,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/00378-0162-01_RXNAVIMAGE10_B83DDC0E.jpg",
+  "acqDate" : "01-02-2015",
+  "splSetId" : "d652ef6f-2112-43ea-ba01-c3bf4f8d8030",
+  "rxcui" : 197476,
+  "labeler" : "Mylan Pharmaceuticals Inc.",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "ndc11" : "13668-0105-01",
+  "part" : 1,
+  "name" : "24 HR Isosorbide Mononitrate 60 MG Extended Release Oral Tablet",
+  "id" : 185683944,
+  "splRootId" : "41dc87cb-d9a5-41a3-8e56-f9d489e51373",
+  "splVersion" : 3,
+  "imageSize" : 510931,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/13668-0105-01_RXNAVIMAGE10_5E3E2F41.jpg",
+  "acqDate" : "01-02-2015",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "00615-7768",
+        "10544-0243",
+        "76237-0303",
+        "50090-0756"
+      ],
+      "@sourceNdc9" : "13668-0105"
+    }
+  ],
+  "splSetId" : "0a1e317a-7b05-4d30-9bbc-1d4ccd56ba3c",
+  "rxcui" : 353538,
+  "labeler" : "Torrent Pharmaceuticals Limited",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "ndc11" : "60505-2552-05",
+  "part" : 1,
+  "name" : "gabapentin 800 MG Oral Tablet",
+  "id" : 185683680,
+  "splRootId" : "468e9e63-094f-da7c-21a0-a08d9305f2bc",
+  "splVersion" : 3,
+  "imageSize" : 511261,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/60505-2552-05_RXNAVIMAGE10_FE3DFF7F.jpg",
+  "acqDate" : "01-02-2015",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "60429-0783"
+      ],
+      "@sourceNdc9" : "60505-2552"
+    }
+  ],
+  "splSetId" : "df12230c-09ea-b03b-c32e-800390ce3e33",
+  "rxcui" : 310434,
+  "labeler" : "Apotex Corp.",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "ndc11" : "29300-0114-05",
+  "part" : 1,
+  "name" : "lamotrigine 200 MG Oral Tablet",
+  "id" : 185683917,
+  "splRootId" : "1515ef5b-c2d9-4416-abee-e7ae89dc11c0",
+  "splVersion" : 7,
+  "imageSize" : 676750,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/29300-0114-05_RXNAVIMAGE10_553E2A91.jpg",
+  "acqDate" : "01-02-2015",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "61786-0010",
+        "61919-0777"
+      ],
+      "@sourceNdc9" : "29300-0114"
+    }
+  ],
+  "splSetId" : "4b72ea7a-a0b0-4980-84ad-84f64e2e6368",
+  "rxcui" : 198429,
+  "labeler" : "Unichem Pharmaceuticals (USA), Inc.",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "ndc11" : "46672-0053-50",
+  "part" : 1,
+  "name" : "Acetaminophen 325 MG \/ butalbital 50 MG \/ Caffeine 40 MG Oral Tablet",
+  "id" : 185683980,
+  "splRootId" : "5caee91f-cf1c-41e9-ade5-5b7d65e46f41",
+  "splVersion" : 4,
+  "imageSize" : 491204,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/46672-0053-50_RXNAVIMAGE10_6C3E3601.jpg",
+  "acqDate" : "01-02-2015",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "50436-4856",
+        "51655-0590",
+        "52125-0274",
+        "61786-0365",
+        "61919-0022",
+        "63187-0520",
+        "68788-9711",
+        "66267-0039"
+      ],
+      "@sourceNdc9" : "46672-0053"
+    }
+  ],
+  "splSetId" : "a26775c2-cafb-4b13-99ac-d4e8248265fb",
+  "rxcui" : 238154,
+  "labeler" : "Mikart, Inc.",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "part" : 1,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/00781-1392-01_RXNAVIMAGE10_613DB08D.jpg",
+  "imageSize" : 538978,
+  "labeler" : "Sandoz Inc",
+  "id" : 185683242,
+  "ndc11" : "00781-1392-01",
+  "rxcui" : 310671,
+  "acqDate" : "01-02-2015",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "53808-0654",
+        "55154-5413",
+        "55700-0053",
+        "58118-1392",
+        "68258-7077"
+      ],
+      "@sourceNdc9" : "00781-1392"
+    }
+  ],
+  "name" : "Haloperidol 1 MG Oral Tablet",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "part" : 1,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/76439-0308-10_RXNAVIMAGE10_5C3DAE1D.jpg",
+  "imageSize" : 501667,
+  "labeler" : "Virtus Pharmaceuticals, LLC",
+  "id" : 185683229,
+  "ndc11" : "76439-0308-10",
+  "rxcui" : 1047905,
+  "acqDate" : "01-02-2015",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "61919-0297"
+      ],
+      "@sourceNdc9" : "76439-0308"
+    }
+  ],
+  "name" : "Hyoscyamine Sulfate 0.125 MG Oral Tablet",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "part" : 1,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/76439-0123-10_RXNAVIMAGE10_6A3DB50D.jpg",
+  "imageSize" : 545144,
+  "id" : 185683267,
+  "labeler" : "Virtus Pharmaceuticals, LLC",
+  "ndc11" : "76439-0123-10",
+  "rxcui" : 199245,
+  "acqDate" : "01-02-2015",
+  "name" : "glimepiride 1 MG Oral Tablet",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "ndc11" : "51079-0620-06",
+  "part" : 1,
+  "name" : "Azathioprine 50 MG Oral Tablet",
+  "id" : 185683390,
+  "splRootId" : "31e2497f-1f8e-0e26-e054-00144ff88e88",
+  "splVersion" : 5,
+  "imageSize" : 523086,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/51079-0620-06_RXNAVIMAGE10_973DCBEE.jpg",
+  "acqDate" : "01-02-2015",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "51079-0620"
+      ],
+      "@sourceNdc9" : "00378-1005"
+    }
+  ],
+  "splSetId" : "e385894f-212b-4582-a63a-a0767fd97645",
+  "rxcui" : 197388,
+  "labeler" : "Mylan Institutional Inc.",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "part" : 1,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/64125-0138-01_RXNAVIMAGE10_A03DD03E.jpg",
+  "imageSize" : 460644,
+  "id" : 185683413,
+  "labeler" : "",
+  "ndc11" : "64125-0138-01",
+  "rxcui" : 885209,
+  "acqDate" : "01-02-2015",
+  "name" : "benztropine mesylate 2 MG Oral Tablet",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "ndc11" : "00093-4359-01",
+  "part" : 1,
+  "name" : "Clozapine 25 MG Oral Tablet",
+  "id" : 185660925,
+  "splRootId" : "b6a056cd-ba30-47b7-b92e-b43e0cae495b",
+  "splVersion" : 20,
+  "imageSize" : 515637,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/00093-4359-01_RXNAVIMAGE10_2F2D97FC.jpg",
+  "acqDate" : "01-04-2013",
+  "splSetId" : "47c4897c-ee95-4eaf-adbc-84130d021d2d",
+  "rxcui" : 197536,
+  "labeler" : "Teva Pharmaceuticals USA Inc",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "ndc11" : "00093-2275-34",
+  "part" : 1,
+  "name" : "Amoxicillin 875 MG \/ Clavulanate 125 MG Oral Tablet",
+  "id" : 185660686,
+  "splRootId" : "77879f8a-07d4-4062-b2e6-6cb2bec5a47f",
+  "splVersion" : 16,
+  "imageSize" : 620830,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/00093-2275-34_RXNAVIMAGE10_D82D6C1B.jpg",
+  "acqDate" : "01-04-2013",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "21695-0215",
+        "33261-0111",
+        "42549-0570",
+        "43063-0077",
+        "43063-0377",
+        "50436-3129",
+        "51655-0160",
+        "52959-0707",
+        "55289-0767",
+        "63187-0327",
+        "66116-0478",
+        "66116-0507",
+        "68788-9043",
+        "68788-9377",
+        "50090-0821"
+      ],
+      "@sourceNdc9" : "00093-2275"
+    }
+  ],
+  "splSetId" : "963e7bea-ff5d-420a-9cb2-e4aefb534b33",
+  "rxcui" : 562508,
+  "labeler" : "Teva Pharmaceuticals USA Inc",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "ndc11" : "00093-4232-01",
+  "part" : 1,
+  "name" : "Bumetanide 0.5 MG Oral Tablet",
+  "id" : 185660220,
+  "splRootId" : "cf5bdbcd-f4c8-46dc-98eb-d6a6f22788fe",
+  "splVersion" : 6,
+  "imageSize" : 654742,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/00093-4232-01_RXNAVIMAGE10_2D2D16F8.jpg",
+  "acqDate" : "01-04-2013",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "35356-0988",
+        "42291-0178",
+        "68151-0087"
+      ],
+      "@sourceNdc9" : "00093-4232"
+    }
+  ],
+  "splSetId" : "04236576-01c4-43a6-ac8a-60e23b5dc692",
+  "rxcui" : 197417,
+  "labeler" : "Teva Pharmaceuticals USA Inc",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "ndc11" : "00093-4059-53",
+  "part" : 1,
+  "name" : "Cefadroxil 1000 MG Oral Tablet",
+  "id" : 185660790,
+  "splRootId" : "5950969d-6cbb-4327-a649-af4b77b39692",
+  "splVersion" : 4,
+  "imageSize" : 533081,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/00093-4059-53_RXNAVIMAGE10_FD2D7EDB.jpg",
+  "acqDate" : "01-04-2013",
+  "splSetId" : "4674a05c-fdef-4737-a4b8-e3229bdada9d",
+  "rxcui" : 309047,
+  "labeler" : "Teva Pharmaceuticals USA Inc",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "ndc11" : "00093-4235-01",
+  "part" : 1,
+  "name" : "Nadolol 20 MG Oral Tablet",
+  "id" : 185660888,
+  "splRootId" : "83539758-6c72-4707-9e63-5a2499d3f99a",
+  "splVersion" : 7,
+  "imageSize" : 512677,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/00093-4235-01_RXNAVIMAGE10_222D910C.jpg",
+  "acqDate" : "01-04-2013",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "42254-0094"
+      ],
+      "@sourceNdc9" : "00093-4235"
+    }
+  ],
+  "splSetId" : "0031ce9c-cb49-433a-aa74-8d20ca0563c0",
+  "rxcui" : 198006,
+  "labeler" : "Teva Pharmaceuticals USA Inc",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "ndc11" : "00093-4236-01",
+  "part" : 1,
+  "name" : "Nadolol 40 MG Oral Tablet",
+  "id" : 185660901,
+  "splRootId" : "83539758-6c72-4707-9e63-5a2499d3f99a",
+  "splVersion" : 7,
+  "imageSize" : 502467,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/00093-4236-01_RXNAVIMAGE10_262D937C.jpg",
+  "acqDate" : "01-04-2013",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "42254-0218",
+        "52125-0081"
+      ],
+      "@sourceNdc9" : "00093-4236"
+    }
+  ],
+  "splSetId" : "0031ce9c-cb49-433a-aa74-8d20ca0563c0",
+  "rxcui" : 198007,
+  "labeler" : "Teva Pharmaceuticals USA Inc",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}, {
+  "ndc11" : "00093-4233-01",
+  "part" : 1,
+  "name" : "Bumetanide 1 MG Oral Tablet",
+  "id" : 185660231,
+  "splRootId" : "cf5bdbcd-f4c8-46dc-98eb-d6a6f22788fe",
+  "splVersion" : 6,
+  "imageSize" : 583231,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/00093-4233-01_RXNAVIMAGE10_322D1908.jpg",
+  "acqDate" : "01-04-2013",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "00615-4536",
+        "33261-0983",
+        "35356-0912",
+        "42291-0179",
+        "50436-4233",
+        "60760-0446",
+        "63629-4968",
+        "69189-4233",
+        "68071-2019"
+      ],
+      "@sourceNdc9" : "00093-4233"
+    }
+  ],
+  "splSetId" : "04236576-01c4-43a6-ac8a-60e23b5dc692",
+  "rxcui" : 197418,
+  "labeler" : "Teva Pharmaceuticals USA Inc",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+}])
+Optional({
+  "ndc11" : "53489-0552-01",
+  "part" : 1,
+  "name" : "Propafenone Hydrochloride 225 MG Oral Tablet",
+  "id" : 185696680,
+  "splRootId" : "5dc25025-fa98-45a5-ac68-94049478b62b",
+  "splVersion" : 3,
+  "imageSize" : 496992,
+  "imageUrl" : "https:\/\/rxpillimage.nlm.nih.gov\/RxImage\/image\/images\/gallery\/original\/53489-0552-01_RXNAVIMAGE10_B6475B3A.jpg",
+  "relabelersNdc9" : [
+    {
+      "ndc9" : [
+        "54868-5950"
+      ],
+      "@sourceNdc9" : "53489-0552"
+    }
+  ],
+  "splSetId" : "578d747f-c023-4d5a-9e9a-d4a970d8f69f",
+  "rxcui" : 861427,
+  "labeler" : "Mutual Pharmaceutical Company, Inc.",
+  "attribution" : "National Library of Medicine | Lister Hill National Center for Biomedical Communications"
+})]

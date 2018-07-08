@@ -108,8 +108,7 @@ class NorthSouthViewController: UIViewController {
 		self.present(
 			searchViewController,
 			animated: false,
-			completion: {
-		})
+			completion: {})
 	}
 
 	func displayHomePage() {

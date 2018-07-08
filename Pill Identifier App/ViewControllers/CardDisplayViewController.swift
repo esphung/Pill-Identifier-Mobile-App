@@ -7,6 +7,7 @@
 import Kingfisher
 
 class CardDisplayViewController: NorthSouthViewController {
+	
 	var url: URL!
 	
 	// information labels
@@ -53,7 +54,8 @@ class CardDisplayViewController: NorthSouthViewController {
 			myView.addSubview(copyright)
 
 			// NAME
-			let nameLabel = UILabel(frame: CGRect(x: 20, y: (((north.frame.height)/2 )) + (125)/2, width: screenWidth * 0.8, height: 21))
+			let nameLabel = UILabel(
+				frame: CGRect(x: 20, y: (((north.frame.height)/2 )) + (125)/2, width: screenWidth * 0.8, height: 21))
 			nameLabel.text = "Name:\t\t" + (getName(str: cellData.getName())).capitalized
 			nameLabel.numberOfLines = 1
 			north.addSubview(nameLabel)
@@ -159,7 +161,7 @@ class CardDisplayViewController: NorthSouthViewController {
 				self,
 				action: #selector(middleBoxBtnTapped),
 				for: .touchUpInside)
-			middleBoxBtn.setTitle("More Information", for: .normal)
+			middleBoxBtn.setTitle("Info", for: .normal)
 			//middleBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
 
 			north.addSubview(middleBoxBtn)
