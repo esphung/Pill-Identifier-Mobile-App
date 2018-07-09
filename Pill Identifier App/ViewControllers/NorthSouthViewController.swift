@@ -31,21 +31,21 @@ class NorthSouthViewController: UIViewController {
 	var image:		UIImage!
 	var imageView: 	UIImageView!
 
-	var msgLbl:		String!
+	//var msgLbl:		String!
 	
 	var northFrame: CGRect {
 		return CGRect(
-			x: (myView.frame.width * 0.05),
-			y: (myView.frame.height * 0.1),
-			width: (myView.frame.width * 0.95),
-			height: ((myView.frame.height) - (myView.frame.height) * 0.05))
+			x: 0,
+			y: 0,
+			width: view.frame.width,
+			height: (view.frame.height/2))
 	}
 	
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
-
+		
 		let myView = UIView()
 		self.view.addSubview(myView)
 		self.myView  =  myView
@@ -54,17 +54,7 @@ class NorthSouthViewController: UIViewController {
 		self.view.addSubview(north)
 		self.north = north
 		
-		imageName = "250x250placeholder.jpg"
-		image = UIImage(named: imageName)
-
-		let imageView = UIImageView()
-
-
-		north.addSubview(imageView)
-
 		setUpContraints()
-
-		
 
 	}
 	
@@ -84,7 +74,7 @@ class NorthSouthViewController: UIViewController {
 		
 		// Create left and right button for navigation item
 		let leftButton =  UIBarButtonItem(title: "🔙Back", style: .plain, target: self, action: #selector(backBtnTapped))
-		let rightButton = UIBarButtonItem(title:  "Search💊", style: .plain, target: self, action: #selector(rightButtonTapped))
+		let rightButton = UIBarButtonItem(title:  "Home", style: .plain, target: self, action: #selector(rightButtonTapped))
 		
 		// Create two buttons for the navigation item
 		navigationItem.leftBarButtonItem = leftButton
@@ -99,8 +89,8 @@ class NorthSouthViewController: UIViewController {
 	
 	@objc func rightButtonTapped() {
 		displaySearchFormPage()
-		self.view.removeFromSuperview()
-		
+		//self.view.removeFromSuperview()
+
 	}
 
 	func displaySearchFormPage() {
@@ -132,10 +122,8 @@ class NorthSouthViewController: UIViewController {
 	}
 	
 	func setUpContraints(){
-
 		// never forget this line
 		myView.translatesAutoresizingMaskIntoConstraints = false
-		
 		// setting contraints
 		myView.centerXAnchor.constraint(
 			equalTo: view.centerXAnchor).isActive = true
@@ -144,7 +132,7 @@ class NorthSouthViewController: UIViewController {
 		myView.widthAnchor.constraint(
 			equalToConstant: screenWidth * 0.95).isActive = true
 		myView.heightAnchor.constraint(
-			equalToConstant: screenHeight *  0.9).isActive = true
+			equalToConstant: screenHeight * 0.9).isActive = true
 	}
 	
 	func showFrames() {
@@ -154,39 +142,23 @@ class NorthSouthViewController: UIViewController {
 		myView.layer.borderColor = UIColor.black.cgColor
 		myView.layer.borderWidth = 2.0
 		
-		north.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
-		north.layer.borderColor = UIColor.black.cgColor
-		north.layer.borderWidth = 2.0
-		//north.backgroundColor = .green
-		
-
-	}
-	
-	func hideFrames() {
-		// show debug view canvases
-		//myView.backgroundColor = UIColor(white: 0.25, alpha: 0.5)
-		myView.backgroundColor = UIColor.clear
-		//myView.layer.borderColor = UIColor.black.cgColor
-		myView.layer.borderWidth = 0.0
-		
-		north.backgroundColor = UIColor.clear
+		//north.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
 		//north.layer.borderColor = UIColor.black.cgColor
-		north.layer.borderWidth = 0.0
+		//north.layer.borderWidth = 2.0
 		//north.backgroundColor = .green
-		
-	}
 
+	}
 
 	// image view photo display
 	func makeDisplayImage(image:  UIImage) -> UIImageView {
 		let viewHeight = view.frame.height
 		let viewWidth  = view.frame.width
-		let imageHeight = ((viewHeight)/(viewWidth)) * (myView.frame.height/2)
-		print(imageHeight)
+		let imageHeight = ((viewHeight)/(viewWidth)) * (view.frame.height/2)
+
 		imageView = UIImageView(frame: CGRect(
-			x: 20,
+			x: 0,
 			y: 0,
-			width: viewWidth * 0.8,
+			width: view.frame.width,
 			height: imageHeight))
 		imageView.image = image
 		imageView.contentMode = UIView.ContentMode.scaleAspectFit

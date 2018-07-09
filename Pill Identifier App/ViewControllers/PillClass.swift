@@ -8,7 +8,7 @@
 import Foundation
 
 class Pill {
-	// vars
+	// var
 	var id_num: Double!
 	private var name: String!
 	private var imageUrlString: String!

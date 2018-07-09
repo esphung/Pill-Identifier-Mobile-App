@@ -11,32 +11,34 @@ class CardDisplayViewController: NorthSouthViewController {
 	
 	var url: URL!
 	
-	// information labels
-	var ndcLabel:	UILabel!
-	var rxcuiLabel:	UILabel!
-	var labelerLabel:	UILabel!
+
 	
 	//  incoming variables
 	var cellData: CellDataClass!
 	var arrayData: [CellDataClass]!
 
-
 	var middleBoxBtn = UIButton()
 	var rightBoxBtn = UIButton()
 	var leftBoxBtn = UIButton()
 	
-	@objc var name: String!
-	var dosage: String!
+	var pillImageView: UIImageView!
+	var altImage:  	UIImage!
 
     override func loadView() {
         super.loadView()
+		
     }
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		// begin set up here
 		setNavigationBar(title: "Pill Description")
+		let pillImageView = UIImageView()
+		altImage = UIImage(named: placeholder)
 		
+		view.addSubview(pillImageView)
+
+		//showFrames()
     }
 
     override func viewDidLayoutSubviews() {
@@ -49,101 +51,97 @@ class CardDisplayViewController: NorthSouthViewController {
 		// LOAD THE IMAGE
 		url = URL(string: cellData.getImageUrl())
 		
-		imageView = makeDisplayImage(image: image!)
-		imageView.kf.setImage(with: url, placeholder: image)
-		//imageView.borderColor = .lightGray
-		//imageView.borderWidth =  1.0
-		//print(imageView.frame.height)// 406
-		north.addSubview(imageView)
+		pillImageView = makeDisplayImage(image: altImage!)
+		pillImageView.kf.setImage(with: url, placeholder: image)
+		//pillImageView.borderColor = .lightGray
+		//pillImageView.borderWidth =  1.0
+		//print(pillImageView.frame.height)// 406
+		view.addSubview(pillImageView)
 
-			// LEFT BOX BUTTON  (LEFT)
-			leftBoxBtn =  UIButton(frame: CGRect(
-				x: (screenWidth * 0),
-				y: screenHeight * 0.65,
-				width: 110,
-				height: 110))
-			//submitButton.layer.borderWidth = 0.0
-			leftBoxBtn.setTitleColor(UIColor.black, for: .normal)
-			leftBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
-			leftBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
-			leftBoxBtn.titleLabel?.font =  UIFont.systemFont(
-				ofSize: 24,
-				weight: .light)
-			
-			leftBoxBtn.borderWidth = 1.0
-			leftBoxBtn.borderColor = .lightGray
-			leftBoxBtn.addTarget(
-				self,
-				action: #selector(leftBoxBtnTapped),
-				for: .touchUpInside)
-			leftBoxBtn.setTitle("Left Button", for: .normal)
-			leftBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
-			north.addSubview(leftBoxBtn)
-			
- 
-			// WIKIPEDIA PAGE BUTTON  (MIDDLE)
-			middleBoxBtn =  UIButton(frame: CGRect(
-				x: (screenWidth) * 0.3,
-				y: screenHeight * 0.65,
-				width: 110,
-				height: 110))
-			middleBoxBtn.setTitleColor(UIColor.black, for: .normal)
-			middleBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
-			middleBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
+		// LEFT BOX BUTTON  (LEFT)
+		leftBoxBtn =  UIButton(frame: CGRect(
+			x: 0,
+			y: view.frame.height - view.frame.height/3,
+			width: view.frame.width/3,
+			height: view.frame.height/4))
+		//submitButton.layer.borderWidth = 0.0
+		leftBoxBtn.setTitleColor(UIColor.black, for: .normal)
+		leftBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+		leftBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
+		leftBoxBtn.titleLabel?.font =  UIFont.systemFont(ofSize: 19,
+			weight: .light)
+		
+		leftBoxBtn.borderWidth = 1.0
+		leftBoxBtn.borderColor = .lightGray
+		leftBoxBtn.addTarget(
+			self,
+			action: #selector(leftBoxBtnTapped),
+			for: .touchUpInside)
+		leftBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
+		view.addSubview(leftBoxBtn)
+		
 
-			middleBoxBtn.titleLabel?.font =  UIFont.systemFont(
-				ofSize: 24,
-				weight: .light)
-			
-			middleBoxBtn.borderWidth = 1.0
-			middleBoxBtn.borderColor = .lightGray
-			middleBoxBtn.addTarget(
-				self,
-				action: #selector(middleBoxBtnTapped),
-				for: .touchUpInside)
-			middleBoxBtn.setTitle("Button", for: .normal)
-			//middleBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
+		// WIKIPEDIA PAGE BUTTON  (MIDDLE)
+		middleBoxBtn =  UIButton(frame: CGRect(
+			x: view.frame.width/3,
+			y: view.frame.height - view.frame.height/3,
+			width: view.frame.width/3,
+			height: view.frame.height/4))
+		middleBoxBtn.setTitleColor(UIColor.black, for: .normal)
+		middleBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+		middleBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
+		middleBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
 
-			north.addSubview(middleBoxBtn)
+		middleBoxBtn.titleLabel?.font =  UIFont.systemFont(
+			ofSize: 19,
+			weight: .light)
+		
+		middleBoxBtn.borderWidth = 1.0
+		middleBoxBtn.borderColor = .lightGray
+		middleBoxBtn.addTarget(
+			self,
+			action: #selector(middleBoxBtnTapped),
+			for: .touchUpInside)
+		
+		view.addSubview(middleBoxBtn)
 
-			// RIGHT BOX BUTTON  (RIGHT)
-			rightBoxBtn =  UIButton(frame: CGRect(
-				x: screenWidth * 0.6,
-				y: screenHeight * 0.65,
-				width: 110,
-				height: 110))
-			rightBoxBtn.setTitleColor(UIColor.black, for: .normal)
-			rightBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
-			rightBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
-			rightBoxBtn.titleLabel?.font =  UIFont.systemFont(
-				ofSize: 24,
-				weight: .light)
-			
-			rightBoxBtn.borderWidth = 1.0
-			rightBoxBtn.borderColor = .lightGray
-			rightBoxBtn.addTarget(
-				self,
-				action: #selector(rightBoxBtnTapped),
-				for: .touchUpInside)
-			rightBoxBtn.setTitle("Right Button", for: .normal)
-			rightBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
+		// RIGHT BOX BUTTON  (RIGHT)
+		rightBoxBtn =  UIButton(frame: CGRect(
+			x: view.frame.width - view.frame.width/3,
+			y: view.frame.height - view.frame.height/3,
+			width: view.frame.width/3,
+			height: view.frame.height/4))
+		rightBoxBtn.setTitleColor(UIColor.black, for: .normal)
+		rightBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
+		rightBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
+		rightBoxBtn.titleLabel?.font =  UIFont.systemFont(
+			ofSize: 19,
+			weight: .light)
+		
+		rightBoxBtn.borderWidth = 1.0
+		rightBoxBtn.borderColor = .lightGray
+		rightBoxBtn.addTarget(
+			self,
+			action: #selector(rightBoxBtnTapped),
+			for: .touchUpInside)
 
-			north.addSubview(rightBoxBtn)
+		rightBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
+
+		view.addSubview(rightBoxBtn)
 
     }// end layouts did load
 	
 	func showData(data: CellDataClass){
 		
-		imageView.removeFromSuperview()
+		pillImageView.removeFromSuperview()
 		
 		url = URL(string: data.getImageUrl())
-		imageView = makeDisplayImage(image: image!)
-		imageView.kf.setImage(with: url, placeholder: image)
-		//imageView.borderColor = .lightGray
-		//imageView.borderWidth =  1.0
-		//print(imageView.frame.height)// 406
-		
-		north.addSubview(imageView)
+		pillImageView = makeDisplayImage(image: altImage!)
+		pillImageView.kf.setImage(with: url, placeholder: image)
+		//pillImageView.borderColor = .lightGray
+		//pillImageView.borderWidth =  1.0
+		//print(pillImageView.frame.height)// 406
+		view.addSubview(pillImageView)
 		
 		
 	}
@@ -201,30 +199,15 @@ class CardDisplayViewController: NorthSouthViewController {
 		y: screenHeight * (0.1),
 		width: screenWidth * 0.8,
 		height: 44))
-		//label.font = UIFont.systemFont(ofSize: 24)
+		//label.font = UIFont.systemFont(ofSize: 19)
 		dosageLbl.text = "Dose:\t" + message
 		dosageLbl.numberOfLines = 1
 		dosageLbl.layer.borderWidth = 0.0
-		dosageLbl.font = UIFont.systemFont(ofSize: 24)
+		dosageLbl.font = UIFont.systemFont(ofSize: 19)
 		return dosageLbl
 	}
 	
-	func displayWebPage(address: String) {
-			// base url
-			let urlString = URL(string: address)
-			
-			if let url = urlString {
-				if #available(iOS 10.0, *) {
-					UIApplication.shared.open(url, options: [:], completionHandler: nil)
-				} else {
-					UIApplication.shared.openURL(url)
-				}
-			} else {
-				print("could not open url, it was nil")
-			}
 
-		
-	}
 
 	func displayWikipediaPage(base: URL, str: String) {
 		// only does first term right now

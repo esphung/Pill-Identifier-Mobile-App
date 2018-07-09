@@ -10,18 +10,24 @@ import UIKit
 
 class MyPillTableView: UITableView {
 	
-	var mainImageView: UIImageView!
 	var mainLabel: UILabel!
+	var customRowHeight: Double!
 	
 	override init(frame: CGRect, style: UITableView.Style) {
+		
 		super.init(frame: frame, style: .plain)
-		print("HEY!")
+
+		let customRowHeight = (screenWidth/screenHeight) * self.frame.height
+		print("Current Row Height: ", customRowHeight)
+		self.rowHeight = customRowHeight
+		self.register(UITableViewCell.self, forCellReuseIdentifier: "customCell")
 		
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+	
 	
     /*
     // Only override draw() if you perform custom drawing.
@@ -30,5 +36,7 @@ class MyPillTableView: UITableView {
         // Drawing code
     }
     */
+    
+	
 
 }

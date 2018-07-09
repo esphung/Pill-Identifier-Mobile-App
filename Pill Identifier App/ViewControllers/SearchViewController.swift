@@ -13,7 +13,6 @@ import Alamofire
 (1200 / 1600) x 400 = 300
 */
 
-
 @available(iOS 11.0, *)
 class SearchViewController:
 NorthSouthViewController,
@@ -64,12 +63,8 @@ UITextFieldDelegate {
 	var isChecked = 			true
 	var isScored = 				false
 	
-	var tiles = [TileButton]()
-	
-	var customView:  MyPillTableView!
-	
-	var myCustomCell: TableViewCell1!
-	
+	var customTableView:  MyPillTableView!
+	var customCell: TableViewCell1!
 	var cellData: CellDataClass!
 	
 	// my box buttons
@@ -80,21 +75,6 @@ UITextFieldDelegate {
 	var boxBtn004: BoxButton!
 	var boxBtn005: BoxButton!
 	var boxBtn006: BoxButton!
-
-	/*
-	// my tile buttons
-	var tileBtn001: TileButton!
-	var tileBtn002: TileButton!
-	var tileBtn003: TileButton!
-
-	var tileBtn004: TileButton!
-	var tileBtn005: TileButton!
-	var tileBtn006: TileButton!
-
-	var tileBtn007: TileButton!
-	var tileBtn008: TileButton!
-	var tileBtn009: TileButton!
-	*/
 	
 	var arrayPillData = [Pill]()
 
@@ -106,122 +86,85 @@ UITextFieldDelegate {
 			target: self,
 			action: #selector(dismissKeyboard))
 		view.addGestureRecognizer(tap)
+		
 
 	}// end loadview
 	
-	// GET BOX BUTTON
-	func getBoxButton(x: CGFloat, y: CGFloat) -> BoxButton {
-		let button = BoxButton(frame: CGRect(
-			x: x,
-			y: y,
-			width: 110,
-			height: 110))
-		
-		return button
-	}// builder  function
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+	
 		
 		// initialize vars
 		let cellData = CellDataClass()
-
-		
-
 		//========================================
-		
-		// boxBtn001 (L) //667.0 || % 4.5 = 138-ish || 140 x 4 = 560
-		let boxBtn001 = getBoxButton(x: 0, y: 0)// COLOR
+		// Get the superview's layout
+
+		// boxBtn001 (L)
+		let boxBtn001 = BoxButton(
+			frame: CGRect(
+				x: 0, y: 0, width: view.frame.width/3, height: view.frame.height/4))// COLOR
 		boxBtn001.setTitle("Color", for: .normal)
-		boxBtn001.addTarget(
-			self,
-			action: #selector(pickColorBtnTapped),
-			for: .touchUpInside)
-		north.addSubview(boxBtn001)
+		boxBtn001.addTarget(self,action: #selector(pickColorBtnTapped),for: .touchUpInside)
+		view.addSubview(boxBtn001)
 		
 		// boxBtn002 (M)
-		let boxBtn002 = getBoxButton(
-			x: screenWidth * 0.3,
-			y: 0)// SHAPE
+		let boxBtn002 = BoxButton(frame: CGRect(
+			x: view.frame.width/3, y: 0, width: view.frame.width/3, height: view.frame.height/4))
 		boxBtn002.setTitle("Shape", for: .normal)
-		boxBtn002.addTarget(
-			self,
-			action: #selector(pickShapeBtnTapped),
+		boxBtn002.addTarget(self, action: #selector(pickShapeBtnTapped),
 			for: .touchUpInside)
-		north.addSubview(boxBtn002)
+		view.addSubview(boxBtn002)
 		
 		// boxBtn003 (R)
-		let boxBtn003 = getBoxButton(
-			x: screenWidth * 0.6,
-			y: 0)// PICTURE
-		boxBtn003.addTarget(
-			self,
-			action: #selector(pickPictureBtnTapped),
-			for: .touchUpInside)
+		let boxBtn003 = BoxButton(frame: CGRect(
+			x: (view.frame.width - view.frame.width/3), y: 0, width: view.frame.width/3, height: view.frame.height/4))
 		boxBtn003.setTitle("Picture", for: .normal)
-		north.addSubview(boxBtn003)
-
+		view.addSubview(boxBtn003)
+		
 		//========================================
-		
 		// boxBtn004 (L) || 120 x 4 = 480 || 140 || screenHeight/4 = 167ish
-		let boxBtn004 = getBoxButton(
-			x: screenWidth * 0.6,
-			y: ((screenHeight/3) - (screenHeight/6)))
-		
-		boxBtn004.setTitle("No Image", for: .normal)
+		let boxBtn004 = BoxButton(
+			frame: CGRect(
+				x: 0, y:  (view.frame.height - view.frame.height/2)/2, width: view.frame.width/3, height: view.frame.height/4))// Imager
+		boxBtn004.setTitle("Image", for: .normal)
 		boxBtn004.addTarget(
 			self,
 			action: #selector(pickImprintBtnTapped),
 			for: .touchUpInside)
-		north.addSubview(boxBtn004)
-		
+		view.addSubview(boxBtn004)
+
+
 		// boxBtn005 (M)
-		let boxBtn005 = getBoxButton(
-			x: screenWidth * 0.3,
-			y: ((screenHeight/3) - (screenHeight/6)))
+		let boxBtn005 = BoxButton(frame: CGRect(
+			x: view.frame.width/3, y:  (view.frame.height - view.frame.height/2)/2, width: view.frame.width/3, height: view.frame.height/4))
 		boxBtn005.setTitle("Submit", for: .normal)//SUBMIT
 		boxBtn005.addTarget(
 			self,
 			action: #selector(submitButtonTapped),
 			for: .touchUpInside)
-		north.addSubview(boxBtn005)
-		
+		view.addSubview(boxBtn005)
+
 		// boxBtn006 (R)
-		let boxBtn006 = getBoxButton(
-			x: 0,
-			y: ((screenHeight/3) - (screenHeight/6)))// IMPRINT
+		let boxBtn006 = BoxButton(frame: CGRect(
+		x: (view.frame.width - view.frame.width/3), y:  (view.frame.height - view.frame.height/2)/2, width: view.frame.width/3, height: view.frame.height/4))
 		boxBtn006.setTitle("Scores", for: .normal)
 		boxBtn006.addTarget(
 			self,
 			action: #selector(pickScoreBtnTapped),
 			for: .touchUpInside)
-		north.addSubview(boxBtn006)//SCORE
-		
+		view.addSubview(boxBtn006)//SCORE
+
 		//========================================
 		
-		setNavigationBar(title: "Enter Pill Information")
-		
-
+		//setNavigationBar(title: "Enter Pill Information")
 		// Create UITextField
 		pickImprintTextField = UITextField(frame: CGRect(
 			x: screenWidth * 0.6,
 			y: ((screenHeight/4) - (screenHeight/4)),
-			width: boxBtn004.frame.width,
-			height: boxBtn004.frame.height))
+			width: 110,
+			height: 110))
 		pickImprintTextField.isOpaque = true
 		
-		//====
-		/*
-		let myImage = UIImage(named: placeholder)
-		let myImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: boxBtn001.frame.width , height: boxBtn001.frame.height))
-		myImageView.backgroundColor = .red
-		myImageView.contentMode = .scaleAspectFill
-		myImageView.clipsToBounds = true
-		myImageView.image = myImage
-		
-		north.addSubview(myImageView)
-		*/
-		//====
 		
 		// Set UITextField placeholder text
 		pickImprintTextField.placeholder = "Enter Imprint"
@@ -245,61 +188,13 @@ UITextFieldDelegate {
 		pickImprintTextField.autocapitalizationType = .none
 		pickImprintTextField.spellCheckingType = .no
 		
-		// Set UITextField text color
-		//pickImprintTextField.textColor = UIColor.black
-		
-		north.addSubview(pickImprintTextField)
-		
-		/*
-		//========================================
+		//north.addSubview(pickImprintTextField)
 
-		// tileBtn001 (L) //667.0 || 120 + 120 = 240 || 140 + 140 || 166+166 = 332
-		let tileBtn001 = TileButton(frame: CGRect(x: 0.0, y: ((screenHeight/3)), width: 110, height: 110))
-		north.addSubview(tileBtn001)
-		
-		// tileBtn002 (M)
-		let tileBtn002 = TileButton(frame: CGRect(x: screenWidth * 0.3, y: ((screenHeight/3)), width: 110, height: 110))
-		north.addSubview(tileBtn002)
-		
-		// tileBtn003 (R)
-		let tileBtn003 = TileButton(frame: CGRect(x: screenWidth * 0.6, y: ((screenHeight/3)), width: 110, height: 110))
-		north.addSubview(tileBtn003)
-		
-		//========================================
-		
-		// tileBtn004 (L) //667.0 || 120 + 120 = 240 || 140 + 140 || 166+166 = 332
-		let tileBtn004 = TileButton(frame: CGRect(x: tileBtn001.frame.minX, y: ((screenHeight/3) * 1.5), width: 110, height: 110))
-		north.addSubview(tileBtn004)
-		
-		// tileBtn005 (M)
-		let tileBtn005 = TileButton(frame: CGRect(x: tileBtn002.frame.minX, y: ((screenHeight/3) * 1.5), width: 110, height: 110))
-		north.addSubview(tileBtn005)
-		
-		// tileBtn006 (R)
-		let tileBtn006 = TileButton(frame: CGRect(x: tileBtn003.frame.minX, y: ((screenHeight/3) * 1.5), width: 110, height: 110))
-		north.addSubview(tileBtn006)
-		
-		//========================================
-
-		// tileBtn007 (R)
-		let tileBtn007 = TileButton(frame: CGRect(x: tileBtn001.frame.minX, y: ((screenHeight/3) * 2), width: 110, height: 110))
-		north.addSubview(tileBtn007)
-
-		// tileBtn008 (L) //667.0 || 120 + 120 = 240 || 140 + 140 || 166+166 = 332
-		let tileBtn008 = TileButton(frame: CGRect(x: tileBtn002.frame.minX, y: ((screenHeight/3) * 2), width: 110, height: 110))
-		north.addSubview(tileBtn008)
-		
-		// tilBtn009 (M)
-		let tilBtn009 = TileButton(frame: CGRect(x: tileBtn003.frame.minX, y: (screenHeight/3) * 2, width: 110, height: 110))
-	
-		north.addSubview(tilBtn009)
-		
-		*/
 		//========================================
 		pickNameTextField = UITextField(frame: CGRect(
 			x: 0.0, y: ((screenHeight/3) * 2),
 			width: screenWidth * 0.90,
-			height: boxBtn004.frame.height))
+			height: 110))
 		pickNameTextField.placeholder = "Enter Pill Name"
 		pickNameTextField.textAlignment  = .center
 		//pickNameTextField.font = UIFont.systemFont(ofSize: 15)
@@ -315,97 +210,148 @@ UITextFieldDelegate {
 		pickNameTextField.delegate = self// when return key pressed, do sumthing
 		
 		//north.addSubview(pickNameTextField)
-		
 		// ===========================================
-		
-		print(screenWidth)
-		print(screenHeight)
+		//print(screenWidth)
+		//print(screenHeight)
 		
 		// (original height / original width) x new width = new height
-		
-		customView = MyPillTableView(frame: CGRect(
+		customTableView = MyPillTableView(frame: CGRect(
 			x: 0, y: 0, width: 110, height: 110))
+		customTableView.translatesAutoresizingMaskIntoConstraints = false
 		
-		customView.borderColor  = .lightGray
-		customView.borderWidth = 3.0
-		
-		customView.translatesAutoresizingMaskIntoConstraints = false
-		
-		customView.cellLayoutMarginsFollowReadableWidth = true
-	
-		myView.addSubview(customView)
+
+		myView.addSubview(customTableView)
 		setTableViewConstraints()
 		
-		//  ==== CREATE  REUSABLE TABLE VIEW CELL
-		myCustomCell = TableViewCell1(frame: CGRect(
-			x: 0, y: 0, width: customView.frame.width, height: 110))
+		//  ==== CREATE REUSABLE TABLE VIEW CELL
+		customCell = TableViewCell1(frame: CGRect(
+			x: 0, y: 0, width: 110, height: 110))
+		customCell.translatesAutoresizingMaskIntoConstraints = false
 		
-		myCustomCell.translatesAutoresizingMaskIntoConstraints = false
-		myCustomCell.borderWidth = 1.0
-		//imageView = makeDisplayImage(image: image!)
-		//imageView.kf.setImage(with: url, placeholder: image)
-		
-		//url = URL(string: "https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552&format=original")
 		url = URL(string: cellData.getImageUrl())
+		customCell.imageView?.kf.setImage(
+			with: url,placeholder: UIImage(named: "test.jpg"))
+		cellData.setName(str: "Hello ERic")
+		customCell.textLabel?.text = cellData.getName()
+		customCell.textLabel?.textAlignment = .center
+		customCell.textLabel?.numberOfLines = 1
+	
+		customTableView.addSubview(customCell)
+		setCellViewConstraints(myView: customCell)
 		
-		myCustomCell.imageView?.kf.setImage(with: url,placeholder: UIImage(named: placeholder))
-		myCustomCell.textLabel?.text = "Hello World"//cellData.getName()
-		customView.register(UITableViewCell.self, forCellReuseIdentifier: "myCustomCell")
-		
-		customView.addSubview(myCustomCell)
-		setCellViewConstraints(myView: myCustomCell)
-		
-		
-		
-		
-		
-		// ==================
-		
+		//customTableView.removeFromSuperview()
 
-
-		//myCustomCell.mainImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 110, height: 110))
-		url = URL(string: cellData.getImageUrl())
-		myCustomCell.mainImageView = makeDisplayImage(image: image!)
-		myCustomCell.imageView?.kf.setImage(with: url, placeholder: image)
-		
-		
-		myCustomCell.addSubview(imageView)
-		
-		
-		
-		imageView.borderWidth = 3.0
-		
-		/*
-		(original height / original width) x new width = new height
-		(1200 / 1600) x 400 = 300
-		*/
-		
-		// 375.0 W
-		// 667.0 H
-		// (1200 / 1600) x 400 = 300 || (W/H) * space-needed
-		// (375 / 667) * 110 (image size?)
-		
-		
+		//showFrames()
 		
 	}// end view did load
 	
-	func  setCellViewConstraints(myView: UIView){
+
+	func loadTable(tableView: UITableView) {
+		for item in arrayPillData {
+			
+			print(item)
+			
+		}
+
+	}
+	
+	
+	func submit() {
+		var url = baseUrl
+		
+		// check color
+		if (color != nil) && (color.isEmpty == false) {
+			url = url + getSearchUrlString(find: colorParam, str: color)
+		} else {
+			color = ""
+		}
+		
+		// check shape
+		if (shape != nil) && (shape.isEmpty == false) {
+			url = url + getSearchUrlString(find: shapeParam, str: shape)
+		} else {
+			shape = ""
+		}
+		
+		// check imprint
+		if (imprint != nil) && (imprint.isEmpty == false) {
+			url = url + getSearchUrlString(find: imprintParam, str: String(imprint))
+		} else {
+			imprint  = ""
+		}
+		
+		// check score
+		if (score != nil) && (score > 0 && score <= 4) {
+			// contains score input [1,2,3,4]
+			url = url + getSearchUrlString(find: scoreParam, str: String(score))
+		} else {
+			score = 0
+		}
+		
+		// check name
+		//guard let name = self.pickNameTextField.text else { return }
+		if (name != nil) && (name.isEmpty == false) {
+			// contains score input [1,2,3,4]
+			url = url + getSearchUrlString(find: nameParam, str: name)
+		} else {
+			name = ""
+		}
+		
+		// check limit
+		if (limit != nil) {
+			url = url + getSearchUrlString(find: colorParam, str: color) // "&rLimit="
+		}
+		
+		// final url to be sent off
+		print(url)
+		
+		
+		// get http request
+		Alamofire.request(url).responseJSON { response in
+			//print("Request: \(String(describing: response.request))")   // original url request
+			if let json = response.result.value {
+				//print("JSON: \(json)") // serialized json response
+				let swiftyJsonVar = JSON(json)//  conert json response to swiftyJSON
+				print(swiftyJsonVar["replyStatus"])
+				
+				// get results as pill array
+				//print(swiftyJsonVar["nlmRxImages"])// list of pills
+				
+				// one or more pill found
+				if swiftyJsonVar["replyStatus"]["totalImageCount"]  > 0 {
+					
+					// save to array, send results to display page
+					self.setArray(json: swiftyJsonVar["nlmRxImages"])
+					
+					self.displayResultsPage()
+					
+					
+				} else {
+					// no results found
+					print("No results founds")
+				}
+				
+			}
+		}
+	}// end submit
+	
+	
+	func setCellViewConstraints(myView: UIView){
 		
 		// Get the superview's layout
-		let margins = customView.layoutMarginsGuide
+		let margins = customTableView.layoutMarginsGuide
 		
 		// Pin the leading edge of myView to the margin's leading edge
 		myView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
 		
 		// Pin the trailing edge of myView to the margin's trailing edge
 		myView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-		
-		myView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
-		
+	
 		// Give myView a 1:2 aspect ratio
-		myView.heightAnchor.constraint(equalToConstant: 110).isActive = true
-		
-		myView.backgroundColor = .orange
+		myView.heightAnchor.constraint(equalToConstant: customTableView.rowHeight).isActive = true
+		myView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+
+		//myView.backgroundColor = .orange
 		
 	}
 	
@@ -414,34 +360,23 @@ UITextFieldDelegate {
 		let margins = myView.layoutMarginsGuide
 		
 		// Pin the leading edge of customsView to the margin's leading edge
-		customView.leadingAnchor.constraint(lessThanOrEqualTo: margins.leadingAnchor).isActive = true
+		customTableView.leadingAnchor.constraint(lessThanOrEqualTo: margins.leadingAnchor).isActive = true
 		
-		// Pin the trailing edge of customView to the margin's trailing edge
-		customView.trailingAnchor.constraint(lessThanOrEqualTo: margins.trailingAnchor).isActive = true
+		// Pin the trailing edge of customTableView to the margin's trailing edge
+		customTableView.trailingAnchor.constraint(lessThanOrEqualTo: margins.trailingAnchor).isActive = true
 		
 		// Give myView a 1:2 aspect ratio
-		customView.heightAnchor.constraint(equalTo: margins.widthAnchor, multiplier: 0.5).isActive = true
+		customTableView.heightAnchor.constraint(equalTo: margins.heightAnchor, multiplier: 0.5).isActive = true
 		
 		// if pinned to the bottom
-		customView.bottomAnchor.constraint(lessThanOrEqualTo: margins.bottomAnchor).isActive = true
+		customTableView.bottomAnchor.constraint(lessThanOrEqualTo: margins.bottomAnchor).isActive = true
 		
-		customView.backgroundColor = .red
+		//customTableView.backgroundColor = .red
 		//myView.backgroundColor = .blue
 	}
 
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		
-		//south.frame = self.southFrame
-		north.frame = self.northFrame
-		
-	}// end layouts did load
-	
-	@objc func boxBtn10Tapped(){}
-	
-	@objc func boxBtn11Tapped() {}
 
-	@objc func boxBtn12Tapped() {}
+	
 	
 	func setIsChecked(bool: Bool){
 		if bool {
@@ -643,17 +578,6 @@ UITextFieldDelegate {
 		}
 	}
 	
-	func setTileBtn() {
-			let tileBtn = TileButton(frame: CGRect(x: 0.0, y: ((screenHeight/3)), width: 110, height: 110))
-			tileBtn.isHidden = false
-			
-			self.tiles.append(tileBtn)
-			
-			self.north.addSubview(tileBtn)
-			
-			print(self.tiles.count)
-	}
-	
 	func setArray(json: JSON) {
 		// ====== set json to my pill array
 		for item in json.array! {
@@ -670,86 +594,6 @@ UITextFieldDelegate {
 		}// end loop pill data
 	}
 	
-	func submit() {
-		var url = baseUrl
-		
-		// check color
-		if (color != nil) && (color.isEmpty == false) {
-			url = url + getSearchUrlString(find: colorParam, str: color)
-		} else {
-			color = ""
-		}
-		
-		// check shape
-		if (shape != nil) && (shape.isEmpty == false) {
-			url = url + getSearchUrlString(find: shapeParam, str: shape)
-		} else {
-			shape = ""
-		}
-		
-		// check imprint
-		if (imprint != nil) && (imprint.isEmpty == false) {
-			url = url + getSearchUrlString(find: imprintParam, str: String(imprint))
-		} else {
-			imprint  = ""
-		}
-
-		// check score
-		if (score != nil) && (score > 0 && score <= 4) {
-			// contains score input [1,2,3,4]
-			url = url + getSearchUrlString(find: scoreParam, str: String(score))
-		} else {
-			score = 0
-		}
-		
-		// check name
-		//guard let name = self.pickNameTextField.text else { return }
-		if (name != nil) && (name.isEmpty == false) {
-			// contains score input [1,2,3,4]
-			url = url + getSearchUrlString(find: nameParam, str: name)
-		} else {
-			name = ""
-		}
-		
-		// check limit
-		if (limit != nil) {
-			url = url + getSearchUrlString(find: colorParam, str: color) // "&rLimit="
-		}
-
-		// final url to be sent off
-		print(url)
-
-		
-		// get http request
-		Alamofire.request(url).responseJSON { response in
-			//print("Request: \(String(describing: response.request))")   // original url request
-			if let json = response.result.value {
-				//print("JSON: \(json)") // serialized json response
-				let swiftyJsonVar = JSON(json)//  conert json response to swiftyJSON
-				print(swiftyJsonVar["replyStatus"])
-				
-				// get results as pill array
-				//print(swiftyJsonVar["nlmRxImages"])// list of pills
-				
-				// one or more pill found
-				if swiftyJsonVar["replyStatus"]["totalImageCount"]  > 0 {
-					
-					// save to array, send results to display page
-					self.setArray(json: swiftyJsonVar["nlmRxImages"])
-					
-					self.displayResultsPage()
-					
-					
-					
-				} else {
-					// no results found
-					print("No results founds")
-				}
-				
-			}
-		}
-		
-	}// end submit
 	func camera() {
 		if UIImagePickerController.isSourceTypeAvailable(.camera){
 			let myPickerController = UIImagePickerController()
@@ -780,7 +624,6 @@ UITextFieldDelegate {
 
 	
 	func showImageActionSheet() {
-		
 		let actionSheet = UIAlertController(
 			title: nil,
 			message: nil,
