@@ -151,7 +151,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		
 		let pos = cellData.getCell() - 1
 		
-		if (pos) > 0 {
+		if (pos) >= 0 {
 			
 			cellData = arrayData[pos]
 			
