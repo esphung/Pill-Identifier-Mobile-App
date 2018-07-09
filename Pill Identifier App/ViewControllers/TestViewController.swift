@@ -5,6 +5,7 @@
 
 import UIKit.UIViewController
 
+@available(iOS 11.0, *)
 class TestViewController: NorthSouthViewController {
 
 	override func viewDidLoad() {

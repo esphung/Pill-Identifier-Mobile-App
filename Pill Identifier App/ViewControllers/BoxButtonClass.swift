@@ -25,7 +25,7 @@ class BoxButton: UIButton {
 		self.setTitleColor(UIColor.black, for: .normal)
 		self.setTitleColor(UIColor.lightGray, for: .disabled)
 		self.setTitleColor(UIColor.white, for: .highlighted)
-		self.titleLabel?.font =  UIFont.systemFont(ofSize: 16, weight: .light)
+		self.titleLabel?.font =  UIFont.systemFont(ofSize: 24, weight: .light)
 		self.titleLabel?.textColor = .lightGray
 		
 		self.borderWidth = 1.0

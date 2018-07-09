@@ -30,18 +30,12 @@
 		5EF7DD5220E18BEE00EF5F2E /* TableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF7DD5020E18BEE00EF5F2E /* TableViewCell1.xib */; };
 		5EF7DD5520E18C9E00EF5F2E /* TableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7DD5320E18C9E00EF5F2E /* TableViewCell2.swift */; };
 		5EF7DD5620E18C9E00EF5F2E /* TableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF7DD5420E18C9E00EF5F2E /* TableViewCell2.xib */; };
+		5EF885E920F2E837005AF798 /* MyPillTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF885E820F2E837005AF798 /* MyPillTableView.swift */; };
 		630F65D7715A1A70CBB4D62E /* Pods_Pill_Identifier_AppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED7DFC39C9B124A77281F11 /* Pods_Pill_Identifier_AppTests.framework */; };
 		981D4E554E010135351A3921 /* Pods_Pill_Identifier_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCD64754BEF6F5E47D76676F /* Pods_Pill_Identifier_App.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		18F57B971E992E0A0013221F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 18F57B7A1E992E0A0013221F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 18F57B811E992E0A0013221F;
-			remoteInfo = "Pill Identifier App";
-		};
 		18F57BA21E992E0A0013221F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 18F57B7A1E992E0A0013221F /* Project object */;
@@ -93,6 +87,7 @@
 		5EF7DD5020E18BEE00EF5F2E /* TableViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell1.xib; sourceTree = "<group>"; };
 		5EF7DD5320E18C9E00EF5F2E /* TableViewCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell2.swift; sourceTree = "<group>"; };
 		5EF7DD5420E18C9E00EF5F2E /* TableViewCell2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell2.xib; sourceTree = "<group>"; };
+		5EF885E820F2E837005AF798 /* MyPillTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPillTableView.swift; sourceTree = "<group>"; };
 		69B7E40B35288614CB2B913F /* Pods-Pill Identifier AppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pill Identifier AppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pill Identifier AppTests/Pods-Pill Identifier AppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E49BA3C3BD26D08FDBE219B /* Pods-Pill Identifier AppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pill Identifier AppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pill Identifier AppUITests/Pods-Pill Identifier AppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8CC71BA851764D61EF0D8446 /* Pods-Pill Identifier App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pill Identifier App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pill Identifier App/Pods-Pill Identifier App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -204,13 +199,14 @@
 		5E7756D120E5B74100510808 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */,
+				5EF885E820F2E837005AF798 /* MyPillTableView.swift */,
+				5E575F1520D6378300B94C16 /* SearchViewController.swift */,
 				5EBBC44C20F2A77B004A9EEE /* PillClass.swift */,
 				5E86255520F29B010023E297 /* BoxButtonClass.swift */,
 				5E29F7B620EFCE1B00549742 /* CellDataClass.swift */,
-				5E575F1520D6378300B94C16 /* SearchViewController.swift */,
 				5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */,
 				5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */,
-				5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */,
 				5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */,
 				5E49D4EA20D837E0002C8469 /* Globals.swift */,
 				18F57B891E992E0A0013221F /* Main.storyboard */,
@@ -278,7 +274,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				18F57B981E992E0A0013221F /* PBXTargetDependency */,
 			);
 			name = "Pill Identifier AppTests";
 			productName = "Pill Identifier AppTests";
@@ -476,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EF885E920F2E837005AF798 /* MyPillTableView.swift in Sources */,
 				5EF7DD5520E18C9E00EF5F2E /* TableViewCell2.swift in Sources */,
 				5E29F7C320EFDA2F00549742 /* CellDataClass.swift in Sources */,
 				5E86255620F29B010023E297 /* BoxButtonClass.swift in Sources */,
@@ -512,11 +508,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		18F57B981E992E0A0013221F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 18F57B811E992E0A0013221F /* Pill Identifier App */;
-			targetProxy = 18F57B971E992E0A0013221F /* PBXContainerItemProxy */;
-		};
 		18F57BA31E992E0A0013221F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 18F57B811E992E0A0013221F /* Pill Identifier App */;

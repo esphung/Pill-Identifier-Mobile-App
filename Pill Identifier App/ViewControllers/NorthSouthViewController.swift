@@ -20,6 +20,7 @@ var screenHeight: CGFloat {
 	return UIScreen.main.bounds.height
 }
 
+@available(iOS 11.0, *)
 class NorthSouthViewController: UIViewController {
 
 	// set up view layout
@@ -101,7 +102,7 @@ class NorthSouthViewController: UIViewController {
 		self.view.removeFromSuperview()
 		
 	}
-	
+
 	func displaySearchFormPage() {
 		let searchViewController: SearchViewController
 		= storyboard?.instantiateViewController(
@@ -178,11 +179,15 @@ class NorthSouthViewController: UIViewController {
 
 	// image view photo display
 	func makeDisplayImage(image:  UIImage) -> UIImageView {
+		let viewHeight = view.frame.height
+		let viewWidth  = view.frame.width
+		let imageHeight = ((viewHeight)/(viewWidth)) * (myView.frame.height/2)
+		print(imageHeight)
 		imageView = UIImageView(frame: CGRect(
 			x: 20,
 			y: 0,
-			width: screenWidth * 0.8,
-			height: (screenHeight/2) - 6))
+			width: viewWidth * 0.8,
+			height: imageHeight))
 		imageView.image = image
 		imageView.contentMode = UIView.ContentMode.scaleAspectFit
 		

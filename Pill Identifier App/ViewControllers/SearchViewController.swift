@@ -7,9 +7,14 @@ import ActionSheetPicker_3_0
 import SwiftyJSON
 import Alamofire
 
-// make pill  array
+
+/*
+(original height / original width) x new width = new height
+(1200 / 1600) x 400 = 300
+*/
 
 
+@available(iOS 11.0, *)
 class SearchViewController:
 NorthSouthViewController,
 UIImagePickerControllerDelegate,
@@ -61,6 +66,12 @@ UITextFieldDelegate {
 	
 	var tiles = [TileButton]()
 	
+	var customView:  MyPillTableView!
+	
+	var myCustomCell: TableViewCell1!
+	
+	var cellData: CellDataClass!
+	
 	// my box buttons
 	var boxBtn001: BoxButton!
 	var boxBtn002: BoxButton!
@@ -111,8 +122,11 @@ UITextFieldDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		// initialize vars
+		let cellData = CellDataClass()
 
-		setNavigationBar(title: "Enter Pill Information")
+		
 
 		//========================================
 		
@@ -184,6 +198,8 @@ UITextFieldDelegate {
 		north.addSubview(boxBtn006)//SCORE
 		
 		//========================================
+		
+		setNavigationBar(title: "Enter Pill Information")
 		
 
 		// Create UITextField
@@ -280,11 +296,8 @@ UITextFieldDelegate {
 		
 		*/
 		//========================================
-
-		
 		pickNameTextField = UITextField(frame: CGRect(
-			x: 0,
-			y: ((screenHeight/4) * 2) + (screenHeight/4),
+			x: 0.0, y: ((screenHeight/3) * 2),
 			width: screenWidth * 0.90,
 			height: boxBtn004.frame.height))
 		pickNameTextField.placeholder = "Enter Pill Name"
@@ -303,7 +316,118 @@ UITextFieldDelegate {
 		
 		//north.addSubview(pickNameTextField)
 		
+		// ===========================================
+		
+		print(screenWidth)
+		print(screenHeight)
+		
+		// (original height / original width) x new width = new height
+		
+		customView = MyPillTableView(frame: CGRect(
+			x: 0, y: 0, width: 110, height: 110))
+		
+		customView.borderColor  = .lightGray
+		customView.borderWidth = 3.0
+		
+		customView.translatesAutoresizingMaskIntoConstraints = false
+		
+		customView.cellLayoutMarginsFollowReadableWidth = true
+	
+		myView.addSubview(customView)
+		setTableViewConstraints()
+		
+		//  ==== CREATE  REUSABLE TABLE VIEW CELL
+		myCustomCell = TableViewCell1(frame: CGRect(
+			x: 0, y: 0, width: customView.frame.width, height: 110))
+		
+		myCustomCell.translatesAutoresizingMaskIntoConstraints = false
+		myCustomCell.borderWidth = 1.0
+		//imageView = makeDisplayImage(image: image!)
+		//imageView.kf.setImage(with: url, placeholder: image)
+		
+		//url = URL(string: "https://vignette.wikia.nocookie.net/project-pokemon/images/4/47/Placeholder.png/revision/latest?cb=20170330235552&format=original")
+		url = URL(string: cellData.getImageUrl())
+		
+		myCustomCell.imageView?.kf.setImage(with: url,placeholder: UIImage(named: placeholder))
+		myCustomCell.textLabel?.text = "Hello World"//cellData.getName()
+		customView.register(UITableViewCell.self, forCellReuseIdentifier: "myCustomCell")
+		
+		customView.addSubview(myCustomCell)
+		setCellViewConstraints(myView: myCustomCell)
+		
+		
+		
+		
+		
+		// ==================
+		
+
+
+		//myCustomCell.mainImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 110, height: 110))
+		url = URL(string: cellData.getImageUrl())
+		myCustomCell.mainImageView = makeDisplayImage(image: image!)
+		myCustomCell.imageView?.kf.setImage(with: url, placeholder: image)
+		
+		
+		myCustomCell.addSubview(imageView)
+		
+		
+		
+		imageView.borderWidth = 3.0
+		
+		/*
+		(original height / original width) x new width = new height
+		(1200 / 1600) x 400 = 300
+		*/
+		
+		// 375.0 W
+		// 667.0 H
+		// (1200 / 1600) x 400 = 300 || (W/H) * space-needed
+		// (375 / 667) * 110 (image size?)
+		
+		
+		
 	}// end view did load
+	
+	func  setCellViewConstraints(myView: UIView){
+		
+		// Get the superview's layout
+		let margins = customView.layoutMarginsGuide
+		
+		// Pin the leading edge of myView to the margin's leading edge
+		myView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+		
+		// Pin the trailing edge of myView to the margin's trailing edge
+		myView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
+		
+		myView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
+		
+		// Give myView a 1:2 aspect ratio
+		myView.heightAnchor.constraint(equalToConstant: 110).isActive = true
+		
+		myView.backgroundColor = .orange
+		
+	}
+	
+	func setTableViewConstraints() {
+		// Get the superview's layout
+		let margins = myView.layoutMarginsGuide
+		
+		// Pin the leading edge of customsView to the margin's leading edge
+		customView.leadingAnchor.constraint(lessThanOrEqualTo: margins.leadingAnchor).isActive = true
+		
+		// Pin the trailing edge of customView to the margin's trailing edge
+		customView.trailingAnchor.constraint(lessThanOrEqualTo: margins.trailingAnchor).isActive = true
+		
+		// Give myView a 1:2 aspect ratio
+		customView.heightAnchor.constraint(equalTo: margins.widthAnchor, multiplier: 0.5).isActive = true
+		
+		// if pinned to the bottom
+		customView.bottomAnchor.constraint(lessThanOrEqualTo: margins.bottomAnchor).isActive = true
+		
+		customView.backgroundColor = .red
+		//myView.backgroundColor = .blue
+	}
 
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
@@ -787,6 +911,7 @@ UITextFieldDelegate {
 
 }// end view controller class definition
 
+
 extension UIView {
 	
 	@IBInspectable var cornerRadius: CGFloat {
@@ -816,5 +941,6 @@ extension UIView {
 			layer.borderColor = newValue?.cgColor
 		}
 	}
-}
+	
+}//  end uiview extension
 

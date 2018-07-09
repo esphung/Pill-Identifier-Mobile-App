@@ -9,6 +9,7 @@
 //import UIKit.UIViewController
 import Kingfisher
 
+@available(iOS 11.0, *)
 class ResultsTableViewController: UITableViewController {
 	var arrayOfCellData = [CellDataClass]()
 	
@@ -183,17 +184,27 @@ class ResultsTableViewController: UITableViewController {
 	}
 	
 	func displayCardDisplayPage(data: CellDataClass) {
-		let cardDisplayViewController: CardDisplayViewController = storyboard?.instantiateViewController(withIdentifier: "cardDisplayViewController") as! CardDisplayViewController
+
+		if #available(iOS 11.0, *) {
+			let cardDisplayViewController: CardDisplayViewController = storyboard?.instantiateViewController(withIdentifier: "cardDisplayViewController") as! CardDisplayViewController
+			
+			cardDisplayViewController.arrayData = self.arrayOfCellData
+			
+			cardDisplayViewController.cellData = self.arrayOfCellData[data.getCell()]
+			
+			self.present(
+				cardDisplayViewController,
+				animated: false,
+				completion: nil)
+			
+		} else {
+			// Fallback on earlier versions
+		}
 		
-		cardDisplayViewController.arrayData = self.arrayOfCellData
-		
-		cardDisplayViewController.cellData = self.arrayOfCellData[data.getCell()]
+
 		
 		
-		self.present(
-			cardDisplayViewController,
-			animated: false,
-			completion: nil)
+
 	}
 }
 

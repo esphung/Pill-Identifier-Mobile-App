@@ -6,6 +6,7 @@
 //import UIKit.UIViewController
 import Kingfisher
 
+@available(iOS 11.0, *)
 class CardDisplayViewController: NorthSouthViewController {
 	
 	var url: URL!
@@ -66,7 +67,7 @@ class CardDisplayViewController: NorthSouthViewController {
 			leftBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 			leftBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
 			leftBoxBtn.titleLabel?.font =  UIFont.systemFont(
-				ofSize: 16,
+				ofSize: 24,
 				weight: .light)
 			
 			leftBoxBtn.borderWidth = 1.0
@@ -91,7 +92,7 @@ class CardDisplayViewController: NorthSouthViewController {
 			middleBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
 
 			middleBoxBtn.titleLabel?.font =  UIFont.systemFont(
-				ofSize: 16,
+				ofSize: 24,
 				weight: .light)
 			
 			middleBoxBtn.borderWidth = 1.0
@@ -115,7 +116,7 @@ class CardDisplayViewController: NorthSouthViewController {
 			rightBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 			rightBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
 			rightBoxBtn.titleLabel?.font =  UIFont.systemFont(
-				ofSize: 16,
+				ofSize: 24,
 				weight: .light)
 			
 			rightBoxBtn.borderWidth = 1.0
@@ -200,11 +201,11 @@ class CardDisplayViewController: NorthSouthViewController {
 		y: screenHeight * (0.1),
 		width: screenWidth * 0.8,
 		height: 44))
-		//label.font = UIFont.systemFont(ofSize: 16)
+		//label.font = UIFont.systemFont(ofSize: 24)
 		dosageLbl.text = "Dose:\t" + message
 		dosageLbl.numberOfLines = 1
 		dosageLbl.layer.borderWidth = 0.0
-		dosageLbl.font = UIFont.systemFont(ofSize: 16)
+		dosageLbl.font = UIFont.systemFont(ofSize: 24)
 		return dosageLbl
 	}
 	
