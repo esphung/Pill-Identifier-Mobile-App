@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let mainStoryboard: UIStoryboard = UIStoryboard(
 			name: "Main", bundle: nil)
 		
-		
 		// 3. Instantiate our new initial view controller 
 		// based on it's Storyboard ID
 		let testViewController: UIViewController 

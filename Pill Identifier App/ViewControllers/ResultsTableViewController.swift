@@ -127,6 +127,9 @@ class ResultsTableViewController: UITableViewController {
 		return 200
 		}*/
 		
+		//let customRowHeight = (screenWidth/screenHeight) * self.frame.height
+		//print("Current Row Height: ", customRowHeight)
+		
 		return 85
 		
 	}

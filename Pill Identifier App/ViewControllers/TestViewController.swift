@@ -20,8 +20,8 @@ class TestViewController: NorthSouthViewController {
 		// set up searchPageBtn
 		searchPageBtn =  UIButton(frame: CGRect(
 			x: 20,
-			y: screenHeight * 0.225,
-			width: screenWidth * 0.8,
+			y: view.frame.height * 0.225,
+			width: view.frame.width * 0.8,
 			height: 44))
 		searchPageBtn.layer.borderWidth = 2.0;
 		searchPageBtn.backgroundColor = UIColor.red
@@ -38,10 +38,10 @@ class TestViewController: NorthSouthViewController {
 
 
 		let copyright = copyrightLabel()
-		myView.addSubview(copyright)
+		view.addSubview(copyright)
 		
 
-		north.addSubview(searchPageBtn)
+		view.addSubview(searchPageBtn)
 	
 
 	}// end view did load

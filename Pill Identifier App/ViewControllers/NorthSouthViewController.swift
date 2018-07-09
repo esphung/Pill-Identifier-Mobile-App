@@ -7,6 +7,7 @@
 
 import UIKit.UIViewController
 
+let nurseScrubGreenColor = UIColor(red: 119/255.0, green: 203/255.0, blue: 187/255.0, alpha: 1.0)
 let footerRect = CGRect(x:0, y: 0, width: 200,height: 21)
 
 public var placeholder = "250x250placeholder.png"
@@ -25,44 +26,25 @@ class NorthSouthViewController: UIViewController {
 
 	// set up view layout
 	var myView : UIView!
-	var north:  UIView!
 
 	var imageName: 	String!
 	var image:		UIImage!
 	var imageView: 	UIImageView!
 
-	//var msgLbl:		String!
-	
-	var northFrame: CGRect {
-		return CGRect(
-			x: 0,
-			y: 0,
-			width: view.frame.width,
-			height: (view.frame.height/2))
-	}
-	
+
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
-		
 		let myView = UIView()
 		self.view.addSubview(myView)
 		self.myView  =  myView
 		
-		let north = UIView()
-		self.view.addSubview(north)
-		self.north = north
-		
+
 		setUpContraints()
 
 	}
-	
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		north.frame = self.northFrame
-		
-	}
+
 	
 	func setNavigationBar(title: String) {
 		let navigationBar = UINavigationBar(frame: CGRect(
@@ -140,24 +122,18 @@ class NorthSouthViewController: UIViewController {
 		myView.layer.borderColor = UIColor.black.cgColor
 		myView.layer.borderWidth = 2.0
 		
-		//north.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
-		//north.layer.borderColor = UIColor.black.cgColor
-		//north.layer.borderWidth = 2.0
-		//north.backgroundColor = .green
-
 	}
 
 	// image view photo display
 	func makeDisplayImage(image: UIImage) -> UIImageView {
 		
-		let imageHeight = ((view.frame.height)/(view.frame.width)) * (view.frame.height/2)
 		imageView = UIImageView(frame: CGRect(
 			x: 0,
 			y: 0,
 			width: view.frame.width,
-			height: imageHeight))
+			height: view.frame.height/2))
 		imageView.image = image
-		imageView.contentMode = UIView.ContentMode.scaleAspectFit
+		//imageView.contentMode = UIView.ContentMode.scaleAspectFit
 		
 		return imageView
 	}

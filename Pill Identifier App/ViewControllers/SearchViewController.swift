@@ -7,6 +7,50 @@ import ActionSheetPicker_3_0
 import SwiftyJSON
 import Alamofire
 
+public var debug = false // does nOTHING
+
+
+// picker options for searching pill paramaters
+public let shapes = [
+	"BULLET",
+	"CAPSULE",
+	"CLOVER",
+	"DIAMOND",
+	"DOUBLE CIRCLE",
+	"FREEFORM",
+	"GEAR",
+	"HEPTAGON",
+	"HEXAGON",
+	"OCTAGON",
+	"OVAL",
+	"PENTAGON",
+	"RECTANGLE",
+	"ROUND",
+	"SEMI-CIRCLE",
+	"SQUARE",
+	"TEAR",
+	"TRAPEZOID",
+	"TRIANGLE"
+]
+
+public let colors =  [
+	"Black",
+	"Blue",
+	"Brown",
+	"Gray",
+	"Green",
+	"Orange",
+	"Pink",
+	"Purple",
+	"Red",
+	"Turquoise",
+	"White",
+	"Yellow"
+]
+
+public let scores  = [0,1,2,3,4]
+
+
 
 /*
 (original height / original width) x new width = new height
@@ -157,8 +201,8 @@ UITextFieldDelegate {
 		//setNavigationBar(title: "Enter Pill Information")
 		// Create UITextField
 		pickImprintTextField = UITextField(frame: CGRect(
-			x: screenWidth * 0.6,
-			y: ((screenHeight/4) - (screenHeight/4)),
+			x: view.frame.width * 0.6,
+			y: ((view.frame.width/4) - (view.frame.height/4)),
 			width: 0.0,
 			height: 0.0))
 		pickImprintTextField.isOpaque = true
@@ -190,8 +234,8 @@ UITextFieldDelegate {
 
 		//========================================
 		pickNameTextField = UITextField(frame: CGRect(
-			x: 0.0, y: ((screenHeight/3) * 2),
-			width: screenWidth * 0.90,
+			x: 0.0, y: ((view.frame.height/3) * 2),
+			width: view.frame.height * 0.90,
 			height: 0.0))
 		pickNameTextField.placeholder = "Enter Pill Name"
 		pickNameTextField.textAlignment  = .center
