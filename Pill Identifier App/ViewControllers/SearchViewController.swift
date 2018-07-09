@@ -7,8 +7,7 @@ import ActionSheetPicker_3_0
 import SwiftyJSON
 import Alamofire
 
-public var debug = false // does nOTHING
-
+//public var debug = false // does nOTHING
 
 // picker options for searching pill paramaters
 public let shapes = [
@@ -50,19 +49,73 @@ public let colors =  [
 
 public let scores  = [0,1,2,3,4]
 
-
-
 /*
 (original height / original width) x new width = new height
 (0.00 / 0.00) x 400 = 300
 */
 
-@available(iOS 10.0, *)
 class SearchViewController:
 NorthSouthViewController,
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,
-UITextFieldDelegate {
+UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate  {
+	
+	// part  of the viewctrl
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		let rowHeight = screenWidth/screenHeight * 110
+		return rowHeight // 85ish
+		
+	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return arrayOfCellData.count
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = Bundle.main.loadNibNamed("TableViewCell2", owner: self, options: nil)?.first as! TableViewCell2
+		
+		//cell.mainImageView.image = arrayOfCellData[indexPath.row].image
+		let image = UIImage(named: "250x250placeholder.png")
+		let url = URL(string: arrayOfCellData[indexPath.row].getImageUrl())
+		
+		cell.mainImageView.kf.setImage(with: url, placeholder: image)
+		//cell.mainLabel.text = arrayOfCellData[indexPath.row].getName()
+		
+		cell.mainLabel?.text = arrayOfCellData[indexPath.row].getName()
+		cell.mainLabel?.textAlignment = .center
+		cell.mainLabel?.numberOfLines = 1
+		
+		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		//print(arrayOfCellData[indexPath.row])
+		
+		// check imprint
+		//var imprint = ""
+		/*if arrayOfCellData[indexPath.row].imprint != nil {
+		imprint = arrayOfCellData[indexPath.row].imprint!
+		}*/
+		/*
+		print(arrayOfCellData[indexPath.row].getName())
+		let data = CellDataClass(
+			cell:  		arrayOfCellData[indexPath.row].getCell(),
+			name: 		arrayOfCellData[indexPath.row].getName(),
+			image: 		arrayOfCellData[indexPath.row].getImageUrl(),
+			imageUrl: 	arrayOfCellData[indexPath.row].getImageUrl(),
+			color: 		arrayOfCellData[indexPath.row].getColor(),
+			shape: 		arrayOfCellData[indexPath.row].getShape(),
+			imprint: 	arrayOfCellData[indexPath.row].getImprint(),
+			rxcui:		arrayOfCellData[indexPath.row].getRxcui(),
+			score: 		arrayOfCellData[indexPath.row].getScore(),
+			limit: 		arrayOfCellData[indexPath.row].limit
+		)
+		*/
+		print("Hello!")
+		
+	}
+
+	
 
 	// cases to search for
 	enum Search {
@@ -108,8 +161,9 @@ UITextFieldDelegate {
 	var isScored = 				false
 	
 	var customTableView:  MyPillTableView!
-	var customCell: TableViewCell1!
 	var cellData: CellDataClass!
+	//private let cellReuseIdentifier: String = "customCell"
+
 	
 	// my box buttons
 	var boxBtn001: BoxButton!
@@ -121,9 +175,11 @@ UITextFieldDelegate {
 	var boxBtn006: BoxButton!
 	
 	var arrayPillData = [Pill]()
+	var arrayOfCellData = [CellDataClass]()
 
 	override func loadView() {
 		super.loadView()
+		
 		//Looks for single or multiple taps to dismiss keyboard
 		let tap: UITapGestureRecognizer
 		= UITapGestureRecognizer(
@@ -131,14 +187,49 @@ UITextFieldDelegate {
 			action: #selector(dismissKeyboard))
 		view.addGestureRecognizer(tap)
 		
+		if arrayOfCellData.isEmpty {
+			// default results list items and test harness
+			arrayOfCellData = [
+				CellDataClass(cell: 1, name:  "Welcome to",
+							  image: "test.png",
+							  //image: #imageLiteral(resourceName: "against"),
+					imageUrl: "whoa", color: "i can", shape: "make banaana", imprint: "",
+					rxcui: 30303, score: 0, limit: 0),
+				CellDataClass(cell: 2, name:  "Pill Identifier!",
+							  image: "test.jpg",
+							  //image: #imageLiteral(resourceName: "test"),
+					imageUrl: "test.jpg", color: "", shape: "", imprint: "",
+					rxcui: 13218, score: 0, limit: 0),
+				CellDataClass(cell: 3, name:  "by Eric Phung",
+							  image: "against.jpg",
+							  //image: #imageLiteral(resourceName: "test"),
+					imageUrl: "against.jpg", color: "", shape: "", imprint: "",
+					rxcui: 13218, score: 0, limit: 0)
+			]
+		}
 
 	}// end loadview
 	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-	
-		// initialize vars
-		let cellData = CellDataClass()
+		
+		//  MAKE TABLE VIEW
+		customTableView = MyPillTableView(frame: CGRect(
+			x: 0, y: 0, width: 110, height: 110))
+		
+		customTableView.delegate = self
+		customTableView.dataSource = self
+		customTableView.translatesAutoresizingMaskIntoConstraints = false
+		
+		view.addSubview(customTableView)
+		
+		setTableViewConstraints()
+		customTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+		customTableView.separatorColor = UIColor.clear
+		
+		//showFrames()
+
 		//========================================
 		// Get the superview's layout
 
@@ -255,46 +346,12 @@ UITextFieldDelegate {
 		// ===========================================
 		//print(screenWidth)
 		//print(screenHeight)
+
 		
-		// (original height / original width) x new width = new height
-		customTableView = MyPillTableView(frame: CGRect(
-			x: 0, y: 0, width: 0.0, height: 0.0))
-		customTableView.translatesAutoresizingMaskIntoConstraints = false
-		
-		//  ==== CREATE REUSABLE TABLE VIEW CELL
-		customCell = TableViewCell1(frame: CGRect(
-			x: 0, y: 0, width: 0.0, height: 0.0))
-		customCell.translatesAutoresizingMaskIntoConstraints = false
-		
-		url = URL(string: cellData.getImageUrl())
-		customCell.imageView?.kf.setImage(
-			with: url,placeholder: UIImage(named: "test.jpg"))
-		cellData.setName(str: "Hello ERic")
-		
-		customCell.textLabel?.text = cellData.getName()
-		customCell.textLabel?.textAlignment = .center
-		customCell.textLabel?.numberOfLines = 1
-		
-		customTableView.addSubview(customCell)
-		
-		//setCellViewConstraints(myView: customCell)
-		//view.addSubview(customTableView)
-		//setTableViewConstraints()
-		
-		//customTableView.removeFromSuperview()
-		//showFrames()
+	
 		
 	}// end view did load
 	
-
-	func loadTable(tableView: UITableView) {
-		for item in arrayPillData {
-			
-			print(item)
-			
-		}
-
-	}
 	
 	
 	func submit() {
@@ -377,25 +434,6 @@ UITextFieldDelegate {
 	}// end submit
 	
 	
-	func setCellViewConstraints(myView: UIView){
-		
-		// Get the superview's layout
-		let margins = customTableView.layoutMarginsGuide
-		
-		// Pin the leading edge of myView to the margin's leading edge
-		myView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
-		
-		// Pin the trailing edge of myView to the margin's trailing edge
-		myView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-	
-		// Give myView a 1:2 aspect ratio
-		myView.heightAnchor.constraint(equalToConstant: customTableView.rowHeight).isActive = true
-		myView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
-
-		//myView.backgroundColor = .orange
-		
-	}
-	
 	func setTableViewConstraints() {
 		// Get the superview's layout
 		let margins = myView.layoutMarginsGuide
@@ -414,7 +452,7 @@ UITextFieldDelegate {
 		
 		//customTableView.backgroundColor = .red
 		//myView.backgroundColor = .blue
-	}
+	}//  end table constraintss
 
 
 	
@@ -488,7 +526,8 @@ UITextFieldDelegate {
 	}
 	
 	@objc func pickPictureBtnTapped(){
-		showImageActionSheet()
+		customTableView.reloadData()
+		//showImageActionSheet()
 	}
 	
 	@objc func pickColorBtnTapped(sender: BoxButton){
@@ -583,7 +622,6 @@ UITextFieldDelegate {
 	}// end upload pickImprintBtn action
 	
 
-	
 	@objc func pickImprintBtnTapped(_ sender: BoxButton) {
 		toggleIsChecked()
 		toggleImprintField(sender: sender)
@@ -635,66 +673,8 @@ UITextFieldDelegate {
 		}// end loop pill data
 	}
 	
-	func camera() {
-		if UIImagePickerController.isSourceTypeAvailable(.camera){
-			let myPickerController = UIImagePickerController()
-			myPickerController.delegate = self;
-			myPickerController.sourceType = .camera
-			
-			self.present(
-				myPickerController,
-				animated: false,
-				completion: {
-				print("Accessing Camera...")
-			})
-		}
-	}// end camera
-	
-	func photoLibrary() {
-		
-		if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-			let myPickerController = UIImagePickerController()
-			myPickerController.delegate = self;
-			myPickerController.sourceType = .photoLibrary
-			self.present(myPickerController, animated: false, completion: {
-				print("Acessing Photo Library...")
-			})
-		}
-	}// end photolibrary
-	
 
-	
-	func showImageActionSheet() {
-		let actionSheet = UIAlertController(
-			title: nil,
-			message: nil,
-			preferredStyle: .actionSheet)
-		
-		actionSheet.addAction(UIAlertAction(
-			title: "Camera",
-			style: .default,
-			handler: { (alert:UIAlertAction!) -> Void in
-			self.camera()
-		}))
-		
-		actionSheet.addAction(UIAlertAction(
-			title: "Gallery",
-			style: .default,
-			handler: { (alert:UIAlertAction!) -> Void in
-			self.photoLibrary()
-		}))
-		
-		actionSheet.addAction(UIAlertAction(
-			title: "Cancel",
-			style: .cancel,
-			handler: nil))
-		
-		self.present(actionSheet, animated: false, completion: nil)
-		
-	}// end show actionsheet
-	
 	func displayResultsPage() {
-		
 		let resultsTableViewController: ResultsTableViewController
 		= storyboard?.instantiateViewController(withIdentifier:
 			"resultsTableViewController") as! ResultsTableViewController
@@ -792,8 +772,17 @@ UITextFieldDelegate {
 
 		return url
 	}
+	
+	// MARK: - Table view data source
+	
 
 }// end view controller class definition
+
+
+
+
+
+
 
 
 extension UIView {
@@ -826,5 +815,74 @@ extension UIView {
 		}
 	}
 	
+	
 }//  end uiview extension
 
+
+
+
+
+
+
+extension SearchViewController {
+
+	func camera() {
+		if UIImagePickerController.isSourceTypeAvailable(.camera){
+			let myPickerController = UIImagePickerController()
+			myPickerController.delegate = self;
+			myPickerController.sourceType = .camera
+			
+			self.present(
+				myPickerController,
+				animated: false,
+				completion: {
+					print("Accessing Camera...")
+			})
+		}
+	}// end camera
+	
+	func photoLibrary() {
+		
+		if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+			let myPickerController = UIImagePickerController()
+			myPickerController.delegate = self;
+			myPickerController.sourceType = .photoLibrary
+			self.present(myPickerController, animated: false, completion: {
+				print("Acessing Photo Library...")
+			})
+		}
+	}// end photolibrary
+	
+	
+	
+	func showImageActionSheet() {
+		let actionSheet = UIAlertController(
+			title: nil,
+			message: nil,
+			preferredStyle: .actionSheet)
+		
+		actionSheet.addAction(UIAlertAction(
+			title: "Camera",
+			style: .default,
+			handler: { (alert:UIAlertAction!) -> Void in
+				self.camera()
+		}))
+		
+		actionSheet.addAction(UIAlertAction(
+			title: "Gallery",
+			style: .default,
+			handler: { (alert:UIAlertAction!) -> Void in
+				self.photoLibrary()
+		}))
+		
+		actionSheet.addAction(UIAlertAction(
+			title: "Cancel",
+			style: .cancel,
+			handler: nil))
+		
+		self.present(actionSheet, animated: false, completion: nil)
+		
+	}// end show actionsheet
+	
+
+}

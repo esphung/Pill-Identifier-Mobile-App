@@ -207,6 +207,7 @@ class CardDisplayViewController: NorthSouthViewController {
 	
 
 
+
 	func displayWikipediaPage(base: URL, str: String) {
 		// only does first term right now
 		let matched = matches(for: "([^\\s]+)", in: str)

@@ -18,6 +18,10 @@ class ResultsTableViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+		self.tableView.separatorColor = UIColor.clear
+		
+		
 		if arrayOfCellData.isEmpty {
 			// default results list items and test harness
 			arrayOfCellData = [
@@ -52,40 +56,11 @@ class ResultsTableViewController: UITableViewController {
 		//cell.mainImageView.image = arrayOfCellData[indexPath.row].image
 		let image = UIImage(named: "250x250placeholder.png")
 		let url = URL(string: arrayOfCellData[indexPath.row].getImageUrl())
-		cell.mainImageView.kf.setImage(with: url, placeholder: image)
 		
+		cell.mainImageView.kf.setImage(with: url, placeholder: image)
 		cell.mainLabel.text = arrayOfCellData[indexPath.row].getName()
 		
 		return cell
-		
-		/*
-		let cell = tableView.dequeueReusableCell(withIdentifier: "customCell")!
-		return cell*/
-		
-		/*
-		
-		// Configure the cell...
-		if arrayOfCellData[indexPath.row].cell == 1 {
-		let cell = Bundle.main.loadNibNamed("TableViewCell1", owner: self, options: nil)?.first as! TableViewCell1
-		cell.mainImageView.image = arrayOfCellData[indexPath.row].image
-		cell.mainLabel.text = arrayOfCellData[indexPath.row].text
-		
-		return cell
-		
-		} else if arrayOfCellData[indexPath.row].cell == 2 {
-		let cell = Bundle.main.loadNibNamed("TableViewCell2", owner: self, options: nil)?.first as! TableViewCell2
-		cell.mainImageView.image = arrayOfCellData[indexPath.row].image
-		cell.mainLabel.text = arrayOfCellData[indexPath.row].text
-		
-		return cell
-		}  else {
-		let cell = Bundle.main.loadNibNamed("TableViewCell1", owner: self, options: nil)?.first as! TableViewCell1
-		cell.mainImageView.image = arrayOfCellData[indexPsath.row].image
-		cell.mainLabel.text = arrayOfCellData[indexPath.row].text
-		
-		return cell
-		}
-		*/
 		
 	}
 	
@@ -102,7 +77,7 @@ class ResultsTableViewController: UITableViewController {
 		let data = CellDataClass(
 			cell:  		arrayOfCellData[indexPath.row].getCell(),
 			name: 		arrayOfCellData[indexPath.row].getName(),
-			image: 		arrayOfCellData[indexPath.row].image!,
+			image: 		arrayOfCellData[indexPath.row].getImageUrl(),
 			imageUrl: 	arrayOfCellData[indexPath.row].getImageUrl(),
 			color: 		arrayOfCellData[indexPath.row].getColor(),
 			shape: 		arrayOfCellData[indexPath.row].getShape(),

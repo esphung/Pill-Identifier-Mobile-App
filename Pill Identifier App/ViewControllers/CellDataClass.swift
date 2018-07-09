@@ -6,9 +6,7 @@
 // contains class def and test harness
 class CellDataClass {
 	// custom table cell class
-	init() {
-		
-	}
+	init() {}
 	
 	// vars
 	private var cell:  	Int!
