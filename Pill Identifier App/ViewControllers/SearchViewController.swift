@@ -154,7 +154,7 @@ UITextFieldDelegate {
 			x: screenWidth * 0.6,
 			y: ((screenHeight/3) - (screenHeight/6)))
 		
-		boxBtn004.setTitle("Imprint: On", for: .normal)
+		boxBtn004.setTitle("No Image", for: .normal)
 		boxBtn004.addTarget(
 			self,
 			action: #selector(pickImprintBtnTapped),
@@ -480,34 +480,9 @@ UITextFieldDelegate {
 	
 	@objc func imageButtonTapped(_ sender: Any) {
 		showImageActionSheet()
-		//importImage()
 	}// end upload pickImprintBtn action
 	
-	
-	// MARK: - ImagePicker Delegate
-	@objc func imagePickerController(
-		_ picker: UIImagePickerController,
-		didFinishPickingMediaWithInfo info: [
-		UIImagePickerController.InfoKey : Any]) {
-		
-		//dismiss(animated: false, completion: nil)
-		//self.pickPictureBtn.isEnabled = false
-		
-		//  COMPLETELY BROKEN
-		
-		if let pickedImage = info[
-			UIImagePickerController.InfoKey.originalImage] as? UIImage {
-			//boxBtn003.setImage(pickedImage, for: .normal)
-			print(pickedImage)
-			
-		}
-		
-	}
-	
-	@objc func imagePickerControllerDidCancel(
-		_ picker: UIImagePickerController) {
-		dismiss(animated: false, completion: nil)
-	}// end imagepicker cancel
+
 	
 	@objc func pickImprintBtnTapped(_ sender: BoxButton) {
 		toggleIsChecked()
@@ -522,7 +497,7 @@ UITextFieldDelegate {
 	func hasImprint(sender: BoxButton) -> Bool {
 		if isChecked {
 			// decideed to  have some form of imprint
-			sender.setTitle("Imprint: On", for: .normal)
+			sender.setTitle("No Image", for: .normal)
 			//sender.setTitleColor(.green, for: .normal)
 			pickImprintTextField.placeholder = "Enter Imprint"
 			pickImprintTextField.unmarkText()
@@ -533,7 +508,7 @@ UITextFieldDelegate {
 			return true
 		} else {
 			// doesnt want imprint at all
-			sender.setTitle("Imprint: Off", for: .normal)
+			sender.setTitle("Imprint", for: .normal)
 			//sender.setTitleColor(.red, for: .normal)
 			pickImprintTextField.placeholder = "No Imprint"
 			pickImprintTextField.isHidden  = true
@@ -656,6 +631,7 @@ UITextFieldDelegate {
 			let myPickerController = UIImagePickerController()
 			myPickerController.delegate = self;
 			myPickerController.sourceType = .camera
+			
 			self.present(
 				myPickerController,
 				animated: false,
@@ -677,15 +653,10 @@ UITextFieldDelegate {
 		}
 	}// end photolibrary
 	
-	func importImage() {
-		let imagePicker = UIImagePickerController()
-		imagePicker.delegate = self
-		imagePicker.allowsEditing = false
-		imagePicker.sourceType = .photoLibrary
-		present(imagePicker, animated: false, completion: nil)
-	}
+
 	
 	func showImageActionSheet() {
+		
 		let actionSheet = UIAlertController(
 			title: nil,
 			message: nil,
@@ -711,9 +682,11 @@ UITextFieldDelegate {
 			handler: nil))
 		
 		self.present(actionSheet, animated: false, completion: nil)
+		
 	}// end show actionsheet
 	
 	func displayResultsPage() {
+		
 		let resultsTableViewController: ResultsTableViewController
 		= storyboard?.instantiateViewController(withIdentifier:
 			"resultsTableViewController") as! ResultsTableViewController
@@ -772,11 +745,6 @@ UITextFieldDelegate {
 			// cut off user input
 			textField.isUserInteractionEnabled = false
 		}
-		/*
-		guard let text = textField.text else { return true }
-		let newLength = text.count + string.count - range.length
-		return newLength <= 10 // Bool
-		*/
 		
 		let cs = NSCharacterSet(charactersIn: ACCEPTABLE_CHARACTERS).inverted
 		let filtered = string.components(separatedBy: cs).joined(separator: "")
