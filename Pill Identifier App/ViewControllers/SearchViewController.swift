@@ -75,45 +75,37 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate  {
 		let cell = Bundle.main.loadNibNamed("TableViewCell2", owner: self, options: nil)?.first as! TableViewCell2
 		
 		//cell.mainImageView.image = arrayOfCellData[indexPath.row].image
-		let image = UIImage(named: "250x250placeholder.png")
+		var image = UIImage(named: "250x250placeholder.png")
+		
 		let url = URL(string: arrayOfCellData[indexPath.row].getImageUrl())
 		
 		cell.mainImageView.kf.setImage(with: url, placeholder: image)
-		//cell.mainLabel.text = arrayOfCellData[indexPath.row].getName()
+		
+		/*
+		let imageView = UIImageView(
+			frame: CGRect(
+				x: 10, y: 10, width: cell.frame.width - 10, height:  cell.frame.height - 10))
+		image = UIImage(named: "Image Name")
+		imageView.image = image
+		
+		cell.backgroundView = UIView()
+		cell.backgroundView!.addSubview(imageView)
+*/
+
+		//cell.backgroundColor = .lightGray
+		
+		//cell.textLabel?.text = arrayOfCellData[indexPath.row].getImageUrl()
 		
 		cell.mainLabel?.text = arrayOfCellData[indexPath.row].getName()
+		
+		
 		cell.mainLabel?.textAlignment = .center
 		cell.mainLabel?.numberOfLines = 1
 		
 		return cell
 	}
 	
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		//print(arrayOfCellData[indexPath.row])
-		
-		// check imprint
-		//var imprint = ""
-		/*if arrayOfCellData[indexPath.row].imprint != nil {
-		imprint = arrayOfCellData[indexPath.row].imprint!
-		}*/
-		/*
-		print(arrayOfCellData[indexPath.row].getName())
-		let data = CellDataClass(
-			cell:  		arrayOfCellData[indexPath.row].getCell(),
-			name: 		arrayOfCellData[indexPath.row].getName(),
-			image: 		arrayOfCellData[indexPath.row].getImageUrl(),
-			imageUrl: 	arrayOfCellData[indexPath.row].getImageUrl(),
-			color: 		arrayOfCellData[indexPath.row].getColor(),
-			shape: 		arrayOfCellData[indexPath.row].getShape(),
-			imprint: 	arrayOfCellData[indexPath.row].getImprint(),
-			rxcui:		arrayOfCellData[indexPath.row].getRxcui(),
-			score: 		arrayOfCellData[indexPath.row].getScore(),
-			limit: 		arrayOfCellData[indexPath.row].limit
-		)
-		*/
-		print("Hello!")
-		
-	}
+
 
 	
 
