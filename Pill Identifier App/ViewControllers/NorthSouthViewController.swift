@@ -20,7 +20,7 @@ var screenHeight: CGFloat {
 	return UIScreen.main.bounds.height
 }
 
-@available(iOS 11.0, *)
+@available(iOS 10.0, *)
 class NorthSouthViewController: UIViewController {
 
 	// set up view layout
@@ -90,10 +90,9 @@ class NorthSouthViewController: UIViewController {
 	@objc func rightButtonTapped() {
 		displaySearchFormPage()
 		//self.view.removeFromSuperview()
-
 	}
 
-	func displaySearchFormPage() {
+	public func displaySearchFormPage() {
 		let searchViewController: SearchViewController
 		= storyboard?.instantiateViewController(
 			withIdentifier: "searchViewController") as! SearchViewController
@@ -124,15 +123,14 @@ class NorthSouthViewController: UIViewController {
 	func setUpContraints(){
 		// never forget this line
 		myView.translatesAutoresizingMaskIntoConstraints = false
-		// setting contraints
 		myView.centerXAnchor.constraint(
 			equalTo: view.centerXAnchor).isActive = true
 		myView.centerYAnchor.constraint(
 			equalTo: view.centerYAnchor).isActive = true
 		myView.widthAnchor.constraint(
-			equalToConstant: screenWidth * 0.95).isActive = true
+			equalToConstant: screenWidth).isActive = true
 		myView.heightAnchor.constraint(
-			equalToConstant: screenHeight * 0.9).isActive = true
+			equalToConstant: screenHeight).isActive = true
 	}
 	
 	func showFrames() {
@@ -150,11 +148,9 @@ class NorthSouthViewController: UIViewController {
 	}
 
 	// image view photo display
-	func makeDisplayImage(image:  UIImage) -> UIImageView {
-		let viewHeight = view.frame.height
-		let viewWidth  = view.frame.width
-		let imageHeight = ((viewHeight)/(viewWidth)) * (view.frame.height/2)
-
+	func makeDisplayImage(image: UIImage) -> UIImageView {
+		
+		let imageHeight = ((view.frame.height)/(view.frame.width)) * (view.frame.height/2)
 		imageView = UIImageView(frame: CGRect(
 			x: 0,
 			y: 0,

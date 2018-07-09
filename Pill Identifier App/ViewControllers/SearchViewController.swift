@@ -10,10 +10,10 @@ import Alamofire
 
 /*
 (original height / original width) x new width = new height
-(1200 / 1600) x 400 = 300
+(0.00 / 0.00) x 400 = 300
 */
 
-@available(iOS 11.0, *)
+@available(iOS 10.0, *)
 class SearchViewController:
 NorthSouthViewController,
 UIImagePickerControllerDelegate,
@@ -93,7 +93,6 @@ UITextFieldDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 	
-		
 		// initialize vars
 		let cellData = CellDataClass()
 		//========================================
@@ -122,7 +121,7 @@ UITextFieldDelegate {
 		view.addSubview(boxBtn003)
 		
 		//========================================
-		// boxBtn004 (L) || 120 x 4 = 480 || 140 || screenHeight/4 = 167ish
+		// boxBtn004 (L) || 0.0 x 4 = 480 || 0.0 || screenHeight/4 = 167ish
 		let boxBtn004 = BoxButton(
 			frame: CGRect(
 				x: 0, y:  (view.frame.height - view.frame.height/2)/2, width: view.frame.width/3, height: view.frame.height/4))// Imager
@@ -132,7 +131,6 @@ UITextFieldDelegate {
 			action: #selector(pickImprintBtnTapped),
 			for: .touchUpInside)
 		view.addSubview(boxBtn004)
-
 
 		// boxBtn005 (M)
 		let boxBtn005 = BoxButton(frame: CGRect(
@@ -161,8 +159,8 @@ UITextFieldDelegate {
 		pickImprintTextField = UITextField(frame: CGRect(
 			x: screenWidth * 0.6,
 			y: ((screenHeight/4) - (screenHeight/4)),
-			width: 110,
-			height: 110))
+			width: 0.0,
+			height: 0.0))
 		pickImprintTextField.isOpaque = true
 		
 		
@@ -177,7 +175,7 @@ UITextFieldDelegate {
 		
 		// Set UITextField border style
 		//pickImprintTextField.borderStyle = UITextField.BorderStyle.line
-		pickImprintTextField.layer.borderWidth = 1.0
+		pickImprintTextField.layer.borderWidth = 0.0
 		pickImprintTextField.borderColor = .lightGray
 		
 		// Set UITextField background colour
@@ -194,13 +192,13 @@ UITextFieldDelegate {
 		pickNameTextField = UITextField(frame: CGRect(
 			x: 0.0, y: ((screenHeight/3) * 2),
 			width: screenWidth * 0.90,
-			height: 110))
+			height: 0.0))
 		pickNameTextField.placeholder = "Enter Pill Name"
 		pickNameTextField.textAlignment  = .center
 		//pickNameTextField.font = UIFont.systemFont(ofSize: 15)
 		//pickNameTextField.borderStyle = UITextField.BorderStyle.roundedRect
 		pickNameTextField.borderColor  = .lightGray
-		pickNameTextField.borderWidth  = 1.0
+		pickNameTextField.borderWidth  = 0.0
 		pickNameTextField.autocorrectionType = UITextAutocorrectionType.no
 		//pickNameTextField.keyboardType = UIKeyboardType.default
 		pickNameTextField.returnKeyType = UIReturnKeyType.done
@@ -216,31 +214,30 @@ UITextFieldDelegate {
 		
 		// (original height / original width) x new width = new height
 		customTableView = MyPillTableView(frame: CGRect(
-			x: 0, y: 0, width: 110, height: 110))
+			x: 0, y: 0, width: 0.0, height: 0.0))
 		customTableView.translatesAutoresizingMaskIntoConstraints = false
-		
-
-		myView.addSubview(customTableView)
-		setTableViewConstraints()
 		
 		//  ==== CREATE REUSABLE TABLE VIEW CELL
 		customCell = TableViewCell1(frame: CGRect(
-			x: 0, y: 0, width: 110, height: 110))
+			x: 0, y: 0, width: 0.0, height: 0.0))
 		customCell.translatesAutoresizingMaskIntoConstraints = false
 		
 		url = URL(string: cellData.getImageUrl())
 		customCell.imageView?.kf.setImage(
 			with: url,placeholder: UIImage(named: "test.jpg"))
 		cellData.setName(str: "Hello ERic")
+		
 		customCell.textLabel?.text = cellData.getName()
 		customCell.textLabel?.textAlignment = .center
 		customCell.textLabel?.numberOfLines = 1
-	
+		
 		customTableView.addSubview(customCell)
-		setCellViewConstraints(myView: customCell)
+		
+		//setCellViewConstraints(myView: customCell)
+		//view.addSubview(customTableView)
+		//setTableViewConstraints()
 		
 		//customTableView.removeFromSuperview()
-
 		//showFrames()
 		
 	}// end view did load

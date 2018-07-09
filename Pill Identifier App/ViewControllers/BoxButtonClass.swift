@@ -28,7 +28,7 @@ class BoxButton: UIButton {
 		//self.titleLabel?.font =  UIFont.systemFont(ofSize: 16, weight: .light)
 		self.titleLabel?.textColor = .lightGray
 		
-		self.borderWidth = 1.0
+		self.borderWidth = 0.0
 		self.borderColor = .lightGray
 		
 		self.addTarget(
@@ -36,7 +36,7 @@ class BoxButton: UIButton {
 			action: #selector(boxBtnTapped),
 			for: .touchUpInside)
 		
-		self.borderWidth = 1.0
+		self.borderWidth = 0.0
 		self.borderColor = .lightGray
 		
 		//self.sizeThatFits(CGSize(width: 300, height: 300))

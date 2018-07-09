@@ -9,7 +9,7 @@
 //import UIKit.UIViewController
 import Kingfisher
 
-@available(iOS 11.0, *)
+@available(iOS 10.0, *)
 class ResultsTableViewController: UITableViewController {
 	var arrayOfCellData = [CellDataClass]()
 	
@@ -122,7 +122,7 @@ class ResultsTableViewController: UITableViewController {
 		if arrayOfCellData[indexPath.row].cell == 1 {
 		return 200
 		} else if arrayOfCellDrata[indexPath.row].cell == 2 {
-		return 100
+		return 0.0
 		}  else {
 		return 200
 		}*/
@@ -152,8 +152,6 @@ class ResultsTableViewController: UITableViewController {
 		
 		// FIND BASIC NAME
 		let matched = matches(for: "([^\\s]+)", in: str)
-		
-		
 		//print(splitDeck.left) // ["J", "Q"]
 		//print(splitDeck.right) // ["K", "A"]
 		
@@ -184,27 +182,15 @@ class ResultsTableViewController: UITableViewController {
 	}
 	
 	func displayCardDisplayPage(data: CellDataClass) {
-
-		if #available(iOS 11.0, *) {
 			let cardDisplayViewController: CardDisplayViewController = storyboard?.instantiateViewController(withIdentifier: "cardDisplayViewController") as! CardDisplayViewController
 			
 			cardDisplayViewController.arrayData = self.arrayOfCellData
-			
 			cardDisplayViewController.cellData = self.arrayOfCellData[data.getCell()]
 			
 			self.present(
 				cardDisplayViewController,
 				animated: false,
 				completion: nil)
-			
-		} else {
-			// Fallback on earlier versions
-		}
-		
-
-		
-		
-
 	}
 }
 

@@ -6,12 +6,10 @@
 //import UIKit.UIViewController
 import Kingfisher
 
-@available(iOS 11.0, *)
+@available(iOS 10.0, *)
 class CardDisplayViewController: NorthSouthViewController {
 	
 	var url: URL!
-	
-
 	
 	//  incoming variables
 	var cellData: CellDataClass!
@@ -32,7 +30,7 @@ class CardDisplayViewController: NorthSouthViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		// begin set up here
-		setNavigationBar(title: "Pill Description")
+		//setNavigationBar(title: "Pill Description")
 		let pillImageView = UIImageView()
 		altImage = UIImage(named: placeholder)
 		
@@ -54,14 +52,14 @@ class CardDisplayViewController: NorthSouthViewController {
 		pillImageView = makeDisplayImage(image: altImage!)
 		pillImageView.kf.setImage(with: url, placeholder: image)
 		//pillImageView.borderColor = .lightGray
-		//pillImageView.borderWidth =  1.0
+		//pillImageView.borderWidth =  0.0
 		//print(pillImageView.frame.height)// 406
 		view.addSubview(pillImageView)
 
 		// LEFT BOX BUTTON  (LEFT)
 		leftBoxBtn =  UIButton(frame: CGRect(
 			x: 0,
-			y: view.frame.height - view.frame.height/3,
+			y: view.frame.height - view.frame.height/4,
 			width: view.frame.width/3,
 			height: view.frame.height/4))
 		//submitButton.layer.borderWidth = 0.0
@@ -71,7 +69,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		leftBoxBtn.titleLabel?.font =  UIFont.systemFont(ofSize: 19,
 			weight: .light)
 		
-		leftBoxBtn.borderWidth = 1.0
+		leftBoxBtn.borderWidth = 0.0
 		leftBoxBtn.borderColor = .lightGray
 		leftBoxBtn.addTarget(
 			self,
@@ -84,7 +82,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		// WIKIPEDIA PAGE BUTTON  (MIDDLE)
 		middleBoxBtn =  UIButton(frame: CGRect(
 			x: view.frame.width/3,
-			y: view.frame.height - view.frame.height/3,
+			y: view.frame.height - view.frame.height/4,
 			width: view.frame.width/3,
 			height: view.frame.height/4))
 		middleBoxBtn.setTitleColor(UIColor.black, for: .normal)
@@ -96,7 +94,7 @@ class CardDisplayViewController: NorthSouthViewController {
 			ofSize: 19,
 			weight: .light)
 		
-		middleBoxBtn.borderWidth = 1.0
+		middleBoxBtn.borderWidth = 0.0
 		middleBoxBtn.borderColor = .lightGray
 		middleBoxBtn.addTarget(
 			self,
@@ -108,7 +106,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		// RIGHT BOX BUTTON  (RIGHT)
 		rightBoxBtn =  UIButton(frame: CGRect(
 			x: view.frame.width - view.frame.width/3,
-			y: view.frame.height - view.frame.height/3,
+			y: view.frame.height - view.frame.height/4,
 			width: view.frame.width/3,
 			height: view.frame.height/4))
 		rightBoxBtn.setTitleColor(UIColor.black, for: .normal)
@@ -118,7 +116,7 @@ class CardDisplayViewController: NorthSouthViewController {
 			ofSize: 19,
 			weight: .light)
 		
-		rightBoxBtn.borderWidth = 1.0
+		rightBoxBtn.borderWidth = 0.0
 		rightBoxBtn.borderColor = .lightGray
 		rightBoxBtn.addTarget(
 			self,
@@ -139,7 +137,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		pillImageView = makeDisplayImage(image: altImage!)
 		pillImageView.kf.setImage(with: url, placeholder: image)
 		//pillImageView.borderColor = .lightGray
-		//pillImageView.borderWidth =  1.0
+		//pillImageView.borderWidth =  0.0
 		//print(pillImageView.frame.height)// 406
 		view.addSubview(pillImageView)
 		
@@ -159,7 +157,6 @@ class CardDisplayViewController: NorthSouthViewController {
 			print(pos)
 			
 		}
-		
 	}// end  go left
 	
 	@objc func leftBoxBtnTapped(){
@@ -168,6 +165,7 @@ class CardDisplayViewController: NorthSouthViewController {
 	}// end left btn
 	
 	@objc func middleBoxBtnTapped() {
+		displaySearchFormPage()
 		//let baseUrl = URL(string: "http://en.wikipedia.org/wiki/")
 		//displayWikipediaPage(base: baseUrl!, str: cellData.getName())
 	}
@@ -235,11 +233,8 @@ class CardDisplayViewController: NorthSouthViewController {
 			//ArticleString now contains: baseurl + article
 			
 			if let url = URL(string: articleString!) {
-				if #available(iOS 10.0, *) {
+		
 					UIApplication.shared.open(url, options: [:], completionHandler: nil)
-				} else {
-					UIApplication.shared.openURL(url)
-				}
 			} else {
 				print("could not open url, it was nil")
 			}

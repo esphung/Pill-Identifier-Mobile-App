@@ -24,7 +24,7 @@ class Pill {
 		let currentDateTime = Date()
 		let time = currentDateTime.timeIntervalSinceReferenceDate
 		let x = time
-		let y = Double(round(100000*x)/10)
+		let y = Double(round(0.0000*x)/10)
 		
 		print(y) // 1.236
 		
@@ -54,7 +54,7 @@ class Pill {
 		let currentDateTime = Date()
 		let time = currentDateTime.timeIntervalSinceReferenceDate
 		let x = time
-		let y = Double(round(100000*x)/10)
+		let y = Double(round(0.0000*x)/10)
 		
 		//print(y) // 1.236
 		
