@@ -21,8 +21,10 @@
 		5E49D4F720D87713002C8469 /* NorthSouthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */; };
 		5E49D4F920D87BCE002C8469 /* CardDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */; };
 		5E49D4FD20D8FFCF002C8469 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */; };
-		5EAA5CF720F19A2B00784BD3 /* BoxButtonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA5CF620F19A2B00784BD3 /* BoxButtonClass.swift */; };
-		5EAA5CFB20F1B53200784BD3 /* PillClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAA5CFA20F1B53200784BD3 /* PillClass.swift */; };
+		5E86255620F29B010023E297 /* BoxButtonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86255520F29B010023E297 /* BoxButtonClass.swift */; };
+		5E86255720F29B010023E297 /* BoxButtonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86255520F29B010023E297 /* BoxButtonClass.swift */; };
+		5E86255820F29B010023E297 /* BoxButtonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86255520F29B010023E297 /* BoxButtonClass.swift */; };
+		5EBBC44D20F2A77B004A9EEE /* PillClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EBBC44C20F2A77B004A9EEE /* PillClass.swift */; };
 		5EF7DD4E20E18AB500EF5F2E /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */; };
 		5EF7DD5120E18BEE00EF5F2E /* TableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7DD4F20E18BEE00EF5F2E /* TableViewCell1.swift */; };
 		5EF7DD5220E18BEE00EF5F2E /* TableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF7DD5020E18BEE00EF5F2E /* TableViewCell1.xib */; };
@@ -84,8 +86,8 @@
 		5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDisplayViewController.swift; sourceTree = "<group>"; };
 		5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		5E575F1520D6378300B94C16 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		5EAA5CF620F19A2B00784BD3 /* BoxButtonClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxButtonClass.swift; sourceTree = "<group>"; };
-		5EAA5CFA20F1B53200784BD3 /* PillClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillClass.swift; sourceTree = "<group>"; };
+		5E86255520F29B010023E297 /* BoxButtonClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxButtonClass.swift; sourceTree = "<group>"; };
+		5EBBC44C20F2A77B004A9EEE /* PillClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillClass.swift; sourceTree = "<group>"; };
 		5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		5EF7DD4F20E18BEE00EF5F2E /* TableViewCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell1.swift; sourceTree = "<group>"; };
 		5EF7DD5020E18BEE00EF5F2E /* TableViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell1.xib; sourceTree = "<group>"; };
@@ -202,12 +204,12 @@
 		5E7756D120E5B74100510808 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5EAA5CFA20F1B53200784BD3 /* PillClass.swift */,
-				5EAA5CF620F19A2B00784BD3 /* BoxButtonClass.swift */,
+				5EBBC44C20F2A77B004A9EEE /* PillClass.swift */,
+				5E86255520F29B010023E297 /* BoxButtonClass.swift */,
 				5E29F7B620EFCE1B00549742 /* CellDataClass.swift */,
 				5E575F1520D6378300B94C16 /* SearchViewController.swift */,
-				5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */,
 				5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */,
+				5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */,
 				5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */,
 				5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */,
 				5E49D4EA20D837E0002C8469 /* Globals.swift */,
@@ -476,14 +478,14 @@
 			files = (
 				5EF7DD5520E18C9E00EF5F2E /* TableViewCell2.swift in Sources */,
 				5E29F7C320EFDA2F00549742 /* CellDataClass.swift in Sources */,
+				5E86255620F29B010023E297 /* BoxButtonClass.swift in Sources */,
 				5E49D4F920D87BCE002C8469 /* CardDisplayViewController.swift in Sources */,
 				5EF7DD4E20E18AB500EF5F2E /* ResultsTableViewController.swift in Sources */,
 				18F57B861E992E0A0013221F /* AppDelegate.swift in Sources */,
 				5E49D4EB20D837E0002C8469 /* Globals.swift in Sources */,
-				5EAA5CF720F19A2B00784BD3 /* BoxButtonClass.swift in Sources */,
 				5E49D4F720D87713002C8469 /* NorthSouthViewController.swift in Sources */,
 				5E29F7BC20EFD67900549742 /* SearchViewController.swift in Sources */,
-				5EAA5CFB20F1B53200784BD3 /* PillClass.swift in Sources */,
+				5EBBC44D20F2A77B004A9EEE /* PillClass.swift in Sources */,
 				5EF7DD5120E18BEE00EF5F2E /* TableViewCell1.swift in Sources */,
 				5E49D4FD20D8FFCF002C8469 /* TestViewController.swift in Sources */,
 			);
@@ -493,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E86255720F29B010023E297 /* BoxButtonClass.swift in Sources */,
 				18F57B9B1E992E0A0013221F /* Pill_Identifier_AppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E86255820F29B010023E297 /* BoxButtonClass.swift in Sources */,
 				18F57BA61E992E0A0013221F /* Pill_Identifier_AppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

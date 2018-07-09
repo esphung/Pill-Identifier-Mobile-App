@@ -5,9 +5,6 @@
 
 public var debug = false // does nOTHING
 
-import UIKit.UIViewController// for  CGRECTs module
-let footerRect = CGRect(x:0, y: 0, width: 200,height: 21)
-let headerRect = CGRect(x:0, y: 0, width: 300,height: 21)
 
 // picker options for searching pill paramaters
 public let shapes = [

@@ -16,14 +16,10 @@ class CardDisplayViewController: NorthSouthViewController {
 	var labelerLabel:	UILabel!
 	
 	//  incoming variables
-	var cellData = CellDataClass()
-	
-	var nameLabel:	UILabel!
-	var colorLabel: UILabel!
-	var shapeLabel: UILabel!
-	var imprintLabel: UILabel!
-	
-	var myPillView: UIView!
+	var cellData: CellDataClass!
+	var arrayData: [CellDataClass]!
+
+
 	var middleBoxBtn = UIButton()
 	var rightBoxBtn = UIButton()
 	var leftBoxBtn = UIButton()
@@ -38,83 +34,26 @@ class CardDisplayViewController: NorthSouthViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		// begin set up here
-		//setNavigationBar(title: "Pill Description")
+		setNavigationBar(title: "Pill Description")
+		
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
-        print(screenWidth)// 375
-        print(screenHeight)// 812
 		
-		// ============ CHECK IF CELLDATA
-			
-			// COPYRIGHT/ FOOTER
-			let copyright = copyrightLabel()
-			myView.addSubview(copyright)
-
-			// NAME
-			let nameLabel = UILabel(
-				frame: CGRect(x: 20, y: (((north.frame.height)/2 )) + (125)/2, width: screenWidth * 0.8, height: 21))
-			nameLabel.text = "Name:\t\t" + (getName(str: cellData.getName())).capitalized
-			nameLabel.numberOfLines = 1
-			north.addSubview(nameLabel)
-
-			/*
-			// RXCUI
-			let rxcuiLabel = UILabel(frame: CGRect(x: 20,y: nameLabel.frame.minY + 20, width: screenWidth * 0.8, height: 21))
-			if cellData.getScore() <= 0 {
-				rxcuiLabel.text = ""
-			} else {
-				rxcuiLabel.text = "RXCUI:\t\t" + String(cellData.getRxcui()).capitalized
-			}
-			rxcuiLabel.numberOfLines = 1
-
-			north.addSubview(rxcuiLabel)
-			
-			// SCORE
-			let scoreLabel = UILabel(frame: CGRect(x: 20,y: rxcuiLabel.frame.minY + 20, width: screenWidth * 0.8, height: 21))
-			if cellData.getScore() <= 0 {
-				scoreLabel.text = ""
-			} else {
-				scoreLabel.text = "Scores:\t" + String(cellData.getScore())
-			}
-			scoreLabel.numberOfLines = 1
-			
-			north.addSubview(scoreLabel)
-			*/
-
-			// IMPRINT
-			let dosageLabel = UILabel(frame: CGRect(x: 20, y: nameLabel.frame.minY + 20, width: screenWidth * 0.8, height: 21))
-			dosageLabel.text = "Dosage:\t" + String(getDosage(str: (cellData.getName())))
-			dosageLabel.numberOfLines = 1
-			
-			north.addSubview(dosageLabel)
-
-			// COLOR
-			let colorLabel = UILabel(frame: CGRect(x: 20, y: dosageLabel.frame.minY + 20, width: screenWidth * 0.8, height: 21))
-			colorLabel.text = "Color:\t\t" + String(cellData.getColor()).capitalized
-			colorLabel.numberOfLines = 1
-			
-			north.addSubview(colorLabel)
-
-			// SHAPE
-			let shapeLabel = UILabel(frame: CGRect(x: 20, y: colorLabel.frame.minY + 20, width: screenWidth * 0.8, height: 21))
-			shapeLabel.text = "Shape:\t\t" + String(cellData.getShape()).capitalized
-			shapeLabel.numberOfLines = 1
-			
-			north.addSubview(shapeLabel)
-
-			// LOAD THE IMAGE
-			url = URL(string: cellData.getImageUrl())
-			
-			imageView = makeDisplayImage(image: image!)
-			imageView.kf.setImage(with: url, placeholder: image)
-			//imageView.borderColor = .lightGray
-			//imageView.borderWidth =  1.0
-			print(imageView.frame.height)// 406
-
-			north.addSubview(imageView)
+		// COPYRIGHT/ FOOTER
+		let copyright = copyrightLabel()
+		myView.addSubview(copyright)
+	
+		// LOAD THE IMAGE
+		url = URL(string: cellData.getImageUrl())
+		
+		imageView = makeDisplayImage(image: image!)
+		imageView.kf.setImage(with: url, placeholder: image)
+		//imageView.borderColor = .lightGray
+		//imageView.borderWidth =  1.0
+		//print(imageView.frame.height)// 406
+		north.addSubview(imageView)
 
 			// LEFT BOX BUTTON  (LEFT)
 			leftBoxBtn =  UIButton(frame: CGRect(
@@ -161,7 +100,7 @@ class CardDisplayViewController: NorthSouthViewController {
 				self,
 				action: #selector(middleBoxBtnTapped),
 				for: .touchUpInside)
-			middleBoxBtn.setTitle("Info", for: .normal)
+			middleBoxBtn.setTitle("Button", for: .normal)
 			//middleBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
 
 			north.addSubview(middleBoxBtn)
@@ -192,17 +131,65 @@ class CardDisplayViewController: NorthSouthViewController {
 
     }// end layouts did load
 	
+	func showData(data: CellDataClass){
+		
+		imageView.removeFromSuperview()
+		
+		url = URL(string: data.getImageUrl())
+		imageView = makeDisplayImage(image: image!)
+		imageView.kf.setImage(with: url, placeholder: image)
+		//imageView.borderColor = .lightGray
+		//imageView.borderWidth =  1.0
+		//print(imageView.frame.height)// 406
+		
+		north.addSubview(imageView)
+		
+		
+	}
+	
+	func goLeft() {
+		
+		let pos = cellData.getCell() - 1
+		
+		if (pos) > 0 {
+			
+			cellData = arrayData[pos]
+			
+			showData(data: cellData)
+			
+			print(pos)
+			
+		}
+		
+	}// end  go left
+	
 	@objc func leftBoxBtnTapped(){
+		goLeft()
+		
+	}// end left btn
+	
+	@objc func middleBoxBtnTapped() {
 		//let baseUrl = URL(string: "http://en.wikipedia.org/wiki/")
 		//displayWikipediaPage(base: baseUrl!, str: cellData.getName())
 	}
 	
-	@objc func middleBoxBtnTapped() {
-		let baseUrl = URL(string: "http://en.wikipedia.org/wiki/")
-		displayWikipediaPage(base: baseUrl!, str: cellData.getName())
-	}
+	func goRight() {
+		
+		let pos = cellData.getCell() + 1
+
+		if (pos) < arrayData.count {
+		
+			cellData = arrayData[pos]
+			
+			showData(data: cellData)
+			
+			print(pos)
+			
+		}
+	}// end  go right
+	
 	@objc func rightBoxBtnTapped() {
-		//displaySearchFormPage()
+		goRight()
 	}
 	
 	// dosage func

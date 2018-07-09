@@ -59,6 +59,8 @@ UITextFieldDelegate {
 	var isChecked = 			true
 	var isScored = 				false
 	
+	var tiles = [TileButton]()
+	
 	// my box buttons
 	var boxBtn001: BoxButton!
 	var boxBtn002: BoxButton!
@@ -68,6 +70,7 @@ UITextFieldDelegate {
 	var boxBtn005: BoxButton!
 	var boxBtn006: BoxButton!
 
+	/*
 	// my tile buttons
 	var tileBtn001: TileButton!
 	var tileBtn002: TileButton!
@@ -80,22 +83,19 @@ UITextFieldDelegate {
 	var tileBtn007: TileButton!
 	var tileBtn008: TileButton!
 	var tileBtn009: TileButton!
+	*/
 	
-	var arrayOfCellData = [CellDataClass]()
+	var arrayPillData = [Pill]()
 
 	override func loadView() {
 		super.loadView()
-
 		//Looks for single or multiple taps to dismiss keyboard
 		let tap: UITapGestureRecognizer
 		= UITapGestureRecognizer(
 			target: self,
 			action: #selector(dismissKeyboard))
 		view.addGestureRecognizer(tap)
-		
-		
-		
-		
+
 	}// end loadview
 	
 	// GET BOX BUTTON
@@ -107,7 +107,7 @@ UITextFieldDelegate {
 			height: 110))
 		
 		return button
-	}
+	}// builder  function
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -153,9 +153,6 @@ UITextFieldDelegate {
 		let boxBtn004 = getBoxButton(
 			x: screenWidth * 0.6,
 			y: ((screenHeight/3) - (screenHeight/6)))
-
-
-
 		
 		boxBtn004.setTitle("Imprint: On", for: .normal)
 		boxBtn004.addTarget(
@@ -237,6 +234,7 @@ UITextFieldDelegate {
 		
 		north.addSubview(pickImprintTextField)
 		
+		/*
 		//========================================
 
 		// tileBtn001 (L) //667.0 || 120 + 120 = 240 || 140 + 140 || 166+166 = 332
@@ -280,8 +278,9 @@ UITextFieldDelegate {
 	
 		north.addSubview(tilBtn009)
 		
-		
+		*/
 		//========================================
+
 		
 		pickNameTextField = UITextField(frame: CGRect(
 			x: 0,
@@ -303,7 +302,6 @@ UITextFieldDelegate {
 		pickNameTextField.delegate = self// when return key pressed, do sumthing
 		
 		//north.addSubview(pickNameTextField)
-		
 		
 	}// end view did load
 
@@ -477,7 +475,7 @@ UITextFieldDelegate {
 
 
 	@objc func submitButtonTapped(sender: UIButton){
-		submit(sender: sender)
+		submit()
 	}// end submit btn tapped
 	
 	@objc func imageButtonTapped(_ sender: Any) {
@@ -494,7 +492,6 @@ UITextFieldDelegate {
 		
 		//dismiss(animated: false, completion: nil)
 		//self.pickPictureBtn.isEnabled = false
-		
 		
 		//  COMPLETELY BROKEN
 		
@@ -547,7 +544,34 @@ UITextFieldDelegate {
 		}
 	}
 	
-	func submit(sender: UIButton) {
+	func setTileBtn() {
+			let tileBtn = TileButton(frame: CGRect(x: 0.0, y: ((screenHeight/3)), width: 110, height: 110))
+			tileBtn.isHidden = false
+			
+			self.tiles.append(tileBtn)
+			
+			self.north.addSubview(tileBtn)
+			
+			print(self.tiles.count)
+	}
+	
+	func setArray(json: JSON) {
+		// ====== set json to my pill array
+		for item in json.array! {
+			arrayPillData.append(Pill(
+				name:			 item["name"].string!,
+				imageUrlString:  item["imageUrl"].string!,
+				color: 			color,
+				shape: 			shape,
+				imprint: 		imprint,
+				rxcui: 			item["rxcui"].int!,
+				score: 			score
+			))
+			
+		}// end loop pill data
+	}
+	
+	func submit() {
 		var url = baseUrl
 		
 		// check color
@@ -570,11 +594,13 @@ UITextFieldDelegate {
 		} else {
 			imprint  = ""
 		}
-		
+
 		// check score
 		if (score != nil) && (score > 0 && score <= 4) {
 			// contains score input [1,2,3,4]
 			url = url + getSearchUrlString(find: scoreParam, str: String(score))
+		} else {
+			score = 0
 		}
 		
 		// check name
@@ -590,48 +616,41 @@ UITextFieldDelegate {
 		if (limit != nil) {
 			url = url + getSearchUrlString(find: colorParam, str: color) // "&rLimit="
 		}
-		
-		//print(getSearchUrlString(find: rxcuiParam, str: "198429"))// rxcuiParam
-		
+
 		// final url to be sent off
-		if url.count <= baseUrl.count {
-			print(url)
-			return
-		} else {
-			print(url)
-			
-			
-			
-			// get http request
-			Alamofire.request(url).responseJSON { response in
-				print("Request: \(String(describing: response.request))")   // original url request
-				if let json = response.result.value {
-					print("JSON: \(json)") // serialized json response
-					let json = JSON("nlmRxImages")
-					//  conert json response to swiftyJSON
-					
-					
-					// Int
-					if json["user"]["id"].int != nil {
-						// Do something you want
-						print(json[0])
-					} else {
-						// Print the error
-						print(json["user"]["id"].error!)
-					}
-				
-					
+		print(url)
+
 		
-				}// end if json
+		// get http request
+		Alamofire.request(url).responseJSON { response in
+			//print("Request: \(String(describing: response.request))")   // original url request
+			if let json = response.result.value {
+				//print("JSON: \(json)") // serialized json response
+				let swiftyJsonVar = JSON(json)//  conert json response to swiftyJSON
+				print(swiftyJsonVar["replyStatus"])
 				
-			}// end alamo call
-			
-		}// end else
-		
+				// get results as pill array
+				//print(swiftyJsonVar["nlmRxImages"])// list of pills
+				
+				// one or more pill found
+				if swiftyJsonVar["replyStatus"]["totalImageCount"]  > 0 {
+					
+					// save to array, send results to display page
+					self.setArray(json: swiftyJsonVar["nlmRxImages"])
+					
+					self.displayResultsPage()
+					
+					
+					
+				} else {
+					// no results found
+					print("No results founds")
+				}
+				
+			}
+		}
 		
 	}// end submit
-	
-
 	func camera() {
 		if UIImagePickerController.isSourceTypeAvailable(.camera){
 			let myPickerController = UIImagePickerController()
@@ -694,38 +713,38 @@ UITextFieldDelegate {
 		self.present(actionSheet, animated: false, completion: nil)
 	}// end show actionsheet
 	
-	func displayResultsPage(json: JSON) {
+	func displayResultsPage() {
 		let resultsTableViewController: ResultsTableViewController
 		= storyboard?.instantiateViewController(withIdentifier:
 			"resultsTableViewController") as! ResultsTableViewController
-		
-		let nlmRxImages = json["nlmRxImages"].array!
-		
+
 		// set new cell data in cell array for results page
 		var i = 0
-		while i < nlmRxImages.count {
-			print(nlmRxImages[i]["rxcui"].int!)
+		while i < arrayPillData.count {
+			//print(nlmRxImages[i]["rxcui"].int!)
+			
 			resultsTableViewController.arrayOfCellData.append(
 				CellDataClass(
-					cell: i,
-					name: nlmRxImages[i]["name"].string!,
-					image: "250x250placeholder",
-					//image: #imageLiteral(resourceName: "250x250placeholder"),
-					imageUrl: nlmRxImages[i]["imageUrl"].string!,
-					color: 		color,
-					shape: 		shape,
-					imprint: 	imprint,
-					rxcui: 		nlmRxImages[i]["rxcui"].int!,
-					score:		0,
+					cell: 		i,
+					name: 		arrayPillData[i].getName(),
+					image: 		placeholder,
+					imageUrl: 	arrayPillData[i].getImageUrlString(),
+					color: 		arrayPillData[i].getColor(),
+					shape: 		arrayPillData[i].getShape(),
+					imprint: 	arrayPillData[i].getImprint(),
+					rxcui: 		arrayPillData[i].getRxcui(),
+					score:		arrayPillData[i].getScore(),
 					limit:	 	0
 			))
 			i = i + 1
-		}
+			
+		}// pill data to cell data
 		
 		self.present(
 			resultsTableViewController,
 			animated: false,
-			completion: {})
+			completion: nil)
+		
 	}// end card disp
 
 	

@@ -108,7 +108,6 @@ class TestViewController: NorthSouthViewController {
 		//north.addSubview(showWikipediaBtn)
 		
 
-		
 	}// end view did load
 
 	func displayWikipediaPage(base: URL, str: String) {

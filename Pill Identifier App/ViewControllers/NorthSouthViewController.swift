@@ -7,6 +7,8 @@
 
 import UIKit.UIViewController
 
+let footerRect = CGRect(x:0, y: 0, width: 200,height: 21)
+
 public var placeholder = "250x250placeholder.png"
 
 // Screen width.
@@ -108,7 +110,8 @@ class NorthSouthViewController: UIViewController {
 		self.present(
 			searchViewController,
 			animated: false,
-			completion: {})
+			completion: {
+		})
 	}
 
 	func displayHomePage() {
@@ -189,7 +192,7 @@ class NorthSouthViewController: UIViewController {
 	func isValid(name: String) -> Bool {
 		// check the name is between 4 and ... characters
 		if !(4...20 ~= name.count) {
-			print(name.count)
+			//print(name.count)
 			return false
 		}
 		return true
@@ -203,19 +206,6 @@ class NorthSouthViewController: UIViewController {
 		label.text = "Eric Phung 2018"
 		return label
 	}// end copyright
-
-	func headerMsg(msg: String)  -> UILabel {
-		// show user hints and info
-		let label = UILabel(frame: headerRect)
-		label.center = CGPoint(
-			x: (screenWidth * 0.5), y: (screenHeight * 0.05))
-		label.textAlignment = .center
-		label.text = msg
-		label.numberOfLines = 2
-		label.textAlignment = .center
-		label.adjustsFontSizeToFitWidth = true
-		return label
-	}
 
 }// end class def
 

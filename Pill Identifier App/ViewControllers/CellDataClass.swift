@@ -43,10 +43,10 @@ class CellDataClass {
 			self.cell = 0
 		}
 		
-		self.name = 	name
-		self.image =  	image
+		self.name = name
+		self.image =  image
 		self.imageUrl = imageUrl
-		self.color = 	color
+		self.color = color
 		self.shape = shape
 		self.imprint = imprint
 		self.rxcui = rxcui
