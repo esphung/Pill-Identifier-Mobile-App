@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// to create our new initial view controller
 		let mainStoryboard: UIStoryboard = UIStoryboard(
 			name: "Main", bundle: nil)
-	/*
+		
+		/*
 		// 3. Instantiate our new initial view controller 
 		// based on it's Storyboard ID
 		let testViewController: UIViewController 
@@ -29,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// 4. Set our new window's root view controller 
 		// as our the new controller we just initiated
 		self.window?.rootViewController = testViewController
-*/
+		*/
 		
 		// 3. Instantiate our new initial view controller based on 
 		// it's Storyboard ID

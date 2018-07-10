@@ -54,11 +54,12 @@ class ResultsTableViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		// #warning Incomplete implementation, return the number of rows
+		
 		return arrayOfCellData.count
+		
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		
 		//let cell = tableView.dequeueReusableCell(withIdentifier: "customTableCell", for: indexPath)
 		//tableView.register(UITableViewCell.self, forCellReuseIdentifier: "customCell")
 		
@@ -66,9 +67,16 @@ class ResultsTableViewController: UITableViewController {
 		
 		//cell.mainImageView.image = arrayOfCellData[indexPath.row].image
 		let image = UIImage(named: "250x250placeholder.png")
-		let url = URL(string: arrayOfCellData[indexPath.row].getImageUrl())
 		
-		cell.mainImageView.kf.setImage(with: url, placeholder: image)
+		let url = URL(
+			string: arrayOfCellData[indexPath.row].getImageUrl()
+		)
+		
+		cell.mainImageView.kf.setImage(
+			with: url,
+			placeholder: image
+		)
+		
 		cell.mainLabel.text = arrayOfCellData[indexPath.row].getName()
 		
 		return cell
@@ -86,7 +94,9 @@ class ResultsTableViewController: UITableViewController {
 		}*/
 		
 		print(arrayOfCellData[indexPath.row].getName())
+		
 		let data = CellDataClass(
+			
 			cell:  		arrayOfCellData[indexPath.row].getCell(),
 			name: 		arrayOfCellData[indexPath.row].getName(),
 			image: 		arrayOfCellData[indexPath.row].getImageUrl(),
@@ -97,7 +107,9 @@ class ResultsTableViewController: UITableViewController {
 			rxcui:		arrayOfCellData[indexPath.row].getRxcui(),
 			score: 		arrayOfCellData[indexPath.row].getScore(),
 			limit: 		arrayOfCellData[indexPath.row].limit
+			
 		)
+		
 		displayCardDisplayPage(data: data)
 		
 	}// end did select row

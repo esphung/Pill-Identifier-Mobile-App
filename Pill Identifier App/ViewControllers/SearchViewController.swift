@@ -12,8 +12,7 @@ import Alamofire
 
 // https://chesapeakeholistic.com/wp-content/uploads/2018/03/placeholder.png
 // http://www.santacruzmentor.org/wp-content/uploads/2012/12/Placeholder.png
-
-//public var debug = false // does nOTHING
+// https://www.bridgeig.com/wp-content/uploads/female-placeholder.jpg
 
 // remote test images
 let remoteTestImageUrls = [
@@ -664,10 +663,12 @@ UITableViewDataSource, UITableViewDelegate {
 	
 		// set new cell data in cell array for results page
 		var i = 0
+		
 		while i < arrayPillData.count {
 			//print(nlmRxImages[i]["rxcui"].int!)
 			
 			self.arrayOfCellData.append(
+				
 				CellDataClass(
 					cell: 		i,
 					name: 		arrayPillData[i].getName(),
@@ -690,13 +691,16 @@ UITableViewDataSource, UITableViewDelegate {
 	
 
 	func displayResultsPage() {
-		let resultsTableViewController: ResultsTableViewController
-		= storyboard?.instantiateViewController(withIdentifier:
-			"resultsTableViewController") as! ResultsTableViewController
+		
+		let sv = SearchViewController.displaySpinner(onView: self.view)// start spinner
+		
+		let resultsTableViewController: ResultsTableViewController = storyboard?.instantiateViewController(withIdentifier: "resultsTableViewController") as! ResultsTableViewController
 
 		// set new cell data in cell array for results page
 		var i = 0
+		
 		while i < arrayPillData.count {
+			
 			//print(nlmRxImages[i]["rxcui"].int!)
 			
 			resultsTableViewController.arrayOfCellData.append(
@@ -712,14 +716,20 @@ UITableViewDataSource, UITableViewDelegate {
 					score:		arrayPillData[i].getScore(),
 					limit:	 	0
 			))
+			
 			i = i + 1
+			
+			SearchViewController.removeSpinner(spinner: sv)// end spinner
 			
 		}// pill data to cell data
 		
 		self.present(
+			
 			resultsTableViewController,
 			animated: false,
-			completion: nil)
+			completion: nil
+			
+		)
 		
 	}// end card disp
 
@@ -934,7 +944,6 @@ extension SearchViewController {
 		cell.mainLabel?.numberOfLines = 1
 		
 		//customTableView.updateTableView()
-		
 		return cell
 		
 	}
@@ -966,5 +975,7 @@ extension SearchViewController {
 			spinner.removeFromSuperview()
 		}
 	}
-}
+}//  end spinner display extension
+
+
 
