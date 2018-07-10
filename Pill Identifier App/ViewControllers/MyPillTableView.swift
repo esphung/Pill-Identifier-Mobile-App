@@ -9,7 +9,12 @@
 import UIKit
 
 
-class MyPillTableView: UITableView {
+class MyPillTableView: UITableView, CustomCellUpdater {
+	
+	func updateTableView() {
+		// protocal defined in cell class and instantiated from vc class
+		print("MyPillTableView ..updateTableView()")
+	}
 	
 	//var mainImageView: UIImageView!
 	//var mainLabel: UILabel!

@@ -8,6 +8,7 @@
 import Foundation
 
 class Pill {
+	
 	// var
 	var id_num: Double!
 	private var name: String!

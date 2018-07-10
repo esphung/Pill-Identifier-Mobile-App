@@ -7,7 +7,18 @@ import ActionSheetPicker_3_0
 import SwiftyJSON
 import Alamofire
 
+// https://chesapeakeholistic.com/wp-content/uploads/2018/03/placeholder.png
+// http://www.santacruzmentor.org/wp-content/uploads/2012/12/Placeholder.png
+
 //public var debug = false // does nOTHING
+
+// remote test images
+let remoteTestImageUrls = [
+	"https://chesapeakeholistic.com/wp-content/uploads/2018/03/placeholder.png",
+	"http://www.santacruzmentor.org/wp-content/uploads/2012/12/Placeholder.png",
+	"https://www.bridgeig.com/wp-content/uploads/female-placeholder.jpg"
+]
+
 
 // picker options for searching pill paramaters
 public let shapes = [
@@ -58,7 +69,7 @@ class SearchViewController:
 NorthSouthViewController,
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,
-UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate  {
+UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
 
 
 	// cases to search for
@@ -106,8 +117,7 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate  {
 	
 	var customTableView:  MyPillTableView!
 	var cellData: CellDataClass!
-	//private let cellReuseIdentifier: String = "customCell"
-
+	let cellReuseIdentifier: String = "customCell"
 	
 	// my box buttons
 	var boxBtn001: BoxButton!
@@ -122,6 +132,7 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate  {
 	var arrayOfCellData = [CellDataClass]()
 	
 	var cell: TableViewCell2!
+	var cellUpdater: CustomCellUpdater?// attach this to add a delagate to friend
 
 	override func loadView() {
 		super.loadView()
@@ -134,24 +145,32 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate  {
 		view.addGestureRecognizer(tap)
 		
 		if arrayOfCellData.isEmpty {
+			
 			// default results list items and test harness
 			arrayOfCellData = [
-				CellDataClass(cell: 1, name:  "Welcome to",
-							  image: "test.png",
-							  //image: #imageLiteral(resourceName: "against"),
-					imageUrl: "whoa", color: "i can", shape: "make banaana", imprint: "",
+				CellDataClass(
+					cell: 0,
+					name:  "Welcome to",
+					image:  remoteTestImageUrls[0],
+					imageUrl: "https://chesapeakeholistic.com/wp-content/uploads/2018/03/placeholder.png",
+					color: "i can", shape: "make banaana", imprint: "",
 					rxcui: 30303, score: 0, limit: 0),
-				CellDataClass(cell: 2, name:  "Pill Identifier!",
-							  image: "test.jpg",
-							  //image: #imageLiteral(resourceName: "test"),
-					imageUrl: "test.jpg", color: "", shape: "", imprint: "",
+				CellDataClass(
+					cell: 1,
+					name: "Pill Identifier!",
+					image:  remoteTestImageUrls[1],
+					imageUrl: "http://www.santacruzmentor.org/wp-content/uploads/2012/12/Placeholder.png",
+					color: "an", shape: "make banaana", imprint: "",
 					rxcui: 13218, score: 0, limit: 0),
-				CellDataClass(cell: 3, name:  "by Eric Phung",
-							  image: "against.jpg",
-							  //image: #imageLiteral(resourceName: "test"),
-					imageUrl: "against.jpg", color: "", shape: "", imprint: "",
+				CellDataClass(
+					cell: 2,
+					name:  "by Eric Phung",
+					image: remoteTestImageUrls[2],
+					imageUrl: remoteTestImageUrls[2],
+					color: "", shape: "", imprint: "",
 					rxcui: 13218, score: 0, limit: 0)
 			]
+			
 		}
 
 	}// end loadview
@@ -166,15 +185,19 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate  {
 		
 		customTableView.delegate = self
 		customTableView.dataSource = self
+		
 		customTableView.translatesAutoresizingMaskIntoConstraints = false
 		
 		view.addSubview(customTableView)
 		
 		setTableViewConstraints()
+		
 		customTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
 		customTableView.separatorColor = UIColor.clear
 		
 		//showFrames()
+		
+		
 
 		//========================================
 		// Get the superview's layout
@@ -367,11 +390,7 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate  {
 					// save to array, send results to display page
 					self.setArray(json: swiftyJsonVar["nlmRxImages"])
 					
-					//self.customTableView.reloadData()
-					
-					self.updateListOnPage()
-					
-					//self.displayResultsPage()
+					self.displayResultsPage()
 					
 					
 				} else {
@@ -380,6 +399,7 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate  {
 				}
 				
 			}
+			
 		}
 	}// end submit
 	
@@ -861,37 +881,45 @@ extension SearchViewController {
 		
 	}// end show actionsheet
 	
-
 }
 
 
-extension  SearchViewController {
+extension SearchViewController {
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		
 		let rowHeight = screenWidth/screenHeight * 150
+		
 		return rowHeight
-	}
+		
+	}// end height for row
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		
 		return arrayOfCellData.count
-	}
+	
+	}// end num of rows
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let cell = Bundle.main.loadNibNamed("TableViewCell2", owner: self, options: nil)?.first as! TableViewCell2
-
-		//cell.mainImageView.image = arrayOfCellData[indexPath.row].image
+		let cell = Bundle.main.loadNibNamed("TableViewCell2",
+											owner: self, options: nil)?.first as! TableViewCell2
 		let url = URL(string: arrayOfCellData[indexPath.row].getImageUrl())// get  cell data image url
+		//let url = URL(string: "https://chesapeakeholistic.com/wp-content/uploads/2018/03/placeholder.png")// get  cell data image url
+		
+		// https://chesapeakeholistic.com/wp-content/uploads/2018/03/placeholder.png
+		
 		cell.mainImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName: "against.jpg"))// set image url
+		
 		cell.mainLabel?.text = arrayOfCellData[indexPath.row].getName()
 		
 		cell.mainLabel?.textAlignment = .center
 		cell.mainLabel?.numberOfLines = 1
-
+		
+		//customTableView.updateTableView()
 		
 		return cell
+		
 	}
 	
-	
-	
-}
+}// end table  delegate extension
