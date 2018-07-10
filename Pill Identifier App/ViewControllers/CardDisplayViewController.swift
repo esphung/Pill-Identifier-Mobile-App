@@ -23,13 +23,16 @@ class CardDisplayViewController: NorthSouthViewController {
 	var altImage:  	UIImage!
 
     override func loadView() {
+		
         super.loadView()
 		
     }
 	
     override func viewDidLoad() {
+		
         super.viewDidLoad()
 		// begin set up here
+		
 		let sv = CardDisplayViewController.displaySpinner(onView: self.view)
 		
 		//setNavigationBar(title: "Pill Description")
@@ -41,21 +44,32 @@ class CardDisplayViewController: NorthSouthViewController {
 		//showFrames()
 		CardDisplayViewController.removeSpinner(spinner: sv)
 		
-    }
+    }// end  viewdidload
 
     override func viewDidLayoutSubviews() {
+		
         super.viewDidLayoutSubviews()
 		
 		let sv = CardDisplayViewController.displaySpinner(onView: self.view)
 
 		// COPYRIGHT/ FOOTER
 		let copyright = copyrightLabel()
-		myView.addSubview(copyright)
+		
+		view.addSubview(copyright)
 	
 		// LOAD THE IMAGE
 		url = URL(string: cellData.getImageUrl())
 		
-		pillImageView = makeDisplayImage(image: altImage!)
+		//pillImageView = makeDisplayImage(image: altImage!)
+		
+		pillImageView = UIImageView(frame: CGRect(
+			x: 0,
+			y: 0,
+			width: view.frame.width,
+			height: view.frame.height/2))
+		pillImageView.image = image
+		//imageView.contentMode = UIView.ContentMode.scaleAspectFit
+		
 		pillImageView.kf.setImage(with: url, placeholder: image)
 		//pillImageView.borderColor = .lightGray
 		//pillImageView.borderWidth =  0.0
@@ -64,15 +78,20 @@ class CardDisplayViewController: NorthSouthViewController {
 
 		// LEFT BOX BUTTON  (LEFT)
 		leftBoxBtn =  UIButton(frame: CGRect(
+			
 			x: 0,
 			y: view.frame.height - view.frame.height/4,
 			width: view.frame.width/3,
 			height: view.frame.height/4))
+		
 		//submitButton.layer.borderWidth = 0.0
+		
 		leftBoxBtn.setTitleColor(UIColor.black, for: .normal)
 		leftBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 		leftBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
-		leftBoxBtn.titleLabel?.font =  UIFont.systemFont(ofSize: 19,
+		
+		leftBoxBtn.titleLabel?.font =  UIFont.systemFont(
+			ofSize: 19,
 			weight: .light)
 		
 		leftBoxBtn.borderWidth = 0.0
@@ -81,20 +100,25 @@ class CardDisplayViewController: NorthSouthViewController {
 			self,
 			action: #selector(leftBoxBtnTapped),
 			for: .touchUpInside)
-		leftBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
+		
+		leftBoxBtn.setImage(UIImage(named: placeholder), for: .normal)
 		view.addSubview(leftBoxBtn)
 		
 
 		// WIKIPEDIA PAGE BUTTON  (MIDDLE)
 		middleBoxBtn =  UIButton(frame: CGRect(
+			
 			x: view.frame.width/3,
 			y: view.frame.height - view.frame.height/4,
 			width: view.frame.width/3,
 			height: view.frame.height/4))
+		
 		middleBoxBtn.setTitleColor(UIColor.black, for: .normal)
 		middleBoxBtn.setTitleColor(UIColor.lightGray, for: .disabled)
 		middleBoxBtn.setTitleColor(UIColor.white, for: .highlighted)
-		middleBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
+		
+		
+		middleBoxBtn.setImage(UIImage(named: placeholder), for: .normal)
 
 		middleBoxBtn.titleLabel?.font =  UIFont.systemFont(
 			ofSize: 19,
@@ -129,8 +153,7 @@ class CardDisplayViewController: NorthSouthViewController {
 			action: #selector(rightBoxBtnTapped),
 			for: .touchUpInside)
 
-		rightBoxBtn.setImage(UIImage(named: "250x250placeholder.png"), for: .normal)
-
+		rightBoxBtn.setImage(UIImage(named: placeholder), for: .normal)
 		view.addSubview(rightBoxBtn)
 
 		CardDisplayViewController.removeSpinner(spinner: sv)
@@ -144,7 +167,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		pillImageView.removeFromSuperview()
 		
 		url = URL(string: data.getImageUrl())
-		pillImageView = makeDisplayImage(image: altImage!)
+		//pillImageView = makeDisplayImage(image: altImage!)
 		pillImageView.kf.setImage(with: url, placeholder: image)
 		//pillImageView.borderColor = .lightGray
 		//pillImageView.borderWidth =  0.0
@@ -178,8 +201,6 @@ class CardDisplayViewController: NorthSouthViewController {
 	
 	@objc func middleBoxBtnTapped() {
 		displaySearchFormPage()
-		//let baseUrl = URL(string: "http://en.wikipedia.org/wiki/")
-		//displayWikipediaPage(base: baseUrl!, str: cellData.getName())
 	}
 	
 	// move right in pill list
@@ -267,6 +288,7 @@ class CardDisplayViewController: NorthSouthViewController {
 	}
 
 	func getName(str: String) -> String {
+		
 		var fullName = ""
 		
 		// FIND BASIC NAME

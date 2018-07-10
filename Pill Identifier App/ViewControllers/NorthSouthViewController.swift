@@ -7,7 +7,8 @@
 
 import UIKit.UIViewController
 
-let nurseScrubGreenColor = UIColor(red: 119/255.0, green: 203/255.0, blue: 187/255.0, alpha: 1.0)
+
+
 let footerRect = CGRect(x:0, y: 0, width: 200,height: 21)
 
 public var placeholder = "250x250placeholder.png"
@@ -115,28 +116,6 @@ class NorthSouthViewController: UIViewController {
 			equalToConstant: screenHeight).isActive = true
 	}
 	
-	func showFrames() {
-		// show debug view canvases
-		//myView.backgroundColor = UIColor(white: 0.25, alpha: 0.5)
-		myView.backgroundColor = UIColor.blue
-		myView.layer.borderColor = UIColor.black.cgColor
-		myView.layer.borderWidth = 2.0
-		
-	}
-
-	// image view photo display
-	func makeDisplayImage(image: UIImage) -> UIImageView {
-		
-		imageView = UIImageView(frame: CGRect(
-			x: 0,
-			y: 0,
-			width: view.frame.width,
-			height: view.frame.height/2))
-		imageView.image = image
-		//imageView.contentMode = UIView.ContentMode.scaleAspectFit
-		
-		return imageView
-	}
 	
 	func isValid(name: String) -> Bool {
 		// check the name is between 4 and ... characters
