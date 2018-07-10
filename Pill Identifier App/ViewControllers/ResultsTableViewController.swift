@@ -83,7 +83,7 @@ class ResultsTableViewController: UITableViewController {
 		
 	}//  end cell for row
 	
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+	public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		//print(arrayOfCellData[indexPath.row])
 		

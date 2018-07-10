@@ -15,7 +15,7 @@ class MyPillTableView: UITableView, CustomCellUpdater {
 		
 		print("MyPillTableView invoked..updateTableView()")
 
-		//cellForRow(at: IndexPath.Index)
+		//cellForRow(at: IndexPath.row)
 		
 	}// und update table
 	

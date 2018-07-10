@@ -201,32 +201,32 @@ UITableViewDataSource, UITableViewDelegate {
 				CellDataClass(
 					
 					cell: 0,
-					name:  "Welcome to",
+					name:  "Search Pill",
 					image:  "",
 					
 					imageUrl: remoteTestImageUrls[0],
 					color: "i can", shape: "make banaana", imprint: "",
-					rxcui: 30303, score: 0, limit: 0),
+					rxcui: 0, score: 0, limit: 0),
 				
 				CellDataClass(
 					
 					cell: 1,
-					name: "Pill Identifier!",
+					name: "Upload Picture",
 					image:  "",
 					
 					imageUrl: remoteTestImageUrls[1],
 					color: "an", shape: "make banaana", imprint: "",
-					rxcui: 13218, score: 0, limit: 0),
+					rxcui: 0, score: 0, limit: 0),
 				
 				CellDataClass(
 					
 					cell: 2,
-					name:  "by Eric Phung",
+					name:  "Home",
 					image: remoteTestImageUrls[3],
 					
 					imageUrl: remoteTestImageUrls[3],//home icon
 					color: "", shape: "", imprint: "",
-					rxcui: 13218, score: 0, limit: 0)
+					rxcui: 0, score: 0, limit: 0)
 				
 			]
 			
@@ -234,14 +234,13 @@ UITableViewDataSource, UITableViewDelegate {
 		
 		SearchViewController.removeSpinner(spinner: sv)
 		
-		
-
 	}// end loadview
 	
 
 	override func viewDidLoad() {
 		
 		super.viewDidLoad()
+		
 		view.backgroundColor = nurseScrubGreenColor
 		
 		//  MAKE TABLE VIEW
@@ -261,8 +260,10 @@ UITableViewDataSource, UITableViewDelegate {
 		customTableView.separatorColor = UIColor.clear
 		
 		customTableView.isScrollEnabled = false
+
 		
-		//showFrames()
+
+		
 		
 		//========================================
 		// Get the superview's layout
@@ -517,6 +518,7 @@ UITableViewDataSource, UITableViewDelegate {
 	
 	
 	func setTableViewConstraints() {
+		
 		// Get the superview's layout
 		let margins = myView.layoutMarginsGuide
 		
@@ -534,6 +536,7 @@ UITableViewDataSource, UITableViewDelegate {
 		
 		//customTableView.backgroundColor = .red
 		//myView.backgroundColor = .blue
+		
 	}//  end table constraintss
 
 
@@ -827,7 +830,7 @@ UITableViewDataSource, UITableViewDelegate {
 			
 		)
 		
-	}// end card disp
+	}// end card display
 
 	
 	@objc func dismissKeyboard() {
@@ -895,7 +898,16 @@ UITableViewDataSource, UITableViewDelegate {
 		return url
 	}
 	
-	// MARK: - Table view data source
+	// MARK: - utility  funcs
+	override func copyrightLabel() -> UILabel {
+		let label = UILabel(frame: footerRect)//rects ->globals file
+		label.center = CGPoint(
+			x: screenWidth * 0.5, y: screenHeight * 0.9)
+		label.textAlignment = .center
+		label.text = "Eric Phung 2018"
+		
+		return label
+	}// end copyright
 	
 
 }// end view controller class definition
@@ -1010,16 +1022,22 @@ extension SearchViewController {
 
 extension SearchViewController {
 	
+	func numberOfSections(in tableView: MyPillTableView) -> Int {
+		return 1
+		
+	}
+	
+	func tableView(_ tableView: MyPillTableView, didSelectRowAt indexPath: IndexPath) {
+		print(arrayOfCellData[indexPath.row])
+		customTableView.updateTableView()
+	}
+	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		
-		let rowHeight = screenWidth/screenHeight * 150
-		
-		return rowHeight
+		return 85
 		
 	}// end height for row
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		
 		return arrayOfCellData.count
 	
 	}// end num of rows
@@ -1073,6 +1091,8 @@ extension SearchViewController {
 			spinner.removeFromSuperview()
 		}
 	}
+
+	
 }//  end spinner display extension
 
 
