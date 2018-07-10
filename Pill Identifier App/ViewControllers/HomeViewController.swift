@@ -43,10 +43,7 @@ class HomeViewController: SearchViewController {
 		print(indexPath.row)
 	}
 	
-	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return "Home"
-	}
-	
+
 	func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 	
 		return "Eric PHung"

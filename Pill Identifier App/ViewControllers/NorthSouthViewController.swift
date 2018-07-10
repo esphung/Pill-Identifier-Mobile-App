@@ -42,6 +42,8 @@ class NorthSouthViewController: UIViewController {
 		self.myView  =  myView
 		
 		setUpContraints()
+		
+		view.backgroundColor = nurseScrubGreenColor
 
 	}
 

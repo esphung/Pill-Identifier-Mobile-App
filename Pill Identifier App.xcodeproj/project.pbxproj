@@ -14,7 +14,6 @@
 		18F57B9B1E992E0A0013221F /* Pill_Identifier_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F57B9A1E992E0A0013221F /* Pill_Identifier_AppTests.swift */; };
 		18F57BA61E992E0A0013221F /* Pill_Identifier_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F57BA51E992E0A0013221F /* Pill_Identifier_AppUITests.swift */; };
 		5E02A2BE20F3B2EB006B2DA3 /* MyPillTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E02A2BD20F3B2EB006B2DA3 /* MyPillTableView.swift */; };
-		5E02A2C020F3B42F006B2DA3 /* PillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E02A2BF20F3B42F006B2DA3 /* PillTableViewCell.swift */; };
 		5E24318C20F37FEE000AE1B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E24318B20F37FEE000AE1B1 /* Main.storyboard */; };
 		5E29F7B320EFCA2A00549742 /* notes in Resources */ = {isa = PBXBuildFile; fileRef = 5E29F7B220EFCA2900549742 /* notes */; };
 		5E29F7C320EFDA2F00549742 /* CellDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E29F7B620EFCE1B00549742 /* CellDataClass.swift */; };
@@ -75,7 +74,6 @@
 		18F57BA71E992E0A0013221F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3741B1114C70319E10746FF5 /* Pods-Pill Identifier AppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pill Identifier AppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pill Identifier AppTests/Pods-Pill Identifier AppTests.release.xcconfig"; sourceTree = "<group>"; };
 		5E02A2BD20F3B2EB006B2DA3 /* MyPillTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPillTableView.swift; sourceTree = "<group>"; };
-		5E02A2BF20F3B42F006B2DA3 /* PillTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillTableViewCell.swift; sourceTree = "<group>"; };
 		5E24318B20F37FEE000AE1B1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5E29F7B220EFCA2900549742 /* notes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = notes; sourceTree = "<group>"; };
 		5E29F7B620EFCE1B00549742 /* CellDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CellDataClass.swift; path = "Pill Identifier App/ViewControllers/CellDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -205,17 +203,16 @@
 			children = (
 				5EE2747820F48BDC00625691 /* SearchViewController.swift */,
 				5EF6B97F20F4EE1300D3DFD6 /* HomeViewController.swift */,
+				5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */,
+				5E02A2BD20F3B2EB006B2DA3 /* MyPillTableView.swift */,
 				5E29F7B620EFCE1B00549742 /* CellDataClass.swift */,
 				5E86255520F29B010023E297 /* BoxButtonClass.swift */,
 				5EF6B98120F5037F00D3DFD6 /* Globals.swift */,
-				5E02A2BD20F3B2EB006B2DA3 /* MyPillTableView.swift */,
 				18F57B851E992E0A0013221F /* AppDelegate.swift */,
 				5EBBC44C20F2A77B004A9EEE /* PillClass.swift */,
 				5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */,
-				5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */,
 				5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */,
 				5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */,
-				5E02A2BF20F3B42F006B2DA3 /* PillTableViewCell.swift */,
 				5E24318B20F37FEE000AE1B1 /* Main.storyboard */,
 			);
 			path = ViewControllers;
@@ -487,7 +484,6 @@
 				5E49D4F720D87713002C8469 /* NorthSouthViewController.swift in Sources */,
 				5EF6B98220F5037F00D3DFD6 /* Globals.swift in Sources */,
 				5EE2747920F48BDC00625691 /* SearchViewController.swift in Sources */,
-				5E02A2C020F3B42F006B2DA3 /* PillTableViewCell.swift in Sources */,
 				5EBBC44D20F2A77B004A9EEE /* PillClass.swift in Sources */,
 				5EF7DD5120E18BEE00EF5F2E /* TableViewCell1.swift in Sources */,
 				5E02A2BE20F3B2EB006B2DA3 /* MyPillTableView.swift in Sources */,

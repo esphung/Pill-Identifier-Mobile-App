@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// of the current window and set it as our main window
 		self.window = UIWindow(frame: UIScreen.main.bounds)
 		
+		
 		// 2. Instantiate a storyboard that we can use
 		// to create our new initial view controller
 		let mainStoryboard: UIStoryboard = UIStoryboard(
@@ -23,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		/*
 		// 3. Instantiate our new initial view controller 
 		// based on it's Storyboard ID
-		let testViewController: UIViewController q
+		let testViewController: UIViewController 
 		= mainStoryboard.instantiateViewController(
 			withIdentifier: "testViewController")
 		

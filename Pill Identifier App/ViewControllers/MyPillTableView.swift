@@ -12,8 +12,12 @@ class MyPillTableView: UITableView, CustomCellUpdater {
 	
 	func updateTableView() {
 		// protocal defined in cell class and instantiated from vc class
+		print("MyPillTable.............View ->  updateTableView()")
+		print(visibleCells)
+		for item in visibleCells {
+			print(item.reuseIdentifier)
+		}
 
-		print("MyPillTableView ->  updateTableView()")
 		//cellForRow(at: IndexPath.row)
 		
 	}// und update table
@@ -25,7 +29,7 @@ class MyPillTableView: UITableView, CustomCellUpdater {
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
-		
+
 	}
 	
 }//end class definition

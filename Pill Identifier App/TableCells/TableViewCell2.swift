@@ -12,23 +12,20 @@ import UIKit
 class TableViewCell2: UITableViewCell {
 	
 	@IBOutlet weak var mainImageView: UIImageView!
+	let mainImage: UIImage! = nil
 	@IBOutlet weak var mainLabel: UILabel!
 	
 	var delegate: CustomCellUpdater?
 	
 	func yourFunctionWhichDoesNotHaveASender () {
-		// ..  not in use rn
-		
 		print("Hello TableViewCell2! Delegate Update..")
 		delegate?.updateTableView()
-		
+
 	}//  end example updater delegate function
 	
-	
-}
+}// end tableviewcell
 
 protocol CustomCellUpdater: class {
-	
 	// the name of the protocol you can put any
 	func updateTableView()
 	

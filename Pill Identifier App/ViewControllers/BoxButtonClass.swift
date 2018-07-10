@@ -26,7 +26,7 @@ class BoxButton: UIButton {
 		
 		setBackgroundImage(currentBackgroundImage?.withHorizontallyFlippedOrientation(), for: .highlighted)//  flashes
 		
-		backgroundColor = UIColor(white: 1, alpha: 0.5)// good contrast to nurse greens
+		backgroundColor = UIColor(white: 1, alpha: 0.6)// good contrast to nurse greens
 		
 		setBackgroundImage(currentBackgroundImage, for: .highlighted)
 		

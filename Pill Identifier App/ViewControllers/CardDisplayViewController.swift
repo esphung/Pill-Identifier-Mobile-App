@@ -33,16 +33,23 @@ class CardDisplayViewController: NorthSouthViewController {
         super.viewDidLoad()
 		// begin set up here
 		
-		let sv = CardDisplayViewController.displaySpinner(onView: self.view)
+		//let sv = CardDisplayViewController.displaySpinner(onView: self.view)
 		
 		//setNavigationBar(title: "Pill Description")
 		let pillImageView = UIImageView()
+		
+		pillImageView.kf.indicator?.startAnimatingView()
+		
 		altImage = UIImage(named: placeholder)
 		
+		
+		
 		view.addSubview(pillImageView)
-
 		//showFrames()
-		CardDisplayViewController.removeSpinner(spinner: sv)
+		
+		
+		//CardDisplayViewController.removeSpinner(spinner: sv)
+		pillImageView.kf.indicator?.stopAnimatingView()
 		
     }// end  viewdidload
 
