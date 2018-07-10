@@ -86,18 +86,20 @@ class NorthSouthViewController: UIViewController {
 			completion: {
 		})
 	}
-
-	func displayHomePage() {
-		let testViewController: UIViewController
-			= (storyboard?.instantiateViewController(
-				withIdentifier: "testViewController"))!
+	
+	public func displayHomePage() {
+		let searchViewController: SearchViewController
+			= storyboard?.instantiateViewController(
+				withIdentifier: "searchViewController") as! SearchViewController
 		
 		self.present(
-			testViewController,
+			searchViewController,
 			animated: false,
 			completion: {
 		})
 	}
+
+
 	
 	@objc func backBtnTapped() {
 		performSegueToReturnBack()

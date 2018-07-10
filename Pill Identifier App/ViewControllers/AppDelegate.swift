@@ -33,11 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		*/
 		
 		// 3. Instantiate our new initial view controller based on 
-		// it's Storyboard ID
-		let searchViewController: SearchViewController
-		= mainStoryboard.instantiateViewController(
-		withIdentifier: "searchViewController"
-		) as! SearchViewController
+		// it's Storomyboard ID
+
+		
+		let searchViewController: SearchViewController = mainStoryboard.instantiateViewController(withIdentifier: "searchViewController") as! SearchViewController
+		
+	
 		
 		// 4. Set our new window's root view controller as 
 		// our the new controller we just initiated

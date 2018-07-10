@@ -12,15 +12,14 @@ class MyPillTableView: UITableView, CustomCellUpdater {
 	
 	func updateTableView() {
 		// protocal defined in cell class and instantiated from vc class
-		
-		print("MyPillTableView invoked..updateTableView()")
 
+		print("MyPillTableView ->  updateTableView()")
 		//cellForRow(at: IndexPath.row)
 		
 	}// und update table
 	
 	override init(frame: CGRect, style: UITableView.Style) {
-		super.init(frame: frame, style: .plain)
+		super.init(frame: frame, style: .grouped)
 		
 	}
 	

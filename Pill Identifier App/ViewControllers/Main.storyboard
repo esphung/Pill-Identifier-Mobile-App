@@ -27,6 +27,24 @@
             </objects>
             <point key="canvasLocation" x="2857" y="663"/>
         </scene>
+        <!--Home View Controller-->
+        <scene sceneID="euH-C6-Gou">
+            <objects>
+                <viewController storyboardIdentifier="homeViewController" id="EM9-50-uZb" customClass="HomeViewController" customModule="Pill_Identifier_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C5u-uo-dYo"/>
+                        <viewControllerLayoutGuide type="bottom" id="iEI-k6-h7p"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4lm-W9-cle">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZUT-RG-0Iy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1199" y="473"/>
+        </scene>
         <!--Card Display View Controller-->
         <scene sceneID="Yhc-i9-6bq">
             <objects>

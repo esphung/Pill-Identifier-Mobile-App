@@ -8,6 +8,8 @@ class CellDataClass {
 	// custom table cell class
 	init() {}
 	
+	var button = BoxButton?.self
+
 	// vars
 	private var cell:  	Int!
 	private var name: 	String!
@@ -19,6 +21,7 @@ class CellDataClass {
 	private var rxcui: Int!
 	private var score: Int!
 	var limit: Int!
+
 
 	// overload constructor
 	init
@@ -114,6 +117,10 @@ class CellDataClass {
 		} else {
 			return  ""
 		}
+	}
+
+	func setImageUrl(str: String) {
+		self.imageUrl = str
 	}
 
 	func getImageUrl() -> String {

@@ -184,7 +184,6 @@ UITableViewDataSource, UITableViewDelegate {
 	override func loadView() {
 		super.loadView()
 		
-		let sv = SearchViewController.displaySpinner(onView: self.view)
 		
 		//Looks for single or multiple taps to dismiss keyboard
 		let tap: UITapGestureRecognizer
@@ -192,6 +191,10 @@ UITableViewDataSource, UITableViewDelegate {
 			target: self,
 			action: #selector(dismissKeyboard))
 		view.addGestureRecognizer(tap)
+		
+		
+		
+		let sv = SearchViewController.displaySpinner(onView: self.view)
 		
 		if arrayOfCellData.isEmpty {
 			
@@ -213,7 +216,8 @@ UITableViewDataSource, UITableViewDelegate {
 					cell: 1,
 					name: "Upload Picture",
 					image:  "",
-					
+		
+		
 					imageUrl: remoteTestImageUrls[1],
 					color: "an", shape: "make banaana", imprint: "",
 					rxcui: 0, score: 0, limit: 0),
@@ -229,10 +233,11 @@ UITableViewDataSource, UITableViewDelegate {
 					rxcui: 0, score: 0, limit: 0)
 				
 			]
-			
+
 		}
 		
 		SearchViewController.removeSpinner(spinner: sv)
+		
 		
 	}// end loadview
 	
@@ -261,9 +266,6 @@ UITableViewDataSource, UITableViewDelegate {
 		
 		customTableView.isScrollEnabled = false
 
-		
-
-		
 		
 		//========================================
 		// Get the superview's layout
@@ -1028,8 +1030,7 @@ extension SearchViewController {
 	}
 	
 	func tableView(_ tableView: MyPillTableView, didSelectRowAt indexPath: IndexPath) {
-		print(arrayOfCellData[indexPath.row])
-		customTableView.updateTableView()
+		print(indexPath)
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -1044,6 +1045,30 @@ extension SearchViewController {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
+		let cell = Bundle.main.loadNibNamed("TableViewCell2", owner: self, options: nil)?.first as! TableViewCell2
+		
+		let url = URL(string: arrayOfCellData[indexPath.row].getImageUrl())// get  cell data image url
+		
+		//let url = URL(string: "https://chesapeakeholistic.com/wp-content/uploads/2018/03/placeholder.png")// get  cell data image url
+		
+		// https://chesapeakeholistic.com/wp-content/uploads/2018/03/placeholder.png
+		
+		cell.mainLabel?.text = arrayOfCellData[indexPath.row].getName()
+		
+		cell.mainLabel?.textAlignment = .center
+		cell.mainLabel?.numberOfLines = 1
+		
+		
+		cell.mainImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName: "against.jpg"))// set image url
+		
+		customTableView.updateTableView()
+
+		return cell
+	}
+	
+	
+	func tableView(_ tableView: MyPillTableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
 		let cell = Bundle.main.loadNibNamed("TableViewCell2", owner: self, options: nil)?.first as! TableViewCell2
 		
 		let url = URL(string: arrayOfCellData[indexPath.row].getImageUrl())// get  cell data image url
@@ -1094,6 +1119,4 @@ extension SearchViewController {
 
 	
 }//  end spinner display extension
-
-
 

@@ -28,6 +28,8 @@
 		5EE2747920F48BDC00625691 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE2747820F48BDC00625691 /* SearchViewController.swift */; };
 		5EE2747C20F48C2500625691 /* TableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE2747A20F48C2500625691 /* TableViewCell2.swift */; };
 		5EE2747D20F48C2500625691 /* TableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EE2747B20F48C2500625691 /* TableViewCell2.xib */; };
+		5EF6B98020F4EE1300D3DFD6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF6B97F20F4EE1300D3DFD6 /* HomeViewController.swift */; };
+		5EF6B98220F5037F00D3DFD6 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF6B98120F5037F00D3DFD6 /* Globals.swift */; };
 		5EF7DD4E20E18AB500EF5F2E /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */; };
 		5EF7DD5120E18BEE00EF5F2E /* TableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF7DD4F20E18BEE00EF5F2E /* TableViewCell1.swift */; };
 		5EF7DD5220E18BEE00EF5F2E /* TableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EF7DD5020E18BEE00EF5F2E /* TableViewCell1.xib */; };
@@ -85,6 +87,8 @@
 		5EE2747820F48BDC00625691 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5EE2747A20F48C2500625691 /* TableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell2.swift; sourceTree = "<group>"; };
 		5EE2747B20F48C2500625691 /* TableViewCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell2.xib; sourceTree = "<group>"; };
+		5EF6B97F20F4EE1300D3DFD6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		5EF6B98120F5037F00D3DFD6 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		5EF7DD4F20E18BEE00EF5F2E /* TableViewCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell1.swift; sourceTree = "<group>"; };
 		5EF7DD5020E18BEE00EF5F2E /* TableViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell1.xib; sourceTree = "<group>"; };
@@ -200,15 +204,17 @@
 			isa = PBXGroup;
 			children = (
 				5EE2747820F48BDC00625691 /* SearchViewController.swift */,
-				5E02A2BD20F3B2EB006B2DA3 /* MyPillTableView.swift */,
-				5EBBC44C20F2A77B004A9EEE /* PillClass.swift */,
+				5EF6B97F20F4EE1300D3DFD6 /* HomeViewController.swift */,
 				5E29F7B620EFCE1B00549742 /* CellDataClass.swift */,
 				5E86255520F29B010023E297 /* BoxButtonClass.swift */,
+				5EF6B98120F5037F00D3DFD6 /* Globals.swift */,
+				5E02A2BD20F3B2EB006B2DA3 /* MyPillTableView.swift */,
+				18F57B851E992E0A0013221F /* AppDelegate.swift */,
+				5EBBC44C20F2A77B004A9EEE /* PillClass.swift */,
 				5EF7DD4D20E18AB500EF5F2E /* ResultsTableViewController.swift */,
 				5E49D4F820D87BCE002C8469 /* CardDisplayViewController.swift */,
 				5E49D4FC20D8FFCF002C8469 /* TestViewController.swift */,
 				5E49D4F620D87713002C8469 /* NorthSouthViewController.swift */,
-				18F57B851E992E0A0013221F /* AppDelegate.swift */,
 				5E02A2BF20F3B42F006B2DA3 /* PillTableViewCell.swift */,
 				5E24318B20F37FEE000AE1B1 /* Main.storyboard */,
 			);
@@ -476,8 +482,10 @@
 				5E86255620F29B010023E297 /* BoxButtonClass.swift in Sources */,
 				5E49D4F920D87BCE002C8469 /* CardDisplayViewController.swift in Sources */,
 				5EF7DD4E20E18AB500EF5F2E /* ResultsTableViewController.swift in Sources */,
+				5EF6B98020F4EE1300D3DFD6 /* HomeViewController.swift in Sources */,
 				18F57B861E992E0A0013221F /* AppDelegate.swift in Sources */,
 				5E49D4F720D87713002C8469 /* NorthSouthViewController.swift in Sources */,
+				5EF6B98220F5037F00D3DFD6 /* Globals.swift in Sources */,
 				5EE2747920F48BDC00625691 /* SearchViewController.swift in Sources */,
 				5E02A2C020F3B42F006B2DA3 /* PillTableViewCell.swift in Sources */,
 				5EBBC44D20F2A77B004A9EEE /* PillClass.swift in Sources */,
