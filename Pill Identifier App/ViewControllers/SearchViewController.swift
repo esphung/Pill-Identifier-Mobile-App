@@ -184,15 +184,12 @@ UITableViewDataSource, UITableViewDelegate {
 	override func loadView() {
 		super.loadView()
 		
-		
 		//Looks for single or multiple taps to dismiss keyboard
 		let tap: UITapGestureRecognizer
 		= UITapGestureRecognizer(
 			target: self,
 			action: #selector(dismissKeyboard))
 		view.addGestureRecognizer(tap)
-		
-		
 		
 		let sv = SearchViewController.displaySpinner(onView: self.view)
 		
@@ -204,7 +201,7 @@ UITableViewDataSource, UITableViewDelegate {
 				CellDataClass(
 					
 					cell: 0,
-					name:  "Search Pill",
+					name:  "Welcome to Pill Identifier",
 					image:  "",
 					
 					imageUrl: remoteTestImageUrls[0],
@@ -214,30 +211,27 @@ UITableViewDataSource, UITableViewDelegate {
 				CellDataClass(
 					
 					cell: 1,
-					name: "Upload Picture",
+					name: "Made by Eric Phung",
 					image:  "",
 		
-		
 					imageUrl: remoteTestImageUrls[1],
-					color: "an", shape: "make banaana", imprint: "",
+					color: "", shape: "", imprint: "",
 					rxcui: 0, score: 0, limit: 0),
 				
 				CellDataClass(
 					
 					cell: 2,
-					name:  "Home",
+					name:  "Upload an Image",
 					image: remoteTestImageUrls[3],
 					
 					imageUrl: remoteTestImageUrls[3],//home icon
 					color: "", shape: "", imprint: "",
 					rxcui: 0, score: 0, limit: 0)
-				
 			]
 
 		}
 		
 		SearchViewController.removeSpinner(spinner: sv)
-		
 		
 	}// end loadview
 	
@@ -423,7 +417,6 @@ UITableViewDataSource, UITableViewDelegate {
 	}// end view did load
 	
 	func setBottomBorderToTextFields(yourTextFieldName: UITextField)  {
-		
 		let bottomLine = CALayer()
 		bottomLine.frame = CGRect(x: 0, y: yourTextFieldName.frame.height - 1, width: yourTextFieldName.frame.width, height: 1)
 		bottomLine.backgroundColor = UIColor.gray.cgColor // background color
@@ -825,7 +818,6 @@ UITableViewDataSource, UITableViewDelegate {
 		}// pill data to cell data
 		
 		self.present(
-			
 			resultsTableViewController,
 			animated: false,
 			completion: nil
@@ -1024,9 +1016,12 @@ extension SearchViewController {
 
 extension SearchViewController {
 	
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		return "Made by Eric Phung"
+	}
+	
 	func numberOfSections(in tableView: MyPillTableView) -> Int {
 		return 1
-		
 	}
 	
 	func tableView(_ tableView: MyPillTableView, didSelectRowAt indexPath: IndexPath) {

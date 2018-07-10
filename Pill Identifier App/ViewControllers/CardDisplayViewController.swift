@@ -67,10 +67,11 @@ class CardDisplayViewController: NorthSouthViewController {
 			y: 0,
 			width: view.frame.width,
 			height: view.frame.height/2))
-		pillImageView.image = image
+		
+		pillImageView.image = UIImage(named: placeholder)
 		//imageView.contentMode = UIView.ContentMode.scaleAspectFit
 		
-		pillImageView.kf.setImage(with: url, placeholder: image)
+		pillImageView.kf.setImage(with: url, placeholder: UIImage(named: placeholder))
 		//pillImageView.borderColor = .lightGray
 		//pillImageView.borderWidth =  0.0
 		//print(pillImageView.frame.height)// 406
@@ -162,16 +163,35 @@ class CardDisplayViewController: NorthSouthViewController {
 	
 	func showData(data: CellDataClass){
 		
-		let sv = CardDisplayViewController.displaySpinner(onView: self.view)
 		
+		let sv = CardDisplayViewController.displaySpinner(onView: self.view)
+
+
 		pillImageView.removeFromSuperview()
+		
+		
+		let data = CellDataClass(
+			
+			cell:  		data.getCell(),
+			name: 		data.getName(),
+			image: 		data.getImageUrl(),
+			imageUrl: 	data.getImageUrl(),
+			color: 		data.getColor(),
+			shape: 		data.getShape(),
+			imprint: 	data.getImprint(),
+			rxcui:		data.getRxcui(),
+			score: 		data.getScore(),
+			limit: 		data.limit
+			
+		)
 		
 		url = URL(string: data.getImageUrl())
 		//pillImageView = makeDisplayImage(image: altImage!)
-		pillImageView.kf.setImage(with: url, placeholder: image)
+		pillImageView.kf.setImage(with: url, placeholder: UIImage(named: placeholder))
 		//pillImageView.borderColor = .lightGray
 		//pillImageView.borderWidth =  0.0
 		//print(pillImageView.frame.height)// 406
+		
 		view.addSubview(pillImageView)
 		
 		CardDisplayViewController.removeSpinner(spinner: sv)
@@ -225,25 +245,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		goRight()
 		
 	}
-	
-	// dosage func
-	func getDosageLabel(message: String) -> UILabel {
-		
-		let dosageLbl = UILabel(
-		frame: CGRect(
-		x: 20,
-		y: screenHeight * (0.1),
-		width: screenWidth * 0.8,
-		height: 44))
-		//label.font = UIFont.systemFont(ofSize: 19)
-		dosageLbl.text = "Dose:\t" + message
-		dosageLbl.numberOfLines = 1
-		dosageLbl.layer.borderWidth = 0.0
-		dosageLbl.font = UIFont.systemFont(ofSize: 19)
-		return dosageLbl
-		
-	}
-	
+
 	func displayWikipediaPage(base: URL, str: String) {
 
 		let matched = matches(for: "([^\\s]+)", in: str)

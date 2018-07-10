@@ -14,6 +14,7 @@ var homeUserOption: CellDataClass {
 	let data = CellDataClass()
 	
 	data.setImageUrl(str: remoteTestImageUrls[3])
+	
 	data.setName(str: "Home")
 	
 	return data
@@ -42,8 +43,13 @@ class HomeViewController: SearchViewController {
 		print(indexPath.row)
 	}
 	
-	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		return "Home"
+	}
+	
+	func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+	
+		return "Eric PHung"
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

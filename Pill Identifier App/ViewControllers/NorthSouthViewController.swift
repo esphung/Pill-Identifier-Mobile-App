@@ -28,25 +28,23 @@ class NorthSouthViewController: UIViewController {
 	// set up view layout
 	var myView : UIView!
 
-	var imageName: 	String!
-	var image:		UIImage!
-	var imageView: 	UIImageView!
-
-
 	override func viewDidLoad() {
-		
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
+		
+		//view.backgroundColor = nurseScrubGreenColor
+		
+		
 		let myView = UIView()
+		
 		self.view.addSubview(myView)
+		
 		self.myView  =  myView
 		
-
 		setUpContraints()
 
 	}
 
-	
 	func setNavigationBar(title: String) {
 		let navigationBar = UINavigationBar(frame: CGRect(
 			x: 0, y: screenHeight/24, width: screenWidth, height: 44))
@@ -71,8 +69,9 @@ class NorthSouthViewController: UIViewController {
 	}
 	
 	@objc func rightButtonTapped() {
+		
 		displaySearchFormPage()
-		//self.view.removeFromSuperview()
+		
 	}
 
 	public func displaySearchFormPage() {
@@ -88,6 +87,7 @@ class NorthSouthViewController: UIViewController {
 	}
 	
 	public func displayHomePage() {
+		
 		let searchViewController: SearchViewController
 			= storyboard?.instantiateViewController(
 				withIdentifier: "searchViewController") as! SearchViewController
@@ -95,14 +95,12 @@ class NorthSouthViewController: UIViewController {
 		self.present(
 			searchViewController,
 			animated: false,
-			completion: {
-		})
+			completion: nil)
 	}
-
-
 	
 	@objc func backBtnTapped() {
 		performSegueToReturnBack()
+		
 	}
 	
 	func setUpContraints(){
@@ -140,10 +138,14 @@ class NorthSouthViewController: UIViewController {
 }// end class def
 
 extension UIViewController {
+	
 	func performSegueToReturnBack()  {
+		
 		if let nav = self.navigationController {
+			
 			nav.popViewController(animated: true)
 		} else {
+			
 			self.dismiss(animated: false, completion: nil)
 		}
 	}
