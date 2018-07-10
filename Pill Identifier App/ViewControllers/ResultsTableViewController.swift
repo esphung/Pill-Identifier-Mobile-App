@@ -69,7 +69,7 @@ class ResultsTableViewController: UITableViewController {
 		
 		// check imprint
 		//var imprint = ""
-		/*if arrayOfCellData[indexPath.row].imprint != nil {
+		/*if arraoyOfCellData[indexPath.row].imprint != nil {
 		imprint = arrayOfCellData[indexPath.row].imprint!
 		}*/
 		

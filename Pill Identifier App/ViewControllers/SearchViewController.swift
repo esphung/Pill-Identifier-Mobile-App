@@ -59,55 +59,7 @@ NorthSouthViewController,
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,
 UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate  {
-	
-	// part  of the viewctrl
-	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		let rowHeight = screenWidth/screenHeight * 110
-		return rowHeight // 85ish
-		
-	}
-	
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return arrayOfCellData.count
-	}
-	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = Bundle.main.loadNibNamed("TableViewCell2", owner: self, options: nil)?.first as! TableViewCell2
-		
-		//cell.mainImageView.image = arrayOfCellData[indexPath.row].image
-		var image = UIImage(named: "250x250placeholder.png")
-		
-		let url = URL(string: arrayOfCellData[indexPath.row].getImageUrl())
-		
-		cell.mainImageView.kf.setImage(with: url, placeholder: image)
-		
-		/*
-		let imageView = UIImageView(
-			frame: CGRect(
-				x: 10, y: 10, width: cell.frame.width - 10, height:  cell.frame.height - 10))
-		image = UIImage(named: "Image Name")
-		imageView.image = image
-		
-		cell.backgroundView = UIView()
-		cell.backgroundView!.addSubview(imageView)
-*/
 
-		//cell.backgroundColor = .lightGray
-		
-		//cell.textLabel?.text = arrayOfCellData[indexPath.row].getImageUrl()
-		
-		cell.mainLabel?.text = arrayOfCellData[indexPath.row].getName()
-		
-		
-		cell.mainLabel?.textAlignment = .center
-		cell.mainLabel?.numberOfLines = 1
-		
-		return cell
-	}
-	
-
-
-	
 
 	// cases to search for
 	enum Search {
@@ -168,6 +120,8 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate  {
 	
 	var arrayPillData = [Pill]()
 	var arrayOfCellData = [CellDataClass]()
+	
+	var cell: TableViewCell2!
 
 	override func loadView() {
 		super.loadView()
@@ -413,7 +367,11 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate  {
 					// save to array, send results to display page
 					self.setArray(json: swiftyJsonVar["nlmRxImages"])
 					
-					self.displayResultsPage()
+					//self.customTableView.reloadData()
+					
+					self.updateListOnPage()
+					
+					//self.displayResultsPage()
 					
 					
 				} else {
@@ -665,6 +623,34 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate  {
 		}// end loop pill data
 	}
 	
+	func updateListOnPage() {
+	
+		// set new cell data in cell array for results page
+		var i = 0
+		while i < arrayPillData.count {
+			//print(nlmRxImages[i]["rxcui"].int!)
+			
+			self.arrayOfCellData.append(
+				CellDataClass(
+					cell: 		i,
+					name: 		arrayPillData[i].getName(),
+					image: 		placeholder,
+					imageUrl: 	arrayPillData[i].getImageUrlString(),
+					color: 		arrayPillData[i].getColor(),
+					shape: 		arrayPillData[i].getShape(),
+					imprint: 	arrayPillData[i].getImprint(),
+					rxcui: 		arrayPillData[i].getRxcui(),
+					score:		arrayPillData[i].getScore(),
+					limit:	 	0
+			))
+			
+			print(arrayPillData[i])
+			i = i + 1
+			
+		}// pill data to cell data
+		
+	}
+	
 
 	func displayResultsPage() {
 		let resultsTableViewController: ResultsTableViewController
@@ -846,7 +832,6 @@ extension SearchViewController {
 	}// end photolibrary
 	
 	
-	
 	func showImageActionSheet() {
 		let actionSheet = UIAlertController(
 			title: nil,
@@ -877,4 +862,36 @@ extension SearchViewController {
 	}// end show actionsheet
 	
 
+}
+
+
+extension  SearchViewController {
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		let rowHeight = screenWidth/screenHeight * 150
+		return rowHeight
+	}
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return arrayOfCellData.count
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		
+		let cell = Bundle.main.loadNibNamed("TableViewCell2", owner: self, options: nil)?.first as! TableViewCell2
+
+		//cell.mainImageView.image = arrayOfCellData[indexPath.row].image
+		let url = URL(string: arrayOfCellData[indexPath.row].getImageUrl())// get  cell data image url
+		cell.mainImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName: "against.jpg"))// set image url
+		cell.mainLabel?.text = arrayOfCellData[indexPath.row].getName()
+		
+		cell.mainLabel?.textAlignment = .center
+		cell.mainLabel?.numberOfLines = 1
+
+		
+		return cell
+	}
+	
+	
+	
 }
