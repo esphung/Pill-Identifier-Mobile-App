@@ -12,13 +12,18 @@ import UIKit
 class TableViewCell2: UITableViewCell {
 	
 	@IBOutlet weak var mainImageView: UIImageView!
-	let mainImage: UIImage! = nil
 	@IBOutlet weak var mainLabel: UILabel!
+	var mainImage: UIImage!
+	
+	weak var mainButton: BoxButton!
 	
 	var delegate: CustomCellUpdater?
 	
-	func yourFunctionWhichDoesNotHaveASender () {
-		print("Hello TableViewCell2! Delegate Update..")
+	func setMyButton(button: BoxButton) {
+		self.mainButton = button
+		
+		print("Hello TableViewCell2Button")
+		print(self.mainButton.myLabel!)
 		delegate?.updateTableView()
 
 	}//  end example updater delegate function

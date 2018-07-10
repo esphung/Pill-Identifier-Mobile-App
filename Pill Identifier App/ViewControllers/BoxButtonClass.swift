@@ -11,24 +11,21 @@ class BoxButton: UIButton {
 	
 	var myImageView: UIImageView!
 	var myImage: UIImage!
+	var myLabel: UILabel!
 	
 	override init(frame: CGRect) {
 		// set myValue before super.init is called
 
 		let frame = frame
-		
 		super.init(frame: frame)
 		
-		
-		
-	
+		/*
 		setBackgroundImage(currentBackgroundImage, for: .normal)
-		
 		setBackgroundImage(currentBackgroundImage?.withHorizontallyFlippedOrientation(), for: .highlighted)//  flashes
 		
-		backgroundColor = UIColor(white: 1, alpha: 0.6)// good contrast to nurse greens
-		
+		backgroundColor = UIColor(white: 1, alpha: 0.73)// good contrast to nurse greens
 		setBackgroundImage(currentBackgroundImage, for: .highlighted)
+		*/
 		
 		let myImageView = UIImageView()
 		//myImageView.backgroundColor = UIColor.blue
@@ -42,22 +39,19 @@ class BoxButton: UIButton {
 		myImageView.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
 		//myImageView.layer.borderColor = UIColor.black.cgColor
 		//myImageView.layer.borderWidth = 2.0
-		
 
+		let myLabel = UILabel(frame: CGRect(x:0,y: 0,width: self.frame.width * 0.8, height: self.frame.height/4))
 		
-		// set other operations after super.init, if required
-		setTitleColor(UIColor.black, for: .normal)
-		setTitleColor(UIColor.lightGray, for: .disabled)
-		setTitleColor(UIColor.white, for: .highlighted)
-		self.titleLabel?.font =  UIFont.systemFont(
-			ofSize: 24, weight: .light)
+		myLabel.center = CGPoint(x: self.frame.width/2 ,y: self.frame.height/4)
+		myLabel.textAlignment = .center
+		myLabel.text = ""
+		myLabel.textColor = .gray
 		
-		titleLabel?.textColor = .lightGray
-		//titleLabel?.adjustsFontSizeToFitWidth = true
-		titleLabel?.textAlignment = .center
 		
-		borderWidth = 0.0
-		borderColor = .lightGray
+		self.addSubview(myLabel)
+		
+		//borderWidth = 1.0
+		//borderColor = .lightGray
 		
 		
 		

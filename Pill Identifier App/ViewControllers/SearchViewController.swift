@@ -15,7 +15,6 @@ let nurseAlphaFiler =  UIColor(white: 1, alpha: 0.5)
 //UIViewController.removeSpinner(spinner: sv)
 
 
-
 // picker options for searching pill paramaters
 public let shapes = [
 	
@@ -60,7 +59,52 @@ public let colors =  [
 
 public let scores  = [0,1,2,3,4]
 
+let appTitleCellData = CellDataClass(
+	cell: 0,
+	name:  "Pill Identifier Mobile App",
+	image:  "",
+	
+	imageUrl: urlPlaceholder,
+	color: "i can", shape: "make banaana", imprint: "",
+	rxcui: 0, score: 0, limit: 0)
 
+let creditCopyrightCellData = CellDataClass(
+	
+	cell: 1,
+	name: "Made by Eric Phung",
+	image:  "",
+	
+	imageUrl: urlPlaceholder,
+	color: "", shape: "", imprint: "",
+	rxcui: 0, score: 0, limit: 0)
+
+let uploadImageCellData = CellDataClass(
+	
+	cell: 2,
+	name:  "Upload an Image",
+	image: "",
+	
+	imageUrl: urlPlaceholder,//home icon
+	color: "", shape: "", imprint: "",
+	rxcui: 0, score: 0, limit: 0)
+
+let searchPillCellData = CellDataClass(
+	
+	cell: 0,
+	name:  "Search for a Pill",
+	image:  "",
+	
+	imageUrl: urlPlaceholder,
+	color: "", shape: "", imprint: "",
+	rxcui: 0, score: 0, limit: 0)
+
+
+let listCellDataActions = [
+	appTitleCellData,
+	creditCopyrightCellData,
+	uploadImageCellData,
+	searchPillCellData
+]
 
 /*
 (original height / original width) x new width = new height
@@ -117,7 +161,7 @@ UITableViewDataSource, UITableViewDelegate {
 	var isChecked = 			true
 	var isScored = 				false
 	
-	var customTableView:  		MyPillTableView!
+	var customTableView:  		UITableView!
 	var cellData: 				CellDataClass!
 	let cellReuseIdentifier: 	String = "customCell"
 	
@@ -130,7 +174,7 @@ UITableViewDataSource, UITableViewDelegate {
 	var boxBtn005: BoxButton!
 	var boxBtn006: BoxButton!
 	
-	var boxButtons: [BoxButton]!
+	var boxButtons = [BoxButton]()
 	
 	var arrayPillData = [Pill]()
 	var arrayOfCellData = [CellDataClass]()
@@ -139,12 +183,10 @@ UITableViewDataSource, UITableViewDelegate {
 	var secondListItem: CellDataClass!
 	var thirdListItem: CellDataClass!
 	
-	//var cell: TableViewCell2!
-	//var cellUpdater: CustomCellUpdater?// attach this to add a delagate to friend
-
 	override func loadView() {
-		
 		super.loadView()
+		
+		self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
 		
 		/*
 		//Looks for single or multiple taps to dismiss keyboard
@@ -158,64 +200,27 @@ UITableViewDataSource, UITableViewDelegate {
 		weak var sv = SearchViewController.displaySpinner(onView: self.view)
 		
 		if arrayOfCellData.isEmpty {
-			
-			firstListItem = CellDataClass(
-				
-				cell: 0,
-				name:  "Welcome to Pill Identifier",
-				image:  "",
-				
-				imageUrl: urlPlaceholder,
-				color: "i can", shape: "make banaana", imprint: "",
-				rxcui: 0, score: 0, limit: 0)
-			
-			secondListItem = CellDataClass(
-				
-				cell: 1,
-				name: "Made by Eric Phung",
-				image:  "",
-				
-				imageUrl: urlPlaceholder,
-				color: "", shape: "", imprint: "",
-				rxcui: 0, score: 0, limit: 0)
-			
-			thirdListItem = CellDataClass(
-				
-				cell: 2,
-				name:  "Upload an Image",
-				image: "",
-				
-				imageUrl: urlPlaceholder,//home icon
-				color: "", shape: "", imprint: "",
-				rxcui: 0, score: 0, limit: 0)
-			
-			
 			// default results list items and test harness
-			arrayOfCellData = [
-				firstListItem, secondListItem, thirdListItem
-				
-			]
+			arrayOfCellData = listCellDataActions
 
-		}
+		}//end is aary.isEmpty
 		
-		SearchViewController.removeSpinner(spinner: sv!)
+		SearchViewController.removeSpinner(spinner: sv!)// stop spinner if to start/stop
 		
 	}// end loadview
 	
-
 	override func viewDidLoad() {
-		
 		super.viewDidLoad()
-		
-		//view.backgroundColor = nurseScrubGreenColor
-		
+
 		//  MAKE TABLE VIEW
-		customTableView = MyPillTableView(frame: CGRect(
-			x: 0, y: 0, width: 110, height: 110))
+		customTableView = UITableView(
+			frame: CGRect(
+				x: 0, y: 0,
+				width: 110, height: 110)
+		)
 		
 		customTableView.delegate = self
 		customTableView.dataSource = self
-		
 		customTableView.translatesAutoresizingMaskIntoConstraints = false
 		
 		view.addSubview(customTableView)
@@ -225,10 +230,9 @@ UITableViewDataSource, UITableViewDelegate {
 		customTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
 		customTableView.separatorColor = UIColor.clear
 		
-		customTableView.isScrollEnabled = false
-		customTableView.allowsSelectionDuringEditing = true
-		
-		customTableView.updateTableView()
+		//customTableView.isScrollEnabled = false
+		//customTableView.allowsSelectionDuringEditing = true
+		//customTableView.updateTableView()
 
 		
 		//========================================
@@ -242,50 +246,44 @@ UITableViewDataSource, UITableViewDelegate {
 				width: view.frame.width/3,
 				height: view.frame.height/4))// COLOR
 		
-		boxBtn001.setTitle("Color", for: .normal)
-		
-		//boxBtn001.borderWidth =  0.5
-		
-		boxBtn001.addTarget(self,action: #selector(pickColorBtnTapped),for: .touchUpInside)
-		
-		url = URL(string: remoteParamBckgrdImgs[0])
-		
+		//boxBtn001.setTitle("Color", for: .normal)
+		url = URL(string: paintUrlString)
 		boxBtn001.kf.setBackgroundImage(with: url, for: .normal)
-		
+		boxBtn001.addTarget(self,action: #selector(pickColorBtnTapped),for: .touchUpInside)
+
 		view.addSubview(boxBtn001)
+		boxButtons.append(boxBtn001)
 		
 		// boxBtn002 (M)
-		let boxBtn002 = BoxButton(frame: CGRect(
-			x: view.frame.width/3, y: 0, width: view.frame.width/3, height: view.frame.height/4))
-		boxBtn002.setTitle("Shape", for: .normal)
+		let boxBtn002 = BoxButton(
+			frame: CGRect(
+				x: view.frame.width/3,
+				y: 0,
+				width: view.frame.width/3,
+				height: view.frame.height/4))
+		url = URL(string: remoteParamBckgrdImgs[1])
+		boxBtn002.kf.setBackgroundImage(with: url, for: .normal)
 		boxBtn002.addTarget(self, action: #selector(pickShapeBtnTapped),
 			for: .touchUpInside)
 		
-		url = URL(string: remoteParamBckgrdImgs[1])
-		
-		boxBtn002.kf.setBackgroundImage(with: url, for: .normal)
 		view.addSubview(boxBtn002)
+		boxButtons.append(boxBtn002)
 		
 		// boxBtn003 (R)
-		let boxBtn003 = BoxButton(frame: CGRect(
-			x: (view.frame.width - view.frame.width/3), y: 0, width: view.frame.width/3, height: view.frame.height/4))
-		
+		let boxBtn003 = BoxButton(
+			frame: CGRect(
+				x: (view.frame.width - view.frame.width/3),
+				y: 0, width: view.frame.width/3, height: view.frame.height/4))
+		boxBtn003.addTarget(self, action: #selector(pickPictureBtnTapped),
+							for: .touchUpInside)
 		url = URL(string: remoteParamBckgrdImgs[2])
-		
 		boxBtn003.kf.setBackgroundImage(with: url, for: .normal)
-		
+		boxBtn002.addTarget(self, action: #selector(pickShapeBtnTapped),
+							for: .touchUpInside)
 		//boxBtn003.setTitle("Picture", for: .normal)
 		
-		boxBtn003.borderWidth = 4.0
-		
 		view.addSubview(boxBtn003)
-		
-		//Using filters
-		
-		
-		boxBtn001.titleLabel?.layer.shadowOpacity = 0.5
-		boxBtn001.titleLabel?.layer.shadowRadius = 0.5
-		boxBtn001.titleLabel?.layer.shadowColor = UIColor.white.cgColor
+		boxButtons.append(boxBtn003)
 
 		//========================================
 		// boxBtn004 (L) || 0.0 x 4 = 480 || 0.0 || screenHeight/4 = 167ish
@@ -360,7 +358,7 @@ UITableViewDataSource, UITableViewDelegate {
 		
 		// Set UITextField border style
 		//pickImprintTextField.borderStyle = UITextField.BorderStyle.line
-		pickImprintTextField.layer.borderWidth = 0.0
+		pickImprintTextField.layer.borderWidth = 2.0
 		pickImprintTextField.borderColor = .lightGray
 		
 		// Set UITextField background colour

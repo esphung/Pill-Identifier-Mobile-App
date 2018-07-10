@@ -216,9 +216,10 @@ class CardDisplayViewController: NorthSouthViewController {
 			
 			showData(data: cellData)
 			
-			print(pos)
+			print(pos, cellData.getName())
 			
 		}
+		
 	}// end  go left
 	
 	@objc func leftBoxBtnTapped(){
@@ -242,6 +243,8 @@ class CardDisplayViewController: NorthSouthViewController {
 			showData(data: cellData)
 			
 			print(pos)
+			
+			print(pos, cellData.getName())
 			
 		}
 		
