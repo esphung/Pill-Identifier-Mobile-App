@@ -12,6 +12,7 @@ class BoxButton: UIButton {
 	override init(frame: CGRect) {
 		// set myValue before super.init is called
 		let frame = frame
+		
 		super.init(frame: frame)
 		
 		self.setBackgroundImage(UIImage(named: placeholder), for: .normal)
@@ -21,6 +22,7 @@ class BoxButton: UIButton {
 		self.setTitleColor(UIColor.lightGray, for: .disabled)
 		self.setTitleColor(UIColor.white, for: .highlighted)
 		//self.titleLabel?.font =  UIFont.systemFont(ofSize: 16, weight: .light)
+		
 		self.titleLabel?.textColor = .lightGray
 		
 		self.titleLabel?.adjustsFontSizeToFitWidth = true

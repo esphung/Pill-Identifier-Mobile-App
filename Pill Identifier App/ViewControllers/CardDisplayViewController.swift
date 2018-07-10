@@ -30,6 +30,8 @@ class CardDisplayViewController: NorthSouthViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		// begin set up here
+		let sv = CardDisplayViewController.displaySpinner(onView: self.view)
+		
 		//setNavigationBar(title: "Pill Description")
 		let pillImageView = UIImageView()
 		altImage = UIImage(named: placeholder)
@@ -37,11 +39,15 @@ class CardDisplayViewController: NorthSouthViewController {
 		view.addSubview(pillImageView)
 
 		//showFrames()
+		CardDisplayViewController.removeSpinner(spinner: sv)
+		
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 		
+		let sv = CardDisplayViewController.displaySpinner(onView: self.view)
+
 		// COPYRIGHT/ FOOTER
 		let copyright = copyrightLabel()
 		myView.addSubview(copyright)
@@ -127,9 +133,13 @@ class CardDisplayViewController: NorthSouthViewController {
 
 		view.addSubview(rightBoxBtn)
 
+		CardDisplayViewController.removeSpinner(spinner: sv)
+
     }// end layouts did load
 	
 	func showData(data: CellDataClass){
+		
+		let sv = CardDisplayViewController.displaySpinner(onView: self.view)
 		
 		pillImageView.removeFromSuperview()
 		
@@ -141,9 +151,11 @@ class CardDisplayViewController: NorthSouthViewController {
 		//print(pillImageView.frame.height)// 406
 		view.addSubview(pillImageView)
 		
-		
+		CardDisplayViewController.removeSpinner(spinner: sv)
+
 	}
 	
+	// move left in pill list
 	func goLeft() {
 		
 		let pos = cellData.getCell() - 1
@@ -170,6 +182,7 @@ class CardDisplayViewController: NorthSouthViewController {
 		//displayWikipediaPage(base: baseUrl!, str: cellData.getName())
 	}
 	
+	// move right in pill list
 	func goRight() {
 		
 		let pos = cellData.getCell() + 1
@@ -183,14 +196,18 @@ class CardDisplayViewController: NorthSouthViewController {
 			print(pos)
 			
 		}
+		
 	}// end  go right
 	
 	@objc func rightBoxBtnTapped() {
+		
 		goRight()
+		
 	}
 	
 	// dosage func
 	func getDosageLabel(message: String) -> UILabel {
+		
 		let dosageLbl = UILabel(
 		frame: CGRect(
 		x: 20,
@@ -203,19 +220,18 @@ class CardDisplayViewController: NorthSouthViewController {
 		dosageLbl.layer.borderWidth = 0.0
 		dosageLbl.font = UIFont.systemFont(ofSize: 19)
 		return dosageLbl
+		
 	}
 	
-
-
-
 	func displayWikipediaPage(base: URL, str: String) {
-		// only does first term right now
+
 		let matched = matches(for: "([^\\s]+)", in: str)
 		
 		// check for nil
 		guard let name = matched.first else {
 			print("name failed guard")
 			return
+			
 		}
 		
 		// validate name
@@ -241,6 +257,7 @@ class CardDisplayViewController: NorthSouthViewController {
 			}
 			
 		} else {
+			
 			//self.dismiss(animated: true, completion: nil)
 			print("Invalid Name: "  + name)
 			
@@ -252,10 +269,8 @@ class CardDisplayViewController: NorthSouthViewController {
 	func getName(str: String) -> String {
 		var fullName = ""
 		
-
 		// FIND BASIC NAME
 		let matched = matches(for: "([^\\s]+)", in: str)
-		
 		
 		//print(splitDeck.left) // ["J", "Q"]
 		//print(splitDeck.right) // ["K", "A"]
@@ -283,13 +298,12 @@ class CardDisplayViewController: NorthSouthViewController {
 				
 	
 			}
+			
 		}
 		
 		return fullName
 	}
 
-
-	
 	func getDosage(str:  String) -> String {
 		// return dosage of drug
 		let matched = matches(for: "[0-9]+[0-9]+[0-9]*.(MG)", in: str)
@@ -328,7 +342,6 @@ class CardDisplayViewController: NorthSouthViewController {
 }// end class
 
 // ==== CLASS  EXTENSIONS
-
 extension String {
 	func removeWhitespaces() -> String {
 		return components(separatedBy: .whitespaces).joined()
@@ -364,4 +377,27 @@ extension Array
 
 }
 
-
+extension CardDisplayViewController {
+	class func displaySpinner(onView : UIView) -> UIView {
+		let spinnerView = UIView.init(frame: onView.bounds)
+		spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+		let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+		ai.startAnimating()
+		ai.center = spinnerView.center
+		
+		DispatchQueue.main.async {
+			spinnerView.addSubview(ai)
+			onView.addSubview(spinnerView)
+		}
+		
+		return spinnerView
+	}
+	
+	class func removeSpinner(spinner :UIView) {
+		DispatchQueue.main.async {
+			spinner.removeFromSuperview()
+		}
+		
+	}
+	
+}

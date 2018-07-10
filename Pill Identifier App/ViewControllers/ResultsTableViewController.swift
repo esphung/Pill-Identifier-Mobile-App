@@ -11,32 +11,42 @@ import Kingfisher
 
 @available(iOS 10.0, *)
 class ResultsTableViewController: UITableViewController {
+	
 	var arrayOfCellData = [CellDataClass]()
-	
 	//private var myTableView: UITableView!
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		let sv = ResultsTableViewController.displaySpinner(onView: self.view)// start spinner
+		
 		
 		self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
 		self.tableView.separatorColor = UIColor.clear
 		
-		
 		if arrayOfCellData.isEmpty {
+			
 			// default results list items and test harness
 			arrayOfCellData = [
-				CellDataClass(cell: 1, name:  "hello",
-							  image: "250x250placeholder.png",
+				
+				CellDataClass(cell: 1, name: "hello",
+							  image: remoteTestImageUrls.randomElement()!,
 							  //image: #imageLiteral(resourceName: "against"),
 					imageUrl: "", color: "", shape: "", imprint: "",
 					rxcui: 30303, score: 0, limit: 0),
+				
 				CellDataClass(cell: 2, name:  "world",
-							  image: "test.jpg",
+							  image:  remoteTestImageUrls.randomElement()!,
 							  //image: #imageLiteral(resourceName: "test"),
 					imageUrl: "", color: "", shape: "", imprint: "",
 					rxcui: 13218, score: 0, limit: 0)
+				
 			]
+			
 		}
+		
+		ResultsTableViewController.removeSpinner(spinner: sv)//stop spinner
+		
+		
 	}// end viewdidload
 	
 	
@@ -48,6 +58,7 @@ class ResultsTableViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		
 		//let cell = tableView.dequeueReusableCell(withIdentifier: "customTableCell", for: indexPath)
 		//tableView.register(UITableViewCell.self, forCellReuseIdentifier: "customCell")
 		
@@ -62,9 +73,10 @@ class ResultsTableViewController: UITableViewController {
 		
 		return cell
 		
-	}
+	}//  end cell for row
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
 		//print(arrayOfCellData[indexPath.row])
 		
 		// check imprint
@@ -88,7 +100,7 @@ class ResultsTableViewController: UITableViewController {
 		)
 		displayCardDisplayPage(data: data)
 		
-	}
+	}// end did select row
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		
@@ -104,7 +116,6 @@ class ResultsTableViewController: UITableViewController {
 		
 		//let customRowHeight = (screenWidth/screenHeight) * self.frame.height
 		//print("Current Row Height: ", customRowHeight)
-		
 		return 85
 		
 	}
@@ -112,7 +123,9 @@ class ResultsTableViewController: UITableViewController {
 	func matches(for regex: String, in text: String) -> [String] {
 		
 		do {
+			
 			let regex = try NSRegularExpression(pattern: regex)
+			
 			let results = regex.matches(in: text,
 										range: NSRange(text.startIndex..., in: text))
 			return results.map {
@@ -122,11 +135,11 @@ class ResultsTableViewController: UITableViewController {
 			print("invalid regex: \(error.localizedDescription)")
 			return []
 		}
+		
 	}
 	
 	func getName(str: String) -> String {
 		var fullName = ""
-		
 		
 		// FIND BASIC NAME
 		let matched = matches(for: "([^\\s]+)", in: str)
@@ -157,19 +170,48 @@ class ResultsTableViewController: UITableViewController {
 		}
 		
 		return fullName
-	}
+		
+	}//  edn getname
 	
 	func displayCardDisplayPage(data: CellDataClass) {
-			let cardDisplayViewController: CardDisplayViewController = storyboard?.instantiateViewController(withIdentifier: "cardDisplayViewController") as! CardDisplayViewController
+		
+		let cardDisplayViewController: CardDisplayViewController = storyboard?.instantiateViewController(withIdentifier: "cardDisplayViewController") as! CardDisplayViewController
+		
+		cardDisplayViewController.arrayData = self.arrayOfCellData
+		cardDisplayViewController.cellData = self.arrayOfCellData[data.getCell()]
 			
-			cardDisplayViewController.arrayData = self.arrayOfCellData
-			cardDisplayViewController.cellData = self.arrayOfCellData[data.getCell()]
-			
-			self.present(
-				cardDisplayViewController,
-				animated: false,
-				completion: nil)
+		self.present(
+
+			cardDisplayViewController,
+			animated: false,
+			completion: nil
+		)
+
+	}
+	
+}//end class def
+
+extension ResultsTableViewController {
+	
+	class func displaySpinner(onView : UIView) -> UIView {
+		
+		let spinnerView = UIView.init(frame: onView.bounds)
+		spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+		let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+		ai.startAnimating()
+		ai.center = spinnerView.center
+		
+		DispatchQueue.main.async {
+			spinnerView.addSubview(ai)
+			onView.addSubview(spinnerView)
+		}
+		
+		return spinnerView
+	}
+	
+	class func removeSpinner(spinner :UIView) {
+		DispatchQueue.main.async {
+			spinner.removeFromSuperview()
+		}
 	}
 }
-
-

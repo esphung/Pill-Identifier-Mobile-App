@@ -7,6 +7,9 @@ import ActionSheetPicker_3_0
 import SwiftyJSON
 import Alamofire
 
+//let sv = UIViewController.displaySpinner(onView: self.view)
+//UIViewController.removeSpinner(spinner: sv)
+
 // https://chesapeakeholistic.com/wp-content/uploads/2018/03/placeholder.png
 // http://www.santacruzmentor.org/wp-content/uploads/2012/12/Placeholder.png
 
@@ -14,14 +17,16 @@ import Alamofire
 
 // remote test images
 let remoteTestImageUrls = [
+	
 	"https://chesapeakeholistic.com/wp-content/uploads/2018/03/placeholder.png",
 	"http://www.santacruzmentor.org/wp-content/uploads/2012/12/Placeholder.png",
 	"https://www.bridgeig.com/wp-content/uploads/female-placeholder.jpg"
+	
 ]
-
 
 // picker options for searching pill paramaters
 public let shapes = [
+	
 	"BULLET",
 	"CAPSULE",
 	"CLOVER",
@@ -41,9 +46,11 @@ public let shapes = [
 	"TEAR",
 	"TRAPEZOID",
 	"TRIANGLE"
+	
 ]
 
 public let colors =  [
+	
 	"Black",
 	"Blue",
 	"Brown",
@@ -56,6 +63,7 @@ public let colors =  [
 	"Turquoise",
 	"White",
 	"Yellow"
+	
 ]
 
 public let scores  = [0,1,2,3,4]
@@ -69,8 +77,8 @@ class SearchViewController:
 NorthSouthViewController,
 UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,
-UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
-
+UITextFieldDelegate,
+UITableViewDataSource, UITableViewDelegate {
 
 	// cases to search for
 	enum Search {
@@ -115,9 +123,9 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
 	var isChecked = 			true
 	var isScored = 				false
 	
-	var customTableView:  MyPillTableView!
-	var cellData: CellDataClass!
-	let cellReuseIdentifier: String = "customCell"
+	var customTableView:  		MyPillTableView!
+	var cellData: 				CellDataClass!
+	let cellReuseIdentifier: 	String = "customCell"
 	
 	// my box buttons
 	var boxBtn001: BoxButton!
@@ -137,6 +145,8 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
 	override func loadView() {
 		super.loadView()
 		
+		let sv = SearchViewController.displaySpinner(onView: self.view)
+		
 		//Looks for single or multiple taps to dismiss keyboard
 		let tap: UITapGestureRecognizer
 		= UITapGestureRecognizer(
@@ -155,6 +165,7 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
 					imageUrl: "https://chesapeakeholistic.com/wp-content/uploads/2018/03/placeholder.png",
 					color: "i can", shape: "make banaana", imprint: "",
 					rxcui: 30303, score: 0, limit: 0),
+				
 				CellDataClass(
 					cell: 1,
 					name: "Pill Identifier!",
@@ -162,6 +173,7 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
 					imageUrl: "http://www.santacruzmentor.org/wp-content/uploads/2012/12/Placeholder.png",
 					color: "an", shape: "make banaana", imprint: "",
 					rxcui: 13218, score: 0, limit: 0),
+				
 				CellDataClass(
 					cell: 2,
 					name:  "by Eric Phung",
@@ -169,9 +181,12 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
 					imageUrl: remoteTestImageUrls[2],
 					color: "", shape: "", imprint: "",
 					rxcui: 13218, score: 0, limit: 0)
+				
 			]
 			
 		}
+		
+		SearchViewController.removeSpinner(spinner: sv)
 
 	}// end loadview
 	
@@ -196,6 +211,7 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
 		customTableView.separatorColor = UIColor.clear
 		
 		//showFrames()
+		
 		
 		
 
@@ -311,19 +327,16 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
 		
 		pickNameTextField.delegate = self// when return key pressed, do sumthing
 		
-		//north.addSubview(pickNameTextField)
 		// ===========================================
 		//print(screenWidth)
 		//print(screenHeight)
-
-		
-	
 		
 	}// end view did load
 	
-	
-	
 	func submit() {
+		
+		let sv = SearchViewController.displaySpinner(onView: self.view)// start display spinner
+		
 		var url = baseUrl
 		
 		// check color
@@ -396,11 +409,15 @@ UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
 				} else {
 					// no results found
 					print("No results founds")
+					
 				}
+				
+				SearchViewController.removeSpinner(spinner: sv)// stops display spinner
 				
 			}
 			
 		}
+		
 	}// end submit
 	
 	
@@ -923,3 +940,31 @@ extension SearchViewController {
 	}
 	
 }// end table  delegate extension
+
+
+
+extension SearchViewController {
+	
+	class func displaySpinner(onView : UIView) -> UIView {
+		
+		let spinnerView = UIView.init(frame: onView.bounds)
+		spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+		let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+		ai.startAnimating()
+		ai.center = spinnerView.center
+		
+		DispatchQueue.main.async {
+			spinnerView.addSubview(ai)
+			onView.addSubview(spinnerView)
+		}
+		
+		return spinnerView
+	}
+	
+	class func removeSpinner(spinner :UIView) {
+		DispatchQueue.main.async {
+			spinner.removeFromSuperview()
+		}
+	}
+}
+
