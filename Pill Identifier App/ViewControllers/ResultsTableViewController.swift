@@ -111,15 +111,11 @@ class ResultsTableViewController: UITableViewController {
 		)
 		
 		
-		let pill = Pill()
 		
 		for item in arrayOfCellData {
 			
 			
-			pill.setName(str: item.getName())
-			
-			pill.setImageUrlString(str: item.getImageUrl())
-			
+			print(item)
 			
 			
 

@@ -594,18 +594,27 @@ UITableViewDataSource, UITableViewDelegate {
 	
 	func setArray(json: JSON) {
 		// ====== set json to my pill array
+		var  i  = 0
 		for item in json.array! {
 			arrayPillData.append(Pill(
-				name:			 item["name"].string!,
-				imageUrlString:  item["imageUrl"].string!,
+				
+				cell:			i,
+				name:			item["name"].string!,
+				imageUrlString: item["imageUrl"].string!,
 				color: 			color,
 				shape: 			shape,
 				imprint: 		imprint,
 				rxcui: 			item["rxcui"].int!,
 				score: 			score
-			))
+				
+				)
+				
+			)
+			
+			i = i + 1
 			
 		}// end loop pill data
+		
 	}
 	
 	func updateListOnPage() {
