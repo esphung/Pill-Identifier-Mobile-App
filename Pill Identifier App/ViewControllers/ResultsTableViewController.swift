@@ -13,6 +13,7 @@ import Kingfisher
 class ResultsTableViewController: UITableViewController {
 	
 	var arrayOfCellData = [CellDataClass]()
+	var arrayOfPillData = [Pill]()
 	//private var myTableView: UITableView!
 
 	override func viewDidLoad() {
@@ -54,7 +55,6 @@ class ResultsTableViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		// #warning Incomplete implementation, return the number of rows
-		
 		return arrayOfCellData.count
 		
 	}
@@ -95,7 +95,7 @@ class ResultsTableViewController: UITableViewController {
 		
 		print(arrayOfCellData[indexPath.row].getName())
 		
-		let data = CellDataClass(
+		_ = CellDataClass(
 			
 			cell:  		arrayOfCellData[indexPath.row].getCell(),
 			name: 		arrayOfCellData[indexPath.row].getName(),
@@ -110,7 +110,23 @@ class ResultsTableViewController: UITableViewController {
 			
 		)
 		
-		displayCardDisplayPage(data: data)
+		
+		let pill = Pill()
+		
+		for item in arrayOfCellData {
+			
+			
+			pill.setName(str: item.getName())
+			
+			pill.setImageUrlString(str: item.getImageUrl())
+			
+			
+			
+
+		}// end for item
+		
+		
+		//displayCardDisplayPage(data: data)
 		
 	}// end did select row
 	

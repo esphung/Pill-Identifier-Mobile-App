@@ -7,9 +7,6 @@ import ActionSheetPicker_3_0
 import SwiftyJSON
 import Alamofire
 
-let nurseScrubGreenColor = UIColor(red: 119/255.0, green: 203/255.0, blue: 187/255.0, alpha: 1.0)
-
-let nurseAlphaFiler =  UIColor(white: 1, alpha: 0.5)
 
 //let sv = UIViewController.displaySpinner(onView: self.view)
 //UIViewController.removeSpinner(spinner: sv)

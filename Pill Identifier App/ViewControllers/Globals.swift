@@ -7,6 +7,12 @@
 //
 
 import Foundation
+import UIKit
+
+let nurseScrubGreenColor = UIColor(red: 119/255.0, green: 203/255.0, blue: 187/255.0, alpha: 1.0)
+
+let nurseAlphaFiler =  UIColor(white: 1, alpha: 0.5)
+
 
 public  let herbIcon = "https://cdn4.iconfinder.com/data/icons/medical-5/500/herb-512.png"//herb
 

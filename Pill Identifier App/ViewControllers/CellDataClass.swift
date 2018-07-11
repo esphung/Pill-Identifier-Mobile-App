@@ -6,7 +6,9 @@
 // contains class def and test harness
 class CellDataClass {
 	// custom table cell class
-	init() {}
+	init() {
+		print("Created CellDataClass Obect")
+	}
 	
 	var button = BoxButton?.self
 
@@ -26,18 +28,20 @@ class CellDataClass {
 	// overload constructor
 	init
 	(
-		cell: Int, 
-		name:  String,
-		image: String, //UIImage,
-		imageUrl: String,
-		color: String,
-		shape: String,
-		imprint: String,
-		rxcui: Int,
-		score:  Int,
-		limit: Int
+		cell: 		Int,
+		name:  		String,
+		image: 		String, //UIImage,
+		imageUrl: 	String,
+		color: 		String,
+		shape: 		String,
+		imprint:	String,
+		rxcui: 		Int,
+		score:  	Int,
+		limit: 		Int
 	)
 	{
+		print("Created CellDataClass Object")
+		
 		if cell > 0 {
 			self.cell = cell
 		} else {
@@ -129,6 +133,10 @@ class CellDataClass {
 		} else {
 			return "250x250placeholder.jpg"
 		}
+	}
+	deinit {
+		// de initializeer
+		print("Destroyed CellDataClass Obect")
 	}
 	
 }// end class def

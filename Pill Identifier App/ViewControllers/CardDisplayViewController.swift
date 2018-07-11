@@ -23,7 +23,6 @@ class CardDisplayViewController: NorthSouthViewController {
 	var altImage:  	UIImage!
 
     override func loadView() {
-		
         super.loadView()
 		
     }
@@ -39,8 +38,9 @@ class CardDisplayViewController: NorthSouthViewController {
 		let pillImageView = UIImageView()
 		
 		pillImageView.kf.indicator?.startAnimatingView()
-		
 		altImage = UIImage(named: placeholder)
+		
+		print(cellData)
 		
 		
 		
@@ -175,7 +175,6 @@ class CardDisplayViewController: NorthSouthViewController {
 
 
 		pillImageView.removeFromSuperview()
-		
 		
 		let data = CellDataClass(
 			

@@ -7,33 +7,31 @@
 
 import Foundation
 
-class Pill {
-	
-	// var
-	var id_num: Double!
+class Pill: CellDataClass {
+	init(){
+	private var cell : Int
 	private var name: String!
 	private var imageUrlString: String!
 	private var color: 			String!
 	private var shape: String!
 	private var imprint: String!
-	private var rxcui: Int!
-	private var score: Int!
+	private var rxcui: Int
+	private var score: Int
+	
+		convenience super.init(
+		cell: Int!, name: String!, image: String!, color: String!, shape: String!, imprint: String!, rxcui: Int, score: Int) {
+		}
+	// end vconvenience init
 	
 	// initializers
-	init() {
+			init () {
+		super.init()
 		
-		let currentDateTime = Date()
-		let time = currentDateTime.timeIntervalSinceReferenceDate
-		let x = time
-		let y = Double(round(0.0000*x)/10)
-		
-		print(y) // 1.236
-		
-		self.id_num = y
+		print("Created Pill Object")
+	
 		self.name  = ""
 		self.imageUrlString = ""
 		self.color = ""
-		
 		self.shape = ""
 		self.imprint = ""
 		self.rxcui = 0
@@ -41,7 +39,7 @@ class Pill {
 		
 	}
 	
-	init(
+		super.init(
 		name: String,
 		imageUrlString: String,
 		color: String,
@@ -50,17 +48,10 @@ class Pill {
 		rxcui: Int,
 		score: Int
 		)
-	{
+		do {
 		
-		let currentDateTime = Date()
-		let time = currentDateTime.timeIntervalSinceReferenceDate
-		let x = time
-		let y = Double(round(0.0000*x)/10)
-		
-		//print(y) // 1.236
-		
-		
-		self.id_num = y
+
+		self.cell =  0
 		self.name = name
 		self.imageUrlString = imageUrlString
 		self.color = color
@@ -71,10 +62,19 @@ class Pill {
 	}
 	
 	// setters/getters
-	func setName(name: String) {
+	
+	override func setCell(num: Int) {
+		self.cell  = 0
+	}
+	
+	override func getCell() -> Int {
+		return self.cell
+	}
+	
+	private func setName(name: String) {
 		self.name = name
 	}
-	func getName() -> String {
+	internal override func getName() -> String {
 		return self.name
 	}
 
@@ -85,24 +85,28 @@ class Pill {
 		return self.imageUrlString
 	}
 
-	func getColor() -> String {
+	override func getColor() -> String {
 		return self.color
 	}
 
-	func getShape() -> String {
+	override func getShape() -> String {
 		return self.shape
 	}
 
-	func getImprint() -> String {
+	override func getImprint() -> String {
 		return self.imprint
 	}
 	
-	func getRxcui() -> Int {
+	override func getRxcui()  -> Int {
 		return self.rxcui
 	}
 	
-	func getScore() -> Int {
+	override func getScore() -> Int {
 		return self.score
+	}
+	
+	deinit {
+		print("Destroyed Pill Object")
 	}
 	
 }// end pill clas def
@@ -133,8 +137,6 @@ while i > 0 {
 	
 	test = CellData(cell: i)
 	print(i, test, test.id_num!)
-
-
 }
 
 print(test)
