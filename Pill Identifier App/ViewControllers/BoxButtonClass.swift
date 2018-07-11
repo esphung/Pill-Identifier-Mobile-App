@@ -15,6 +15,7 @@ class BoxButton: UIButton {
 	
 	override init(frame: CGRect) {
 		// set myValue before super.init is called
+		print("New Box Button created")
 
 		let frame = frame
 		super.init(frame: frame)
@@ -37,8 +38,8 @@ class BoxButton: UIButton {
 		myImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
 		myImageView.widthAnchor.constraint(equalToConstant: frame.width).isActive = true
 		myImageView.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
-		//myImageView.layer.borderColor = UIColor.black.cgColor
-		//myImageView.layer.borderWidth = 2.0
+		//(myImageView.layer.borderColor = UIColor.black.cgColor
+		myImageView.layer.borderWidth = 2.0
 
 		let myLabel = UILabel(frame: CGRect(x:0,y: 0,width: self.frame.width * 0.8, height: self.frame.height/4))
 		
@@ -64,6 +65,11 @@ class BoxButton: UIButton {
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 		
+	}
+	
+	deinit {
+		// perform the deinitialization
+		print("Destroyed BoxButton")
 	}
 	
 

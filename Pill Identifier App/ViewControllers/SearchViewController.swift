@@ -8,56 +8,20 @@ import SwiftyJSON
 import Alamofire
 
 let nurseScrubGreenColor = UIColor(red: 119/255.0, green: 203/255.0, blue: 187/255.0, alpha: 1.0)
-let nurseAlphaFiler =  UIColor(white: 1, alpha: 0.5)
 
+let nurseAlphaFiler =  UIColor(white: 1, alpha: 0.5)
 
 //let sv = UIViewController.displaySpinner(onView: self.view)
 //UIViewController.removeSpinner(spinner: sv)
-
-
-// picker options for searching pill paramaters
-public let shapes = [
+let savedPillsCellData = CellDataClass(
+	cell: 0,
+	name:  "Saved Pills",
+	image:  "",
 	
-	"BULLET",
-	"CAPSULE",
-	"CLOVER",
-	"DIAMOND",
-	"DOUBLE CIRCLE",
-	"FREEFORM",
-	"GEAR",
-	"HEPTAGON",
-	"HEXAGON",
-	"OCTAGON",
-	"OVAL",
-	"PENTAGON",
-	"RECTANGLE",
-	"ROUND",
-	"SEMI-CIRCLE",
-	"SQUARE",
-	"TEAR",
-	"TRAPEZOID",
-	"TRIANGLE"
-	
-]
+	imageUrl: herbIcon,
+	color: "i can", shape: "make banaana", imprint: "",
+	rxcui: 0, score: 0, limit: 0)
 
-public let colors =  [
-	
-	"Black",
-	"Blue",
-	"Brown",
-	"Gray",
-	"Green",
-	"Orange",
-	"Pink",
-	"Purple",
-	"Red",
-	"Turquoise",
-	"White",
-	"Yellow"
-	
-]
-
-public let scores  = [0,1,2,3,4]
 
 let appTitleCellData = CellDataClass(
 	cell: 0,
@@ -74,7 +38,7 @@ let creditCopyrightCellData = CellDataClass(
 	name: "Made by Eric Phung",
 	image:  "",
 	
-	imageUrl: urlPlaceholder,
+	imageUrl: houseIconUrl,
 	color: "", shape: "", imprint: "",
 	rxcui: 0, score: 0, limit: 0)
 
@@ -98,12 +62,14 @@ let searchPillCellData = CellDataClass(
 	color: "", shape: "", imprint: "",
 	rxcui: 0, score: 0, limit: 0)
 
-
 let listCellDataActions = [
-	appTitleCellData,
-	creditCopyrightCellData,
+	
+	savedPillsCellData,
 	uploadImageCellData,
-	searchPillCellData
+	searchPillCellData,
+	appTitleCellData,
+	creditCopyrightCellData
+
 ]
 
 /*
@@ -113,8 +79,6 @@ let listCellDataActions = [
 
 class SearchViewController:
 NorthSouthViewController,
-UIImagePickerControllerDelegate,
-UINavigationControllerDelegate,
 UITextFieldDelegate,
 UITableViewDataSource, UITableViewDelegate {
 
@@ -165,28 +129,26 @@ UITableViewDataSource, UITableViewDelegate {
 	var cellData: 				CellDataClass!
 	let cellReuseIdentifier: 	String = "customCell"
 	
-	// my box buttons
-	var boxBtn001: BoxButton!
-	var boxBtn002: BoxButton!
-	var boxBtn003: BoxButton!
 
-	var boxBtn004: BoxButton!
-	var boxBtn005: BoxButton!
-	var boxBtn006: BoxButton!
-	
 	var boxButtons = [BoxButton]()
-	
 	var arrayPillData = [Pill]()
 	var arrayOfCellData = [CellDataClass]()
+
 	
-	var firstListItem: CellDataClass!
-	var secondListItem: CellDataClass!
-	var thirdListItem: CellDataClass!
+	
+	@available(iOS 2.0, *)
+	public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return CGFloat(85)
+	}
+
 	
 	override func loadView() {
 		super.loadView()
 		
-		self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
+		
+		boxButtons = setSearchItems()
+		
+		//view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
 		
 		/*
 		//Looks for single or multiple taps to dismiss keyboard
@@ -216,7 +178,7 @@ UITableViewDataSource, UITableViewDelegate {
 		customTableView = UITableView(
 			frame: CGRect(
 				x: 0, y: 0,
-				width: 110, height: 110)
+				width: screenWidth, height: screenHeight)
 		)
 		
 		customTableView.delegate = self
@@ -233,106 +195,28 @@ UITableViewDataSource, UITableViewDelegate {
 		//customTableView.isScrollEnabled = false
 		//customTableView.allowsSelectionDuringEditing = true
 		//customTableView.updateTableView()
+		//customTableView.bounces = false
+		
+		
+		
+		let imgView =  UIImageView(frame: customTableView.frame)
+		let img = UIImage(named: placeholder)
+		imgView.image = img
+		imgView.frame  = CGRect(
+			x: 0,
+			y: 0,
+			width: customTableView.frame.width,
+			height: customTableView.frame.height)
+	
+		imgView.contentMode = UIView.ContentMode.scaleAspectFill
+		
+		
+		
+		view.addSubview(imgView)
+		view.sendSubviewToBack(imgView)
+		
 
-		
-		//========================================
-		// Get the superview's layout
-
-		// boxBtn001 (L)
-		let boxBtn001 = BoxButton(
-			frame: CGRect(
-				x: 0,
-				y: 0,
-				width: view.frame.width/3,
-				height: view.frame.height/4))// COLOR
-		
-		//boxBtn001.setTitle("Color", for: .normal)
-		url = URL(string: paintUrlString)
-		boxBtn001.kf.setBackgroundImage(with: url, for: .normal)
-		boxBtn001.addTarget(self,action: #selector(pickColorBtnTapped),for: .touchUpInside)
-
-		view.addSubview(boxBtn001)
-		boxButtons.append(boxBtn001)
-		
-		// boxBtn002 (M)
-		let boxBtn002 = BoxButton(
-			frame: CGRect(
-				x: view.frame.width/3,
-				y: 0,
-				width: view.frame.width/3,
-				height: view.frame.height/4))
-		url = URL(string: remoteParamBckgrdImgs[1])
-		boxBtn002.kf.setBackgroundImage(with: url, for: .normal)
-		boxBtn002.addTarget(self, action: #selector(pickShapeBtnTapped),
-			for: .touchUpInside)
-		
-		view.addSubview(boxBtn002)
-		boxButtons.append(boxBtn002)
-		
-		// boxBtn003 (R)
-		let boxBtn003 = BoxButton(
-			frame: CGRect(
-				x: (view.frame.width - view.frame.width/3),
-				y: 0, width: view.frame.width/3, height: view.frame.height/4))
-		boxBtn003.addTarget(self, action: #selector(pickPictureBtnTapped),
-							for: .touchUpInside)
-		url = URL(string: remoteParamBckgrdImgs[2])
-		boxBtn003.kf.setBackgroundImage(with: url, for: .normal)
-		boxBtn002.addTarget(self, action: #selector(pickShapeBtnTapped),
-							for: .touchUpInside)
-		//boxBtn003.setTitle("Picture", for: .normal)
-		
-		view.addSubview(boxBtn003)
-		boxButtons.append(boxBtn003)
-
-		//========================================
-		// boxBtn004 (L) || 0.0 x 4 = 480 || 0.0 || screenHeight/4 = 167ish
-		let boxBtn004 = BoxButton(
-			frame: CGRect(
-				x: 0, y:  (view.frame.height - view.frame.height/2)/2, width: view.frame.width/3, height: view.frame.height/4))// Imager
-		boxBtn004.setTitle("Image", for: .normal)
-		
-		url = URL(string: remoteParamBckgrdImgs[3])
-		
-		boxBtn004.kf.setBackgroundImage(with: url, for: .normal)
-		boxBtn004.kf.setBackgroundImage(with: URL(string: magGlassIcon), for: .highlighted)
-		
-		boxBtn004.addTarget(
-			self,
-			action: #selector(pickImprintBtnTapped),
-			for: .touchUpInside)
-		view.addSubview(boxBtn004)
-
-		// boxBtn005 (M)
-		let boxBtn005 = BoxButton(frame: CGRect(
-			x: view.frame.width/3, y:  (view.frame.height - view.frame.height/2)/2, width: view.frame.width/3, height: view.frame.height/4))
-		boxBtn005.setTitle("Submit", for: .normal)//SUBMIT
-		
-		url = URL(string: remoteParamBckgrdImgs[4])
-		
-		boxBtn005.kf.setBackgroundImage(with: url, for: .normal)
-		boxBtn005.addTarget(
-			self,
-			action: #selector(submitButtonTapped),
-			for: .touchUpInside)
-		view.addSubview(boxBtn005)
-
-		// boxBtn006 (R)
-		let boxBtn006 = BoxButton(frame: CGRect(
-		x: (view.frame.width - view.frame.width/3), y:  (view.frame.height - view.frame.height/2)/2, width: view.frame.width/3, height: view.frame.height/4))
-		
-		url = URL(string: remoteParamBckgrdImgs[5])
-		
-		boxBtn006.kf.setBackgroundImage(with: url, for: .normal)
-		
-		boxBtn006.setTitle("Scores", for: .normal)
-		
-		boxBtn006.addTarget(
-			self,
-			action: #selector(pickScoreBtnTapped),
-			for: .touchUpInside)
-		
-		view.addSubview(boxBtn006)//SCORE
+	
 		
 
 		//========================================
@@ -393,6 +277,8 @@ UITableViewDataSource, UITableViewDelegate {
 		// ===========================================
 		//print(screenWidth)
 		//print(screenHeight)
+		
+
 		
 	}// end view did load
 	
@@ -585,10 +471,7 @@ UITableViewDataSource, UITableViewDelegate {
 		return true
 	}
 	
-	@objc func pickPictureBtnTapped(){
-		customTableView.reloadData()
-		//showImageActionSheet()
-	}
+
 	
 	@objc func pickColorBtnTapped(sender: BoxButton){
 		print(sender)
@@ -672,14 +555,9 @@ UITableViewDataSource, UITableViewDelegate {
 			origin: sender)
 	}// end pick shape
 
-
 	@objc func submitButtonTapped(sender: UIButton){
 		submit()
 	}// end submit btn tapped
-	
-	@objc func imageButtonTapped(_ sender: Any) {
-		showImageActionSheet()
-	}// end upload pickImprintBtn action
 	
 
 	@objc func pickImprintBtnTapped(_ sender: BoxButton) {
@@ -925,79 +803,147 @@ extension UIView {
 
 }//  end uiview extension
 
-
-
-
-
-
-
 extension SearchViewController {
+	
 
-	func camera() {
-		if UIImagePickerController.isSourceTypeAvailable(.camera){
-			let myPickerController = UIImagePickerController()
-			myPickerController.delegate = self;
-			myPickerController.sourceType = .camera
-			
-			self.present(
-				myPickerController,
-				animated: false,
-				completion: {
-					print("Accessing Camera...")
-			})
+	
+	func setSearchItems() -> [BoxButton] {
+		//========================================
+		// Get the superview's layout
+		
+		// boxBtn001 (L)
+		let boxBtn001 = BoxButton(
+			frame: CGRect(
+				x: 0,
+				y: 0,
+				width: view.frame.width/3,
+				height: view.frame.height/4))// COLOR
+		
+		//boxBtn001.setTitle("Color", for: .normal)
+		url = URL(string: paintUrlString)
+		boxBtn001.kf.setBackgroundImage(with: url, for: .normal)
+		boxBtn001.addTarget(self,action: #selector(pickColorBtnTapped),for: .touchUpInside)
+		
+		
+		boxButtons.append(boxBtn001)
+		
+		// boxBtn002 (M)
+		let boxBtn002 = BoxButton(
+			frame: CGRect(
+				x: view.frame.width/3,
+				y: 0,
+				width: view.frame.width/3,
+				height: view.frame.height/4))
+		url = URL(string: remoteParamBckgrdImgs[1])
+		boxBtn002.kf.setBackgroundImage(with: url, for: .normal)
+		boxBtn002.addTarget(self, action: #selector(pickShapeBtnTapped),
+							for: .touchUpInside)
+		
+		
+		boxButtons.append(boxBtn002)
+		
+		// boxBtn003 (R)
+		let boxBtn003 = BoxButton(
+			frame: CGRect(
+				x: (view.frame.width - view.frame.width/3),
+				y: 0, width: view.frame.width/3, height: view.frame.height/4))
+		//boxBtn003.addTarget(self, action:  nil,for: .touchUpInside)
+		url = URL(string: urlPlaceholder)
+		boxBtn003.kf.setBackgroundImage(with: url, for: .normal)
+		boxBtn002.addTarget(self, action: #selector(pickShapeBtnTapped),
+							for: .touchUpInside)
+		//boxBtn003.setTitle("Picture", for: .normal)
+		
+		boxButtons.append(boxBtn003)
+		
+		//========================================
+		// boxBtn004 (L) || 0.0 x 4 = 480 || 0.0 || screenHeight/4 = 167ish
+		let boxBtn004 = BoxButton(
+			frame: CGRect(
+				x: 0, y:  (view.frame.height - view.frame.height/2)/2, width: view.frame.width/3, height: view.frame.height/4))// Imager
+		boxBtn004.setTitle("Image", for: .normal)
+		
+		url = URL(string: remoteParamBckgrdImgs[3])
+		
+		boxBtn004.kf.setBackgroundImage(with: url, for: .normal)
+		boxBtn004.kf.setBackgroundImage(with: URL(string: magGlassIcon), for: .highlighted)
+		
+		boxBtn004.addTarget(
+			self,
+			action: #selector(pickImprintBtnTapped),
+			for: .touchUpInside)
+		
+		boxButtons.append(boxBtn004)
+		
+		// boxBtn005 (M)
+		let boxBtn005 = BoxButton(frame: CGRect(
+			x: view.frame.width/3, y:  (view.frame.height - view.frame.height/2)/2, width: view.frame.width/3, height: view.frame.height/4))
+		
+		boxBtn005.setTitle("Submit", for: .normal)//SUBMIT
+		
+		url = URL(string: remoteParamBckgrdImgs[4])
+		
+		boxBtn005.kf.setBackgroundImage(with: url, for: .normal)
+		boxBtn005.addTarget(
+			self,
+			action: #selector(submitButtonTapped),
+			for: .touchUpInside)
+		boxButtons.append(boxBtn005)
+		
+		// boxBtn006 (R)
+		let boxBtn006 = BoxButton(frame: CGRect(
+			x: (view.frame.width - view.frame.width/3), y:  (view.frame.height - view.frame.height/2)/2, width: view.frame.width/3, height: view.frame.height/4))
+		
+		url = URL(string: remoteParamBckgrdImgs[5])
+		
+		boxBtn006.kf.setBackgroundImage(with: url, for: .normal)
+		
+		boxBtn006.setTitle("Scores", for: .normal)
+		
+		boxBtn006.addTarget(
+			self,
+			action: #selector(pickScoreBtnTapped),
+			for: .touchUpInside)
+		
+		boxButtons.append(boxBtn006)
+		
+		return boxButtons
+		
+	}// END OF BOX BUTTONS
+	
+	func hideSearchItems() {
+		for  item in boxButtons {
+			item.isHidden = true
+			//item.delete(self)
+		}
+		//customTableView.reloadData()
+	}
+	
+	func hideBoxButtons() {
+		for item in boxButtons {
+			item.removeFromSuperview()
+		}
+	}
+
+	
+	func showBoxButtons() {
+		print(boxButtons)
+		//var array = [BoxButton]()
+		//array = setSearchItems()
+		for item in boxButtons {
+			view.addSubview(item)
 		}
 		
-	}// end camera
-	
-	func photoLibrary() {
+	}
+
 		
-		if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-			let myPickerController = UIImagePickerController()
-			myPickerController.delegate = self;
-			myPickerController.sourceType = .photoLibrary
-			self.present(myPickerController, animated: false, completion: {
-				print("Acessing Photo Library...")
-			})
-		}
-	}// end photolibrary
-	
-	
-	func showImageActionSheet() {
-		let actionSheet = UIAlertController(
-			title: nil,
-			message: nil,
-			preferredStyle: .actionSheet)
-		
-		actionSheet.addAction(UIAlertAction(
-			title: "Camera",
-			style: .default,
-			handler: { (alert:UIAlertAction!) -> Void in
-				self.camera()
-		}))
-		
-		actionSheet.addAction(UIAlertAction(
-			title: "Gallery",
-			style: .default,
-			handler: { (alert:UIAlertAction!) -> Void in
-				self.photoLibrary()
-		}))
-		
-		actionSheet.addAction(UIAlertAction(
-			title: "Cancel",
-			style: .cancel,
-			handler: nil))
-		
-		self.present(actionSheet, animated: false, completion: nil)
-		
-	}// end show actionsheet
-	
 }
 
 
 extension SearchViewController {
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return "Made by Eric Phung"
+		return "Pill Finder - Made by Eric Phung"
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
@@ -1006,6 +952,16 @@ extension SearchViewController {
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		print(indexPath)
+		
+		
+		if indexPath == [0,1]{
+			showBoxButtons()
+		} else {
+			hideBoxButtons()
+		}
+		
+		print(indexPath.row)
+		
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -1034,14 +990,13 @@ extension SearchViewController {
 		cell.mainLabel?.numberOfLines = 1
 		
 		
-		cell.mainImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName: "against.jpg"))// set image url
+		cell.mainImageView.kf.setImage(with: url, placeholder: UIImage(imageLiteralResourceName: placeholder))// set image url
 
 		return cell
 	}
 	
 	
 
-	
 }// end table  delegate extension
 
 
@@ -1069,6 +1024,7 @@ extension SearchViewController {
 			spinner.removeFromSuperview()
 		}
 	}
+	
 
 	
 }//  end spinner display extension
